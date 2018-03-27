@@ -137,6 +137,7 @@ client.on("message", message => {
 			var query = `{
 				substances(query: "${substance}") {
 					name
+					addictionPotential
 					
 					# routes of administration
 					roas {
@@ -210,7 +211,7 @@ client.on("message", message => {
 					"**Addiction potential: **" +
 					"\n" +
 					"```\n" +
-					// data.substances[0].addictionPotential.addictionPotential +
+					data.substances[0].addictionPotential +
 					"```"
         )
 			);
