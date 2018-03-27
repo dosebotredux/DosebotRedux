@@ -67,7 +67,7 @@ client.on("message", message => {
 				message.channel.send(
 					"Take ~" +
 					Math.ceil(y / 10) * 10 +
-					"% of the drug to reach full effects.\n Warning: Negative effects may be amplified with a high dose of a psychedelic."
+					"% of the drug to reach full effects.\nWarning: Negative effects may be amplified with a high dose of a psychedelic."
 				);
 			} else {
 				message.channel.send(
@@ -115,7 +115,7 @@ client.on("message", message => {
 			parseFloat(result[result.length - 1]) * 6.6 +
 			"mg to " +
 			parseFloat(result[result.length - 1]) * 10 +
-			"mg of DXM for 4th Plateau \n**Warning: Doses exceeding 1500mg are dangerous and even an experienced user should not consider them to be safe.**"
+			"mg of DXM for 4th Plateau\n**Warning: Doses exceeding 1500mg are dangerous and even an experienced user should not consider them to be safe.**"
 		);
 	}
 	
@@ -152,6 +152,9 @@ client.on("message", message => {
 				compounds[_drug].unit +
 				"\nModerate: " +
 				compounds[_drug].medium +
+				compounds[_drug].unit +
+				"\nStrong: " + 
+				compounds[_drug].strong +
 				compounds[_drug].unit +
 				"\nHeavy: " +
 				compounds[_drug].high +
