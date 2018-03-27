@@ -8,43 +8,7 @@ var fs = require("fs");
 var path = require("path");
 var util = require("util");
 const { request } = require("graphql-request");
-var test = {
-  query: "LSD"
-};
-
-const query = `{
-	substances(query: "$test") {
-		name
-		
-		# routes of administration
-		roas {
-			name
-			
-			dose {
-				units
-				threshold
-				heavy
-				common { min max }
-				light { min max }
-				strong { min max }
-			}
-			
-			duration {
-				afterglow { min max units }
-				comeup { min max units }
-				duration { min max units }
-				offset { min max units }
-				onset { min max units }
-				peak { min max units }
-				total { min max units }
-			}
-			
-			bioavailability {
-				min max
-			}
-		}
-	}
-}`;
+var substance;
 
 // Require substance JSON
 const compounds = require("./compounds.json");
@@ -162,74 +126,111 @@ client.on("message", message => {
     var result = str.split(" ");
     var _drug = str
       .toLowerCase()
-      .replace("-info ", "", -1)
+      .replace("--info ", "", -1)
       .replace(/-/g, "", -1)
       .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
 
-    console.log(compounds[_drug]);
-    if (compounds[_drug] != undefined) {
-      request("https://api.psychonautwiki.org", query, test).then(data =>
+    if (_drug != undefined) {
+			substance = _drug;
+			console.log(_drug);
+			console.log(substance);
+			var query = `{
+				substances(query: "${substance}") {
+					name
+					
+					# routes of administration
+					roas {
+						name
+						
+						dose {
+							units
+							threshold
+							heavy
+							common { min max }
+							light { min max }
+							strong { min max }
+						}
+						
+						duration {
+							afterglow { min max units }
+							comeup { min max units }
+							duration { min max units }
+							offset { min max units }
+							onset { min max units }
+							peak { min max units }
+							total { min max units }
+						}
+						
+						bioavailability {
+							min max
+						}
+					}
+				}
+			}`;
+      request("https://api.psychonautwiki.org", query).then(data =>
         message.channel.send(
-          data.substances[0].roas[0].dose.common.min,
-          console.log("test")
+					console.log(query),
+					console.log(data.substances[0].name),
+					data.substances[0].name[0]
         )
-      );
-      // Dosage info/intro
-      message.channel.send(
-        "**" +
-          compounds[_drug].name +
-          "** information" +
-          "\n\n" +
-          "**Psychoactive class:** " +
-          compounds[_drug].psychoactiveClass +
-          "\n\n" +
-          "**Chemical class:** " +
-          compounds[_drug].chemicalClass +
-          "\n\n" +
-          "**Dosage**" +
-          "```" +
-          "\nThreshold: " +
-          compounds[_drug].threshold +
-          compounds[_drug].unit +
-          "\nLight: " +
-          compounds[_drug].low +
-          compounds[_drug].unit +
-          "\nModerate: " +
-          compounds[_drug].medium +
-          compounds[_drug].unit +
-          "\nStrong: " +
-          compounds[_drug].strong +
-          compounds[_drug].unit +
-          "\nHeavy: " +
-          compounds[_drug].high +
-          compounds[_drug].unit +
-          "```" +
-          "**Duration**" +
-          "```" +
-          "\nTotal: " +
-          compounds[_drug].durationTotal +
-          "\nOnset: " +
-          compounds[_drug].durationOnset +
-          "\nComeup: " +
-          compounds[_drug].durationComeUp +
-          "\nPeak: " +
-          compounds[_drug].durationPeak +
-          "\nOffset: " +
-          compounds[_drug].durationOffset +
-          "\nAfterglow: " +
-          compounds[_drug].durationAfterglow +
-          "```" +
-          "**Harm potential**" +
-          "```" +
-          "\n" +
-          compounds[_drug].harmPotential +
-          "```" +
-          "**Tolerance**" +
-          "```" +
-          "\n" +
-          compounds[_drug].tolerance +
-          "```"
-      );
+			);
+			console.log(query);
+      // // Dosage info/intro
+      // message.channel.send(
+      //   "**" +
+      //     compounds[_drug].name +
+      //     "** information" +
+      //     "\n\n" +
+      //     "**Psychoactive class:** " +
+      //     compounds[_drug].psychoactiveClass +
+      //     "\n\n" +
+      //     "**Chemical class:** " +
+      //     compounds[_drug].chemicalClass +
+      //     "\n\n" +
+      //     "**Dosage**" +
+      //     "```" +
+      //     "\nThreshold: " +
+      //     compounds[_drug].threshold +
+      //     compounds[_drug].unit +
+      //     "\nLight: " +
+      //     compounds[_drug].low +
+      //     compounds[_drug].unit +
+      //     "\nModerate: " +
+      //     compounds[_drug].medium +
+      //     compounds[_drug].unit +
+      //     "\nStrong: " +
+      //     compounds[_drug].strong +
+      //     compounds[_drug].unit +
+      //     "\nHeavy: " +
+      //     compounds[_drug].high +
+      //     compounds[_drug].unit +
+      //     "```" +
+      //     "**Duration**" +
+      //     "```" +
+      //     "\nTotal: " +
+      //     compounds[_drug].durationTotal +
+      //     "\nOnset: " +
+      //     compounds[_drug].durationOnset +
+      //     "\nComeup: " +
+      //     compounds[_drug].durationComeUp +
+      //     "\nPeak: " +
+      //     compounds[_drug].durationPeak +
+      //     "\nOffset: " +
+      //     compounds[_drug].durationOffset +
+      //     "\nAfterglow: " +
+      //     compounds[_drug].durationAfterglow +
+      //     "```" +
+      //     "**Harm potential**" +
+      //     "```" +
+      //     "\n" +
+      //     compounds[_drug].harmPotential +
+      //     "```" +
+      //     "**Tolerance**" +
+      //     "```" +
+      //     "\n" +
+      //     compounds[_drug].tolerance +
+      //     "```"
+      // );
     }
 
     // DXM calculator message
