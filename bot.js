@@ -205,6 +205,12 @@ client.on("message", message => {
 					"\n" + 
 					"Afterglow: " +
 					"\n" + 
+					"```" +
+					"\n" +
+					"**Addiction potential: **" +
+					"\n" +
+					"```\n" +
+					// data.substances[0].addictionPotential.addictionPotential +
 					"```"
         )
 			);
@@ -315,7 +321,7 @@ client.on("message", message => {
       message.channel.send(
         "More information: <https://psychonautwiki.org/wiki/" + pw_drug + ">"
       ); //oppositely, the pw_drug must come out to have symbols and proper casing which is done with the code above
-    }, 1000);
+    }, 2000);
   }
   // if (message.content.toLowerCase().includes("--info")) {
   // 	var str = message.content;
