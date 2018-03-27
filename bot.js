@@ -32,30 +32,6 @@ client.on("guildMemberAdd", member => {
 	console.log(member.user.username);
 	console.log(member.toString());
 	console.log(member.id.toString());
-	
-	// //<<autockicks troll/spammers
-	// var posuser = member.user.username.toLowerCase();
-	
-	// var kick = false;
-	
-	// if (posuser.includes("crowdkilla")) kick = true;
-	// if (posuser.includes("crowd killa")) kick = true;
-	
-	// if (posuser.includes("colt heard")) kick = true;
-	// //if (posuser.includes("buttbaby")) kick = true;
-	// if (posuser.includes("nibiru emmissary")) kick = true;
-	// if (posuser.includes("mirai chan")) kick = true;
-	// if (posuser.includes("booch")) kick = true;
-	
-	// if(kick==true) {
-	// 	member.user.sendMessage("GTFO");
-	
-	// 	member.kick("GTFO");
-	// 	console.log('Kicked potential POS: '+posuser);
-	
-	// }
-	// //autokicks some troll/spammers >>>>
-});
 
 client.on("message", message => {
 	if (message.author === client.user) return;
@@ -76,59 +52,68 @@ client.on("message", message => {
 	}
 	
 	// LSD tolerance dosage calculator
-	if (message.content.toLowerCase().includes("--lsdtolerance")) {
-		// Usage -lsdtolerance [days since last trip]. calculates tolerance/extra dose needed to achieve normal effects
+	if (message.content.toLowerCase().includes("--lsdtolerance") || message.content.toLowerCase().includes("--psychtolerance")) {
+		// Usage --lsdtolerance [days since last trip]. calculates tolerance/extra dose needed to achieve normal effects
 		
 		var str = message.content;
-		var res = str.split(" ");
-		var x = parseFloat(res[res.length - 1]);
+		var result = str.split(" ");
+		var x = parseFloat(result[result.length - 1]);
 		var y = Math.pow(x - 14, 4) / 150 + (20 - x / 14 * 20) + 100;
 		
-		message.channel.send(
-			"Take ~" + Math.ceil(y / 10) * 10 + "% of the drug to reach full effects."
-		);
-		message.react("373311440540532736"); //reacts with the lsd emoji on the 700 club.
+		if (x < 3) { // If days since last dose would give a very high calculated dose return a warning
+			message.channel.send(
+				"Take ~" + Math.ceil(y / 10) * 10 + "% of the drug to reach full effects.\n Warning: Negative effects may be amplified with a high dose of a psychedelic."
+			);
+		} else {
+			message.channel.send(
+				"Take ~" + Math.ceil(y / 10) * 10 + "% of the drug to reach full effects."
+			);
+		}
 	}
 	
-	//calc dxm plateau dosages. usage -dxmcalc [weight in pounds]
+	//calc dxm plateau dosages. usage --dxmcalc [weight in pounds]
 	if (message.content.toLowerCase().includes("--dxmcalc")) {
 		var str = message.content;
-		var res = str.split(" ");
+		var result = str.split(" ");
 		
 		message.channel.send("DoseBot recommends:");
 		
 		message.channel.send(
-			parseFloat(res[res.length - 1]) * 0.8 +
+			parseFloat(result[result.length - 1]) * 0.8 +
 			"mg to " +
-			parseFloat(res[res.length - 1]) * 1.2 +
+			parseFloat(result[result.length - 1]) * 1.2 +
 			"mg of DXM for 1st Plateau"
 		);
 		
 		message.channel.send(
-			parseFloat(res[res.length - 1]) * 1.75 +
+			parseFloat(result[result.length - 1]) * 1.75 +
 			"mg to " +
-			parseFloat(res[res.length - 1]) * 3.15 +
+			parseFloat(result[result.length - 1]) * 3.15 +
 			"mg of DXM for 2nd Plateau"
 		);
 		
 		message.channel.send(
-			parseFloat(res[res.length - 1]) * 3.5 +
+			parseFloat(result[result.length - 1]) * 3.5 +
 			"mg to " +
-			parseFloat(res[res.length - 1]) * 6.6 +
+			parseFloat(result[result.length - 1]) * 6.6 +
 			"mg of DXM for 3rd Plateau"
 		);
 		
 		message.channel.send(
-			parseFloat(res[res.length - 1]) * 6.6 +
+			parseFloat(result[result.length - 1]) * 6.6 +
 			"mg to " +
-			parseFloat(res[res.length - 1]) * 10 +
+			parseFloat(result[result.length - 1]) * 10 +
 			"mg of DXM for 4th Plateau"
 		);
+
+		message.channel.send(
+			"Warning: Doses exceeding 1500mg are dangerous and even an experienced user should not consider them to be safe."
+		)
 	}
 	
 	if (message.content.toLowerCase().includes("--info")) {
 		var str = message.content;
-		var res = str.split(" ");
+		var result = str.split(" ");
 		var _drug = str
 		.toLowerCase()
 		.replace("-info ", "", -1)
