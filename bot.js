@@ -126,7 +126,7 @@ client.on("message", message => {
 		.replace(/-/g, "", -1)
 		.replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
 		
-		//spacial cases
+		//special cases
 		
 		if (_drug == "dipt") _drug = "dipt";
 		if (_drug == "moxy") _drug = "5meomipt";
