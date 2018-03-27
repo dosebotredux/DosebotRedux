@@ -14,5 +14,8 @@
     "js-yaml": "^3.10.0",
     "winston": "^2.4.0",
     "zombie": "^5.0.7"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
   }
 }
