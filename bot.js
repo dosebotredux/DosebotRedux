@@ -138,7 +138,11 @@ client.on("message", message => {
 				substances(query: "${substance}") {
 					name
 					addictionPotential
-					
+					tolerance {
+						full
+						half
+						zero
+					}
 					# routes of administration
 					roas {
 						name
@@ -212,6 +216,14 @@ client.on("message", message => {
 					"\n" +
 					"```\n" +
 					data.substances[0].addictionPotential +
+					"```\n" +
+					"**Tolerance**" +
+					"```\n" +
+					"Full: " + data.substances[0].tolerance.full +
+					"\n" +
+					"Half: " + data.substances[0].tolerance.half +
+					"\n" +
+					"Baseline: " + data.substances[0].tolerance.zero +
 					"```"
         )
 			);
