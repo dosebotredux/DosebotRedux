@@ -9,20 +9,7 @@ var path = require("path");
 var util = require("util");
 
 // Require substance JSON
-const test = require("./test.json");
-
-const warnBuffer = 3;
-const maxBuffer = 5;
-const interval = 1000;
-const warningMessage = "stop spamming or I'll whack your head off.";
-const banMessage = "has been banned for spamming, anyone else?";
-const maxDuplicatesWarning = 5;
-const maxDuplicatesBan = 10;
-
-const authors = [];
-var warned = [];
-var banned = [];
-var messagelog = [];
+const compounds = require("./compounds.json");
 
 client.on("ready", () => {
 	console.log("I'm Online");
@@ -127,40 +114,40 @@ client.on("message", message => {
 		.replace(/-/g, "", -1)
 		.replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
 		
-		console.log(test[_drug]);
-		if (test[_drug] != undefined) {
+		console.log(compounds[_drug]);
+		if (compounds[_drug] != undefined) {
 			// Dosage info/intro
 			message.channel.send(
-				"**" + test[_drug].name + "** information" +
+				"**" + compounds[_drug].name + "** information" +
 				"\n\n" +
-				"**Psychoactive class:** " + test[_drug].psychoactiveClass +
+				"**Psychoactive class:** " + compounds[_drug].psychoactiveClass +
 				"\n\n" +
-				"**Chemical class:** " + test[_drug].chemicalClass +
+				"**Chemical class:** " + compounds[_drug].chemicalClass +
 				"\n\n" +
 				"**Dosage**" +
 				"```" +
-				"\nThreshold: " + test[_drug].threshold +
-				"\nLight: " + test[_drug].low + test[_drug].unit + 
-				"\nModerate: " + test[_drug].medium + test[_drug].unit +
-				"\nHeavy: " + test[_drug].high + test[_drug].unit	+ 
+				"\nThreshold: " + compounds[_drug].threshold +
+				"\nLight: " + compounds[_drug].low + compounds[_drug].unit + 
+				"\nModerate: " + compounds[_drug].medium + compounds[_drug].unit +
+				"\nHeavy: " + compounds[_drug].high + compounds[_drug].unit	+ 
 				"```" + 
 				"**Duration**" + 
 				"```" +
-				"\nTotal: " + test[_drug].durationTotal +
-				"\nOnset: " + test[_drug].durationOnset +
-				"\nComeup: " + test[_drug].durationComeUp +
-				"\nPeak: " + test[_drug].durationPeak +
-				"\nOffset: " + test[_drug].durationOffset +
-				"\nAfterglow: " + test[_drug].durationAfterglow +
+				"\nTotal: " + compounds[_drug].durationTotal +
+				"\nOnset: " + compounds[_drug].durationOnset +
+				"\nComeup: " + compounds[_drug].durationComeUp +
+				"\nPeak: " + compounds[_drug].durationPeak +
+				"\nOffset: " + compounds[_drug].durationOffset +
+				"\nAfterglow: " + compounds[_drug].durationAfterglow +
 				"```" +
 				"**Harm potential**" +
 				"```" + 
-				"\n" + test[_drug].harmPotential +
+				"\n" + compounds[_drug].harmPotential +
 				"```" +
 				"**Tolerance**" + 
 				"```" +
 				"\n" + 
-				test[_drug].tolerance +
+				compounds[_drug].tolerance +
 				"```"
 			);
 		}
@@ -210,7 +197,7 @@ client.on("message", message => {
 		// message.channel.send(pw_drug + " information:", { file: __drug });
 		
 		setTimeout(function() {
-			message.channel.send("MORE: <https://psychonautwiki.org/wiki/" + pw_drug + ">"); //oppositely, the pw_drug must come out to have symbols and proper casing which is done with the code above
+			message.channel.send("More information: <https://psychonautwiki.org/wiki/" + pw_drug + ">"); //oppositely, the pw_drug must come out to have symbols and proper casing which is done with the code above
 		}, 1000);
 		
 		
@@ -225,7 +212,7 @@ client.on("message", message => {
 	// 	.replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
 	
 	// 	message.channel.send(
-	// 		test[_drug].name
+	// 		compounds[_drug].name
 	// 	);
 	
 	// 	//special cases
