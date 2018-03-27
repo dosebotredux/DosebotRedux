@@ -126,7 +126,7 @@ client.on("message", message => {
 				"\n\n" +
 				"**Dosage**" +
 				"```" +
-				"\nThreshold: " + compounds[_drug].threshold +
+				"\nThreshold: " + compounds[_drug].threshold + compounds[_drug].unit +
 				"\nLight: " + compounds[_drug].low + compounds[_drug].unit + 
 				"\nModerate: " + compounds[_drug].medium + compounds[_drug].unit +
 				"\nHeavy: " + compounds[_drug].high + compounds[_drug].unit	+ 
