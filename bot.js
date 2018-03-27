@@ -62,11 +62,21 @@ client.on("message", message => {
 	
 	var msg = message;
 	
+	// Ping/pong
 	if (message.content.startsWith(prefix + "ping")) {
 		message.channel.send("pong");
 	}
+
+	// Help information
+	if (message.content.toLowerCase().includes("--help")) {
+		message.channel.send(
+			// "Available commands: --help, --lsdtolerance [number of days since last dose], --dxmcalc [weight in lbs], --info [substance]",
+			"```Available commands: \n --help \n --lsdtolerance [number of days since last dose] \n --dxmcalc [weight in lbs] \n --info [substance] \n ```"
+		);
+	}
 	
-	if (message.content.toLowerCase().includes("-lsdtolerance")) {
+	// LSD tolerance dosage calculator
+	if (message.content.toLowerCase().includes("--lsdtolerance")) {
 		// Usage -lsdtolerance [days since last trip]. calculates tolerance/extra dose needed to achieve normal effects
 		
 		var str = message.content;
@@ -81,11 +91,11 @@ client.on("message", message => {
 	}
 	
 	//calc dxm plateau dosages. usage -dxmcalc [weight in pounds]
-	if (message.content.toLowerCase().includes("-dxmcalc")) {
+	if (message.content.toLowerCase().includes("--dxmcalc")) {
 		var str = message.content;
 		var res = str.split(" ");
 		
-		message.channel.send("KGB RECOMMENDS:");
+		message.channel.send("DoseBot recommends:");
 		
 		message.channel.send(
 			parseFloat(res[res.length - 1]) * 0.8 +
@@ -114,10 +124,9 @@ client.on("message", message => {
 			parseFloat(res[res.length - 1]) * 10 +
 			"mg of DXM for 4th Plateau"
 		);
-		message.react("373313463226728451"); // reacts with the dxm emoji on the 700club server to the comman message
 	}
 	
-	if (message.content.toLowerCase().includes("-info")) {
+	if (message.content.toLowerCase().includes("--info")) {
 		var str = message.content;
 		var res = str.split(" ");
 		var _drug = str
