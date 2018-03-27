@@ -131,10 +131,10 @@ client.on("message", message => {
       .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
 
     if (_drug != undefined) {
-			substance = _drug;
-			console.log(_drug);
-			console.log(substance);
-			var query = `{
+      substance = _drug;
+      console.log(_drug);
+      console.log(substance);
+      var query = `{
 				substances(query: "${substance}") {
 					name
 					addictionPotential
@@ -174,60 +174,110 @@ client.on("message", message => {
 			}`;
       request("https://api.psychonautwiki.org", query).then(data =>
         message.channel.send(
-					// console.log(query),
-					// console.log(data.substances[0].name),
-					"**" + data.substances[0].name + " information**\n" +
-					"\n" +
-					"**Psychoactive class: **" + "insert psychoactive class\n" +
-					"**Chemical class: **\n" + 
-					"\n" +
-					"**Dosage**" + " (" + data.substances[0].roas[0].name + ")" +
-					"\n" +
-					"```\n" +
-					"Threshold: " + data.substances[0].roas[0].dose.threshold + data.substances[0].roas[0].dose.units +
-					"\n" +
-					"Light: " + data.substances[0].roas[0].dose.light.min + "-" + data.substances[0].roas[0].dose.light.max + data.substances[0].roas[0].dose.units +
-					"\n" +
-					"Common: " + data.substances[0].roas[0].dose.common.min + "-" + data.substances[0].roas[0].dose.common.max + data.substances[0].roas[0].dose.units +
-					"\n" +
-					"Strong: " + data.substances[0].roas[0].dose.strong.min + "-" + data.substances[0].roas[0].dose.strong.max + data.substances[0].roas[0].dose.units +
-					"\n" +
-					"Heavy: " + data.substances[0].roas[0].dose.heavy + data.substances[0].roas[0].dose.units +
-					"\n" +
-					"```" +
-					"\n" +
-					"**Duration**" +
-					"\n```" +
-					"Total: " + data.substances[0].roas[0].duration.total.min + "-" + data.substances[0].roas[0].duration.total.max + " " + data.substances[0].roas[0].duration.total.units +
-					"\n" + 
-					"Onset: " + data.substances[0].roas[0].duration.onset.min + "-" + data.substances[0].roas[0].duration.onset.max + " " + data.substances[0].roas[0].duration.onset.units +
-					"\n" + 
-					"Comeup: " + data.substances[0].roas[0].duration.comeup.min + "-" + data.substances[0].roas[0].duration.comeup.max + " " + data.substances[0].roas[0].duration.comeup.units +
-					"\n" + 
-					"Peak: " + data.substances[0].roas[0].duration.peak.min + "-" + data.substances[0].roas[0].duration.peak.max + " " + data.substances[0].roas[0].duration.peak.units +
-					"\n" + 
-					"Offset: " + data.substances[0].roas[0].duration.offset.min + "-" + data.substances[0].roas[0].duration.offset.max + " " + data.substances[0].roas[0].duration.offset.units +
-					"\n" + 
-					"Afterglow: " +
-					"\n" + 
-					"```" +
-					"\n" +
-					"**Addiction potential: **" +
-					"\n" +
-					"```\n" +
-					data.substances[0].addictionPotential +
-					"```\n" +
-					"**Tolerance**" +
-					"```\n" +
-					"Full: " + data.substances[0].tolerance.full +
-					"\n" +
-					"Half: " + data.substances[0].tolerance.half +
-					"\n" +
-					"Baseline: " + data.substances[0].tolerance.zero +
-					"```"
+          // console.log(query),
+          // console.log(data.substances[0].name),
+          "**" +
+            data.substances[0].name +
+            " information**\n" +
+            "\n" +
+            "**Psychoactive class: **" +
+            "insert psychoactive class\n" +
+            "**Chemical class: **\n" +
+            "\n" +
+            "**Dosage**" +
+            " (" +
+            data.substances[0].roas[0].name +
+            ")" +
+            "\n" +
+            "```\n" +
+            "Threshold: " +
+            data.substances[0].roas[0].dose.threshold +
+            data.substances[0].roas[0].dose.units +
+            "\n" +
+            "Light: " +
+            data.substances[0].roas[0].dose.light.min +
+            "-" +
+            data.substances[0].roas[0].dose.light.max +
+            data.substances[0].roas[0].dose.units +
+            "\n" +
+            "Common: " +
+            data.substances[0].roas[0].dose.common.min +
+            "-" +
+            data.substances[0].roas[0].dose.common.max +
+            data.substances[0].roas[0].dose.units +
+            "\n" +
+            "Strong: " +
+            data.substances[0].roas[0].dose.strong.min +
+            "-" +
+            data.substances[0].roas[0].dose.strong.max +
+            data.substances[0].roas[0].dose.units +
+            "\n" +
+            "Heavy: " +
+            data.substances[0].roas[0].dose.heavy +
+            data.substances[0].roas[0].dose.units +
+            "\n" +
+            "```" +
+            "\n" +
+            "**Duration**" +
+            "\n```" +
+            "Total: " +
+            data.substances[0].roas[0].duration.total.min +
+            "-" +
+            data.substances[0].roas[0].duration.total.max +
+            " " +
+            data.substances[0].roas[0].duration.total.units +
+            "\n" +
+            "Onset: " +
+            data.substances[0].roas[0].duration.onset.min +
+            "-" +
+            data.substances[0].roas[0].duration.onset.max +
+            " " +
+            data.substances[0].roas[0].duration.onset.units +
+            "\n" +
+            "Comeup: " +
+            data.substances[0].roas[0].duration.comeup.min +
+            "-" +
+            data.substances[0].roas[0].duration.comeup.max +
+            " " +
+            data.substances[0].roas[0].duration.comeup.units +
+            "\n" +
+            "Peak: " +
+            data.substances[0].roas[0].duration.peak.min +
+            "-" +
+            data.substances[0].roas[0].duration.peak.max +
+            " " +
+            data.substances[0].roas[0].duration.peak.units +
+            "\n" +
+            "Offset: " +
+            data.substances[0].roas[0].duration.offset.min +
+            "-" +
+            data.substances[0].roas[0].duration.offset.max +
+            " " +
+            data.substances[0].roas[0].duration.offset.units +
+            "\n" +
+            "Afterglow: " +
+            "\n" +
+            "```" +
+            "\n" +
+            "**Addiction potential: **" +
+            "\n" +
+            "```\n" +
+            data.substances[0].addictionPotential +
+            "```\n" +
+            "**Tolerance**" +
+            "```\n" +
+            "Full: " +
+            data.substances[0].tolerance.full +
+            "\n" +
+            "Half: " +
+            data.substances[0].tolerance.half +
+            "\n" +
+            "Baseline: " +
+            data.substances[0].tolerance.zero +
+            "```"
         )
-			);
-			console.log(query);
+      );
+      console.log(query);
       // // Dosage info/intro
       // message.channel.send(
       //   "**" +
