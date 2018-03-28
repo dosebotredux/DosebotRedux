@@ -46,68 +46,68 @@ exports.run = (client, message, args) => {
     //also future, needs to be workable via a subsection command (--dosage sublingual lsd, --dosage oral lsd)
     var roa = roas[0];
     
-    //this block cobbles together the dosage information section
-    //first check if there is dosage information for first (eventually preferred!!!) roa
-    //required, some substances (salvia for example) return null for dose object
-    if (roa.dose) {
-      console.log(roa.dose);
+    // //this block cobbles together the dosage information section
+    // //first check if there is dosage information for first (eventually preferred!!!) roa
+    // //required, some substances (salvia for example) return null for dose object
+    // if (roa.dose) {
+    //   console.log(roa.dose);
       
-      var dosage_message = "**Dosage** (" + roa.name + ")\n```\n";
+    //   var dosage_message = "**Dosage** (" + roa.name + ")\n```\n";
       
-      //check for existence of the min bound of each dosage level. if there is no min bound then it will print the parent's content
-      if (roa.dose.threshold) {
-        dosage_message +=
-        "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
-      }
-      if (roa.dose.light.min) {
-        dosage_message +=
-        "Light: " +
-        roa.dose.light.min +
-        "-" +
-        roa.dose.light.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.light) {
-        dosage_message += "Light: " + roa.dose.light + roa.dose.units + "\n";
-      }
-      if (roa.dose.common.min) {
-        dosage_message +=
-        "Common: " +
-        roa.dose.common.min +
-        "-" +
-        roa.dose.common.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.common) {
-        dosage_message +=
-        "Common: " + roa.dose.common + roa.dose.units + "\n";
-      }
-      if (roa.dose.strong.min) {
-        dosage_message +=
-        "Strong: " +
-        roa.dose.strong.min +
-        "-" +
-        roa.dose.strong.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.strong) {
-        dosage_message +=
-        "Strong: " + roa.dose.strong + roa.dose.units + "\n";
-      }
-      if (roa.dose.heavy.min) {
-        dosage_message +=
-        "Heavy: " +
-        roa.dose.heavy.min +
-        "-" +
-        roa.dose.heavy.max +
-        roa.dose.units +
-        "\n" +
-        "```\n";
-      } else if (roa.dose.heavy) {
-        dosage_message += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
-      }
-      dosage_message += "```\n";
-    }
+    //   //check for existence of the min bound of each dosage level. if there is no min bound then it will print the parent's content
+    //   if (roa.dose.threshold) {
+    //     dosage_message +=
+    //     "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
+    //   }
+    //   if (roa.dose.light.min) {
+    //     dosage_message +=
+    //     "Light: " +
+    //     roa.dose.light.min +
+    //     "-" +
+    //     roa.dose.light.max +
+    //     roa.dose.units +
+    //     "\n";
+    //   } else if (roa.dose.light) {
+    //     dosage_message += "Light: " + roa.dose.light + roa.dose.units + "\n";
+    //   }
+    //   if (roa.dose.common.min) {
+    //     dosage_message +=
+    //     "Common: " +
+    //     roa.dose.common.min +
+    //     "-" +
+    //     roa.dose.common.max +
+    //     roa.dose.units +
+    //     "\n";
+    //   } else if (roa.dose.common) {
+    //     dosage_message +=
+    //     "Common: " + roa.dose.common + roa.dose.units + "\n";
+    //   }
+    //   if (roa.dose.strong.min) {
+    //     dosage_message +=
+    //     "Strong: " +
+    //     roa.dose.strong.min +
+    //     "-" +
+    //     roa.dose.strong.max +
+    //     roa.dose.units +
+    //     "\n";
+    //   } else if (roa.dose.strong) {
+    //     dosage_message +=
+    //     "Strong: " + roa.dose.strong + roa.dose.units + "\n";
+    //   }
+    //   if (roa.dose.heavy.min) {
+    //     dosage_message +=
+    //     "Heavy: " +
+    //     roa.dose.heavy.min +
+    //     "-" +
+    //     roa.dose.heavy.max +
+    //     roa.dose.units +
+    //     "\n" +
+    //     "```\n";
+    //   } else if (roa.dose.heavy) {
+    //     dosage_message += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
+    //   }
+    //   dosage_message += "```\n";
+    // }
     
     //this block cobbles together the duration information section
     //first check if there is duration information for (eventually preferred!!!) roa
@@ -257,20 +257,96 @@ exports.run = (client, message, args) => {
       }
       dosage_message_2 += "```\n";
     }
+
+    if (roa.duration) {
+      console.log(roa.duration);
+      
+      var duration_message_2 = "**Duration** (" + roa.name + ")\n```\n";
+      
+      //check for existence or don't print lines
+      if (roa.duration.total) {
+        duration_message_2 +=
+        "Total: " +
+        roa.duration.total.min +
+        "-" +
+        roa.duration.total.max +
+        " " +
+        roa.duration.total.units +
+        "\n";
+      }
+      
+      if (roa.duration.onset) {
+        duration_message_2 +=
+        "Onset: " +
+        roa.duration.onset.min +
+        "-" +
+        roa.duration.onset.max +
+        " " +
+        roa.duration.onset.units +
+        "\n";
+      }
+      
+      if (roa.duration.comeup) {
+        duration_message_2 +=
+        "Comeup: " +
+        roa.duration.comeup.min +
+        "-" +
+        roa.duration.comeup.max +
+        " " +
+        roa.duration.comeup.units +
+        "\n";
+      }
+      
+      if (roa.duration.peak) {
+        duration_message_2 +=
+        "Peak: " +
+        roa.duration.peak.min +
+        "-" +
+        roa.duration.peak.max +
+        " " +
+        roa.duration.peak.units +
+        "\n";
+      }
+      
+      if (roa.duration.offset) {
+        duration_message_2 +=
+        "Offset: " +
+        roa.duration.offset.min +
+        "-" +
+        roa.duration.offset.max +
+        " " +
+        roa.duration.offset.units +
+        "\n";
+      }
+      if (roa.duration.afterglow.min && roa.duration.afterglow.max) {
+        duration_message_2 +=
+        "Afterglow: " +
+        roa.duration.afterglow.min +
+        "-" +
+        roa.duration.afterglow.max +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
+      } else if (roa.duration.afterglow.min) {
+        duration_message_2 +=
+        "Afterglow: " +
+        roa.duration.afterglow.min +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
+      } else if (roa.duration.afterglow) {
+        duration_message_2 +=
+        "Afterglow: " +
+        roa.duration.afterglow +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
+      }
+    }
     
     //fill out tolerance section if tolerance exists
     if (substance.tolerance) {
-      var tolerance_message =
-      "**Tolerance**```\n" +
-      "Full: " +
-      substance.tolerance.full +
-      "\n" +
-      "Half: " +
-      substance.tolerance.half +
-      "\n" +
-      "Baseline: " +
-      substance.tolerance.zero +
-      "```";
+      var tolerance_message = buildToleranceMessage(substance);
     } else {
       var tolerance_message = "";
     }
@@ -288,6 +364,7 @@ exports.run = (client, message, args) => {
       dosage_message +
       duration_message +
       dosage_message_2 +
+      duration_message_2 +
       "**Addiction potential: **\n```\n" +
       substance.addictionPotential +
       "```\n" +
@@ -312,8 +389,12 @@ exports.run = (client, message, args) => {
     }
     
     //print output to channel (and also console)
-    console.log(channel_message);
-    console.log(dosage_message_2);
+    // console.log(channel_message);
+    // console.log(dosage_message_2);
+    // console.log(substance.roas.length);
+    // console.log(substance.roas);
+    buildDosageMessage(substance);
+
     
     message.channel.send(channel_message).catch(console.error);
     
@@ -348,3 +429,117 @@ exports.run = (client, message, args) => {
   });
 }
 };
+
+// Functions
+function buildToleranceMessage(substance) {
+  var tolerance_message =
+  "**Tolerance**```\n" +
+  "Full: " +
+  substance.tolerance.full +
+  "\n" +
+  "Half: " +
+  substance.tolerance.half +
+  "\n" +
+  "Baseline: " +
+  substance.tolerance.zero +
+  "```";
+  
+  return tolerance_message;
+}
+function buildDosageMessage(substance) {
+  var dosageMessageArray = [];
+
+  for (let i = 0; i < substance.roas.length; i++) {
+    dosageMessageArray[i] = substance.roas[i];
+  }
+  // console.log(dosageMessageArray);
+
+  var testMessage = "";
+  console.log(dosageMessageArray);
+  // if (dosageMessageArray[0].dose.heavy) {
+  //   testMessage += dosageMessageArray[0].dose.heavy;
+  // }
+
+  for (let i = 0; i < dosageMessageArray.length; i++) {
+    if (i > 0) {
+      testMessage +=
+      "\n"
+    }
+    if (dosageMessageArray[i].name) {
+      testMessage += 
+      "**Dosage** (" + dosageMessageArray[i].name + ")\n"
+    }
+    if (dosageMessageArray[i].dose.threshold) {
+      testMessage += 
+      "```\nThreshold: " +
+      dosageMessageArray[i].dose.threshold +
+      dosageMessageArray[i].dose.units +
+      "\n"
+    } else {
+      testMessage +=
+      "```\n"
+    }
+    if (dosageMessageArray[i].dose.light.min) {
+      testMessage +=
+      "Light: " +
+      dosageMessageArray[i].dose.light.min +
+      "-" +
+      dosageMessageArray[i].dose.light.max +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    } else if (dosageMessageArray[i].dose.light) {
+      testMessage +=
+      "Light: " +
+      dosageMessageArray[i].dose.light +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    }
+    if (dosageMessageArray[i].dose.common.min) {
+      testMessage +=
+      "Common: " +
+      dosageMessageArray[i].dose.common.min +
+      "-" +
+      dosageMessageArray[i].dose.common.max +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    } else if (dosageMessageArray[i].dose.common) {
+      testMessage +=
+      "Common: " +
+      dosageMessageArray[i].dose.light +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    }
+    if (dosageMessageArray[i].dose.strong.min) {
+      testMessage +=
+      "Strong: " +
+      dosageMessageArray[i].dose.strong.min +
+      "-" +
+      dosageMessageArray[i].dose.strong.max +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    } else if (dosageMessageArray[i].dose.strong) {
+      testMessage +=
+      "Strong: " +
+      dosageMessageArray[i].dose.light +
+      dosageMessageArray[i].dose.units + 
+      "\n"
+    }
+    if (dosageMessageArray[i].dose.heavy.min) {
+      testMessage +=
+      "Heavy: " +
+      dosageMessageArray[i].dose.heavy.min +
+      "-" +
+      dosageMessageArray[i].dose.heavy.max +
+      dosageMessageArray[i].dose.units + 
+      "\n```\n"
+    } else if (dosageMessageArray[i].dose.heavy) {
+      testMessage +=
+      "Heavy: " +
+      dosageMessageArray[i].dose.heavy +
+      dosageMessageArray[i].dose.units + 
+      "\n```\n"
+    }
+  }
+  console.log(testMessage);
+  return testMessage;
+}
