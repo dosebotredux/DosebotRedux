@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
       
       var dosage_message = "**Dosage** (" + roa.name + ")\n```\n";
       
-      //check for existence of the min bound of each dosage level. if there is no min bound then it will not be printed
+      //check for existence of the min bound of each dosage level. if there is no min bound then it will print the parent's content
       if (roa.dose.threshold) {
         dosage_message +=
         "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
@@ -106,7 +106,7 @@ exports.run = (client, message, args) => {
       } else if (roa.dose.heavy) {
         dosage_message += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
       }
-      dosage_message += "```";
+      dosage_message += "```\n";
     }
     
     //this block cobbles together the duration information section
@@ -172,7 +172,7 @@ exports.run = (client, message, args) => {
         roa.duration.offset.units +
         "\n";
       }
-      if (roa.duration.afterglow.min) {
+      if (roa.duration.afterglow.min && roa.duration.afterglow.max) {
         duration_message +=
         "Afterglow: " +
         roa.duration.afterglow.min +
@@ -181,9 +181,81 @@ exports.run = (client, message, args) => {
         " " +
         roa.duration.afterglow.units +
         "\n```\n";
+      } else if (roa.duration.afterglow.min) {
+        duration_message +=
+        "Afterglow: " +
+        roa.duration.afterglow.min +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
+      } else if (roa.duration.afterglow) {
+        duration_message +=
+        "Afterglow: " +
+        roa.duration.afterglow +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
       }
+    }
+    
+    if (roas[1] != undefined) {
+      console.log("not undefined");
+      var roa = roas[1];
       
-      // duration_message += "Afterglow: \n```\n";
+      var dosage_message_2 = "**Dosage** (" + roa.name + ")\n```\n";
+      
+      if (roa.dose.threshold) {
+        dosage_message_2 +=
+        "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
+      }
+      if (roa.dose.light.min) {
+        dosage_message_2 +=
+        "Light: " +
+        roa.dose.light.min +
+        "-" +
+        roa.dose.light.max +
+        roa.dose.units +
+        "\n";
+      } else if (roa.dose.light) {
+        dosage_message_2 += "Light: " + roa.dose.light + roa.dose.units + "\n";
+      }
+      if (roa.dose.common.min) {
+        dosage_message_2 +=
+        "Common: " +
+        roa.dose.common.min +
+        "-" +
+        roa.dose.common.max +
+        roa.dose.units +
+        "\n";
+      } else if (roa.dose.common) {
+        dosage_message_2 +=
+        "Common: " + roa.dose.common + roa.dose.units + "\n";
+      }
+      if (roa.dose.strong.min) {
+        dosage_message_2 +=
+        "Strong: " +
+        roa.dose.strong.min +
+        "-" +
+        roa.dose.strong.max +
+        roa.dose.units +
+        "\n";
+      } else if (roa.dose.strong) {
+        dosage_message_2 +=
+        "Strong: " + roa.dose.strong + roa.dose.units + "\n";
+      }
+      if (roa.dose.heavy.min) {
+        dosage_message_2 +=
+        "Heavy: " +
+        roa.dose.heavy.min +
+        "-" +
+        roa.dose.heavy.max +
+        roa.dose.units +
+        "\n" +
+        "```\n";
+      } else if (roa.dose.heavy) {
+        dosage_message_2 += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
+      }
+      dosage_message_2 += "```\n";
     }
     
     //fill out tolerance section if tolerance exists
@@ -204,23 +276,45 @@ exports.run = (client, message, args) => {
     }
     
     //HERE'S WHERE ALL THE MAGIC COMES TOGETHER
-    var channel_message =
-    "**" +
-    substance.name +
-    " information**\n\n" +
-    // // These are broken in the API
-    // "**Psychoactive class: **" +
-    // "insert psychoactive class\n" +
-    // "**Chemical class: **\n\n" +
-    dosage_message +
-    duration_message +
-    "**Addiction potential: **\n```\n" +
-    substance.addictionPotential +
-    "```\n" +
-    tolerance_message;
+    if (dosage_message_2 != undefined) {
+      var channel_message =
+      "**" +
+      substance.name +
+      " information**\n\n" +
+      // // These are broken in the API
+      // "**Psychoactive class: **" +
+      // "insert psychoactive class\n" +
+      // "**Chemical class: **\n\n" +
+      dosage_message +
+      duration_message +
+      dosage_message_2 +
+      "**Addiction potential: **\n```\n" +
+      substance.addictionPotential +
+      "```\n" +
+      tolerance_message;
+    } else if (dosage_message != undefined) {
+      var channel_message =
+      "**" +
+      substance.name +
+      " information**\n\n" +
+      // // These are broken in the API
+      // "**Psychoactive class: **" +
+      // "insert psychoactive class\n" +
+      // "**Chemical class: **\n\n" +
+      dosage_message +
+      duration_message +
+      "**Addiction potential: **\n```\n" +
+      substance.addictionPotential +
+      "```\n" +
+      tolerance_message;
+    } else {
+      var channel_message = "Error " + console.error;
+    }
     
     //print output to channel (and also console)
     console.log(channel_message);
+    console.log(dosage_message_2);
+    
     message.channel.send(channel_message).catch(console.error);
     
     // DXM calculator message
