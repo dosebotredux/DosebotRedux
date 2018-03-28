@@ -46,68 +46,12 @@ exports.run = (client, message, args) => {
     //also future, needs to be workable via a subsection command (--dosage sublingual lsd, --dosage oral lsd)
     var roa = roas[0];
     
-    // //this block cobbles together the dosage information section
-    // //first check if there is dosage information for first (eventually preferred!!!) roa
-    // //required, some substances (salvia for example) return null for dose object
-    // if (roa.dose) {
-    //   console.log(roa.dose);
-      
-    //   var dosage_message = "**Dosage** (" + roa.name + ")\n```\n";
-      
-    //   //check for existence of the min bound of each dosage level. if there is no min bound then it will print the parent's content
-    //   if (roa.dose.threshold) {
-    //     dosage_message +=
-    //     "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
-    //   }
-    //   if (roa.dose.light.min) {
-    //     dosage_message +=
-    //     "Light: " +
-    //     roa.dose.light.min +
-    //     "-" +
-    //     roa.dose.light.max +
-    //     roa.dose.units +
-    //     "\n";
-    //   } else if (roa.dose.light) {
-    //     dosage_message += "Light: " + roa.dose.light + roa.dose.units + "\n";
-    //   }
-    //   if (roa.dose.common.min) {
-    //     dosage_message +=
-    //     "Common: " +
-    //     roa.dose.common.min +
-    //     "-" +
-    //     roa.dose.common.max +
-    //     roa.dose.units +
-    //     "\n";
-    //   } else if (roa.dose.common) {
-    //     dosage_message +=
-    //     "Common: " + roa.dose.common + roa.dose.units + "\n";
-    //   }
-    //   if (roa.dose.strong.min) {
-    //     dosage_message +=
-    //     "Strong: " +
-    //     roa.dose.strong.min +
-    //     "-" +
-    //     roa.dose.strong.max +
-    //     roa.dose.units +
-    //     "\n";
-    //   } else if (roa.dose.strong) {
-    //     dosage_message +=
-    //     "Strong: " + roa.dose.strong + roa.dose.units + "\n";
-    //   }
-    //   if (roa.dose.heavy.min) {
-    //     dosage_message +=
-    //     "Heavy: " +
-    //     roa.dose.heavy.min +
-    //     "-" +
-    //     roa.dose.heavy.max +
-    //     roa.dose.units +
-    //     "\n" +
-    //     "```\n";
-    //   } else if (roa.dose.heavy) {
-    //     dosage_message += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
-    //   }
-    //   dosage_message += "```\n";
-    // }
+    //this block cobbles together the dosage information section
+    //first check if there is dosage information for first (eventually preferred!!!) roa
+    //required, some substances (salvia for example) return null for dose object
+    if (roa.dose) {
+      var dosage_message = buildDosageMessage(substance);
+    }
     
     //this block cobbles together the duration information section
     //first check if there is duration information for (eventually preferred!!!) roa
@@ -196,66 +140,6 @@ exports.run = (client, message, args) => {
         roa.duration.afterglow.units +
         "\n```\n";
       }
-    }
-    
-    if (roas[1] != undefined) {
-      console.log("not undefined");
-      var roa = roas[1];
-      
-      var dosage_message_2 = "**Dosage** (" + roa.name + ")\n```\n";
-      
-      if (roa.dose.threshold) {
-        dosage_message_2 +=
-        "Threshold: " + roa.dose.threshold + roa.dose.units + "\n";
-      }
-      if (roa.dose.light.min) {
-        dosage_message_2 +=
-        "Light: " +
-        roa.dose.light.min +
-        "-" +
-        roa.dose.light.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.light) {
-        dosage_message_2 += "Light: " + roa.dose.light + roa.dose.units + "\n";
-      }
-      if (roa.dose.common.min) {
-        dosage_message_2 +=
-        "Common: " +
-        roa.dose.common.min +
-        "-" +
-        roa.dose.common.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.common) {
-        dosage_message_2 +=
-        "Common: " + roa.dose.common + roa.dose.units + "\n";
-      }
-      if (roa.dose.strong.min) {
-        dosage_message_2 +=
-        "Strong: " +
-        roa.dose.strong.min +
-        "-" +
-        roa.dose.strong.max +
-        roa.dose.units +
-        "\n";
-      } else if (roa.dose.strong) {
-        dosage_message_2 +=
-        "Strong: " + roa.dose.strong + roa.dose.units + "\n";
-      }
-      if (roa.dose.heavy.min) {
-        dosage_message_2 +=
-        "Heavy: " +
-        roa.dose.heavy.min +
-        "-" +
-        roa.dose.heavy.max +
-        roa.dose.units +
-        "\n" +
-        "```\n";
-      } else if (roa.dose.heavy) {
-        dosage_message_2 += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
-      }
-      dosage_message_2 += "```\n";
     }
 
     if (roa.duration) {
@@ -352,24 +236,7 @@ exports.run = (client, message, args) => {
     }
     
     //HERE'S WHERE ALL THE MAGIC COMES TOGETHER
-    if (dosage_message_2 != undefined) {
-      var channel_message =
-      "**" +
-      substance.name +
-      " information**\n\n" +
-      // // These are broken in the API
-      // "**Psychoactive class: **" +
-      // "insert psychoactive class\n" +
-      // "**Chemical class: **\n\n" +
-      dosage_message +
-      duration_message +
-      dosage_message_2 +
-      duration_message_2 +
-      "**Addiction potential: **\n```\n" +
-      substance.addictionPotential +
-      "```\n" +
-      tolerance_message;
-    } else if (dosage_message != undefined) {
+    if (dosage_message != undefined) {
       var channel_message =
       "**" +
       substance.name +
@@ -454,33 +321,33 @@ function buildDosageMessage(substance) {
   }
   // console.log(dosageMessageArray);
 
-  var testMessage = "";
+  var dosageMessage = "";
   console.log(dosageMessageArray);
   // if (dosageMessageArray[0].dose.heavy) {
-  //   testMessage += dosageMessageArray[0].dose.heavy;
+  //   dosageMessage += dosageMessageArray[0].dose.heavy;
   // }
 
   for (let i = 0; i < dosageMessageArray.length; i++) {
     if (i > 0) {
-      testMessage +=
+      dosageMessage +=
       "\n"
     }
     if (dosageMessageArray[i].name) {
-      testMessage += 
+      dosageMessage += 
       "**Dosage** (" + dosageMessageArray[i].name + ")\n"
     }
     if (dosageMessageArray[i].dose.threshold) {
-      testMessage += 
+      dosageMessage += 
       "```\nThreshold: " +
       dosageMessageArray[i].dose.threshold +
       dosageMessageArray[i].dose.units +
       "\n"
     } else {
-      testMessage +=
+      dosageMessage +=
       "```\n"
     }
     if (dosageMessageArray[i].dose.light.min) {
-      testMessage +=
+      dosageMessage +=
       "Light: " +
       dosageMessageArray[i].dose.light.min +
       "-" +
@@ -488,14 +355,14 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.units + 
       "\n"
     } else if (dosageMessageArray[i].dose.light) {
-      testMessage +=
+      dosageMessage +=
       "Light: " +
       dosageMessageArray[i].dose.light +
       dosageMessageArray[i].dose.units + 
       "\n"
     }
     if (dosageMessageArray[i].dose.common.min) {
-      testMessage +=
+      dosageMessage +=
       "Common: " +
       dosageMessageArray[i].dose.common.min +
       "-" +
@@ -503,14 +370,14 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.units + 
       "\n"
     } else if (dosageMessageArray[i].dose.common) {
-      testMessage +=
+      dosageMessage +=
       "Common: " +
       dosageMessageArray[i].dose.light +
       dosageMessageArray[i].dose.units + 
       "\n"
     }
     if (dosageMessageArray[i].dose.strong.min) {
-      testMessage +=
+      dosageMessage +=
       "Strong: " +
       dosageMessageArray[i].dose.strong.min +
       "-" +
@@ -518,14 +385,14 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.units + 
       "\n"
     } else if (dosageMessageArray[i].dose.strong) {
-      testMessage +=
+      dosageMessage +=
       "Strong: " +
       dosageMessageArray[i].dose.light +
       dosageMessageArray[i].dose.units + 
       "\n"
     }
     if (dosageMessageArray[i].dose.heavy.min) {
-      testMessage +=
+      dosageMessage +=
       "Heavy: " +
       dosageMessageArray[i].dose.heavy.min +
       "-" +
@@ -533,13 +400,17 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.units + 
       "\n```\n"
     } else if (dosageMessageArray[i].dose.heavy) {
-      testMessage +=
+      dosageMessage +=
       "Heavy: " +
       dosageMessageArray[i].dose.heavy +
       dosageMessageArray[i].dose.units + 
       "\n```\n"
     }
   }
-  console.log(testMessage);
-  return testMessage;
+  console.log(dosageMessage);
+  return dosageMessage;
+}
+
+function buildDurationMessage(substance) {
+
 }
