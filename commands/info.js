@@ -31,7 +31,8 @@ exports.run = (client, message, args) => {
   
   console.log(results); // Promise { <pending> }
   
-  results.then(function(data) {
+  results
+  .then(function(data) {
     console.log(data.substances); //will log results.
     
     var substance = data.substances[0];
@@ -116,10 +117,13 @@ exports.run = (client, message, args) => {
     
     message.channel
     .send(
-      "More information: <https://psychonautwiki.org/wiki/" + pw_drug + ">"
+      "More information: <https://psychonautwiki.org/wiki/" +
+      pw_drug +
+      ">"
     )
     .catch(console.error); //oppositely, the pw_drug must come out to have symbols and proper casing which is done with the code above
-  }).catch(function(error) {
+  })
+  .catch(function(error) {
     console.log("promise reected/errored out");
     console.log(error);
   });
@@ -158,24 +162,21 @@ function buildDosageMessage(substance) {
   
   for (let i = 0; i < dosageMessageArray.length; i++) {
     if (i > 0) {
-      dosageMessage +=
-      "\n"
+      dosageMessage += "\n";
     }
     if (dosageMessageArray[i].name) {
-      dosageMessage += 
-      "**Dosage** (" + dosageMessageArray[i].name + ")\n"
+      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n";
     }
     if (dosageMessageArray[i].dose.threshold) {
       console.log(1);
-      dosageMessage += 
+      dosageMessage +=
       "```\nThreshold: " +
       dosageMessageArray[i].dose.threshold +
       dosageMessageArray[i].dose.units +
-      "\n"
+      "\n";
     } else {
       console.log(2);
-      dosageMessage +=
-      "```\n"
+      dosageMessage += "```\n";
     }
     if (dosageMessageArray[i].dose.light.min) {
       console.log(3);
@@ -184,15 +185,15 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.light.min +
       "-" +
       dosageMessageArray[i].dose.light.max +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     } else if (dosageMessageArray[i].dose.light) {
       console.log(4);
       dosageMessage +=
       "Light: " +
       dosageMessageArray[i].dose.light +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     }
     if (dosageMessageArray[i].dose.common.min) {
       console.log(5);
@@ -201,15 +202,15 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.common.min +
       "-" +
       dosageMessageArray[i].dose.common.max +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     } else if (dosageMessageArray[i].dose.common) {
       console.log(6);
       dosageMessage +=
       "Common: " +
       dosageMessageArray[i].dose.common +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     }
     if (dosageMessageArray[i].dose.strong.min) {
       console.log(7);
@@ -218,116 +219,138 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.strong.min +
       "-" +
       dosageMessageArray[i].dose.strong.max +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     } else if (dosageMessageArray[i].dose.strong) {
       console.log(8);
       dosageMessage +=
       "Strong: " +
       dosageMessageArray[i].dose.strong +
-      dosageMessageArray[i].dose.units + 
-      "\n"
+      dosageMessageArray[i].dose.units +
+      "\n";
     }
-    if (dosageMessageArray[i].dose.heavy != null) {
-      if (!!dosageMessageArray[i].dose.heavy.min) {
-        console.log(9);
-        dosageMessage +=
-        "Heavy: " +
-        dosageMessageArray[i].dose.heavy.min +
-        "-" +
-        dosageMessageArray[i].dose.heavy.max +
-        dosageMessageArray[i].dose.units + 
-        "\n```\n"
-      } else if (!!dosageMessageArray[i].dose.heavy) {
-        console.log(10);
-        dosageMessage +=
-        "Heavy: " +
-        dosageMessageArray[i].dose.heavy +
-        dosageMessageArray[i].dose.units + 
-        "\n```\n"
-      }
+    if (!!dosageMessageArray[i].dose.heavy.min) {
+      console.log(9);
+      dosageMessage +=
+      "Heavy: " +
+      dosageMessageArray[i].dose.heavy.min +
+      "-" +
+      dosageMessageArray[i].dose.heavy.max +
+      dosageMessageArray[i].dose.units +
+      "\n```\n";
+    } else if (!!dosageMessageArray[i].dose.heavy) {
+      console.log(10);
+      dosageMessage +=
+      "Heavy: " +
+      dosageMessageArray[i].dose.heavy +
+      dosageMessageArray[i].dose.units +
+      "\n```\n";
     }
     // Duration
     dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")\n```";
     
     if (dosageMessageArray[i].duration.total.min) {
       console.log(11);
-      dosageMessage += "Total: " + dosageMessageArray[i].duration.total.min +
+      dosageMessage +=
+      "Total: " +
+      dosageMessageArray[i].duration.total.min +
       "-" +
       dosageMessageArray[i].duration.total.max +
       " " +
       dosageMessageArray[i].duration.total.units +
-      "\n"
+      "\n";
     } else if (dosageMessageArray[i].duration.total) {
-      dosageMessage += "Total: " + dosageMessageArray[i].duration.total +
+      dosageMessage +=
+      "Total: " +
+      dosageMessageArray[i].duration.total +
       " " +
       dosageMessageArray[i].duration.total.units +
-      "\n"
+      "\n";
     }
     if (dosageMessageArray[i].duration.onset.min) {
-      dosageMessage += "Onset: " + dosageMessageArray[i].duration.onset.min +
+      dosageMessage +=
+      "Onset: " +
+      dosageMessageArray[i].duration.onset.min +
       "-" +
       dosageMessageArray[i].duration.onset.max +
       " " +
       dosageMessageArray[i].duration.onset.units +
-      "\n"
+      "\n";
     } else if (dosageMessageArray[i].duration.onset) {
-      dosageMessage += "Onset: " + dosageMessageArray[i].duration.onset +
+      dosageMessage +=
+      "Onset: " +
+      dosageMessageArray[i].duration.onset +
       " " +
       dosageMessageArray[i].duration.onset.units +
-      "\n"
+      "\n";
     }
     if (dosageMessageArray[i].duration.comeup.min) {
-      dosageMessage += "Comeup: " + dosageMessageArray[i].duration.comeup.min +
+      dosageMessage +=
+      "Comeup: " +
+      dosageMessageArray[i].duration.comeup.min +
       "-" +
       dosageMessageArray[i].duration.comeup.max +
       " " +
       dosageMessageArray[i].duration.comeup.units +
-      "\n"
+      "\n";
     } else if (dosageMessageArray[i].duration.comeup) {
-      dosageMessage += "Comeup: " + dosageMessageArray[i].duration.comeup +
+      dosageMessage +=
+      "Comeup: " +
+      dosageMessageArray[i].duration.comeup +
       " " +
       dosageMessageArray[i].duration.comeup.units +
-      "\n"
+      "\n";
     }
     if (dosageMessageArray[i].duration.peak.min) {
-      dosageMessage += "Peak: " + dosageMessageArray[i].duration.peak.min +
+      dosageMessage +=
+      "Peak: " +
+      dosageMessageArray[i].duration.peak.min +
       "-" +
       dosageMessageArray[i].duration.peak.max +
       " " +
       dosageMessageArray[i].duration.peak.units +
-      "\n"
+      "\n";
     } else if (dosageMessageArray[i].duration.peak) {
-      dosageMessage += "Peak: " + dosageMessageArray[i].duration.peak +
+      dosageMessage +=
+      "Peak: " +
+      dosageMessageArray[i].duration.peak +
       " " +
       dosageMessageArray[i].duration.peak.units +
-      "\n"
+      "\n";
     }
     if (dosageMessageArray[i].duration.offset.min) {
-      dosageMessage += "Offset: " + dosageMessageArray[i].duration.offset.min +
+      dosageMessage +=
+      "Offset: " +
+      dosageMessageArray[i].duration.offset.min +
       "-" +
       dosageMessageArray[i].duration.offset.max +
       " " +
       dosageMessageArray[i].duration.offset.units +
-      "\n"
+      "\n";
     } else if (dosageMessageArray[i].duration.offset) {
-      dosageMessage += "Offset: " + dosageMessageArray[i].duration.offset +
+      dosageMessage +=
+      "Offset: " +
+      dosageMessageArray[i].duration.offset +
       " " +
       dosageMessageArray[i].duration.offset.units +
-      "\n"
+      "\n";
     }
     if (dosageMessageArray[i].duration.afterglow.min) {
-      dosageMessage += "Afterglow: " + dosageMessageArray[i].duration.afterglow.min +
+      dosageMessage +=
+      "Afterglow: " +
+      dosageMessageArray[i].duration.afterglow.min +
       "-" +
       dosageMessageArray[i].duration.afterglow.max +
       " " +
       dosageMessageArray[i].duration.afterglow.units +
-      "\n```"
+      "\n```";
     } else if (dosageMessageArray[i].duration.afterglow) {
-      dosageMessage += "Afterglow: " + dosageMessageArray[i].duration.afterglow +
+      dosageMessage +=
+      "Afterglow: " +
+      dosageMessageArray[i].duration.afterglow +
       " " +
       dosageMessageArray[i].duration.afterglow.units +
-      "\n```"
+      "\n```";
     }
   }
   console.log(dosageMessage);
