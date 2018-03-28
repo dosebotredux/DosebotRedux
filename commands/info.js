@@ -66,28 +66,21 @@ exports.run = (client, message, args) => {
         "-" +
         roa.dose.light.max +
         roa.dose.units +
-        "\n"
+        "\n";
       } else if (roa.dose.light) {
-        dosage_message +=
-        "Light: " +
-        roa.dose.light +
-        roa.dose.units +
-        "\n"
+        dosage_message += "Light: " + roa.dose.light + roa.dose.units + "\n";
       }
       if (roa.dose.common.min) {
         dosage_message +=
         "Common: " +
-        roa.dose.common.min + 
+        roa.dose.common.min +
         "-" +
         roa.dose.common.max +
         roa.dose.units +
-        "\n"
+        "\n";
       } else if (roa.dose.common) {
         dosage_message +=
-        "Common: " +
-        roa.dose.common +
-        roa.dose.units +
-        "\n"
+        "Common: " + roa.dose.common + roa.dose.units + "\n";
       }
       if (roa.dose.strong.min) {
         dosage_message +=
@@ -96,13 +89,10 @@ exports.run = (client, message, args) => {
         "-" +
         roa.dose.strong.max +
         roa.dose.units +
-        "\n"
+        "\n";
       } else if (roa.dose.strong) {
         dosage_message +=
-        "Strong: " +
-        roa.dose.strong +
-        roa.dose.units +
-        "\n"
+        "Strong: " + roa.dose.strong + roa.dose.units + "\n";
       }
       if (roa.dose.heavy.min) {
         dosage_message +=
@@ -112,40 +102,11 @@ exports.run = (client, message, args) => {
         roa.dose.heavy.max +
         roa.dose.units +
         "\n" +
-        "```\n"
+        "```\n";
       } else if (roa.dose.heavy) {
-        dosage_message +=
-        "Heavy: " +
-        roa.dose.heavy +
-        roa.dose.units +
-        "\n"
+        dosage_message += "Heavy: " + roa.dose.heavy + roa.dose.units + "\n";
       }
-      dosage_message += "```"
-      
-      // dosage_message +=
-      // "Light: " +
-      // roa.dose.light.min +
-      // "-" +
-      // roa.dose.light.max +
-      // roa.dose.units +
-      // "\n" +
-      // "Common: " +
-      // roa.dose.common.min +
-      // "-" +
-      // roa.dose.common.max +
-      // roa.dose.units +
-      // "\n" +
-      // "Strong: " +
-      // roa.dose.strong.min +
-      // "-" +
-      // roa.dose.strong.max +
-      // roa.dose.units +
-      // "\n" +
-      // "Heavy: " +
-      // roa.dose.heavy +
-      // roa.dose.units +
-      // "\n" +
-      // "```\n";
+      dosage_message += "```";
     }
     
     //this block cobbles together the duration information section
@@ -211,8 +172,18 @@ exports.run = (client, message, args) => {
         roa.duration.offset.units +
         "\n";
       }
+      if (roa.duration.afterglow.min) {
+        duration_message +=
+        "Afterglow: " +
+        roa.duration.afterglow.min +
+        "-" +
+        roa.duration.afterglow.max +
+        " " +
+        roa.duration.afterglow.units +
+        "\n```\n";
+      }
       
-      duration_message += "Afterglow: \n```\n";
+      // duration_message += "Afterglow: \n```\n";
     }
     
     //fill out tolerance section if tolerance exists
