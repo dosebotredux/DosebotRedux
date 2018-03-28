@@ -119,6 +119,9 @@ exports.run = (client, message, args) => {
       "More information: <https://psychonautwiki.org/wiki/" + pw_drug + ">"
     )
     .catch(console.error); //oppositely, the pw_drug must come out to have symbols and proper casing which is done with the code above
+  }).catch(function(error) {
+    console.log("promise reected/errored out");
+    console.log(error);
   });
 }
 };
