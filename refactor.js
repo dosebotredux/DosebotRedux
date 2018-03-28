@@ -10,7 +10,7 @@ var util = require("util");
 const compounds = require("./compounds.json");
 
 client.on("ready", () => {
-  console.log("I'm Online");
+  console.log("DoseBot is online - beep boop");
 });
 
 var prefix = "--";
@@ -24,10 +24,13 @@ client.on("guildMemberAdd", member => {
 
 client.on("message", message => {
   if (message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
+  if (message.content.indexOf(prefix) !== 0) return;
 
   // This is the best way to define args. Trust me. <-- Someone else wrote this lol
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const args = message.content
+    .slice(prefix.length)
+    .trim()
+    .split(/ +/g);
   const command = args.shift().toLowerCase();
 
   // The list of if/else is replaced with those simple 2 lines:
@@ -35,7 +38,7 @@ client.on("message", message => {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
   } catch (err) {
-  	console.log("Tried command: "+command)
+    console.log("Tried command: " + command);
     console.error(err);
   }
 });
