@@ -1,2 +1,0 @@
-node bot.js
-pause
