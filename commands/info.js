@@ -13,6 +13,20 @@ exports.run = (client, message, args) => {
   .replace(/-/g, "", -1)
   .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   
+  // Temporary hardcoded solution to dxm/dph problem
+  if (_drug === "dxm") {
+    _drug = "dextromethorphan";
+  }
+  if (_drug === "dph") {
+    _drug = "diphenhydramine";
+  }
+  if (_drug === "3meopcp") {
+    _drug = "3-meo-pcp"
+  }
+  if (_drug === "3meopce") {
+    _drug = "3-meo-pce"
+  }
+
   if (_drug != undefined) {
     console.log(_drug);
     
