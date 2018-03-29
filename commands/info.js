@@ -23,6 +23,84 @@ exports.run = (client, message, args) => {
   if (_drug === "pce") {
     _drug = "Eticyclidine";
   }
+  if (_drug === "mxe") {
+    _drug = "Methoxetamine";
+  }
+  if (_drug === "PCP") {
+    _drug = "Phencyclidine";
+  }
+  if (_drug === "mxp") {
+    _drug = "Methoxphenidine";
+  }
+  if (_drug === "xanax") {
+    _drug = "Alprazolam";
+  }
+  if (_drug === "klonopin") {
+    _drug = "Clonazepam";
+  }
+  if (_drug === "valium") {
+    _drug = "Diazepam";
+  }
+  if (_drug === "ativan") {
+    _drug = "Lorazepam";
+  }
+  if (_drug === "odsmt") {
+    _drug = "O-Desmethyltramadol";
+  }
+  if (_drug === "oxytontin") {
+    _drug = "Oxycodone";
+  }
+  if (_drug === "14bdo") {
+    _drug = "1,4-Butanediol";
+  }
+  if (_drug === "14bdo") {
+    _drug = "1,4-Butanediol";
+  }
+  if (_drug === "quaalude") {
+    _drug = "Methaqualone";
+  }
+  if (_drug === "seroquel") {
+    _drug = "Quetiapine";
+  }
+  if (_drug === "2ai") {
+    _drug = "2-Aminoindane";
+  }
+  if (_drug === "vyvanse") {
+    _drug = "Lisdexamfetamine";
+  }
+  if (_drug === "eph") {
+    _drug = "Ethylphenidate";
+  }
+  if (_drug === "ipph") {
+    _drug = "Isopropylphenidate";
+  }
+  if (_drug === "hdmp28") {
+    _drug = "Methylnaphthidate";
+  }
+  if (_drug === "ritalin") {
+    _drug = "Methylphenidate";
+  }
+  if (_drug === "ethcat") {
+    _drug = "Ethcathinone";
+  }
+  if (_drug === "khat") {
+    _drug = "Cathinone";
+  }
+  if (_drug === "hexen") {
+    _drug = "N-Ethylhexedrone";
+  }
+  if (_drug === "4mmc") {
+    _drug = "Mephedrone";
+  }
+  if (_drug === "benzedrex") {
+    _drug = "Propylhexedrine";
+  }
+  if (_drug === "bkmdma") {
+    _drug = "Methylone";
+  }
+  if (_drug === "theanine") {
+    _drug = "L-Theanine";
+  }
   if (_drug === "dxm") {
     _drug = "dextromethorphan";
   }
