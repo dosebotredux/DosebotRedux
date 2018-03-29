@@ -252,6 +252,7 @@ function buildDosageMessage(substance) {
 
     // Duration message
     if (!!duration) {
+      dosageMessage += "```";
       if (!!duration.onset) {
         dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n`
       } else {
@@ -278,12 +279,12 @@ function buildDosageMessage(substance) {
         dosageMessage += "No afterglow information.\n"
       }
       if (!!duration.total) {
-        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n`
+        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n\`\`\``
       } else {
-        dosageMessage += "No total information.\n"
+        dosageMessage += "No total information.\n\`\`\``"
       }
     } else {
-      dosageMessage += "No duration information."
+      dosageMessage += "No duration information.```"
     }
   }
   console.log(dosageMessage);
