@@ -178,12 +178,22 @@ function buildDosageMessage(substance) {
   // }
   
   for (let i = 0; i < dosageMessageArray.length; i++) {
+    // Dosage variables
     var dosageUnit = dosageMessageArray[i].dose.units;
     var thresholdDosage = dosageMessageArray[i].dose.threshold;
     var lightDosage = dosageMessageArray[i].dose.light;
     var commonDosage = dosageMessageArray[i].dose.common;
     var strongDosage = dosageMessageArray[i].dose.strong;
     var heavyDosage = dosageMessageArray[i].dose.heavy;
+
+    // Duration variables
+    var totalDuration = dosageMessageArray[i].duration.total;
+    var onsetDuration = dosageMessageArray[i].duration.onset;
+    var comeupDuration = dosageMessageArray[i].duration.comeup;
+    var peakDuration = dosageMessageArray[i].duration.peak;
+    var offsetDuration = dosageMessageArray[i].duration.offset;
+    var afterglowDuration = dosageMessageArray[i].duration.afterglow;
+
     if (i > 0) {
       dosageMessage += "\n";
     }
@@ -244,86 +254,17 @@ function buildDosageMessage(substance) {
     } else {
       dosageMessage += "No heavy dose information\n\n"
     }
-    // if (dosageMessageArray[i].dose.threshold) {
-    //   console.log(1);
-    //   dosageMessage +=
-    //   "```\nThreshold: " +
-    //   dosageMessageArray[i].dose.threshold +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // } else {
-    //   console.log(2);
-    //   dosageMessage += "```\n";
-    // }
-    // if (dosageMessageArray[i].dose.light.min) {
-    //   console.log(3);
-    //   dosageMessage +=
-    //   "Light: " +
-    //   dosageMessageArray[i].dose.light.min +
-    //   "-" +
-    //   dosageMessageArray[i].dose.light.max +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].dose.light) {
-    //   console.log(4);
-    //   dosageMessage +=
-    //   "Light: " +
-    //   dosageMessageArray[i].dose.light +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].dose.common.min) {
-    //   console.log(5);
-    //   dosageMessage +=
-    //   "Common: " +
-    //   dosageMessageArray[i].dose.common.min +
-    //   "-" +
-    //   dosageMessageArray[i].dose.common.max +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].dose.common) {
-    //   console.log(6);
-    //   dosageMessage +=
-    //   "Common: " +
-    //   dosageMessageArray[i].dose.common +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].dose.strong.min) {
-    //   console.log(7);
-    //   dosageMessage +=
-    //   "Strong: " +
-    //   dosageMessageArray[i].dose.strong.min +
-    //   "-" +
-    //   dosageMessageArray[i].dose.strong.max +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].dose.strong) {
-    //   console.log(8);
-    //   dosageMessage +=
-    //   "Strong: " +
-    //   dosageMessageArray[i].dose.strong +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n";
-    // }
-    // if (!!dosageMessageArray[i].dose.heavy) {
-    //   console.log(9);
-    //   dosageMessage +=
-    //   "Heavy: " +
-    //   dosageMessageArray[i].dose.heavy.min +
-    //   "-" +
-    //   dosageMessageArray[i].dose.heavy.max +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n```\n";
-    // } else if (dosageMessageArray[i].dose.heavy) {
-    //   console.log(10);
-    //   dosageMessage +=
-    //   "Heavy: " +
-    //   dosageMessageArray[i].dose.heavy +
-    //   dosageMessageArray[i].dose.units +
-    //   "\n```\n";
-    // }
     // Duration
+    if (!!totalDuration) {
+      // has heavy dosage information
+      if (typeof totalDuration == "number") {
+        dosageMessage += `Heavy: ${totalDuration}${totalDuration.units}\n\n`
+      } else {
+        dosageMessage += `Heavy: ${totalDuration.min} - ${totalDuration.max}${totalDuration.units}\n\n`
+      }
+    } else {
+      dosageMessage += "No heavy dose information\n\n"
+    }
     // dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")\n```";
     
     // if (dosageMessageArray[i].duration.total.min) {
