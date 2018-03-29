@@ -252,7 +252,7 @@ function buildDosageMessage(substance) {
 
     // Duration message
     if (!!duration) {
-      dosageMessage += "Duration " + dosageMessageArray[i].name + ```";
+      dosageMessage += "Duration " + dosageMessageArray[i].name + "```";
       if (!!duration.onset) {
         dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n`
       } else {
