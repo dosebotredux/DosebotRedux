@@ -101,12 +101,6 @@ exports.run = (client, message, args) => {
       var channel_message = "Error " + console.error;
     }
     
-    //print output to channel (and also console)
-    // console.log(channel_message);
-    // console.log(dosage_message_2);
-    // console.log(substance.roas.length);
-    // console.log(substance.roas);
-    
     message.channel.send(channel_message).catch(console.error);
     
     // DXM calculator message
@@ -187,9 +181,7 @@ function buildDosageMessage(substance) {
     var heavyDosage = dosageMessageArray[i].dose.heavy;
     
     // Dosage message
-    // if (i > 0) {
-    //   dosageMessage += "\n";
-    // }
+    // Add dosage + name
     if (dosageMessageArray[i].name) {
       dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n```";
     }
@@ -261,9 +253,11 @@ function buildDosageMessage(substance) {
     var duration = dosageMessageArray[i].duration;
     
     // Duration message
+    // If duration isn't null
     if (!!duration) {
       dosageMessage +=
       "**Duration** (" + dosageMessageArray[i].name + ")" + "```";
+      // Onset
       if (!!duration.onset) {
         dosageMessage += `Onset: ${duration.onset.min} - ${
           duration.onset.max
@@ -271,6 +265,7 @@ function buildDosageMessage(substance) {
       } else {
         dosageMessage += "No onset information.\n";
       }
+      // Comeup
       if (!!duration.comeup) {
         dosageMessage += `Comeup: ${duration.comeup.min} - ${
           duration.comeup.max
@@ -278,6 +273,7 @@ function buildDosageMessage(substance) {
       } else {
         dosageMessage += "No comeup information.\n";
       }
+      // Peak
       if (!!duration.peak) {
         dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${
           duration.peak.units
@@ -285,6 +281,7 @@ function buildDosageMessage(substance) {
       } else {
         dosageMessage += "No peak information.\n";
       }
+      // Offset
       if (!!duration.offset) {
         dosageMessage += `Offset: ${duration.offset.min} - ${
           duration.offset.max
@@ -292,6 +289,7 @@ function buildDosageMessage(substance) {
       } else {
         dosageMessage += "No offset information.\n";
       }
+      // Afterglow
       if (!!duration.afterglow) {
         dosageMessage += `Afterglow: ${duration.afterglow.min} - ${
           duration.afterglow.max
@@ -299,6 +297,7 @@ function buildDosageMessage(substance) {
       } else {
         dosageMessage += "No afterglow information.\n";
       }
+      // Total
       if (!!duration.total) {
         dosageMessage += `Total: ${duration.total.min} - ${
           duration.total.max
