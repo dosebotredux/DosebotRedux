@@ -185,15 +185,8 @@ function buildDosageMessage(substance) {
     var commonDosage = dosageMessageArray[i].dose.common;
     var strongDosage = dosageMessageArray[i].dose.strong;
     var heavyDosage = dosageMessageArray[i].dose.heavy;
-
-    // Duration variables
-    var totalDuration = dosageMessageArray[i].duration.total;
-    var onsetDuration = dosageMessageArray[i].duration.onset;
-    var comeupDuration = dosageMessageArray[i].duration.comeup;
-    var peakDuration = dosageMessageArray[i].duration.peak;
-    var offsetDuration = dosageMessageArray[i].duration.offset;
-    var afterglowDuration = dosageMessageArray[i].duration.afterglow;
-
+    
+    // Dosage message
     if (i > 0) {
       dosageMessage += "\n";
     }
@@ -255,121 +248,43 @@ function buildDosageMessage(substance) {
       dosageMessage += "No heavy dose information\n\n"
     }
     // Duration
-    if (!!totalDuration) {
-      // has heavy dosage information
-      if (typeof totalDuration == "number") {
-        dosageMessage += `Heavy: ${totalDuration}${totalDuration.units}\n\n`
+    var duration = dosageMessageArray[i].duration
+
+    // Duration message
+    if (!!duration) {
+      if (!!duration.onset) {
+        dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n\n`
       } else {
-        dosageMessage += `Heavy: ${totalDuration.min} - ${totalDuration.max}${totalDuration.units}\n\n`
+        dosageMessage += "No onset information.\n\n"
+      }
+      if (!!duration.comeup) {
+        dosageMessage += `Comeup: ${duration.comeup.min} - ${duration.comeup.max} ${duration.comeup.units}\n\n`
+      } else {
+        dosageMessage += "No comeup information.\n\n"
+      }
+      if (!!duration.peak) {
+        dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${duration.peak.units}\n\n`
+      } else {
+        dosageMessage += "No peak information.\n\n"
+      }
+      if (!!duration.offset) {
+        dosageMessage += `Offset: ${duration.offset.min} - ${duration.offset.max} ${duration.offset.units}\n\n`
+      } else {
+        dosageMessage += "No offset information.\n\n"
+      }
+      if (!!duration.afterglow) {
+        dosageMessage += `Afterglow: ${duration.afterglow.min} - ${duration.afterglow.max} ${duration.afterglow.units}\n\n`
+      } else {
+        dosageMessage += "No afterglow information.\n\n"
+      }
+      if (!!duration.total) {
+        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n\n`
+      } else {
+        dosageMessage += "No total information.\n\n"
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No duration information."
     }
-    // dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")\n```";
-    
-    // if (dosageMessageArray[i].duration.total.min) {
-    //   console.log(11);
-    //   dosageMessage +=
-    //   "Total: " +
-    //   dosageMessageArray[i].duration.total.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.total.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.total.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].duration.total) {
-    //   dosageMessage +=
-    //   "Total: " +
-    //   dosageMessageArray[i].duration.total +
-    //   " " +
-    //   dosageMessageArray[i].duration.total.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].duration.onset.min) {
-    //   dosageMessage +=
-    //   "Onset: " +
-    //   dosageMessageArray[i].duration.onset.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.onset.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.onset.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].duration.onset) {
-    //   dosageMessage +=
-    //   "Onset: " +
-    //   dosageMessageArray[i].duration.onset +
-    //   " " +
-    //   dosageMessageArray[i].duration.onset.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].duration.comeup.min) {
-    //   dosageMessage +=
-    //   "Comeup: " +
-    //   dosageMessageArray[i].duration.comeup.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.comeup.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.comeup.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].duration.comeup) {
-    //   dosageMessage +=
-    //   "Comeup: " +
-    //   dosageMessageArray[i].duration.comeup +
-    //   " " +
-    //   dosageMessageArray[i].duration.comeup.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].duration.peak.min) {
-    //   dosageMessage +=
-    //   "Peak: " +
-    //   dosageMessageArray[i].duration.peak.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.peak.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.peak.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].duration.peak) {
-    //   dosageMessage +=
-    //   "Peak: " +
-    //   dosageMessageArray[i].duration.peak +
-    //   " " +
-    //   dosageMessageArray[i].duration.peak.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].duration.offset.min) {
-    //   dosageMessage +=
-    //   "Offset: " +
-    //   dosageMessageArray[i].duration.offset.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.offset.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.offset.units +
-    //   "\n";
-    // } else if (dosageMessageArray[i].duration.offset) {
-    //   dosageMessage +=
-    //   "Offset: " +
-    //   dosageMessageArray[i].duration.offset +
-    //   " " +
-    //   dosageMessageArray[i].duration.offset.units +
-    //   "\n";
-    // }
-    // if (dosageMessageArray[i].duration.afterglow.min) {
-    //   dosageMessage +=
-    //   "Afterglow: " +
-    //   dosageMessageArray[i].duration.afterglow.min +
-    //   "-" +
-    //   dosageMessageArray[i].duration.afterglow.max +
-    //   " " +
-    //   dosageMessageArray[i].duration.afterglow.units +
-    //   "\n```";
-    // } else if (dosageMessageArray[i].duration.afterglow) {
-    //   dosageMessage +=
-    //   "Afterglow: " +
-    //   dosageMessageArray[i].duration.afterglow +
-    //   " " +
-    //   dosageMessageArray[i].duration.afterglow.units +
-    //   "\n```";
-    // }
   }
   console.log(dosageMessage);
   return dosageMessage;
