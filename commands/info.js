@@ -196,56 +196,56 @@ function buildDosageMessage(substance) {
     if (!!thresholdDosage) {
       // has threshold dosage information
       if (typeof thresholdDosage == "number") {
-        dosageMessage += `Threshold: ${thresholdDosage}${dosageUnit}\n\n`
+        dosageMessage += `Threshold: ${thresholdDosage}${dosageUnit}\n`
       } else {
-        dosageMessage += `Threshold: ${thresholdDosage.min} - ${thresholdDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Threshold: ${thresholdDosage.min} - ${thresholdDosage.max}${dosageUnit}\n`
       }
     } else {
-      dosageMessage += "No threshold dose information\n\n"
+      dosageMessage += "No threshold dose information\n"
     }
     // Light
     if (!!lightDosage) {
       // has light dosage information
       if (typeof lightDosage == "number") {
-        dosageMessage += `Light: ${lightDosage}${dosageUnit}\n\n`
+        dosageMessage += `Light: ${lightDosage}${dosageUnit}\n`
       } else {
-        dosageMessage += `Light: ${lightDosage.min} - ${lightDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Light: ${lightDosage.min} - ${lightDosage.max}${dosageUnit}\n`
       }
     } else {
-      dosageMessage += "No light dose information\n\n"
+      dosageMessage += "No light dose information\n"
     }
     // Common
     if (!!commonDosage) {
       // has common dosage information
       if (typeof commonDosage == "number") {
-        dosageMessage += `Common: ${commonDosage}${dosageUnit}\n\n`
+        dosageMessage += `Common: ${commonDosage}${dosageUnit}\n`
       } else {
-        dosageMessage += `Common: ${commonDosage.min} - ${commonDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Common: ${commonDosage.min} - ${commonDosage.max}${dosageUnit}\n`
       }
     } else {
-      dosageMessage += "No common dose information\n\n"
+      dosageMessage += "No common dose information\n"
     }
     // Strong
     if (!!strongDosage) {
       // has strong dosage information
       if (typeof strongDosage == "number") {
-        dosageMessage += `Strong: ${strongDosage}${dosageUnit}\n\n`
+        dosageMessage += `Strong: ${strongDosage}${dosageUnit}\n`
       } else {
-        dosageMessage += `Strong: ${strongDosage.min} - ${strongDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Strong: ${strongDosage.min} - ${strongDosage.max}${dosageUnit}\n`
       }
     } else {
-      dosageMessage += "No strong dose information\n\n"
+      dosageMessage += "No strong dose information\n"
     }
     // Heavy
     if (!!heavyDosage) {
       // has heavy dosage information
       if (typeof heavyDosage == "number") {
-        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n\n`
+        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n`
       } else {
-        dosageMessage += `Heavy: ${heavyDosage.min} - ${heavyDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Heavy: ${heavyDosage.min} - ${heavyDosage.max}${dosageUnit}\n`
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No heavy dose information\n"
     }
     // Duration
     var duration = dosageMessageArray[i].duration
@@ -253,34 +253,34 @@ function buildDosageMessage(substance) {
     // Duration message
     if (!!duration) {
       if (!!duration.onset) {
-        dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n\n`
+        dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n`
       } else {
-        dosageMessage += "No onset information.\n\n"
+        dosageMessage += "No onset information.\n"
       }
       if (!!duration.comeup) {
-        dosageMessage += `Comeup: ${duration.comeup.min} - ${duration.comeup.max} ${duration.comeup.units}\n\n`
+        dosageMessage += `Comeup: ${duration.comeup.min} - ${duration.comeup.max} ${duration.comeup.units}\n`
       } else {
-        dosageMessage += "No comeup information.\n\n"
+        dosageMessage += "No comeup information.\n"
       }
       if (!!duration.peak) {
-        dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${duration.peak.units}\n\n`
+        dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${duration.peak.units}\n`
       } else {
-        dosageMessage += "No peak information.\n\n"
+        dosageMessage += "No peak information.\n"
       }
       if (!!duration.offset) {
-        dosageMessage += `Offset: ${duration.offset.min} - ${duration.offset.max} ${duration.offset.units}\n\n`
+        dosageMessage += `Offset: ${duration.offset.min} - ${duration.offset.max} ${duration.offset.units}\n`
       } else {
-        dosageMessage += "No offset information.\n\n"
+        dosageMessage += "No offset information.\n"
       }
       if (!!duration.afterglow) {
-        dosageMessage += `Afterglow: ${duration.afterglow.min} - ${duration.afterglow.max} ${duration.afterglow.units}\n\n`
+        dosageMessage += `Afterglow: ${duration.afterglow.min} - ${duration.afterglow.max} ${duration.afterglow.units}\n`
       } else {
-        dosageMessage += "No afterglow information.\n\n"
+        dosageMessage += "No afterglow information.\n"
       }
       if (!!duration.total) {
-        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n\n`
+        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n`
       } else {
-        dosageMessage += "No total information.\n\n"
+        dosageMessage += "No total information.\n"
       }
     } else {
       dosageMessage += "No duration information."
