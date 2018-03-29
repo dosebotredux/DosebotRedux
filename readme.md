@@ -1,6 +1,6 @@
 # DoseBot
 
-**DoseBot** is a harm reduction Discord bot that can be used to provide server users with a variety of useful harm reduction information to promote safer use of recreational compounds. As the project expands we hope to expand this bot to a variety of platforms to reach the largest possible audience, as well as including resources that will enable substance addicts to get help in dealing with their addiction and the issues that led to it.
+**DoseBot** is a harm reduction Discord bot that can be used to provide server users with a variety of useful harm reduction information from the [PsychonautWiki](https://www.psychonautwiki.org) to promote safer use of recreational compounds.
 
 **Harm reduction** is "the set of practical strategies and ideas at reducing negative consequences associated with drug use. Harm reduction is also a movement for social justice built on a belief in, and respect for, the rights of people who use drugs." [Harm Reduction Coalition](http://harmreduction.org/about-us/principles-of-harm-reduction/).
 
