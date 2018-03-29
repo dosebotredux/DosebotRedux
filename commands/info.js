@@ -178,7 +178,7 @@ function buildDosageMessage(substance) {
   // }
   
   for (let i = 0; i < dosageMessageArray.length; i++) {
-    var dosageUnit = dosageMessageArray[i].dose.heavy;
+    var dosageUnit = dosageMessageArray[i].dose.units;
     var thresholdDosage = dosageMessageArray[i].dose.threshold;
     var lightDosage = dosageMessageArray[i].dose.light;
     var commonDosage = dosageMessageArray[i].dose.common;
