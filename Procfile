@@ -1,1 +1,1 @@
-worker: node refactor.js
+worker: forever refactor.js
