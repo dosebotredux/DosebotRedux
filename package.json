@@ -2,7 +2,7 @@
   "name": "DoseBot",
   "version": "1.0.0",
   "description": "Dosage bot",
-  "main": "bot.js",
+  "main": "refactor.js",
   "repository": "https://github.com/GabrielMorris/discordbot.git",
   "author": "CocoaBunny",
   "license": "Unlicense",
