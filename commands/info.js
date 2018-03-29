@@ -191,47 +191,47 @@ function buildDosageMessage(substance) {
       dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n";
     }
     if (!!thresholdDosage) {
-      // has heavy dosage information
+      // has threshold dosage information
       if (typeof thresholdDosage == "number") {
-        dosageMessage += `Heavy: ${thresholdDosage}${dosageUnit}\n\n`
+        dosageMessage += `Threshold: ${thresholdDosage}${dosageUnit}\n\n`
       } else {
-        dosageMessage += `Heavy: ${thresholdDosage.min} - ${thresholdDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Threshold: ${thresholdDosage.min} - ${thresholdDosage.max}${dosageUnit}\n\n`
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No threshold dose information\n\n"
     }
     // Light
     if (!!lightDosage) {
-      // has heavy dosage information
+      // has light dosage information
       if (typeof lightDosage == "number") {
-        dosageMessage += `Heavy: ${lightDosage}${dosageUnit}\n\n`
+        dosageMessage += `Light: ${lightDosage}${dosageUnit}\n\n`
       } else {
-        dosageMessage += `Heavy: ${lightDosage.min} - ${lightDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Light: ${lightDosage.min} - ${lightDosage.max}${dosageUnit}\n\n`
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No light dose information\n\n"
     }
     // Common
     if (!!commonDosage) {
-      // has heavy dosage information
+      // has common dosage information
       if (typeof commonDosage == "number") {
-        dosageMessage += `Heavy: ${commonDosage}${dosageUnit}\n\n`
+        dosageMessage += `Common: ${commonDosage}${dosageUnit}\n\n`
       } else {
-        dosageMessage += `Heavy: ${commonDosage.min} - ${commonDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Common: ${commonDosage.min} - ${commonDosage.max}${dosageUnit}\n\n`
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No common dose information\n\n"
     }
     // Strong
     if (!!strongDosage) {
-      // has heavy dosage information
+      // has strong dosage information
       if (typeof strongDosage == "number") {
-        dosageMessage += `Heavy: ${strongDosage}${dosageUnit}\n\n`
+        dosageMessage += `Strong: ${strongDosage}${dosageUnit}\n\n`
       } else {
-        dosageMessage += `Heavy: ${strongDosage.min} - ${strongDosage.max}${dosageUnit}\n\n`
+        dosageMessage += `Strong: ${strongDosage.min} - ${strongDosage.max}${dosageUnit}\n\n`
       }
     } else {
-      dosageMessage += "No heavy dose information\n\n"
+      dosageMessage += "No strong dose information\n\n"
     }
     // Heavy
     if (!!heavyDosage) {
