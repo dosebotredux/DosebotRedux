@@ -22,7 +22,9 @@ client.on("guildMemberAdd", member => {
 client.on("message", message => {
   if (message.author.bot) return;
 
-  if (message.content.startsWith("—")) { message.content = message.content.replace("—", "--") }
+  if (message.content.startsWith("—")) {
+    message.content = message.content.replace("—", "--");
+  }
 
   if (message.content.indexOf(prefix) !== 0) return;
 
