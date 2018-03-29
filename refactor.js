@@ -6,9 +6,6 @@ var fs = require("fs");
 var path = require("path");
 var util = require("util");
 
-// Require substance JSON
-const compounds = require("./compounds.json");
-
 client.on("ready", () => {
   console.log("DoseBot is online - beep boop");
 });
