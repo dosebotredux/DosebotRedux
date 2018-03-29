@@ -187,9 +187,9 @@ function buildDosageMessage(substance) {
     var heavyDosage = dosageMessageArray[i].dose.heavy;
     
     // Dosage message
-    if (i > 0) {
-      dosageMessage += "\n";
-    }
+    // if (i > 0) {
+    //   dosageMessage += "\n";
+    // }
     if (dosageMessageArray[i].name) {
       dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n```";
     }
@@ -252,7 +252,7 @@ function buildDosageMessage(substance) {
 
     // Duration message
     if (!!duration) {
-      dosageMessage += "Duration " + dosageMessageArray[i].name + "```";
+      dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")" + "```";
       if (!!duration.onset) {
         dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n`
       } else {
