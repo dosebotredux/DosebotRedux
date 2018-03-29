@@ -246,7 +246,7 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.units +
       "\n";
     }
-    if (!!dosageMessageArray[i].dose.heavy.min) {
+    if (dosageMessageArray[i].dose.heavy.min) {
       console.log(9);
       dosageMessage +=
       "Heavy: " +
@@ -255,7 +255,7 @@ function buildDosageMessage(substance) {
       dosageMessageArray[i].dose.heavy.max +
       dosageMessageArray[i].dose.units +
       "\n```\n";
-    } else if (!!dosageMessageArray[i].dose.heavy) {
+    } else if (dosageMessageArray[i].dose.heavy) {
       console.log(10);
       dosageMessage +=
       "Heavy: " +
