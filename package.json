@@ -20,5 +20,8 @@
   },
   "devDependencies": {
     "eslint-config-google": "^0.9.1"
+  },
+  "scripts": {
+    "start": "node refactor.js"
   }
 }
