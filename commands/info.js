@@ -13,7 +13,16 @@ exports.run = (client, message, args) => {
   .replace(/-/g, "", -1)
   .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   
-  // Temporary hardcoded solution to dxm/dph problem
+  // Temporary hardcoded solution to redirect problem
+  if (_drug === "2fdck") {
+    _drug = "2-Fluorodeschloroketamine";
+  }
+  if (_drug === "dck") {
+    _drug = "deschloroketamine";
+  }
+  if (_drug === "pce") {
+    _drug = "Eticyclidine";
+  }
   if (_drug === "dxm") {
     _drug = "dextromethorphan";
   }
