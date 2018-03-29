@@ -191,7 +191,7 @@ function buildDosageMessage(substance) {
       dosageMessage += "\n";
     }
     if (dosageMessageArray[i].name) {
-      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n";
+      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n```";
     }
     if (!!thresholdDosage) {
       // has threshold dosage information
@@ -240,12 +240,12 @@ function buildDosageMessage(substance) {
     if (!!heavyDosage) {
       // has heavy dosage information
       if (typeof heavyDosage == "number") {
-        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n`
+        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n\`\`\``
       } else {
-        dosageMessage += `Heavy: ${heavyDosage.min} - ${heavyDosage.max}${dosageUnit}\n`
+        dosageMessage += `Heavy: ${heavyDosage.min} - ${heavyDosage.max}${dosageUnit}\n\`\`\``
       }
     } else {
-      dosageMessage += "No heavy dose information\n"
+      dosageMessage += "No heavy dose information\n```"
     }
     // Duration
     var duration = dosageMessageArray[i].duration
