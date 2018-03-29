@@ -8,6 +8,7 @@ var util = require("util");
 
 client.on("ready", () => {
   console.log("DoseBot is online - beep boop");
+  message.channel.send("DoseBot is online - beep boop");
 });
 
 var prefix = "--";
