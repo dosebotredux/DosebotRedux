@@ -93,9 +93,9 @@ exports.run = (client, message, args) => {
       // "insert psychoactive class\n" +
       // "**Chemical class: **\n\n" +
       dosage_message +
-      "\n**Addiction potential: **\n```\n" +
+      "**Addiction potential: **\n```\n" +
       substance.addictionPotential +
-      "```\n" +
+      "```" +
       tolerance_message;
     } else {
       var channel_message = "Error " + console.error;
