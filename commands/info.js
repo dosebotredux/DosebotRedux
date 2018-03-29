@@ -26,6 +26,9 @@ exports.run = (client, message, args) => {
   if (_drug === "3meopce") {
     _drug = "3-meo-pce"
   }
+  if (_drug === "ghb") {
+    _drug = "GHB"
+  }
 
   if (_drug != undefined) {
     console.log(_drug);
