@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
   if (_drug === "ghb") {
     _drug = "GHB"
   }
-
+  
   if (_drug != undefined) {
     console.log(_drug);
     
@@ -93,9 +93,9 @@ exports.run = (client, message, args) => {
       // "insert psychoactive class\n" +
       // "**Chemical class: **\n\n" +
       dosage_message +
-      "\n**Addiction potential: **\n```\n" +
+      "**Addiction potential: **\n```\n" +
       substance.addictionPotential +
-      "```\n" +
+      "```" +
       tolerance_message;
     } else {
       var channel_message = "Error " + console.error;
@@ -178,196 +178,113 @@ function buildDosageMessage(substance) {
   // }
   
   for (let i = 0; i < dosageMessageArray.length; i++) {
-    if (i > 0) {
-      dosageMessage += "\n";
-    }
+    // Dosage variables
+    var dosageUnit = dosageMessageArray[i].dose.units;
+    var thresholdDosage = dosageMessageArray[i].dose.threshold;
+    var lightDosage = dosageMessageArray[i].dose.light;
+    var commonDosage = dosageMessageArray[i].dose.common;
+    var strongDosage = dosageMessageArray[i].dose.strong;
+    var heavyDosage = dosageMessageArray[i].dose.heavy;
+    
+    // Dosage message
+    // if (i > 0) {
+    //   dosageMessage += "\n";
+    // }
     if (dosageMessageArray[i].name) {
-      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n";
+      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n```";
     }
-    if (dosageMessageArray[i].dose.threshold) {
-      console.log(1);
-      dosageMessage +=
-      "```\nThreshold: " +
-      dosageMessageArray[i].dose.threshold +
-      dosageMessageArray[i].dose.units +
-      "\n";
+    if (!!thresholdDosage) {
+      // has threshold dosage information
+      if (typeof thresholdDosage == "number") {
+        dosageMessage += `Threshold: ${thresholdDosage}${dosageUnit}\n`
+      } else {
+        dosageMessage += `Threshold: ${thresholdDosage.min} - ${thresholdDosage.max}${dosageUnit}\n`
+      }
     } else {
-      console.log(2);
-      dosageMessage += "```\n";
+      dosageMessage += "No threshold dose information\n"
     }
-    if (dosageMessageArray[i].dose.light.min) {
-      console.log(3);
-      dosageMessage +=
-      "Light: " +
-      dosageMessageArray[i].dose.light.min +
-      "-" +
-      dosageMessageArray[i].dose.light.max +
-      dosageMessageArray[i].dose.units +
-      "\n";
-    } else if (dosageMessageArray[i].dose.light) {
-      console.log(4);
-      dosageMessage +=
-      "Light: " +
-      dosageMessageArray[i].dose.light +
-      dosageMessageArray[i].dose.units +
-      "\n";
+    // Light
+    if (!!lightDosage) {
+      // has light dosage information
+      if (typeof lightDosage == "number") {
+        dosageMessage += `Light: ${lightDosage}${dosageUnit}\n`
+      } else {
+        dosageMessage += `Light: ${lightDosage.min} - ${lightDosage.max}${dosageUnit}\n`
+      }
+    } else {
+      dosageMessage += "No light dose information\n"
     }
-    if (dosageMessageArray[i].dose.common.min) {
-      console.log(5);
-      dosageMessage +=
-      "Common: " +
-      dosageMessageArray[i].dose.common.min +
-      "-" +
-      dosageMessageArray[i].dose.common.max +
-      dosageMessageArray[i].dose.units +
-      "\n";
-    } else if (dosageMessageArray[i].dose.common) {
-      console.log(6);
-      dosageMessage +=
-      "Common: " +
-      dosageMessageArray[i].dose.common +
-      dosageMessageArray[i].dose.units +
-      "\n";
+    // Common
+    if (!!commonDosage) {
+      // has common dosage information
+      if (typeof commonDosage == "number") {
+        dosageMessage += `Common: ${commonDosage}${dosageUnit}\n`
+      } else {
+        dosageMessage += `Common: ${commonDosage.min} - ${commonDosage.max}${dosageUnit}\n`
+      }
+    } else {
+      dosageMessage += "No common dose information\n"
     }
-    if (dosageMessageArray[i].dose.strong.min) {
-      console.log(7);
-      dosageMessage +=
-      "Strong: " +
-      dosageMessageArray[i].dose.strong.min +
-      "-" +
-      dosageMessageArray[i].dose.strong.max +
-      dosageMessageArray[i].dose.units +
-      "\n";
-    } else if (dosageMessageArray[i].dose.strong) {
-      console.log(8);
-      dosageMessage +=
-      "Strong: " +
-      dosageMessageArray[i].dose.strong +
-      dosageMessageArray[i].dose.units +
-      "\n";
+    // Strong
+    if (!!strongDosage) {
+      // has strong dosage information
+      if (typeof strongDosage == "number") {
+        dosageMessage += `Strong: ${strongDosage}${dosageUnit}\n`
+      } else {
+        dosageMessage += `Strong: ${strongDosage.min} - ${strongDosage.max}${dosageUnit}\n`
+      }
+    } else {
+      dosageMessage += "No strong dose information\n"
     }
-    if (dosageMessageArray[i].dose.heavy.min) {
-      console.log(9);
-      dosageMessage +=
-      "Heavy: " +
-      dosageMessageArray[i].dose.heavy.min +
-      "-" +
-      dosageMessageArray[i].dose.heavy.max +
-      dosageMessageArray[i].dose.units +
-      "\n```\n";
-    } else if (dosageMessageArray[i].dose.heavy) {
-      console.log(10);
-      dosageMessage +=
-      "Heavy: " +
-      dosageMessageArray[i].dose.heavy +
-      dosageMessageArray[i].dose.units +
-      "\n```\n";
+    // Heavy
+    if (!!heavyDosage) {
+      // has heavy dosage information
+      if (typeof heavyDosage == "number") {
+        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n\`\`\``
+      } else {
+        dosageMessage += `Heavy: ${heavyDosage.min} - ${heavyDosage.max}${dosageUnit}\n\`\`\``
+      }
+    } else {
+      dosageMessage += "No heavy dose information\n```"
     }
     // Duration
-    dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")\n```";
-    
-    if (dosageMessageArray[i].duration.total.min) {
-      console.log(11);
-      dosageMessage +=
-      "Total: " +
-      dosageMessageArray[i].duration.total.min +
-      "-" +
-      dosageMessageArray[i].duration.total.max +
-      " " +
-      dosageMessageArray[i].duration.total.units +
-      "\n";
-    } else if (dosageMessageArray[i].duration.total) {
-      dosageMessage +=
-      "Total: " +
-      dosageMessageArray[i].duration.total +
-      " " +
-      dosageMessageArray[i].duration.total.units +
-      "\n";
-    }
-    if (dosageMessageArray[i].duration.onset.min) {
-      dosageMessage +=
-      "Onset: " +
-      dosageMessageArray[i].duration.onset.min +
-      "-" +
-      dosageMessageArray[i].duration.onset.max +
-      " " +
-      dosageMessageArray[i].duration.onset.units +
-      "\n";
-    } else if (dosageMessageArray[i].duration.onset) {
-      dosageMessage +=
-      "Onset: " +
-      dosageMessageArray[i].duration.onset +
-      " " +
-      dosageMessageArray[i].duration.onset.units +
-      "\n";
-    }
-    if (dosageMessageArray[i].duration.comeup.min) {
-      dosageMessage +=
-      "Comeup: " +
-      dosageMessageArray[i].duration.comeup.min +
-      "-" +
-      dosageMessageArray[i].duration.comeup.max +
-      " " +
-      dosageMessageArray[i].duration.comeup.units +
-      "\n";
-    } else if (dosageMessageArray[i].duration.comeup) {
-      dosageMessage +=
-      "Comeup: " +
-      dosageMessageArray[i].duration.comeup +
-      " " +
-      dosageMessageArray[i].duration.comeup.units +
-      "\n";
-    }
-    if (dosageMessageArray[i].duration.peak.min) {
-      dosageMessage +=
-      "Peak: " +
-      dosageMessageArray[i].duration.peak.min +
-      "-" +
-      dosageMessageArray[i].duration.peak.max +
-      " " +
-      dosageMessageArray[i].duration.peak.units +
-      "\n";
-    } else if (dosageMessageArray[i].duration.peak) {
-      dosageMessage +=
-      "Peak: " +
-      dosageMessageArray[i].duration.peak +
-      " " +
-      dosageMessageArray[i].duration.peak.units +
-      "\n";
-    }
-    if (dosageMessageArray[i].duration.offset.min) {
-      dosageMessage +=
-      "Offset: " +
-      dosageMessageArray[i].duration.offset.min +
-      "-" +
-      dosageMessageArray[i].duration.offset.max +
-      " " +
-      dosageMessageArray[i].duration.offset.units +
-      "\n";
-    } else if (dosageMessageArray[i].duration.offset) {
-      dosageMessage +=
-      "Offset: " +
-      dosageMessageArray[i].duration.offset +
-      " " +
-      dosageMessageArray[i].duration.offset.units +
-      "\n";
-    }
-    if (dosageMessageArray[i].duration.afterglow.min) {
-      dosageMessage +=
-      "Afterglow: " +
-      dosageMessageArray[i].duration.afterglow.min +
-      "-" +
-      dosageMessageArray[i].duration.afterglow.max +
-      " " +
-      dosageMessageArray[i].duration.afterglow.units +
-      "\n```";
-    } else if (dosageMessageArray[i].duration.afterglow) {
-      dosageMessage +=
-      "Afterglow: " +
-      dosageMessageArray[i].duration.afterglow +
-      " " +
-      dosageMessageArray[i].duration.afterglow.units +
-      "\n```";
+    var duration = dosageMessageArray[i].duration
+
+    // Duration message
+    if (!!duration) {
+      dosageMessage += "**Duration** (" + dosageMessageArray[i].name + ")" + "```";
+      if (!!duration.onset) {
+        dosageMessage += `Onset: ${duration.onset.min} - ${duration.onset.max} ${duration.onset.units}\n`
+      } else {
+        dosageMessage += "No onset information.\n"
+      }
+      if (!!duration.comeup) {
+        dosageMessage += `Comeup: ${duration.comeup.min} - ${duration.comeup.max} ${duration.comeup.units}\n`
+      } else {
+        dosageMessage += "No comeup information.\n"
+      }
+      if (!!duration.peak) {
+        dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${duration.peak.units}\n`
+      } else {
+        dosageMessage += "No peak information.\n"
+      }
+      if (!!duration.offset) {
+        dosageMessage += `Offset: ${duration.offset.min} - ${duration.offset.max} ${duration.offset.units}\n`
+      } else {
+        dosageMessage += "No offset information.\n"
+      }
+      if (!!duration.afterglow) {
+        dosageMessage += `Afterglow: ${duration.afterglow.min} - ${duration.afterglow.max} ${duration.afterglow.units}\n`
+      } else {
+        dosageMessage += "No afterglow information.\n"
+      }
+      if (!!duration.total) {
+        dosageMessage += `Total: ${duration.total.min} - ${duration.total.max} ${duration.total.units}\n\`\`\``
+      } else {
+        dosageMessage += "No total information.\n\`\`\``"
+      }
+    } else {
+      dosageMessage += "No duration information.```"
     }
   }
   console.log(dosageMessage);
