@@ -190,12 +190,12 @@ exports.run = (client, message, args) => {
     
     message.channel.send(channel_message).catch(console.error);
     
-    // DXM calculator message
-    if (message.content.toLowerCase().includes("dxm")) {
-      message.channel
-      .send("To calculate DXM dose:\n```-dxmcalc [weight in pounds]```")
-      .catch(console.error);
-    }
+    // // DXM calculator message temporarily disabled
+    // if (message.content.toLowerCase().includes("dxm")) {
+    //   message.channel
+    //   .send("To calculate DXM dose:\n```-dxmcalc [weight in pounds]```")
+    //   .catch(console.error);
+    // }
     
     if (!isNaN(_drug.charAt(0))) {
       pw_drug = _drug
