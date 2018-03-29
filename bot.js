@@ -10,9 +10,6 @@ var util = require("util");
 const { request } = require("graphql-request");
 var substance;
 
-// Require substance JSON
-const compounds = require("./compounds.json");
-
 client.on("ready", () => {
   console.log("I'm Online");
 });
