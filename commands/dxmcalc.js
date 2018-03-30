@@ -11,15 +11,15 @@ exports.run = (client, message, args) => {
     parseFloat(result[result.length - 1]) * 0.8 +
     "mg to " +
     parseFloat(result[result.length - 1]) * 1.2 +
-    "mg of DXM for 1st Plateau\n\n" +
+    "mg of DXM for 1st Plateau\n" +
     parseFloat(result[result.length - 1]) * 1.75 +
     "mg to " +
     parseFloat(result[result.length - 1]) * 3.15 +
-    "mg of DXM for 2nd Plateau\n\n" +
+    "mg of DXM for 2nd Plateau\n" +
     parseFloat(result[result.length - 1]) * 3.5 +
     "mg to " +
     parseFloat(result[result.length - 1]) * 6.6 +
-    "mg of DXM for 3rd Plateau\n\n" +
+    "mg of DXM for 3rd Plateau\n" +
     parseFloat(result[result.length - 1]) * 6.6 +
     "mg to " +
     parseFloat(result[result.length - 1]) * 10 +
