@@ -2,7 +2,7 @@
 exports.run = (client, message, args) => {
   message.channel
   .send(
-    "```Available commands: \n --about\n --help \n --tolerance [number of days since last dose] \n --info [substance]```"
+    "```Available commands: \n --about\n --help \n --tolerance [number of days since last dose] \n --info [substance]\n --dxmcalc [weight in pounds]```"
   )
   .catch(console.error);
 };
