@@ -1,4 +1,4 @@
-//Kaylee message
+//Heart message
 exports.run = (client, message, args) => {
   message.channel
   .send(
