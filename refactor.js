@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const settings = require("./auth.json");
+const settings = require("./app.json");
 
 var fs = require("fs");
 var path = require("path");
