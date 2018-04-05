@@ -161,7 +161,7 @@ exports.run = (client, message, args) => {
     if (pw_drug == "Molly") pw_drug = "MDMA";
     if (pw_drug == "Mdma") pw_drug = "MDMA";
 
-    var effectMessage = substance.name + "\n```\n";
+    var effectMessage = "**" + substance.name + "effect information**" + "\n```\n";
 
     for (let i = 0; i < effects.length; i++) {
       console.log(effects[i].name);
@@ -187,69 +187,6 @@ exports.run = (client, message, args) => {
     }
 
     message.channel.send(channelMessage).catch(console.error);
-
-
-    // //this block cobbles together the dosage information section
-    // //first check if there is dosage information for first (eventually preferred!!!) roa
-    // //required, some substances (salvia for example) return null for dose object
-    // if (roa.dose) {
-    //   var dosage_message = buildDosageMessage(substance);
-    // }
-    
-    // //this block cobbles together the duration information section
-    // //first check if there is duration information for (eventually preferred!!!) roa
-    // //required, some substances (salvia for example) return null for duration object
-    
-    // //fill out tolerance section if tolerance exists
-    // if (substance.tolerance) {
-    //   var tolerance_message = buildToleranceMessage(substance);
-    // } else {
-    //   var tolerance_message = "";
-    // }
-    
-    // //HERE'S WHERE ALL THE MAGIC COMES TOGETHER
-    // if (dosage_message != undefined) {
-    //   var channel_message =
-    //   "**" +
-    //   substance.name +
-    //   " information**\n\n" +
-    //   // // These are broken in the API
-    //   // "**Psychoactive class: **" +
-    //   // "insert psychoactive class\n" +
-    //   // "**Chemical class: **\n\n" +
-    //   dosage_message +
-    //   "**Addiction potential: **\n```\n" +
-    //   substance.addictionPotential +
-    //   "```" +
-    //   tolerance_message;
-    // } else {
-    //   var channel_message = "Error " + console.error;
-    // }
-    
-    // message.channel.send(channel_message).catch(console.error);
-    
-    // // // DXM calculator message temporarily disabled
-    // // if (message.content.toLowerCase().includes("dxm")) {
-    // //   message.channel
-    // //   .send("To calculate DXM dose:\n```-dxmcalc [weight in pounds]```")
-    // //   .catch(console.error);
-    // // }
-    
-    // if (!isNaN(_drug.charAt(0))) {
-    //   pw_drug = _drug
-    //   .toUpperCase()
-    //   .replace(/ACO/g, "-AcO-")
-    //   .replace(/MEO/g, "-MeO-");
-    // } else {
-    //   pw_drug = _drug.charAt(0).toUpperCase() + _drug.slice(1);
-    // }
-    
-    // if (pw_drug.length == 3) pw_drug = pw_drug.toUpperCase();
-    
-    // if (pw_drug == "Dipt") pw_drug = "DiPT";
-    // if (pw_drug == "Moxy") pw_drug = "5-MeO-MiPT";
-    // if (pw_drug == "Molly") pw_drug = "MDMA";
-    // if (pw_drug == "Mdma") pw_drug = "MDMA";
   })
   .catch(function(error) {
     console.log("promise rejected/errored out");
