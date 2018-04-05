@@ -118,12 +118,8 @@ exports.run = (client, message, args) => {
   }
   
   if (_drug != undefined) {
-    console.log(_drug);
-    
     // loads graphql query from separate file as "query" variable
     var query = require("../queries/effects.js").effect(_drug);
-    
-    console.log(query);
     
     let substanceRequest = function(data) {
       return request("https://api.psychonautwiki.org", query).then(data => {
@@ -143,8 +139,8 @@ exports.run = (client, message, args) => {
     
     //now that we've grabbed the substance object, we can dissect further
     var effects = substance.effects;
-    console.log(effects);
     
+    // create new variable with proper wiki name for linking (wiki names sometimes differ from api names)
     if (!isNaN(_drug.charAt(0))) {
       pw_drug = _drug
       .toUpperCase()
@@ -160,32 +156,31 @@ exports.run = (client, message, args) => {
     if (pw_drug == "Moxy") pw_drug = "5-MeO-MiPT";
     if (pw_drug == "Molly") pw_drug = "MDMA";
     if (pw_drug == "Mdma") pw_drug = "MDMA";
-
-    var effectMessage = "**" + substance.name + "effect information**" + "\n```\n";
-
-    for (let i = 0; i < effects.length; i++) {
-      console.log(effects[i].name);
-    }
-
+    
+    // message construction
+    var effectMessage =
+    "**" + substance.name + " effect information**" + "\n```\n";
+    
+    // loops through effects and add their name to the message variable
     for (let i = 0; i < effects.length; i++) {
       effectMessage += effects[i].name + "\n";
-
-      if (i === effects.length -1) {
+      
+      // if last message then close code block and link PW article subsection
+      if (i === effects.length - 1) {
         effectMessage += "```\n";
-        effectMessage += "More information: <https://psychonautwiki.org/wiki/" +
+        effectMessage +=
+        "More information: <https://psychonautwiki.org/wiki/" +
         pw_drug +
-        "#Subjective_effects>"
+        "#Subjective_effects>";
       }
     }
-
-    console.log(effectMessage);
-
+    
     if (effectMessage != undefined) {
       var channelMessage = effectMessage;
     } else {
       var channelMessage = "Error: " + console.error;
     }
-
+    
     message.channel.send(channelMessage).catch(console.error);
   })
   .catch(function(error) {
