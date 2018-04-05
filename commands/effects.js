@@ -152,7 +152,7 @@ exports.run = (client, message, args) => {
     }
 
     for (let i = 0; i < effects.length; i++) {
-      effectMessage += effects[i].name + "\nLink: " + effects[i].url + "\n";
+      effectMessage += "Effect: " + effects[i].name + "\nLink: " + effects[i].url + "\n";
 
       if (i === effects.length -1) {
         effectMessage += "```";
@@ -160,6 +160,14 @@ exports.run = (client, message, args) => {
     }
 
     console.log(effectMessage);
+
+    if (effectMessage != undefined) {
+      var channelMessage = effectMessage;
+    } else {
+      var channelMessage = "Error: " + console.error;
+    }
+
+    message.channel.send(channelMessage).catch(console.error);
 
 
     // //this block cobbles together the dosage information section
