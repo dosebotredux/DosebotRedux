@@ -144,9 +144,23 @@ exports.run = (client, message, args) => {
     //now that we've grabbed the substance object, we can dissect further
     var effects = substance.effects;
     console.log(effects);
-
-    var unsortedArray
     
+    if (!isNaN(_drug.charAt(0))) {
+      pw_drug = _drug
+      .toUpperCase()
+      .replace(/ACO/g, "-AcO-")
+      .replace(/MEO/g, "-MeO-");
+    } else {
+      pw_drug = _drug.charAt(0).toUpperCase() + _drug.slice(1);
+    }
+    
+    if (pw_drug.length == 3) pw_drug = pw_drug.toUpperCase();
+    
+    if (pw_drug == "Dipt") pw_drug = "DiPT";
+    if (pw_drug == "Moxy") pw_drug = "5-MeO-MiPT";
+    if (pw_drug == "Molly") pw_drug = "MDMA";
+    if (pw_drug == "Mdma") pw_drug = "MDMA";
+
     var effectMessage = substance.name + "\n```\n";
 
     for (let i = 0; i < effects.length; i++) {
@@ -159,7 +173,7 @@ exports.run = (client, message, args) => {
       if (i === effects.length -1) {
         effectMessage += "```\n";
         effectMessage += "More information: <https://psychonautwiki.org/wiki/" +
-        _drug +
+        pw_drug +
         "#Subjective_effects>"
       }
     }
