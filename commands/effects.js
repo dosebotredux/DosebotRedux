@@ -145,18 +145,18 @@ exports.run = (client, message, args) => {
     var effects = substance.effects;
     console.log(effects);
     
-    var effectMessage = substance.name;
+    var effectMessage = substance.name + "\n```\n";
 
     for (let i = 0; i < effects.length; i++) {
       console.log(effects[i].name);
     }
 
     for (let i = 0; i < effects.length; i++) {
-      effectMessage += "Effect: " + effects[i].name + "\nLink: " + effects[i].url + "\n";
+      effectMessage += effects[i].name + "\n";
 
-      // if (i === effects.length -1) {
-      //   effectMessage += "```";
-      // }
+      if (i === effects.length -1) {
+        effectMessage += "```";
+      }
     }
 
     console.log(effectMessage);
