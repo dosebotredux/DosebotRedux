@@ -152,7 +152,11 @@ exports.run = (client, message, args) => {
     }
 
     for (let i = 0; i < effects.length; i++) {
-      effectMessage += effects[i].name + "\nLink: " + effects[i].url;
+      effectMessage += effects[i].name + "\nLink: " + effects[i].url + "\n";
+
+      if (i === effects.length -1) {
+        effectMessage += "```";
+      }
     }
 
     console.log(effectMessage);
