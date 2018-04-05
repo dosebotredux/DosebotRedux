@@ -149,6 +149,10 @@ exports.run = (client, message, args) => {
 
     console.log(effectMessage);
 
+    for (let i = 0; i < effects.length; i++) {
+      console.log(effects[i].name);
+    }
+
 
     // //this block cobbles together the dosage information section
     // //first check if there is dosage information for first (eventually preferred!!!) roa
