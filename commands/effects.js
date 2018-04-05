@@ -4,122 +4,125 @@ exports.run = (client, message, args) => {
   
   var str = message.content;
   var result = str.split(" ");
-  var _drug = str
+  var drug = str
   .toLowerCase()
   .replace("--effects ", "", -1)
   .replace(/-/g, "", -1)
   .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   
   // Temporary hardcoded solution to redirect problem
-  if (_drug === "2fdck") {
-    _drug = "2-Fluorodeschloroketamine";
+  if (drug === "2fdck") {
+    drug = "2-Fluorodeschloroketamine";
   }
-  if (_drug === "dck") {
-    _drug = "deschloroketamine";
+  if (drug === "dck") {
+    drug = "deschloroketamine";
   }
-  if (_drug === "pce") {
-    _drug = "Eticyclidine";
+  if (drug === "pce") {
+    drug = "Eticyclidine";
   }
-  if (_drug === "mxe") {
-    _drug = "Methoxetamine";
+  if (drug === "mxe") {
+    drug = "Methoxetamine";
   }
-  if (_drug === "PCP") {
-    _drug = "Phencyclidine";
+  if (drug === "PCP") {
+    drug = "Phencyclidine";
   }
-  if (_drug === "mxp") {
-    _drug = "Methoxphenidine";
+  if (drug === "mxp") {
+    drug = "Methoxphenidine";
   }
-  if (_drug === "xanax") {
-    _drug = "Alprazolam";
+  if (drug === "xanax") {
+    drug = "Alprazolam";
   }
-  if (_drug === "klonopin") {
-    _drug = "Clonazepam";
+  if (drug === "klonopin") {
+    drug = "Clonazepam";
   }
-  if (_drug === "valium") {
-    _drug = "Diazepam";
+  if (drug === "valium") {
+    drug = "Diazepam";
   }
-  if (_drug === "ativan") {
-    _drug = "Lorazepam";
+  if (drug === "ativan") {
+    drug = "Lorazepam";
   }
-  if (_drug === "odsmt") {
-    _drug = "O-Desmethyltramadol";
+  if (drug === "odsmt") {
+    drug = "O-Desmethyltramadol";
   }
-  if (_drug === "oxytontin") {
-    _drug = "Oxycodone";
+  if (drug === "oxytontin") {
+    drug = "Oxycodone";
   }
-  if (_drug === "14bdo") {
-    _drug = "1,4-Butanediol";
+  if (drug === "14bdo") {
+    drug = "1,4-Butanediol";
   }
-  if (_drug === "14bdo") {
-    _drug = "1,4-Butanediol";
+  if (drug === "14bdo") {
+    drug = "1,4-Butanediol";
   }
-  if (_drug === "quaalude") {
-    _drug = "Methaqualone";
+  if (drug === "quaalude") {
+    drug = "Methaqualone";
   }
-  if (_drug === "seroquel") {
-    _drug = "Quetiapine";
+  if (drug === "seroquel") {
+    drug = "Quetiapine";
   }
-  if (_drug === "2ai") {
-    _drug = "2-Aminoindane";
+  if (drug === "2ai") {
+    drug = "2-Aminoindane";
   }
-  if (_drug === "vyvanse") {
-    _drug = "Lisdexamfetamine";
+  if (drug === "vyvanse") {
+    drug = "Lisdexamfetamine";
   }
-  if (_drug === "eph") {
-    _drug = "Ethylphenidate";
+  if (drug === "eph") {
+    drug = "Ethylphenidate";
   }
-  if (_drug === "ipph") {
-    _drug = "Isopropylphenidate";
+  if (drug === "ipph") {
+    drug = "Isopropylphenidate";
   }
-  if (_drug === "hdmp28") {
-    _drug = "Methylnaphthidate";
+  if (drug === "hdmp28") {
+    drug = "Methylnaphthidate";
   }
-  if (_drug === "ritalin") {
-    _drug = "Methylphenidate";
+  if (drug === "ritalin") {
+    drug = "Methylphenidate";
   }
-  if (_drug === "ethcat") {
-    _drug = "Ethcathinone";
+  if (drug === "ethcat") {
+    drug = "Ethcathinone";
   }
-  if (_drug === "khat") {
-    _drug = "Cathinone";
+  if (drug === "khat") {
+    drug = "Cathinone";
   }
-  if (_drug === "hexen") {
-    _drug = "N-Ethylhexedrone";
+  if (drug === "hexen") {
+    drug = "N-Ethylhexedrone";
   }
-  if (_drug === "4mmc") {
-    _drug = "Mephedrone";
+  if (drug === "4mmc") {
+    drug = "Mephedrone";
   }
-  if (_drug === "benzedrex") {
-    _drug = "Propylhexedrine";
+  if (drug === "benzedrex") {
+    drug = "Propylhexedrine";
   }
-  if (_drug === "bkmdma") {
-    _drug = "Methylone";
+  if (drug === "bkmdma") {
+    drug = "Methylone";
   }
-  if (_drug === "theanine") {
-    _drug = "L-Theanine";
+  if (drug === "theanine") {
+    drug = "L-Theanine";
   }
-  if (_drug === "dxm") {
-    _drug = "dextromethorphan";
+  if (drug === "dxm") {
+    drug = "dextromethorphan";
   }
-  if (_drug === "dph") {
-    _drug = "diphenhydramine";
+  if (drug === "dph") {
+    drug = "diphenhydramine";
   }
-  if (_drug === "3meopcp") {
-    _drug = "3-meo-pcp";
+  if (drug === "3meopcp") {
+    drug = "3-meo-pcp";
   }
-  if (_drug === "3meopce") {
-    _drug = "3-meo-pce";
+  if (drug === "3meopce") {
+    drug = "3-meo-pce";
   }
-  if (_drug === "ghb") {
-    _drug = "GHB";
+  if (drug === "ghb") {
+    drug = "GHB";
   }
-  if (_drug === "dom") {
-    _drug = "DOM";
+  if (drug === "dom") {
+    drug = "DOM";
+  }
+  if (drug === "dipt") {
+    drug = "DiPT"
   }
   
-  if (_drug != undefined) {
+  if (drug != undefined) {
     // loads graphql query from separate file as "query" variable
-    var query = require("../queries/effects.js").effect(_drug);
+    var query = require("../queries/effects.js").effect(drug);
     
     let substanceRequest = function(data) {
       return request("https://api.psychonautwiki.org", query).then(data => {
@@ -141,21 +144,21 @@ exports.run = (client, message, args) => {
     var effects = substance.effects;
     
     // create new variable with proper wiki name for linking (wiki names sometimes differ from api names)
-    if (!isNaN(_drug.charAt(0))) {
-      pw_drug = _drug
+    if (!isNaN(drug.charAt(0))) {
+      pwdrug = drug
       .toUpperCase()
       .replace(/ACO/g, "-AcO-")
       .replace(/MEO/g, "-MeO-");
     } else {
-      pw_drug = _drug.charAt(0).toUpperCase() + _drug.slice(1);
+      pwdrug = drug.charAt(0).toUpperCase() + drug.slice(1);
     }
     
-    if (pw_drug.length == 3) pw_drug = pw_drug.toUpperCase();
+    if (pwdrug.length == 3) pwdrug = pwdrug.toUpperCase();
     
-    if (pw_drug == "Dipt") pw_drug = "DiPT";
-    if (pw_drug == "Moxy") pw_drug = "5-MeO-MiPT";
-    if (pw_drug == "Molly") pw_drug = "MDMA";
-    if (pw_drug == "Mdma") pw_drug = "MDMA";
+    if (pwdrug == "Dipt") pwdrug = "DiPT";
+    if (pwdrug == "Moxy") pwdrug = "5-MeO-MiPT";
+    if (pwdrug == "Molly") pwdrug = "MDMA";
+    if (pwdrug == "Mdma") pwdrug = "MDMA";
     
     // message construction
     var effectMessage =
@@ -170,7 +173,7 @@ exports.run = (client, message, args) => {
         effectMessage += "```\n";
         effectMessage +=
         "More information: <https://psychonautwiki.org/wiki/" +
-        pw_drug +
+        pwdrug +
         "#Subjective_effects>";
       }
     }
