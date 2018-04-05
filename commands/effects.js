@@ -144,6 +144,8 @@ exports.run = (client, message, args) => {
     //now that we've grabbed the substance object, we can dissect further
     var effects = substance.effects;
     console.log(effects);
+
+    var unsortedArray
     
     var effectMessage = substance.name + "\n```\n";
 
@@ -155,7 +157,10 @@ exports.run = (client, message, args) => {
       effectMessage += effects[i].name + "\n";
 
       if (i === effects.length -1) {
-        effectMessage += "```";
+        effectMessage += "```\n";
+        effectMessage += "More information: <https://psychonautwiki.org/wiki/" +
+        pw_drug +
+        "#Subjective_effects>"
       }
     }
 
