@@ -159,7 +159,7 @@ exports.run = (client, message, args) => {
       if (i === effects.length -1) {
         effectMessage += "```\n";
         effectMessage += "More information: <https://psychonautwiki.org/wiki/" +
-        pw_drug +
+        _drug +
         "#Subjective_effects>"
       }
     }
