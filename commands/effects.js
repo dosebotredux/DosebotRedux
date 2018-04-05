@@ -145,13 +145,17 @@ exports.run = (client, message, args) => {
     var effects = substance.effects;
     console.log(effects);
     
-    var effectMessage = effects[0].name;
-
-    console.log(effectMessage);
+    var effectMessage = substance.name + "\n```\n";
 
     for (let i = 0; i < effects.length; i++) {
       console.log(effects[i].name);
     }
+
+    for (let i = 0; i < effects.length; i++) {
+      effectMessage += effects[i].name + "\nLink: " + effects[i].url;
+    }
+
+    console.log(effectMessage);
 
 
     // //this block cobbles together the dosage information section
