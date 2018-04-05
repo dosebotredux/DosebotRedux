@@ -145,6 +145,11 @@ exports.run = (client, message, args) => {
     var effects = substance.effects;
     console.log(effects);
     
+    var effectMessage = effects[0].name;
+
+    console.log(effectMessage);
+
+
     // //this block cobbles together the dosage information section
     // //first check if there is dosage information for first (eventually preferred!!!) roa
     // //required, some substances (salvia for example) return null for dose object
