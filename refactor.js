@@ -6,7 +6,11 @@ var fs = require("fs");
 var path = require("path");
 var util = require("util");
 
+var commandTable = {}
+
 client.on("ready", () => {
+
+
   console.log("DoseBot is online - beep boop");
 });
 
@@ -29,20 +33,34 @@ client.on("message", message => {
   if (message.content.indexOf(prefix) !== 0) return;
 
   // This is the best way to define args. Trust me. <-- Someone else wrote this lol
-  const args = message.content
-    .slice(prefix.length)
-    .trim()
-    .split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  // The list of if/else is replaced with those simple 2 lines:
-  try {
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(client, message, args);
-  } catch (err) {
-    console.log("Tried command: " + command);
-    console.error(err);
+  const commandName = args.shift().toLowerCase();
+  const commandFunction = commandTable[commandName]
+  if (!!commandFunction) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    try {
+      commandFunction.run(client, message, args)
+    } catch (err) {
+      console.error(`Encountered error trying to execute command: ${commandName}`)
+      console.error(err)
+    }
   }
-});
+})
+
+// Load all commands
+fs.readdir("./commands", function(err, items) {
+  var idx
+  for (idx = 0; idx < items.length; idx++) {
+    try {
+      var commandName = items[idx].replace(/.js$/, "")
+      commandTable[commandName] = require(`./commands/${commandName}.js`)
+    } catch (err) {
+      console.error(`Encountered error trying to require command: ${commandName}.js`)
+      console.error(err)
+    }
+  }
+
+  console.log("Loaded command table:")
+  console.log(commandTable)
+})
 
 client.login(settings.token);
