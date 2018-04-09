@@ -1,5 +1,4 @@
 //the big enchilada
-//!!!refactor in progress!!!
 //tested with --info lsd, --info dmt, --info salvia
 
 exports.run = (client, message, args) => {
@@ -192,13 +191,6 @@ exports.run = (client, message, args) => {
     }
     
     message.channel.send(channelMessage).catch(console.error);
-    
-    // // DXM calculator message temporarily disabled
-    // if (message.content.toLowerCase().includes("dxm")) {
-    //   message.channel
-    //   .send("To calculate DXM dose:\n```-dxmcalc [weight in pounds]```")
-    //   .catch(console.error);
-    // }
     
     if (!isNaN(drug.charAt(0))) {
       pwdrug = drug
