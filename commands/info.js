@@ -7,274 +7,111 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
   var drug = str
-  .toLowerCase()
-  .replace("--info ", "", -1)
-  .replace(/-/g, "", -1)
-  .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+    .toLowerCase()
+    .replace("--info ", "", -1)
+    .replace(/-/g, "", -1)
+    .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+  console.log(`Requesting info for ${drug}`);
 
-  if (drug != undefined) {
-    console.log(drug);
+  // loads graphql query from separate file as "query" variable
+  let query = require("../queries/info.js").info(drug);
+  request("https://api.psychonautwiki.org", query).then(data => {
 
-    // loads graphql query from separate file as "query" variable
-    var query = require("../queries/info.js").info(drug);
+    console.log(data) // SHOW ME WHAT YOU GOT
 
-    console.log(query);
+    if (data.substances.length == 0) {
+      message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
+      return
+    }
 
-    let substanceRequest = function(data) {
-      return request("https://api.psychonautwiki.org", query).then(data => {
-        return data;
-      });
-    };
+    if (data.substances.length > 1) {
+      message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
+      return
+    }
 
-    substanceRequest().then(function(data) {
+    let substance = data.substances[0]
 
-      console.log(data) // SHOW ME WHAT YOU GOT
+    var messages = []
+    messages.push(`**${substance.name} information**`)
+    messages.push(buildDosageMessage(substance))
+    messages.push("**Addiction potential**")
+    messages.push("```" + (substance.addictionPotential || "No information") + "```")
+    messages.push("**Tolerance**")
+    messages.push(buildToleranceMessage(substance))
 
-      var substance = data.substances[0];
+    message.channel.send(messages.join("\n")).catch(console.error)
 
-      //now that we've grabbed the substance object, we can dissect further
-      var roas = substance.roas;
-      console.log(roas);
-
-      //roa = "preferred roa"
-      //right now we grab first roa as the roa to display
-      //in future, maybe use a "preferred roas" json file with mapped substance names => roa
-      //also future, needs to be workable via a subsection command (--dosage sublingual lsd, --dosage oral lsd)
-      var roa = roas[0];
-
-      //this block cobbles together the dosage information section
-      //first check if there is dosage information for first (eventually preferred!!!) roa
-      //required, some substances (salvia for example) return null for dose object
-      if (roa.dose) {
-        var dosageMessage = buildDosageMessage(substance);
-      }
-
-      //this block cobbles together the duration information section
-      //first check if there is duration information for (eventually preferred!!!) roa
-      //required, some substances (salvia for example) return null for duration object
-
-      //fill out tolerance section if tolerance exists
-      if (substance.tolerance) {
-        var toleranceMessage = buildToleranceMessage(substance);
-      } else {
-        var toleranceMessage = "";
-      }
-
-      //HERE'S WHERE ALL THE MAGIC COMES TOGETHER
-      if (dosageMessage != undefined) {
-        var channelMessage =
-        "**" +
-        substance.name +
-        " information**\n\n" +
-        // // These are broken in the API
-        // "**Psychoactive class: **" +
-        // "insert psychoactive class\n" +
-        // "**Chemical class: **\n\n" +
-        dosageMessage +
-        "**Addiction potential: **\n```\n" +
-        substance.addictionPotential +
-        "```" +
-        toleranceMessage;
-      } else {
-        var channelMessage = "Error " + console.error;
-      }
-
-      message.channel.send(channelMessage).catch(console.error);
-
-      if (!isNaN(drug.charAt(0))) {
-        pwdrug = drug
-        .toUpperCase()
-        .replace(/ACO/g, "-AcO-")
-        .replace(/MEO/g, "-MeO-");
-      } else {
-        pwdrug = drug.charAt(0).toUpperCase() + drug.slice(1);
-      }
-
-      if (pwdrug.length == 3) pwdrug = pwdrug.toUpperCase();
-
-      if (pwdrug == "Dipt") pwdrug = "DiPT";
-      if (pwdrug == "Moxy") pwdrug = "5-MeO-MiPT";
-      if (pwdrug == "Molly") pwdrug = "MDMA";
-      if (pwdrug == "Mdma") pwdrug = "MDMA";
-
-      message.channel.send(`More information: <https://psychonautwiki.org/wiki/${pwdrug}>`)
-      .catch(console.error); //oppositely, the pwdrug must come out to have symbols and proper casing which is done with the code above
-    })
-    .catch(function(error) {
-      console.log("promise reected/errored out");
-      console.log(error);
-    });
-  }
+    message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error)
+  })
+  .catch(function(error) {
+    console.log("promise reected/errored out");
+    console.log(error);
+  });
 };
 
 // Functions
 function buildToleranceMessage(substance) {
-  var toleranceMessage =
-  "**Tolerance**```\n" +
-  "Full: " +
-  substance.tolerance.full +
-  "\n" +
-  "Half: " +
-  substance.tolerance.half +
-  "\n" +
-  "Baseline: " +
-  substance.tolerance.zero +
-  "```";
-
-  return toleranceMessage;
+  let t = substance.tolerance
+  // console.log(t)
+  if (!!t) {
+    return `\`\`\`Full: ${t.full}\nHalf: ${t.half}\nBaseline: ${t.zero}\`\`\``
+  } else {
+    return "```No information.```"
+  }
 }
+
 function buildDosageMessage(substance) {
-  var dosageMessageArray = [];
+  var messages = []
 
   for (let i = 0; i < substance.roas.length; i++) {
-    dosageMessageArray[i] = substance.roas[i];
-  }
-  // console.log(dosageMessageArray);
+    let roa = substance.roas[i]
+    let dose = roa.dose
 
-  var dosageMessage = "";
-  console.log(dosageMessageArray);
-  // if (dosageMessageArray[0].dose.heavy) {
-  //   dosageMessage += dosageMessageArray[0].dose.heavy;
-  // }
+    let dosageObjectToString = function(x) {
+      // console.log(x)
+      let unit = dose.units
+      if (!!x) {
+        if (typeof x == "number") {
+          return  `${x} ${unit}`
+        }
+        return `${x.min} - ${x.max}${unit}`
+      }
+    }
+    let durationObjectToString = function(x) {
+      // console.log(x)
+      // { max: 48, min: 12, units: 'hours' }
+      if (!!x) {
+        return `${x.min} - ${x.max} ${x.units}`
+      }
+      return undefined
+    }
 
-  for (let i = 0; i < dosageMessageArray.length; i++) {
-    // Dosage variables
-    var dosageUnit = dosageMessageArray[i].dose.units;
-    var thresholdDosage = dosageMessageArray[i].dose.threshold;
-    var lightDosage = dosageMessageArray[i].dose.light;
-    var commonDosage = dosageMessageArray[i].dose.common;
-    var strongDosage = dosageMessageArray[i].dose.strong;
-    var heavyDosage = dosageMessageArray[i].dose.heavy;
+    messages.push(`**Dosage** (${roa.name})`)
+    messages.push("```")
+    messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
+    messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
+    messages.push(`Common: ${dosageObjectToString(dose.common) || "no information"}`)
+    messages.push(`Strong: ${dosageObjectToString(dose.strong) || "no information"}`)
+    messages.push(`Heavy: ${dosageObjectToString(dose.heavy) || "no information"}`)
+    messages.push("```")
 
-    // Dosage message
-    // Add dosage + name
-    if (dosageMessageArray[i].name) {
-      dosageMessage += "**Dosage** (" + dosageMessageArray[i].name + ")\n```";
-    }
-    if (!!thresholdDosage) {
-      // has threshold dosage information
-      if (typeof thresholdDosage == "number") {
-        dosageMessage += `Threshold: ${thresholdDosage}${dosageUnit}\n`;
-      } else {
-        dosageMessage += `Threshold: ${thresholdDosage.min} - ${
-          thresholdDosage.max
-        }${dosageUnit}\n`;
-      }
-    } else {
-      dosageMessage += "No threshold dose information\n";
-    }
-    // Light
-    if (!!lightDosage) {
-      // has light dosage information
-      if (typeof lightDosage == "number") {
-        dosageMessage += `Light: ${lightDosage}${dosageUnit}\n`;
-      } else {
-        dosageMessage += `Light: ${lightDosage.min} - ${
-          lightDosage.max
-        }${dosageUnit}\n`;
-      }
-    } else {
-      dosageMessage += "No light dose information\n";
-    }
-    // Common
-    if (!!commonDosage) {
-      // has common dosage information
-      if (typeof commonDosage == "number") {
-        dosageMessage += `Common: ${commonDosage}${dosageUnit}\n`;
-      } else {
-        dosageMessage += `Common: ${commonDosage.min} - ${
-          commonDosage.max
-        }${dosageUnit}\n`;
-      }
-    } else {
-      dosageMessage += "No common dose information\n";
-    }
-    // Strong
-    if (!!strongDosage) {
-      // has strong dosage information
-      if (typeof strongDosage == "number") {
-        dosageMessage += `Strong: ${strongDosage}${dosageUnit}\n`;
-      } else {
-        dosageMessage += `Strong: ${strongDosage.min} - ${
-          strongDosage.max
-        }${dosageUnit}\n`;
-      }
-    } else {
-      dosageMessage += "No strong dose information\n";
-    }
-    // Heavy
-    if (!!heavyDosage) {
-      // has heavy dosage information
-      if (typeof heavyDosage == "number") {
-        dosageMessage += `Heavy: ${heavyDosage}${dosageUnit}\n\`\`\``;
-      } else {
-        dosageMessage += `Heavy: ${heavyDosage.min} - ${
-          heavyDosage.max
-        }${dosageUnit}\n\`\`\``;
-      }
-    } else {
-      dosageMessage += "No heavy dose information\n```";
-    }
     // Duration
-    var duration = dosageMessageArray[i].duration;
-
-    // Duration message
-    // If duration isn't null
-    if (!!duration) {
-      dosageMessage +=
-      "**Duration** (" + dosageMessageArray[i].name + ")" + "```";
-      // Onset
-      if (!!duration.onset) {
-        dosageMessage += `Onset: ${duration.onset.min} - ${
-          duration.onset.max
-        } ${duration.onset.units}\n`;
-      } else {
-        dosageMessage += "No onset information.\n";
-      }
-      // Comeup
-      if (!!duration.comeup) {
-        dosageMessage += `Comeup: ${duration.comeup.min} - ${
-          duration.comeup.max
-        } ${duration.comeup.units}\n`;
-      } else {
-        dosageMessage += "No comeup information.\n";
-      }
-      // Peak
-      if (!!duration.peak) {
-        dosageMessage += `Peak: ${duration.peak.min} - ${duration.peak.max} ${
-          duration.peak.units
-        }\n`;
-      } else {
-        dosageMessage += "No peak information.\n";
-      }
-      // Offset
-      if (!!duration.offset) {
-        dosageMessage += `Offset: ${duration.offset.min} - ${
-          duration.offset.max
-        } ${duration.offset.units}\n`;
-      } else {
-        dosageMessage += "No offset information.\n";
-      }
-      // Afterglow
-      if (!!duration.afterglow) {
-        dosageMessage += `Afterglow: ${duration.afterglow.min} - ${
-          duration.afterglow.max
-        } ${duration.afterglow.units}\n`;
-      } else {
-        dosageMessage += "No afterglow information.\n";
-      }
-      // Total
-      if (!!duration.total) {
-        dosageMessage += `Total: ${duration.total.min} - ${
-          duration.total.max
-        } ${duration.total.units}\n\`\`\``;
-      } else {
-        dosageMessage += "No total information.\n````";
-      }
+    messages.push(`**Duration** (${roa.name})`)
+    if (!!roa.duration) {
+      messages.push("```")
+      messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
+      messages.push(`Comeup: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
+      messages.push(`Peak: ${durationObjectToString(roa.duration.peak) || "no information"}`)
+      messages.push(`Offset: ${durationObjectToString(roa.duration.offset) || "no information"}`)
+      messages.push(`Afterglow: ${durationObjectToString(roa.duration.afterglow) || "no information"}`)
+      messages.push(`Total: ${durationObjectToString(roa.duration.total) || "no information"}`)
+      messages.push("```")
     } else {
-      dosageMessage += "No duration information.```";
+      messages.push("```No duration information .```")
     }
+
   }
-  console.log(dosageMessage);
-  return dosageMessage;
+
+  // console.log(messages)
+  return messages.join("\n")
 }
