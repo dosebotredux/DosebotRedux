@@ -15,7 +15,8 @@ module.exports = function CommandSystem() {
             var commandName = items[idx].replace(/.js$/, "")
             commandTable[commandName] = require(`./commands/${commandName}.js`)
           } catch (err) {
-            console.error(`Encountered error trying to require command: ${commandName}.js, ${err}`)
+            console.error(`Encountered error trying to require command: ${commandName}.js`)
+            console.error(err)
           }
         }
 
