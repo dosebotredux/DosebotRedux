@@ -33,6 +33,7 @@ exports.run = (client, message, args) => {
 
     var messages = []
     messages.push(`**${substance.name} information**`)
+    messages.push("")
     messages.push(buildDosageMessage(substance))
     messages.push("**Addiction potential**")
     messages.push("```" + (substance.addictionPotential || "No information") + "```")
