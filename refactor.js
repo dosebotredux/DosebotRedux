@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const settings = require("./app.json");
-const CommandSystem = require("./command-system.js")
+const CommandSystem = require("./command-system.js")()
 
 var fs = require("fs");
 var path = require("path");
@@ -22,6 +22,8 @@ client.on("message", message => {
   CommandSystem.execute(client, message)
 })
 
-CommandSystem.loadCommands()
+CommandSystem.load(function() {
+  console.log("Command system loaded.")
+})
 
 client.login(settings.token);

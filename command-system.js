@@ -1,51 +1,59 @@
 var fs = require("fs")
 
-const commandPrefix = "--";
+module.exports = function CommandSystem() {
 
-var commandTable = {}
+  const commandPrefix = "--";
 
-module.exports = {
+  var commandTable = {}
 
-  loadCommands: function() {
-    commandTable = {}
-    fs.readdir("./commands", function(err, items) {
-      var idx
-      for (idx = 0; idx < items.length; idx++) {
+  return {
+    load: function(ready) {
+      fs.readdir("./commands", function(err, items) {
+        var idx
+        for (idx = 0; idx < items.length; idx++) {
+          try {
+            var commandName = items[idx].replace(/.js$/, "")
+            commandTable[commandName] = require(`./commands/${commandName}.js`)
+          } catch (err) {
+            console.error(`Encountered error trying to require command: ${commandName}.js, ${err}`)
+          }
+        }
+
+        ready()
+      })
+
+    },
+
+    execute: function(client, message) {
+      if (message.author.bot) {
+        // console.log("Message author is bot")
+        return
+      }
+
+      if (message.content.startsWith("—")) {
+        message.content = message.content.replace("—", "--");
+      }
+
+      if (!message.content.startsWith(commandPrefix)) {
+        // console.log("Command prefix not matched")
+        return
+      }
+
+      const args = message.content.slice(commandPrefix.length).trim().split(/ +/g)
+      const commandName = args.shift().toLowerCase();
+      const commandFunction = commandTable[commandName]
+
+      if (!!commandFunction) {
         try {
-          var commandName = items[idx].replace(/.js$/, "")
-          commandTable[commandName] = require(`./commands/${commandName}.js`)
+          commandFunction.run(client, message, args)
         } catch (err) {
-          console.error(`Encountered error trying to require command: ${commandName}.js`)
+          console.error(`Encountered error trying to execute command: ${commandName}`)
           console.error(err)
         }
-      }
-
-      console.log("Loaded command table:")
-      console.log(commandTable)
-    })
-    return commandTable
-  },
-
-  execute: function(client, message) {
-    if (message.author.bot) return;
-
-    if (message.content.startsWith("—")) {
-      message.content = message.content.replace("—", "--");
-    }
-
-    if (message.content.indexOf(commandPrefix) !== 0) return;
-
-    const args = message.content.slice(commandPrefix.length).trim().split(/ +/g)
-    const commandName = args.shift().toLowerCase();
-    const commandFunction = commandTable[commandName]
-    if (!!commandFunction) {
-      try {
-        commandFunction.run(client, message, args)
-      } catch (err) {
-        console.error(`Encountered error trying to execute command: ${commandName}`)
-        console.error(err)
+      } else {
+        // console.log(`Command does not exist: ${commandName}\n${commandTable}`)
       }
     }
+
   }
-
 }
