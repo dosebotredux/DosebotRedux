@@ -2,41 +2,56 @@
 //tested with --info lsd, --info dmt, --info salvia
 
 let sanitizeDrugName = function(drug) {
-  // if (drug === "2fdck") { return "2-Fluorodeschloroketamine" }
   if (drug === "dck") { return "deschloroketamine" }
   if (drug === "pce") { return "Eticyclidine" }
-  // if (drug === "mxe") { return "Methoxetamine" }
   if (drug === "pcp") { return "Phencyclidine" }
   if (drug === "mxp") { return "Methoxphenidine" }
-  // if (drug === "xanax") { return "Alprazolam" }
-  // if (drug === "klonopin") { return "Clonazepam" }
-  // if (drug === "valium") { return "Diazepam" }
-  // if (drug === "ativan") { return "Lorazepam" }
-  // if (drug === "odsmt") { return "O-Desmethyltramadol" }
-  // if (drug === "oxytontin") { return "Oxycodone" }
   if (drug === "14bdo") { return "1,4-Butanediol" }
-  // if (drug === "14bdo") { return "1,4-Butanediol" }
   if (drug === "quaalude") { return "Methaqualone" }
-  // if (drug === "seroquel") { return "Quetiapine" }
-  // if (drug === "2ai") { return "2-Aminoindane" }
-  // if (drug === "vyvanse") { return "Lisdexamfetamine" }
   if (drug === "eph") { return "Ethylphenidate" }
   if (drug === "ipph") { return "Isopropylphenidate" }
   if (drug === "hdmp28") { return "Methylnaphthidate" }
-  // if (drug === "ritalin") { return "Methylphenidate" }
-  // if (drug === "ethcat") { return "Ethcathinone" }
   if (drug === "khat") { return "Cathinone" }
-  // if (drug === "hexen") { return "N-Ethylhexedrone" }
   if (drug === "4mmc") { return "Mephedrone" }
-  // if (drug === "benzedrex") { return "Propylhexedrine" }
-  // if (drug === "bkmdma") { return "Methylone" }
-  // if (drug === "theanine") { return "L-Theanine" }
   if (drug === "dxm") { return "dextromethorphan" }
   if (drug === "dph") { return "diphenhydramine" }
-  // if (drug === "3meopcp") { return "3-meo-pcp" }
-  // if (drug === "3meopce") { return "3-meo-pce" }
   if (drug === "ghb") { return "GHB" }
+
+  // 2C-{x}: B, C, D, E, H, I, iP, P, TFM, T-2, T-4, T-7, T-21
+  // if (drug === "2cip") { return "2C-iP" } // doesn't exist
+  // if (drug === "2ctfm") { return "2C-TFM" } // doesn't exist
+  // if (drug === "2ct4") { return "2C-T-4" } // doesn't exist
+  if (drug === "2ct21") { return "2C-T-21" }
+
+  // DO{x}: M, ET, PR, iPR, BU, AM, F, C, B, I, EF, TFM, N
   if (drug === "dom") { return "DOM" }
+  // if (drug === "doet") { return "DOET" } // doesn't exist
+  // if (drug === "dopr") { return "DOPR" } // doesn't exist
+  // if (drug === "doipr") { return "DOiPR" } // doesn't exist
+  // if (drug === "dobu") { return "DOBU" } // doesn't exist
+  // if (drug === "doam") { return "DOAM" } // doesn't exist
+  // if (drug === "dof") { return "DOF" } // doesn't exist
+  // if (drug === "doc") { return "DOC" } // BREAKS THE API
+  if (drug === "dob") { return "DOB" }
+  if (drug === "doi") { return "DOI" }
+  // if (drug === "doef") { return "DOEF" } // doesn't exist
+  // if (drug === "dotfm") { return "DOTFM" } // doesn't exist
+  // if (drug === "don") { return "DON" } // doesn't exist
+
+  // 25{x}-NBOMe: B, C, D, I, N
+  // if (drug === "25d") { return "25dnbome"} // doesn't exist
+  if (drug === "25n") { return "25nnbome" }
+
+  // Base tryptamines: DMT, DET, MET, EPT, MPT, DPT, EiPT, MiPT, DiPT, aMT
+  if (drug == "det") { return "DET" }
+  if (drug == "met") { return "MET" }
+  if (drug == "ept") { return "EPT" }
+  if (drug == "mpt") { return "MPT" }
+  // if (drug == "eipt") { return "EiPT" } // doesn't exist
+  if (drug == "mipt") { return "MiPT" }
+  if (drug == "dipt") { return "DiPT" }
+  if (drug == "amt") { return "aMT" }
+
   return drug
 }
 
