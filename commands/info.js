@@ -1,6 +1,45 @@
 //the big enchilada
 //tested with --info lsd, --info dmt, --info salvia
 
+let sanitizeDrugName = function(drug) {
+  // if (drug === "2fdck") { return "2-Fluorodeschloroketamine" }
+  if (drug === "dck") { return "deschloroketamine" }
+  if (drug === "pce") { return "Eticyclidine" }
+  // if (drug === "mxe") { return "Methoxetamine" }
+  if (drug === "pcp") { return "Phencyclidine" }
+  if (drug === "mxp") { return "Methoxphenidine" }
+  // if (drug === "xanax") { return "Alprazolam" }
+  // if (drug === "klonopin") { return "Clonazepam" }
+  // if (drug === "valium") { return "Diazepam" }
+  // if (drug === "ativan") { return "Lorazepam" }
+  // if (drug === "odsmt") { return "O-Desmethyltramadol" }
+  // if (drug === "oxytontin") { return "Oxycodone" }
+  if (drug === "14bdo") { return "1,4-Butanediol" }
+  // if (drug === "14bdo") { return "1,4-Butanediol" }
+  if (drug === "quaalude") { return "Methaqualone" }
+  // if (drug === "seroquel") { return "Quetiapine" }
+  // if (drug === "2ai") { return "2-Aminoindane" }
+  // if (drug === "vyvanse") { return "Lisdexamfetamine" }
+  if (drug === "eph") { return "Ethylphenidate" }
+  if (drug === "ipph") { return "Isopropylphenidate" }
+  if (drug === "hdmp28") { return "Methylnaphthidate" }
+  // if (drug === "ritalin") { return "Methylphenidate" }
+  // if (drug === "ethcat") { return "Ethcathinone" }
+  if (drug === "khat") { return "Cathinone" }
+  // if (drug === "hexen") { return "N-Ethylhexedrone" }
+  if (drug === "4mmc") { return "Mephedrone" }
+  // if (drug === "benzedrex") { return "Propylhexedrine" }
+  // if (drug === "bkmdma") { return "Methylone" }
+  // if (drug === "theanine") { return "L-Theanine" }
+  if (drug === "dxm") { return "dextromethorphan" }
+  if (drug === "dph") { return "diphenhydramine" }
+  // if (drug === "3meopcp") { return "3-meo-pcp" }
+  // if (drug === "3meopce") { return "3-meo-pce" }
+  if (drug === "ghb") { return "GHB" }
+  if (drug === "dom") { return "DOM" }
+  return drug
+}
+
 exports.run = (client, message, args) => {
   const { request } = require("graphql-request");
 
@@ -11,6 +50,7 @@ exports.run = (client, message, args) => {
     .replace("--info ", "", -1)
     .replace(/-/g, "", -1)
     .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+  drug = sanitizeDrugName(drug)
   console.log(`Requesting info for ${drug}`);
 
   // loads graphql query from separate file as "query" variable
@@ -64,7 +104,8 @@ function buildToleranceMessage(substance) {
 function buildDosageMessage(substance) {
   var messages = []
 
-  for (let i = 0; i < substance.roas.length; i++) {
+  var i
+  for (i = 0; i < substance.roas.length; i++) {
     let roa = substance.roas[i]
     let dose = roa.dose
 
