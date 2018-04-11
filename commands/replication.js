@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
     "https://www.reddit.com/r/replications.json";
   request.get(url, (error, response, body) => {
     let json = JSON.parse(body);
-    console.log(json);
+    console.log(json.data.children[0]);
   });
 
 // message.channel
