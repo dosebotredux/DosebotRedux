@@ -1,11 +1,16 @@
-//Josie message
+const request = require('request');
+
+
 exports.run = (client, message, args) => {
-  var replications = JSON.parse("https://www.reddit.com/r/replications.json");
+  const url =
+    "https://www.reddit.com/r/replications.json";
+  request.get(url, (error, response, body) => {
+    let json = JSON.parse(body);
+    console.log(json);
+  });
 
-  console.log(replications);
-
-  // message.channel
-  // .send(
-  // )
-  // .catch(console.error);
+// message.channel
+// .send(
+// )
+// .catch(console.error);
 };
