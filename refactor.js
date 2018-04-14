@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
-console.log(token);
 const CommandSystem = require("./command-system.js")()
 
 var fs = require("fs");
