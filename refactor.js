@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 // const settings = require("./app.json");
 // var dotenv = require('dotenv').load({silent: true});
-console.log(process.env);
+const token = process.env.DISCORD_API_TOKEN;
+console.log(token);
 const CommandSystem = require("./command-system.js")()
 
 var fs = require("fs");
@@ -28,4 +29,4 @@ CommandSystem.load(function() {
   console.log("Command system loaded.")
 })
 
-client.login(settings.token);
+client.login(token);
