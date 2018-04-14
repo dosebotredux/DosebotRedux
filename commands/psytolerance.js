@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
     } else {
       message.channel
       .send(
-        "Take approximately" +
+        "Take approximately " +
         Math.ceil(y / 10) * 10 +
         "% of the drug to reach full effects."
       )
