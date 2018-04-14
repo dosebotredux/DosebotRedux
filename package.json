@@ -10,6 +10,7 @@
     "discord-anti-spam": "^1.1.1",
     "discord.io": "^2.5.3",
     "discord.js": "^11.2.1",
+    "dotenv": "^5.0.1",
     "forever": "^0.15.3",
     "graphql": "^0.13.2",
     "graphql-request": "^1.5.1",

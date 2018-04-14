@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const settings = require("./app.json");
+// const settings = require("./app.json");
+// var dotenv = require('dotenv').load({silent: true});
+console.log(process.env);
 const CommandSystem = require("./command-system.js")()
 
 var fs = require("fs");
