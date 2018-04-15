@@ -90,11 +90,15 @@ function buildDosageMessage(substance) {
 
     messages.push(`**Dosage** (${roa.name})`)
     messages.push("```")
-    messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
-    messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
-    messages.push(`Common: ${dosageObjectToString(dose.common) || "no information"}`)
-    messages.push(`Strong: ${dosageObjectToString(dose.strong) || "no information"}`)
-    messages.push(`Heavy: ${dosageObjectToString(dose.heavy) || "no information"}`)
+    if (!!dose) {
+      messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
+      messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
+      messages.push(`Common: ${dosageObjectToString(dose.common) || "no information"}`)
+      messages.push(`Strong: ${dosageObjectToString(dose.strong) || "no information"}`)
+      messages.push(`Heavy: ${dosageObjectToString(dose.heavy) || "no information"}`)
+    } else {
+      messages.push("No information")
+    }
     messages.push("```")
 
     // Duration
