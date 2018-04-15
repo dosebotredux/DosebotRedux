@@ -15,11 +15,12 @@ module.exports = function sanitizeSubstanceName(drug) {
   if (drug === "ghb") { return "GHB" }
 
   // Lysergamides: LSD, 1P-LSD, ETH-LAD, 1P-ETH-LAD, AL-LAD, ALD-52, LSA, LSD,
-  // LSM-775, LSZ, PARGY-LAD, PRO-LAD
+  // LSM-775, LSZ, PARGY-LAD, PRO-LAD,
   if (drug === "lsm775") { return "LSM-775" }
   if (drug === "lsz") { return "LSZ" }
   if (drug === "pargylad") { return "PARGY-LAD" }
   if (drug === "prolad") { return "PRO-LAD" }
+  if (drug === "lsa") { return "LSA" }
 
   // 2C-{x}: B, C, D, E, H, I, iP, P, TFM, T-2, T-4, T-7, T-21
   // if (drug === "2cip") { return "2C-iP" } // doesn't exist
