@@ -45,7 +45,7 @@ exports.run = (client, message, args) => {
     message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error)
   })
   .catch(function(error) {
-    console.log("promise reected/errored out");
+    console.log("promise rejected/errored out");
     console.log(error);
   });
 };
@@ -74,7 +74,7 @@ function buildDosageMessage(substance) {
       let unit = dose.units
       if (!!x) {
         if (typeof x == "number") {
-          return  `${x} ${unit}`
+          return  `${x}${unit}`
         }
         return `${x.min} - ${x.max}${unit}`
       }
