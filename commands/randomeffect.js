@@ -1,5 +1,6 @@
 //grabs glossary info from local json and builds message based on random effect
 const glossary = require("../glossary.json");
+const replications = require("../replications.json");
 
 exports.run = (client, message, args) => {
   var str = message.content;
@@ -14,9 +15,17 @@ exports.run = (client, message, args) => {
   var rand = Math.floor(Math.random() * glossary.effects.length);
   console.log(rand);
 
+  var name = glossary.effects[rand].name;
+
   messageContent.push(glossary.effects[rand].name);
   messageContent.push(glossary.effects[rand].body);
   messageContent.push(glossary.effects[rand].url);
+
+  for (let i = 0; i < replications.length; i++) {
+    if (replications.effects[i].name === glossary.effects[rand].name) {
+      console.log(replications.effects[i].replications);
+    }
+  }
   
   message.channel
   .send("**" + messageContent[0] + "**" + 
