@@ -3,12 +3,22 @@
     {
       "name": "acuity enhancement",
       "body": "Acuity enhancement can be described as an enhancement of the clearness and clarity of vision.\nIt is most commonly induced under the influence of mild dosages of psychedelic compounds, such as LSD, psilocybin, and mescaline.",
-      "link": "<https://psychonautwiki.org/wiki/Acuity_enhancement>"
+      "url": "<https://psychonautwiki.org/wiki/Acuity_enhancement>"
     },
     {
       "name": "framerate enhancement",
       "body": "Frame rate enhancement can be described as an effect which increases the detail at which a person can perceive quickly occurring events that appear within their field of view.\nIt is most commonly induced under the influence of moderate dosages of psychedelic compounds, such as LSD, psilocybin, and mescaline.",
-      "link": "<https://psychonautwiki.org/wiki/Frame_rate_enhancement>"
-    }
+      "url": "<https://psychonautwiki.org/wiki/Frame_rate_enhancement>"
+    },
+    {
+      "name": "magnification",
+      "body": "Magnification can be described as the experience of distant details within one's visual field appearing closer and more \"zoomed in\" than they actually are due to both visual enhancements and hallucinatory effects.\nIt is a rare effect that is most commonly induced under the influence of moderate dosages of psychedelic compounds, such as LSD, psilocybin, and mescaline.",
+      "url": "<https://psychonautwiki.org/wiki/Magnification>"
+    },
+    {
+      "name": "",
+      "body": "",
+      "url": ""
+    },
   ]
 }

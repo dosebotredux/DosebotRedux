@@ -10,10 +10,16 @@ exports.run = (client, message, args) => {
   .replace(/-/g, "", -1)
   console.log("str: " + str);
   console.log("result: " + effect);
+  var messageContent = [];
   
   for (let i = 0; i < glossary.effects.length; i++) {
     if (glossary.effects[i].name === effect) {
       console.log(glossary.effects[i].name);
+      messageContent.push(glossary.effects[i].name);
+      messageContent.push(glossary.effects[i].body);
+      messageContent.push(glossary.effects[i].url);
+
+      console.log(messageContent);
     }
   }
   
