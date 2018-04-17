@@ -20,50 +20,60 @@ exports.run = (client, message, args) => {
       messageContent.push(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].body);
       messageContent.push(glossary.effects[i].url);
-
+      
     }
   }
-
+  
   var rand;
   var locationOfEffect;
-
+  
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
       rand = Math.floor(Math.random() * replications.effects[i].replications.length);
-
+      
       locationOfEffect = i;
-
+      
     }
   }
-
+  
   if (replications.effects[locationOfEffect] !== undefined) {
     messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
   }
   console.log(messageContent);
-
+  
   // messageBuilder();
-
-  if (messageContent[0] !== undefined) {
-  message.channel
-  .send(messageContent[0])
-  .catch(console.error);
-  } else {
+  
+  if (messageContent[3] !== undefined) {
     message.channel
-    .send("**Error**: Undefined effect")
-    .catch(console.error);
-  }
+    .send("**" + messageContent[0] + "**" +
+    "\n" +
+    "```" + messageContent[1] + "```" +
+    "\n" +
+    "More information: " + messageContent[2] +
+    "\n\n" +
+    "Replication: " + messageContent[3]
+  )
+  .catch(console.error);
+} else if (messageContent[0] !== undefined) {
+  message.channel
+  .send("Fallback")
+} else {
+  message.channel
+  .send("**Error**: Undefined effect")
+  .catch(console.error);
+}
 };
 
-// functions
-function messageBuilder() {
-  // message = "**" + messageContent[0] + "**" +
-  // "\n" +
-  // "```" + messageContent[1] + "```" +
-  // "\n" +
-  // "More information: " + messageContent[2];
+// // functions
+// function messageBuilder() {
+//   // message = "**" + messageContent[0] + "**" +
+//   // "\n" +
+//   // "```" + messageContent[1] + "```" +
+//   // "\n" +
+//   // "More information: " + messageContent[2];
 
-  // if (messageContent[3] !== undefined) {
-  //   message + "\n\n" + "Replication: " + messageContent[3];
-  // }
-  message = messageContent[0];
-}
+//   // if (messageContent[3] !== undefined) {
+//   //   message + "\n\n" + "Replication: " + messageContent[3];
+//   // }
+//   message = messageContent[0];
+// }
