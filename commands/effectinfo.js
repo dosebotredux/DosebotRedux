@@ -21,7 +21,6 @@ exports.run = (client, message, args) => {
       messageContent.push(glossary.effects[i].body);
       messageContent.push(glossary.effects[i].url);
 
-      console.log(messageContent);
     }
   }
 
@@ -40,6 +39,7 @@ exports.run = (client, message, args) => {
   if (replications.effects[locationOfEffect] !== undefined) {
     messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
   }
+  console.log(messageContent);
 
   messageBuilder();
 
