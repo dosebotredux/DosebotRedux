@@ -4,7 +4,7 @@ const glossary = require("../glossary.json");
 exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
-  result = result
+  var effect = result
     .toLowerCase()
     .replace("--glossary ", "", -1);
   console.log("str: " + str);
