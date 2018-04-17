@@ -24,8 +24,6 @@ exports.run = (client, message, args) => {
     }
   }
 
-  var rand = Math.floor(Math.random() * toys.toys.length);
-
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
       // messageContent.push(replications.effects[i].replications[0].url)
