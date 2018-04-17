@@ -14,8 +14,10 @@ exports.run = (client, message, args) => {
   var messageContent = [];
   var finalMessage;
   
+  // loop through glossary to find matching effect 
   for (let i = 0; i < glossary.effects.length; i++) {
     if (glossary.effects[i].name.toLowerCase() === effect) {
+      // build message components
       console.log(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].body);
@@ -24,18 +26,23 @@ exports.run = (client, message, args) => {
     }
   }
   
+  // variables for matching to replications.json
   var rand;
   var locationOfEffect;
   
+  // loop through replications.json to find matching effect
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
+      // generate random number for pulling replications
       rand = Math.floor(Math.random() * replications.effects[i].replications.length);
       
+      // store location
       locationOfEffect = i;
       
     }
   }
   
+  // if effect has replications add to messageContent array
   if (replications.effects[locationOfEffect] !== undefined) {
     messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
   }
@@ -43,6 +50,7 @@ exports.run = (client, message, args) => {
   
   // messageBuilder();
   
+  // spaghetti message builder
   if (messageContent[3] !== undefined) {
     message.channel
     .send("**" + messageContent[0] + "**" +
