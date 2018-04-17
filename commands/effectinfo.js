@@ -23,6 +23,7 @@ exports.run = (client, message, args) => {
     }
   }
   
+  if (messageContent !== undefined) {
   message.channel
   .send("**" + messageContent[0] + "**" + 
   "\n" + 
@@ -30,4 +31,8 @@ exports.run = (client, message, args) => {
   "\n" + 
   "More information: " + messageContent[2])
   .catch(console.error);
+  } else {
+    message.channel
+    .send("**Error**: Unknown effect")
+  }
 };
