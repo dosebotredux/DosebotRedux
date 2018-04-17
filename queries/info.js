@@ -3,6 +3,10 @@ exports.info = function(substance) {
 				substances(query: "${substance}") {
 					name
 					addictionPotential
+					class {
+						chemical
+						psychoactive
+					}
 					tolerance {
 						full
 						half
