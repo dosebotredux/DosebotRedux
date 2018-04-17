@@ -12,10 +12,11 @@ exports.run = (client, message, args) => {
 
   var messageContent = [];
 
-  var rand = Math.floor(Math.random() * glossary.effects.length);
-  console.log(rand);
-
+  // var rand = Math.floor(Math.random() * glossary.effects.length);
+  var rand = 2;
   var name = glossary.effects[rand].name;
+  console.log(name);
+  console.log(replications.effects[2].name);
 
   messageContent.push(glossary.effects[rand].name);
   messageContent.push(glossary.effects[rand].body);
