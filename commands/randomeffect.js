@@ -11,17 +11,12 @@ exports.run = (client, message, args) => {
 
   var messageContent = [];
 
-  var rand = Math.random();
+  var rand = Math.floor(Math.random() * glossary.effects.length);
   console.log(rand);
-  // for (let i = 0; i < glossary.effects.length; i++) {
-  //   if (glossary.effects[i].name.toLowerCase() === effect) {
-  //     messageContent.push(glossary.effects[i].name);
-  //     messageContent.push(glossary.effects[i].body);
-  //     messageContent.push(glossary.effects[i].url);
 
-  //     console.log(messageContent);
-  //   }
-  // }
+  messageContent.push(glossary.effects[rand].name);
+  messageContent.push(glossary.effects[rand].body;
+  messageContent.push(glossary.effects[rand].url);
   
   message.channel
   .send("**" + messageContent[0] + "**" + 
