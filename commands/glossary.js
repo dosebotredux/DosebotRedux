@@ -4,9 +4,6 @@ const glossary = require("../glossary.json");
 exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
-  // var effect = result
-  //   .toLowerCase()
-  //   .replace("--glossary ", "", -1);
   var effect = str
   .toLowerCase()
   .replace("--glossary ", "", -1)
@@ -15,7 +12,9 @@ exports.run = (client, message, args) => {
   console.log("result: " + effect);
   
   for (let i = 0; i < glossary.length; i++) {
-    console.log(glossary.effects[i].name);
+    if (glossary.effects[i].name === effect) {
+      console.log(glossary.effects[i].name);
+    }
   }
   
   message.channel
