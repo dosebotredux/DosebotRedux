@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
   var messageContent = [];
   
   for (let i = 0; i < glossary.effects.length; i++) {
-    if (glossary.effects[i].name === effect) {
+    if (glossary.effects[i].name.toLowerCase() === effect) {
       console.log(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].body);
@@ -24,6 +24,6 @@ exports.run = (client, message, args) => {
   }
   
   message.channel
-  .send("ヽ༼ຈل͜ຈ༽ﾉ raise your dongers ヽ༼ຈل͜ຈ༽ﾉ")
+  .send("Effect: " + messageContent[0] + "\n" + messageContent[1] + "\n" + messageContent[2])
   .catch(console.error);
 };
