@@ -12,6 +12,7 @@ exports.run = (client, message, args) => {
   console.log("str: " + str);
   console.log("result: " + effect);
   var messageContent = [];
+  var message;
   
   for (let i = 0; i < glossary.effects.length; i++) {
     if (glossary.effects[i].name.toLowerCase() === effect) {
@@ -36,20 +37,15 @@ exports.run = (client, message, args) => {
     }
   }
 
-  // console.log(replications.effects[locationOfEffect].replications[rand].url);
   if (replications.effects[locationOfEffect] !== undefined) {
     messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
   }
 
+  messageBuilder();
+
   if (messageContent[0] !== undefined) {
   message.channel
-  .send("**" + messageContent[0] + "**" + 
-  "\n" + 
-  "```" + messageContent[1] + "```" +
-  "\n" + 
-  "More information: " + messageContent[2] +
-  "\n" +
-  "Replication: " + messageContent[3])
+  .send(message)
   .catch(console.error);
   } else {
     message.channel
@@ -57,3 +53,16 @@ exports.run = (client, message, args) => {
     .catch(console.error);
   }
 };
+
+// functions
+function messageBuilder() {
+  message = "**" + messageContent[0] + "**" +
+  "\n" +
+  "```" + messageContent[1] + "```" +
+  "\n" +
+  "More information: " + messageContent[2];
+
+  if (messageContent[3] !== undefined) {
+    message + "\n\n" + "Replication: " + messageContent[3];
+  }
+}
