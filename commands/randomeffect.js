@@ -12,17 +12,19 @@ exports.run = (client, message, args) => {
   
   var messageContent = [];
   
-  var rand = Math.floor(Math.random() * glossary.effects.length);
-  var name = glossary.effects[rand].name;
+  var glossaryRand = Math.floor(Math.random() * glossary.effects.length);
+  var replicationsRand;
+  var name = glossary.effects[glossaryRand].name;
   
-  messageContent.push(glossary.effects[rand].name);
-  messageContent.push(glossary.effects[rand].body);
-  messageContent.push(glossary.effects[rand].url);
+  messageContent.push(glossary.effects[glossaryRand].name);
+  messageContent.push(glossary.effects[glossaryRand].body);
+  messageContent.push(glossary.effects[glossaryRand].url);
   
   for (let i = 0; i < replications.effects.length; i++) {
     console.log(replications.effects[i].name.toLowerCase());
     if (replications.effects[i].name.toLowerCase() === name.toLowerCase()) {
-      messageContent.push("Replication: " + replications.effects[i].replications[0].url)
+      replicationsRand = Math.floor(Math.random() * replications.effects[i].replications.length)
+      messageContent.push("Replication: " + replications.effects[i].replications[replicationsRand].url)
     }
   }
   
@@ -33,7 +35,7 @@ exports.run = (client, message, args) => {
     "```" + messageContent[1] + "```" +
     "\n" + 
     "More information: " + messageContent[2] +
-    "\n" +
+    "\n\n" +
     messageContent[3]) 
     .catch(console.error);
   } else {
