@@ -35,6 +35,9 @@ exports.run = (client, message, args) => {
     messages.push(`**${substance.name} information**`);
     messages.push("");
     messages.push("**Chemical class:** " + substance.class.chemical[0]);
+    messages.push("");
+    messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
+    messages.push("");
     messages.push(buildDosageMessage(substance));
     messages.push("**Addiction potential**");
     messages.push("```" + (substance.addictionPotential || "No information") + "```");
