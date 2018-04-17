@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
   console.log(rand);
 
   messageContent.push(glossary.effects[rand].name);
-  messageContent.push(glossary.effects[rand].body;
+  messageContent.push(glossary.effects[rand].body);
   messageContent.push(glossary.effects[rand].url);
   
   message.channel
