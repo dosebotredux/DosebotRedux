@@ -22,8 +22,7 @@ exports.run = (client, message, args) => {
       console.log(messageContent);
     }
   }
-  
-  if (messageContent !== undefined) {
+  if (messageContent[0] !== undefined) {
   message.channel
   .send("**" + messageContent[0] + "**" + 
   "\n" + 
@@ -33,6 +32,7 @@ exports.run = (client, message, args) => {
   .catch(console.error);
   } else {
     message.channel
-    .send("**Error**: Unknown effect")
+    .send("**Error**: Undefined effect")
+    .catch(console.error);
   }
 };
