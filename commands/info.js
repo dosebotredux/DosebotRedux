@@ -32,17 +32,18 @@ exports.run = (client, message, args) => {
     let substance = data.substances[0]
 
     var messages = []
-    messages.push(`**${substance.name} information**`)
-    messages.push("")
-    messages.push(buildDosageMessage(substance))
-    messages.push("**Addiction potential**")
-    messages.push("```" + (substance.addictionPotential || "No information") + "```")
-    messages.push("**Tolerance**")
-    messages.push(buildToleranceMessage(substance))
+    messages.push(`**${substance.name} information**`);
+    messages.push("");
+    messages.push("**Chemical class:** " + substance.class.chemical);
+    messages.push(buildDosageMessage(substance));
+    messages.push("**Addiction potential**");
+    messages.push("```" + (substance.addictionPotential || "No information") + "```");
+    messages.push("**Tolerance**");
+    messages.push(buildToleranceMessage(substance));
 
-    message.channel.send(messages.join("\n")).catch(console.error)
+    message.channel.send(messages.join("\n")).catch(console.error);
 
-    message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error)
+    message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error);
   })
   .catch(function(error) {
     console.log("promise rejected/errored out");
