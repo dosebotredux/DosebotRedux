@@ -56,7 +56,11 @@ exports.run = (client, message, args) => {
   .catch(console.error);
 } else if (messageContent[0] !== undefined) {
   message.channel
-  .send("Fallback")
+  .send("**" + messageContent[0] + "**" +
+  "\n" +
+  "```" + messageContent[1] + "```" +
+  "\n" +
+  "More information: " + messageContent[2])
 } else {
   message.channel
   .send("**Error**: Undefined effect")
