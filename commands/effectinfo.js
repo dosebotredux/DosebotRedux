@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
       // messageContent.push(replications.effects[i].replications[0].url)
-      console.log(replications.effects[i].replications[0].url);
+      // console.log(replications.effects[i].replications[0].url);
 
       rand = Math.floor(Math.random() * replications.effects[i].replications.length);
 
