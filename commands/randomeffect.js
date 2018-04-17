@@ -8,23 +8,20 @@ exports.run = (client, message, args) => {
   .toLowerCase()
   .replace("--randomeffect ", "", -1)
   .replace(/-/g, "", -1)
-  console.log("str: " + str);
-  console.log("result: " + effect);
+
   var messageContent = [];
 
-  console.log(glossary.effects.length);
+  var rand = Math.random();
+  console.log(rand);
+  // for (let i = 0; i < glossary.effects.length; i++) {
+  //   if (glossary.effects[i].name.toLowerCase() === effect) {
+  //     messageContent.push(glossary.effects[i].name);
+  //     messageContent.push(glossary.effects[i].body);
+  //     messageContent.push(glossary.effects[i].url);
 
-  console.log((Math.random) * glossary.effects.length);
-  
-  for (let i = 0; i < glossary.effects.length; i++) {
-    if (glossary.effects[i].name.toLowerCase() === effect) {
-      messageContent.push(glossary.effects[i].name);
-      messageContent.push(glossary.effects[i].body);
-      messageContent.push(glossary.effects[i].url);
-
-      console.log(messageContent);
-    }
-  }
+  //     console.log(messageContent);
+  //   }
+  // }
   
   message.channel
   .send("**" + messageContent[0] + "**" + 
