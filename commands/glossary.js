@@ -24,6 +24,10 @@ exports.run = (client, message, args) => {
   }
   
   message.channel
-  .send("Effect: " + messageContent[0] + "\n" + messageContent[1] + "\n" + messageContent[2])
+  .send("**" + messageContent[0] + "**" + 
+  "\n" + 
+  "```" + messageContent[1] + "```" +
+  "\n" + 
+  "More information: " + messageContent[2])
   .catch(console.error);
 };
