@@ -29,9 +29,6 @@ exports.run = (client, message, args) => {
 
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
-      // messageContent.push(replications.effects[i].replications[0].url)
-      // console.log(replications.effects[i].replications[0].url);
-
       rand = Math.floor(Math.random() * replications.effects[i].replications.length);
 
       locationOfEffect = i;
@@ -40,6 +37,9 @@ exports.run = (client, message, args) => {
   }
 
   console.log(replications.effects[locationOfEffect].replications[rand].url);
+  if (replications.effects[locationOfEffect].replications[rand].url) {
+    messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
+  }
 
   if (messageContent[0] !== undefined) {
   message.channel
@@ -47,7 +47,9 @@ exports.run = (client, message, args) => {
   "\n" + 
   "```" + messageContent[1] + "```" +
   "\n" + 
-  "More information: " + messageContent[2])
+  "More information: " + messageContent[2] +
+  "\n" +
+  "Replication: " + messageContent[3])
   .catch(console.error);
   } else {
     message.channel
