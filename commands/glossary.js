@@ -7,16 +7,15 @@ exports.run = (client, message, args) => {
   // var effect = result
   //   .toLowerCase()
   //   .replace("--glossary ", "", -1);
-  var drug = str
+  var effect = str
   .toLowerCase()
   .replace("--glossary ", "", -1)
   .replace(/-/g, "", -1)
-  .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   console.log("str: " + str);
-  console.log("result: " + drug);
+  console.log("result: " + effect);
   
   for (let i = 0; i < glossary.length; i++) {
-    console.log(glossary[i].name);
+    console.log(glossary.effects[i].name);
   }
   
   message.channel
