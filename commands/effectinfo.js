@@ -25,6 +25,7 @@ exports.run = (client, message, args) => {
   }
 
   var rand;
+  var locationOfEffect;
 
   for (let i = 0; i < replications.effects.length; i++) {
     if (replications.effects[i].name.toLowerCase() === effect) {
@@ -33,10 +34,12 @@ exports.run = (client, message, args) => {
 
       rand = Math.floor(Math.random() * replications.effects[i].replications.length);
 
+      locationOfEffect = i;
+
     }
   }
 
-  console.log(replications.effects[i].replications[rand].url);
+  console.log(replications.effects[locationOfEffect].replications[rand].url);
 
   if (messageContent[0] !== undefined) {
   message.channel
