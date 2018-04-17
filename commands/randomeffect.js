@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
 
   for (let i = 0; i < replications.length; i++) {
     if (replications.effects[i].name === glossary.effects[rand].name) {
-      console.log(replications.effects[i].replications);
+      console.log("Match found");
     }
   }
   
