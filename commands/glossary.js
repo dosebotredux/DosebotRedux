@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
   console.log("str: " + str);
   console.log("result: " + effect);
   
-  for (let i = 0; i < glossary.length; i++) {
+  for (let i = 0; i < glossary.effects.length; i++) {
     if (glossary.effects[i].name === effect) {
       console.log(glossary.effects[i].name);
     }
