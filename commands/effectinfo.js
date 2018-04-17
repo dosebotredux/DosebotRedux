@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
     }
   }
 
-  console.log(replications.effects[locationOfEffect].replications[rand].url);
+  // console.log(replications.effects[locationOfEffect].replications[rand].url);
   if (replications.effects[locationOfEffect].replications[rand].url) {
     messageContent.push(replications.effects[locationOfEffect].replications[rand].url);
   }
