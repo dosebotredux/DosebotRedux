@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
   for (let i = 0; i < replications.effects.length; i++) {
     console.log(replications.effects[i].name.toLowerCase());
     if (replications.effects[i].name.toLowerCase() === name.toLowerCase()) {
-      messageContent.push("Replication: " + replications.effects[i].replications[0])
+      messageContent.push("Replication: " + replications.effects[i].replications[0].url)
     }
   }
   
@@ -33,6 +33,7 @@ exports.run = (client, message, args) => {
     "```" + messageContent[1] + "```" +
     "\n" + 
     "More information: " + messageContent[2] +
+    "\n" +
     messageContent[3]) 
     .catch(console.error);
   } else {
