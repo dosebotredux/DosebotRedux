@@ -41,11 +41,11 @@ exports.run = (client, message, args) => {
   }
   console.log(messageContent);
 
-  messageBuilder();
+  // messageBuilder();
 
   if (messageContent[0] !== undefined) {
   message.channel
-  .send(finalMessage)
+  .send(messageContent[0])
   .catch(console.error);
   } else {
     message.channel
