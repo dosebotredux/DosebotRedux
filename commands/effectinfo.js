@@ -22,7 +22,6 @@ exports.run = (client, message, args) => {
       messageContent.push(glossary.effects[i].name);
       messageContent.push(glossary.effects[i].body);
       messageContent.push(glossary.effects[i].url);
-      
     }
   }
   
@@ -38,7 +37,6 @@ exports.run = (client, message, args) => {
       
       // store location
       locationOfEffect = i;
-      
     }
   }
   
@@ -73,7 +71,6 @@ exports.run = (client, message, args) => {
   message.channel
   .send("**Error**: Undefined effect")
   .catch(console.error);
-}
 };
 
 // // functions
