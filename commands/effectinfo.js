@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
   var result = str.split(" ");
   var effect = str
   .toLowerCase()
-  .replace("--glossary ", "", -1)
+  .replace("--effectinfo ", "", -1)
   .replace(/-/g, "", -1)
   console.log("str: " + str);
   console.log("result: " + effect);
