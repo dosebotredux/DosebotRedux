@@ -1,5 +1,6 @@
 //grabs glossary info from local json and builds message based on arg
 const glossary = require("../glossary.json");
+const replications = require("../replications.json");
 
 exports.run = (client, message, args) => {
   var str = message.content;
@@ -20,6 +21,13 @@ exports.run = (client, message, args) => {
       messageContent.push(glossary.effects[i].url);
 
       console.log(messageContent);
+    }
+  }
+
+  for (let i = 0; i < replications.effects.length; i++) {
+    if (replications.effects[i].name.toLowerCase() === effect) {
+      // messageContent.push(replications.effects[i].replications[0].url)
+      console.log(replications.effects[i].replications[0].url);
     }
   }
   if (messageContent[0] !== undefined) {
