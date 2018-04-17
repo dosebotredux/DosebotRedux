@@ -9,31 +9,39 @@ exports.run = (client, message, args) => {
   .toLowerCase()
   .replace("--randomeffect ", "", -1)
   .replace(/-/g, "", -1)
-
+  
   var messageContent = [];
-
-  // var rand = Math.floor(Math.random() * glossary.effects.length);
-  var rand = 2;
+  
+  var rand = Math.floor(Math.random() * glossary.effects.length);
   var name = glossary.effects[rand].name;
-  console.log(name);
-  console.log(replications.effects[2].name);
-
+  
   messageContent.push(glossary.effects[rand].name);
   messageContent.push(glossary.effects[rand].body);
   messageContent.push(glossary.effects[rand].url);
-
+  
   for (let i = 0; i < replications.effects.length; i++) {
     console.log(replications.effects[i].name.toLowerCase());
     if (replications.effects[i].name.toLowerCase() === name.toLowerCase()) {
-      console.log("Match found");
+      messageContent.push("Replication: " + replications.effects[i].replications[0])
     }
   }
   
-  message.channel
-  .send("**" + messageContent[0] + "**" + 
-  "\n" + 
-  "```" + messageContent[1] + "```" +
-  "\n" + 
-  "More information: " + messageContent[2])
-  .catch(console.error);
-};
+  if (messageContent[3]) {
+    message.channel
+    .send("**" + messageContent[0] + "**" + 
+    "\n" + 
+    "```" + messageContent[1] + "```" +
+    "\n" + 
+    "More information: " + messageContent[2] +
+    messageContent[3]) 
+    .catch(console.error);
+  } else {
+    message.channel
+    .send("**" + messageContent[0] + "**" + 
+    "\n" + 
+    "```" + messageContent[1] + "```" +
+    "\n" + 
+    "More information: " + messageContent[2])
+    .catch(console.error);
+  } 
+}
