@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
   messageContent.push(glossary.effects[rand].body);
   messageContent.push(glossary.effects[rand].url);
 
-  for (let i = 0; i < replications.length; i++) {
+  for (let i = 0; i < replications.effects.length; i++) {
     console.log(replications.effects[i].name.toLowerCase());
     if (replications.effects[i].name.toLowerCase() === name.toLowerCase()) {
       console.log("Match found");
