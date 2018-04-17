@@ -56,13 +56,14 @@ exports.run = (client, message, args) => {
 
 // functions
 function messageBuilder() {
-  message = "**" + messageContent[0] + "**" +
-  "\n" +
-  "```" + messageContent[1] + "```" +
-  "\n" +
-  "More information: " + messageContent[2];
+  // message = "**" + messageContent[0] + "**" +
+  // "\n" +
+  // "```" + messageContent[1] + "```" +
+  // "\n" +
+  // "More information: " + messageContent[2];
 
-  if (messageContent[3] !== undefined) {
-    message + "\n\n" + "Replication: " + messageContent[3];
-  }
+  // if (messageContent[3] !== undefined) {
+  //   message + "\n\n" + "Replication: " + messageContent[3];
+  // }
+  message = messageContent[0];
 }
