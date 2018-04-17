@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
   console.log("str: " + str);
   console.log("result: " + effect);
   var messageContent = [];
-  var message;
+  var finalMessage;
   
   for (let i = 0; i < glossary.effects.length; i++) {
     if (glossary.effects[i].name.toLowerCase() === effect) {
@@ -45,7 +45,7 @@ exports.run = (client, message, args) => {
 
   if (messageContent[0] !== undefined) {
   message.channel
-  .send(message)
+  .send(finalMessage)
   .catch(console.error);
   } else {
     message.channel
