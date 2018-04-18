@@ -49,15 +49,17 @@ exports.run = (client, message, args) => {
     "\n" +
     "Threshold: " + threshold + "mg" +
     "\n" +
-    "1st plateau: " + lightMin + "-" + lightMax + "mg" +
+    "1st plateau: " + lightMin + " - " + lightMax + "mg" +
     "\n" +
-    "2nd plateau: " + commonMin + "-" + commonMax + "mg" +
+    "2nd plateau: " + commonMin + " - " + commonMax + "mg" +
     "\n" +
-    "3rd plateau: " + strongMin + "-" + strongMax + "mg" +
+    "3rd plateau: " + strongMin + " - " + strongMax + "mg" +
     "\n" +
     "4th plateau: " + heavy + "mg" +
     "\n" +
-    "```"
+    "```" +
+    "\n" +
+    "**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal."
   )
   .catch(console.error);
 
