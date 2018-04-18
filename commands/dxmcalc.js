@@ -6,9 +6,12 @@ exports.run = (client, message, args) => {
   var weight = parseFloat(result[result.length - 1]);
 
   var threshold = 100;
-  var light = 150;
-  var common = 300;
-  var strong = 550;
+  var lightMin = 100;
+  var lightMax = 200;
+  var commonMin = 200;
+  var commonMax = 400;
+  var strongMin = 400;
+  var strongMax = 700;
   var heavy = 700;
   
   message.channel.send("DoseBot recommends:").catch(console.error);
@@ -19,15 +22,21 @@ exports.run = (client, message, args) => {
   console.log(result);
 
   threshold *= calculatedDoseModifier;
-  light *= calculatedDoseModifier;
-  common *= calculatedDoseModifier;
-  strong *= calculatedDoseModifier;
+  lightMin *= calculatedDoseModifier;
+  lightMax *= calculatedDoseModifier;
+  commonMin *= calculatedDoseModifier;
+  commonMax *= calculatedDoseModifier;
+  strongMin *= calculatedDoseModifier;
+  strongMax *= calculatedDoseModifier;
   heavy *= calculatedDoseModifier;
 
   threshold = Math.floor(threshold);
-  light = Math.floor(light);
-  common = Math.floor(common);
-  strong = Math.floor(strong);
+  lightMin = Math.floor(light);
+  lightMax = Math.floor(light);
+  commonMin = Math.floor(common);
+  commonMax = Math.floor(common);
+  strongMin = Math.floor(strong);
+  strongMax = Math.floor(strong);
   heavy = Math.floor(heavy);
 
   console.log(threshold);
@@ -42,22 +51,40 @@ exports.run = (client, message, args) => {
   
   message.channel
   .send(
-    parseFloat(result[result.length - 1]) * 0.8 +
-    "mg to " +
-    parseFloat(result[result.length - 1]) * 1.2 +
-    "mg of DXM for 1st Plateau\n" +
-    parseFloat(result[result.length - 1]) * 1.75 +
-    "mg to " +
-    parseFloat(result[result.length - 1]) * 3.15 +
-    "mg of DXM for 2nd Plateau\n" +
-    parseFloat(result[result.length - 1]) * 3.5 +
-    "mg to " +
-    parseFloat(result[result.length - 1]) * 6.6 +
-    "mg of DXM for 3rd Plateau\n" +
-    parseFloat(result[result.length - 1]) * 6.6 +
-    "mg to " +
-    parseFloat(result[result.length - 1]) * 10 +
-    "mg of DXM for 4th Plateau\n**Warning: Doses exceeding 1500mg are dangerous and even an experienced user should not consider them to be safe.**"
+    "**DoseBot DXM calculator recommends:" +
+    "\n" +
+    "```" +
+    "\n" +
+    "Threshold: " + threshold + "mg" +
+    "\n" +
+    "First plateau: " + lightMin + "-" + lightMax + "mg" +
+    "\n" +
+    "Second plateau: " + commonMin + "-" + commonMax + "mg" +
+    "\n" +
+    "Third plateau: " + strongMin + "-" + strongMax + "mg" +
+    "\n" +
+    "Fourth plateau: " + heavy + "mg"
   )
   .catch(console.error);
+
+  // message.channel
+  // .send(
+  //   parseFloat(result[result.length - 1]) * 0.8 +
+  //   "mg to " +
+  //   parseFloat(result[result.length - 1]) * 1.2 +
+  //   "mg of DXM for 1st Plateau\n" +
+  //   parseFloat(result[result.length - 1]) * 1.75 +
+  //   "mg to " +
+  //   parseFloat(result[result.length - 1]) * 3.15 +
+  //   "mg of DXM for 2nd Plateau\n" +
+  //   parseFloat(result[result.length - 1]) * 3.5 +
+  //   "mg to " +
+  //   parseFloat(result[result.length - 1]) * 6.6 +
+  //   "mg of DXM for 3rd Plateau\n" +
+  //   parseFloat(result[result.length - 1]) * 6.6 +
+  //   "mg to " +
+  //   parseFloat(result[result.length - 1]) * 10 +
+  //   "mg of DXM for 4th Plateau\n**Warning: Doses exceeding 1500mg are dangerous and even an experienced user should not consider them to be safe.**"
+  // )
+  // .catch(console.error);
 };
