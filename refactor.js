@@ -10,11 +10,9 @@ var util = require("util");
 client.on("ready", () => {
   const servers = client.guilds;
     
-  for (let i = 0; i < servers.length; i++) {
-    console.log(servers[i].guild);
-  }
-
+  console.log(servers);
   console.log("DoseBot is online - beep boop");
+
 });
 
 client.on("guildMemberAdd", member => {
