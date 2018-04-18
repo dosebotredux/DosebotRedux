@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
   
   message.channel.send("DoseBot recommends:").catch(console.error);
 
-  var test = getLog(125, 300);
+  var test = 2 * getLog(125, 300) - 1;
 
   console.log(test);
   console.log(result);
