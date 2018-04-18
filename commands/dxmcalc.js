@@ -26,9 +26,9 @@ exports.run = (client, message, args) => {
   messages.push(`**DoseBot DXM calculator recommends:**\`\`\``);
   messages.push("");
   messages.push(`1st plateau: ${lightMin} - ${lightMaxCommonMin}mg`);
-  messages.push(`2st plateau: ${lightMaxCommonMin} - ${commonMaxStrongMin}mg`);
-  messages.push(`3st plateau: ${commonMaxStrongMin} - ${strongMaxHeavy}mg`);
-  messages.push(`4st plateau: ${strongMaxHeavy}mg+\`\`\``);
+  messages.push(`2nd plateau: ${lightMaxCommonMin} - ${commonMaxStrongMin}mg`);
+  messages.push(`3rd plateau: ${commonMaxStrongMin} - ${strongMaxHeavy}mg`);
+  messages.push(`4th plateau: ${strongMaxHeavy}mg+\`\`\``);
   messages.push("**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.");
   
   // join message with new lines
