@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   
   message.channel
   .send(
-    "**DoseBot DXM calculator recommends:" +
+    "**DoseBot DXM calculator recommends:**" +
     "\n" +
     "```" +
     "\n" +
@@ -59,7 +59,9 @@ exports.run = (client, message, args) => {
     "\n" +
     "Third plateau: " + strongMin + "-" + strongMax + "mg" +
     "\n" +
-    "Fourth plateau: " + heavy + "mg"
+    "Fourth plateau: " + heavy + "mg" +
+    "\n" +
+    "```"
   )
   .catch(console.error);
 
