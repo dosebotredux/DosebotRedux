@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
     messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
     messages.push("");
     messages.push(buildDosageMessage(substance));
-    messages.push("**[:exclamation:] Addiction potential**");
+    messages.push("**[:warning:️] Addiction potential**");
     messages.push("```" + (substance.addictionPotential || "No information") + "```");
     messages.push("**[:exclamation:] Tolerance**");
     messages.push(buildToleranceMessage(substance));
