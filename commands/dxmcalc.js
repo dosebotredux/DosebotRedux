@@ -24,6 +24,12 @@ exports.run = (client, message, args) => {
   strong *= calculatedDoseModifier;
   heavy *= calculatedDoseModifier;
 
+  threshold = Math.floor(threshold);
+  light = Math.floor(light);
+  common = Math.floor(common);
+  strong = Math.floor(strong);
+  heavy = Math.floor(heavy);
+
   console.log(threshold);
   console.log(light);
   console.log(common);
