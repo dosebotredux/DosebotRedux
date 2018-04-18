@@ -8,14 +8,13 @@ var path = require("path");
 var util = require("util");
 
 client.on("ready", () => {
-  console.log("DoseBot is online - beep boop");
   const servers = client.guilds;
-  
-  console.log(servers);
-  
+    
   for (let i = 0; i < servers.length; i++) {
     console.log(servers[i].guild);
   }
+
+  console.log("DoseBot is online - beep boop");
 });
 
 client.on("guildMemberAdd", member => {
@@ -25,12 +24,16 @@ client.on("guildMemberAdd", member => {
   console.log(member.id.toString());
 });
 
+client.on("guildCreate", guild => {
+  console.log("NEW SERVER JOINED")
+});
+
 client.on("message", message => {
   CommandSystem.execute(client, message)
-})
+});
 
 CommandSystem.load(function() {
   console.log("Command system loaded.")
-})
+});
 
 client.login(token);
