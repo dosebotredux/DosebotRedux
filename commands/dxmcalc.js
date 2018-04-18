@@ -5,7 +5,6 @@ exports.run = (client, message, args) => {
   var result = str.split(" ");
   var weight = parseFloat(result[result.length - 1]);
   
-  var threshold = 100;
   var lightMin = 100;
   var lightMax = 200;
   var commonMin = 200;
@@ -19,7 +18,6 @@ exports.run = (client, message, args) => {
   console.log(calculatedDoseModifier);
   console.log(result);
   
-  threshold *= calculatedDoseModifier;
   lightMin *= calculatedDoseModifier;
   lightMax *= calculatedDoseModifier;
   commonMin *= calculatedDoseModifier;
@@ -28,7 +26,6 @@ exports.run = (client, message, args) => {
   strongMax *= calculatedDoseModifier;
   heavy *= calculatedDoseModifier;
   
-  threshold = Math.floor(threshold);
   lightMin = Math.floor(lightMin);
   lightMax = Math.floor(lightMax);
   commonMin = Math.floor(commonMin);
@@ -47,8 +44,6 @@ exports.run = (client, message, args) => {
       "**DoseBot DXM calculator recommends:**" +
       "\n" +
       "```" +
-      "\n" +
-      "Threshold: " + threshold + "mg" +
       "\n" +
       "1st plateau: " + lightMin + " - " + lightMax + "mg" +
       "\n" +
