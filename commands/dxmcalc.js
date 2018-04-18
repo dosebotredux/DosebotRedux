@@ -31,19 +31,15 @@ exports.run = (client, message, args) => {
   heavy *= calculatedDoseModifier;
 
   threshold = Math.floor(threshold);
-  lightMin = Math.floor(light);
-  lightMax = Math.floor(light);
-  commonMin = Math.floor(common);
-  commonMax = Math.floor(common);
-  strongMin = Math.floor(strong);
-  strongMax = Math.floor(strong);
+  lightMin = Math.floor(lightMin);
+  lightMax = Math.floor(lightMax);
+  commonMin = Math.floor(commonMin);
+  commonMax = Math.floor(commonMax);
+  strongMin = Math.floor(strongMin);
+  strongMax = Math.floor(strongMax);
   heavy = Math.floor(heavy);
 
-  console.log(threshold);
-  console.log(light);
-  console.log(common);
-  console.log(strong);
-  console.log(heavy);
+
 
   function getLog(x, y) {
     return Math.log(y) / Math.log(x);
