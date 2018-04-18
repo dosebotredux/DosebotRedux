@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
     return Math.log(y) / Math.log(x);
   }
   
-  if (threshold !== NaN) {
+  if (lightMin !== NaN) {
     message.channel
     .send(
       "**DoseBot DXM calculator recommends:**" +
