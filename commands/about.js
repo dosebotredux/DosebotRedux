@@ -1,4 +1,4 @@
-//Josie message
+//about message
 exports.run = (client, message, args) => {
   message.channel
   .send(
