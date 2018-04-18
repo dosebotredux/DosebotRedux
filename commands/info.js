@@ -32,15 +32,15 @@ exports.run = (client, message, args) => {
     let substance = data.substances[0]
 
     var messages = []
-    messages.push(`**${substance.name} information**`);
+    messages.push(`**[:pill:] ${substance.name} information**`);
     messages.push("");
-    messages.push("**Chemical class:** " + substance.class.chemical[0]);
-    messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
+    messages.push("**[:exclamation:] Chemical class:** " + substance.class.chemical[0]);
+    messages.push("[:exclamation:] **Psychoactive class: **" +substance.class.psychoactive[0]);
     messages.push("");
     messages.push(buildDosageMessage(substance));
-    messages.push("**Addiction potential**");
+    messages.push("**[:exclamation:] Addiction potential**");
     messages.push("```" + (substance.addictionPotential || "No information") + "```");
-    messages.push("**Tolerance**");
+    messages.push("**[:exclamation:] Tolerance**");
     messages.push(buildToleranceMessage(substance));
 
     message.channel.send(messages.join("\n")).catch(console.error);
@@ -91,7 +91,7 @@ function buildDosageMessage(substance) {
       return undefined
     }
 
-    messages.push(`**Dosage** (${roa.name})`)
+    messages.push(`**[:pill:] Dosage** (${roa.name})`)
     messages.push("```")
     if (!!dose) {
       messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
@@ -105,7 +105,7 @@ function buildDosageMessage(substance) {
     messages.push("```")
 
     // Duration
-    messages.push(`**Duration** (${roa.name})`)
+    messages.push(`**[:stopwatch:] Duration** (${roa.name})`)
     if (!!roa.duration) {
       messages.push("```")
       messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
