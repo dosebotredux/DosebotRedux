@@ -1,5 +1,4 @@
 //calc dxm plateau dosages. usage --dxmcalc [weight in pounds]
-//fix this so it sends all in one block instead of a separate messages
 exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
@@ -25,6 +24,7 @@ exports.run = (client, message, args) => {
   messages.push(`2st plateau: ${commonMin} - ${commonMax}mg`);
   messages.push(`3st plateau: ${strongMin} - ${strongMax}mg`);
   messages.push(`4st plateau: ${heavy}mg+`);
+  messages.push("```");
 
   message.channel.send(messages.join("\n")).catch(console.error);
   
