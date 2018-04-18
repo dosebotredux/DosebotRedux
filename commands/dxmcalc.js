@@ -5,7 +5,8 @@ exports.run = (client, message, args) => {
   var weight = parseFloat(result[result.length - 1]);
   
   if (!isNaN(weight)) {
-    message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]")
+    message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]");
+    return;
   }
   
   var calculatedDoseModifier = 2 * getLog(125, weight) - 1;
