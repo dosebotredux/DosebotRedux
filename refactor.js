@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require("./command-system.js")()
-const servers = client.servers;
+const servers = client.guilds;
 
 console.log(servers);
 
