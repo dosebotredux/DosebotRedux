@@ -34,8 +34,8 @@ exports.run = (client, message, args) => {
     var messages = []
     messages.push(`**[:pill:] ${substance.name} information**`);
     messages.push("");
-    messages.push("**[:exclamation:] Chemical class:** " + substance.class.chemical[0]);
-    messages.push("[:exclamation:] **Psychoactive class: **" +substance.class.psychoactive[0]);
+    messages.push("**Chemical class:** " + substance.class.chemical[0]);
+    messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
     messages.push("");
     messages.push(buildDosageMessage(substance));
     messages.push("**[:exclamation:] Addiction potential**");
