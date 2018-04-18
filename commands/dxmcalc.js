@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
   messages.push("```");
   messages.push("**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.");
   
-  if (lightMin !== NaN) {
+  if (!isNaN(lightMin)) {
     message.channel.send(messages.join("\n")).catch(console.error);
   } else {
     message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]")
