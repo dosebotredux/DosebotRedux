@@ -2,13 +2,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require("./command-system.js")()
-const servers = client.guilds;
-
-console.log(servers);
-
-for (let i = 0; i < servers.length; i++) {
-  console.log(servers[i].guild);
-}
 
 var fs = require("fs");
 var path = require("path");
@@ -16,6 +9,13 @@ var util = require("util");
 
 client.on("ready", () => {
   console.log("DoseBot is online - beep boop");
+  const servers = client.guilds;
+  
+  console.log(servers);
+  
+  for (let i = 0; i < servers.length; i++) {
+    console.log(servers[i].guild);
+  }
 });
 
 client.on("guildMemberAdd", member => {
