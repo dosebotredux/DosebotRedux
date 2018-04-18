@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
   var result = str.split(" ");
   var weight = parseFloat(result[result.length - 1]);
   
-  if (!isNaN(weight)) {
+  if (isNaN(weight)) {
     message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]");
     return;
   }
