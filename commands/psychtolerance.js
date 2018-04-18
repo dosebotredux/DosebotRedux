@@ -11,9 +11,9 @@ exports.run = (client, message, args) => {
       // If days since last dose would give a very high calculated dose return a warning
       message.channel
       .send(
-        "Take approximately " +
+        "Take approximately **" +
         Math.ceil(y / 10) * 10 +
-        "% of the drug to reach full effects.\nWarning: Negative effects may be amplified with a high dose of a psychedelic."
+        "%** of the drug to reach full effects.\nWarning: Negative effects may be amplified with a high dose of a psychedelic."
       )
       .catch(console.error);
     } else {

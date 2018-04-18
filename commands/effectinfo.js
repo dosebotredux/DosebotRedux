@@ -51,13 +51,13 @@ exports.run = (client, message, args) => {
   // spaghetti message builder
   if (messageContent[3] !== undefined) {
     message.channel
-    .send("**" + messageContent[0] + "**" +
+    .send("**[:exclamation:] " + messageContent[0] + "**" +
     "\n" +
     "```" + messageContent[1] + "```" +
     "\n" +
-    "More information: " + messageContent[2] +
+    "**More information:** " + messageContent[2] +
     "\n\n" +
-    "Replication: " + messageContent[3]
+    "**Replication:** " + messageContent[3]
   )
   .catch(console.error);
 } else if (messageContent[0] !== undefined) {
@@ -66,7 +66,7 @@ exports.run = (client, message, args) => {
   "\n" +
   "```" + messageContent[1] + "```" +
   "\n" +
-  "More information: " + messageContent[2])
+  "**More information:** " + messageContent[2])
 } else {
   message.channel
   .send("**Error**: Undefined effect")
