@@ -51,7 +51,7 @@ exports.run = (client, message, args) => {
       "\n" +
       "3rd plateau: " + strongMin + " - " + strongMax + "mg" +
       "\n" +
-      "4th plateau: " + heavy + "+mg" +
+      "4th plateau: " + heavy + "mg+" +
       "\n" +
       "```" +
       "\n" +
