@@ -3,8 +3,23 @@
 exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
+
+  var threshold = 100;
+  var light = 150;
+  var common = 300;
+  var strong = 550;
+  var heavy = 700;
   
   message.channel.send("DoseBot recommends:").catch(console.error);
+
+  var test = getLog(125, 300);
+
+  console.log(test);
+  console.log(result);
+
+  function getLog(x, y) {
+    return Math.log(y) / Math.log(x);
+  }
   
   message.channel
   .send(
