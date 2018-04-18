@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
   var weight = parseFloat(result[result.length - 1]);
-
+  
   var calculatedDoseModifier = 2 * getLog(125, weight) - 1;
   
   var lightMin = Math.floor(100 * calculatedDoseModifier);
@@ -13,11 +13,10 @@ exports.run = (client, message, args) => {
   var strongMin = Math.floor(400 * calculatedDoseModifier);
   var strongMax = Math.floor(700 * calculatedDoseModifier);
   var heavy = Math.floor(700 * calculatedDoseModifier);
-
+  
   var messages = [];
-
+  
   messages.push(`**DoseBot DXM calculator recommends:**`);
-  messages.push("");
   messages.push("```");
   messages.push("");
   messages.push(`1st plateau: ${lightMin} - ${lightMax}mg`);
@@ -25,41 +24,13 @@ exports.run = (client, message, args) => {
   messages.push(`3st plateau: ${strongMin} - ${strongMax}mg`);
   messages.push(`4st plateau: ${heavy}mg+`);
   messages.push("```");
-
-  message.channel.send(messages.join("\n")).catch(console.error);
+  messages.push("**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.");
   
-  // if (lightMin !== NaN) {
-  //   message.channel
-  //   .send()
-  // }
-  // if (lightMin !== NaN) {
-  //   message.channel
-  //   .send(
-  //     "**DoseBot DXM calculator recommends:**" +
-  //     "\n" +
-  //     "```" +
-  //     "\n" +
-  //     "1st plateau: " + lightMin + " - " + lightMax + "mg" +
-  //     "\n" +
-  //     "2nd plateau: " + commonMin + " - " + commonMax + "mg" +
-  //     "\n" +
-  //     "3rd plateau: " + strongMin + " - " + strongMax + "mg" +
-  //     "\n" +
-  //     "4th plateau: " + heavy + "mg+" +
-  //     "\n" +
-  //     "```" +
-  //     "\n" +
-  //     "**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal."
-  //   )
-  //   .catch(console.error);
-  // } else {
-  //   message.channel
-  //   .send(
-  //     "**Error:** No weight provided"
-  //   )
-  //   .catch(console.error);
-  // }
-  
+  if (lightMin !== NaN) {
+    message.channel.send(messages.join("\n")).catch(console.error);
+  } else {
+    message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]")
+  }
 };
 
 // functions
