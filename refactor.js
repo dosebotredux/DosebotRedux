@@ -6,6 +6,10 @@ const servers = client.guilds;
 
 console.log(servers);
 
+for (let i = 0; i < servers.length; i++) {
+  console.log(servers[i].guild);
+}
+
 var fs = require("fs");
 var path = require("path");
 var util = require("util");
