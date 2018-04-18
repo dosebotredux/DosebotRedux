@@ -3,7 +3,13 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
   var weight = parseFloat(result[result.length - 1]);
+  
+  if (!isNaN(weight)) {
+    message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]")
+  }
+  
   var calculatedDoseModifier = 2 * getLog(125, weight) - 1;
+  
   var lightMin = Math.floor(100 * calculatedDoseModifier);
   var lightMaxCommonMin = Math.floor(200 * calculatedDoseModifier);
   var commonMaxStrongMin = Math.floor(400 * calculatedDoseModifier);
@@ -18,12 +24,9 @@ exports.run = (client, message, args) => {
   messages.push(`4st plateau: ${strongMaxHeavy}mg+\`\`\``);
   messages.push("**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.");
   
-  if (!isNaN(lightMin)) {
-    message.channel.send(messages.join("\n")).catch(console.error);
-  } else {
-    message.channel.send("**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]")
-  }
+  message.channel.send(messages.join("\n")).catch(console.error);
 };
+
 // functions
 function getLog(x, y) {
   return Math.log(y) / Math.log(x);
