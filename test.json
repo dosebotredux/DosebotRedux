@@ -1,0 +1,1236 @@
+{
+  "effects": [
+    {
+      "class": "psychedelics",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "dissociatives",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "depressants",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "stimulants",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "deliriants",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "cannabinoids",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "class": "nootropics",
+      "subjectiveEffects": 
+      {
+        "visualEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "distortions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "geometry": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          },
+          {
+            "hallucinatoryStates": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "auditoryEffects": [
+          {
+            "auditoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "tactileEffects": [
+          {
+            "tactileEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "disconnectiveEffects": [
+          {
+            "disconnectiveEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "smellTasteEffects": [
+          {
+            "smellTasteEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "multisensoryEffects": [
+          {
+            "multisensoryEffects": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "cognitiveEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "novel": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "psychological": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "transpersonal": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "physicalEffects": [
+          {
+            "enhancements": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "suppressions": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "alterations": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ],
+        "uncomfortableEffects": [
+          {
+            "cardiovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "cerebrovascular": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ],
+            "bodily": [
+              {
+                "name": "name",
+                "url": "url"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

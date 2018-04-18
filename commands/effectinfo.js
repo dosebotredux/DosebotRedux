@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
     message.channel
     .send("**[:exclamation:] " + messageContent[0] + "**" +
     "\n" +
-    "```" + messageContent[1] + "```" +
+    "```\n" + messageContent[1] + "\n```" +
     "\n" +
     "**More information:** " + messageContent[2] +
     "\n\n" +
