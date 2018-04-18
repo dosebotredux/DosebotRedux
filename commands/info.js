@@ -105,7 +105,7 @@ function buildDosageMessage(substance) {
     messages.push("```")
 
     // Duration
-    messages.push(`**[:stopwatch:] Duration** (${roa.name})`)
+    messages.push(`**[:clock2:] Duration** (${roa.name})`)
     if (!!roa.duration) {
       messages.push("```")
       messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
