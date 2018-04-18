@@ -14,8 +14,6 @@ exports.run = (client, message, args) => {
   var strongMax = 700;
   var heavy = 700;
   
-  message.channel.send("DoseBot recommends:").catch(console.error);
-
   var calculatedDoseModifier = 2 * getLog(125, weight) - 1;
 
   console.log(calculatedDoseModifier);
@@ -39,8 +37,6 @@ exports.run = (client, message, args) => {
   strongMax = Math.floor(strongMax);
   heavy = Math.floor(heavy);
 
-
-
   function getLog(x, y) {
     return Math.log(y) / Math.log(x);
   }
@@ -53,13 +49,13 @@ exports.run = (client, message, args) => {
     "\n" +
     "Threshold: " + threshold + "mg" +
     "\n" +
-    "First plateau: " + lightMin + "-" + lightMax + "mg" +
+    "1st plateau: " + lightMin + "-" + lightMax + "mg" +
     "\n" +
-    "Second plateau: " + commonMin + "-" + commonMax + "mg" +
+    "2nd plateau: " + commonMin + "-" + commonMax + "mg" +
     "\n" +
-    "Third plateau: " + strongMin + "-" + strongMax + "mg" +
+    "3rd plateau: " + strongMin + "-" + strongMax + "mg" +
     "\n" +
-    "Fourth plateau: " + heavy + "mg" +
+    "4th plateau: " + heavy + "mg" +
     "\n" +
     "```"
   )
