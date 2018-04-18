@@ -3,6 +3,7 @@
 exports.run = (client, message, args) => {
   var str = message.content;
   var result = str.split(" ");
+  var weight = parseFloat(result[result.length - 1]);
 
   var threshold = 100;
   var light = 150;
@@ -12,10 +13,22 @@ exports.run = (client, message, args) => {
   
   message.channel.send("DoseBot recommends:").catch(console.error);
 
-  var test = 2 * getLog(125, 300) - 1;
+  var calculatedDoseModifier = 2 * getLog(125, weight) - 1;
 
-  console.log(test);
+  console.log(calculatedDoseModifier);
   console.log(result);
+
+  threshold *= calculatedDoseModifier;
+  light *= calculatedDoseModifier;
+  common *= calculatedDoseModifier;
+  strong *= calculatedDoseModifier;
+  heavy *= calculatedDoseModifier;
+
+  console.log(threshold);
+  console.log(light);
+  console.log(common);
+  console.log(strong);
+  console.log(heavy);
 
   function getLog(x, y) {
     return Math.log(y) / Math.log(x);
