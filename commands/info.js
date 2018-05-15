@@ -78,6 +78,10 @@ exports.run = (client, message, args) => {
 };
 
 // Functions
+function capitalize(name) {
+  return name[0].toUpperCase() + name.slice(1);
+}
+
 function buildToleranceMessage(substance) {
   let t = substance.tolerance
   // console.log(t)
@@ -93,8 +97,9 @@ function buildDosageMessage(substance) {
   
   var i
   for (i = 0; i < substance.roas.length; i++) {
-    let roa = substance.roas[i]
-    let dose = roa.dose
+    let roa = substance.roas[i];
+    let dose = roa.dose;
+    let name = capitalize(roa.name);
     
     let dosageObjectToString = function(x) {
       // console.log(x)
@@ -115,7 +120,7 @@ function buildDosageMessage(substance) {
       return undefined
     }
     
-    messages.push(`**${roa.name}**`)
+    messages.push(`*${name}*`)
     if (!!dose) {
       messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
       messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -128,7 +133,7 @@ function buildDosageMessage(substance) {
     }
     
     // Duration
-    messages.push(`**(${roa.name})**`)
+    messages.push(`*(${name})*`)
     if (!!roa.duration) {
       messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
       messages.push(`Comeup: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
@@ -140,9 +145,7 @@ function buildDosageMessage(substance) {
     } else {
       messages.push("```No duration information.```")
     }
-    
   }
-  
   // console.log(messages)
   return messages.join("\n")
 }
