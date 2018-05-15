@@ -37,19 +37,22 @@ exports.run = (client, message, args) => {
   */
   .setTimestamp()
   .setURL("https://discord.js.org/#/docs/main/indev/class/RichEmbed")
-  .addField("First plateau",
-  lightMin + "-" + lightMaxCommonMin + "mg")
+  .addField("Dosages",
+  "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
++ "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
++ "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
++ "Fourth plateau: " + strongMaxHeavy + "mg+")
   /*
   * Inline fields may not display as inline if the thumbnail and/or image is too big.
   */
-  .addField("Second plateau",
-  lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n" + "test")
-  .addField("Third plateau",
-  commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
-  .addField("Fourth plateau",
-  strongMaxHeavy + "mg+")
-  .addField("Caution",
-  "Dosages are estimates, please use responsibly and take into account your tolerance")
+  // .addField("Second plateau",
+  // lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n" + "test")
+  // .addField("Third plateau",
+  // commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
+  // .addField("Fourth plateau",
+  // strongMaxHeavy + "mg+")
+  .addField("Warning",
+  "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   /*
   * Blank field, useful to create some space.
   */
