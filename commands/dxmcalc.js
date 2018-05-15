@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
   var commonMaxStrongMin = Math.floor(400 * calculatedDoseModifier);
   var strongMaxHeavy = Math.floor(700 * calculatedDoseModifier);  
   var messages = [];
-
+  
   const embed = new Discord.RichEmbed()
   .setTitle("DXM Dosage Calculator")
   .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
@@ -33,37 +33,28 @@ exports.run = (client, message, args) => {
   .setImage("http://www.dosebot.org/images/dose.png")
   .setThumbnail("http://www.dosebot.org/images/dose.png")
   /*
-   * Takes a Date object, defaults to current date.
-   */
+  * Takes a Date object, defaults to current date.
+  */
   .setTimestamp()
   .setURL("https://discord.js.org/#/docs/main/indev/class/RichEmbed")
   .addField("First plateau",
-    lightMin + "-" + lightMaxCommonMin + "mg")
+  lightMin + "-" + lightMaxCommonMin + "mg")
   /*
-   * Inline fields may not display as inline if the thumbnail and/or image is too big.
-   */
+  * Inline fields may not display as inline if the thumbnail and/or image is too big.
+  */
   .addField("Second plateau",
-    lightMaxCommonMin + "-" + commonMaxStrongMin + "mg")
+  lightMaxCommonMin + "-" + commonMaxStrongMin + "mg")
+  .addField("Third plateau",
+  commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
+  .addField("Fourth plateau",
+  strongMaxHeavy + "mg")
   /*
-   * Blank field, useful to create some space.
-   */
-  .addBlankField(true)
-  .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
-
-  message.channel.send({embed});
-
-  // build message
-  messages.push(`**DoseBot DXM calculator recommends:**`);
-  messages.push(`\`\`\``);
-  messages.push(`1st plateau: ${lightMin} - ${lightMaxCommonMin}mg`);
-  messages.push(`2nd plateau: ${lightMaxCommonMin} - ${commonMaxStrongMin}mg`);
-  messages.push(`3rd plateau: ${commonMaxStrongMin} - ${strongMaxHeavy}mg`);
-  messages.push(`4th plateau: ${strongMaxHeavy}mg+\n`);
-  messages.push(`\`\`\``)
-  messages.push("**Warning:** These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.");
+  * Blank field, useful to create some space.
+  */
+  // .addBlankField(true)
+  // .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
   
-  // join message with new lines
-  message.channel.send(messages.join("\n")).catch(console.error);
+  message.channel.send({embed});
 };
 
 // function for getting log base 125
