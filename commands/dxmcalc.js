@@ -38,11 +38,12 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("https://discord.js.org/#/docs/main/indev/class/RichEmbed")
   .addField("First plateau",
-    lightMin + "-" + lightMaxCommonMin)
+    lightMin + "-" + lightMaxCommonMin + "mg")
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
-  .addField("Inline Field", "They can also be inline.", true)
+  .addField("Second plateau",
+    lightMaxCommonMin + "-" + commonMaxStrongMin + "mg")
   /*
    * Blank field, useful to create some space.
    */
