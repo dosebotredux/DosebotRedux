@@ -33,7 +33,7 @@ exports.run = (client, message, args) => {
   let substance = data.substances[0]
   
   const embed = new Discord.RichEmbed()
-  .setTitle(`**${substance.name} Drug Information**`)
+  .setTitle(`**${substance.name} drug information**`)
   .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
   .setColor("747474")
   .setFooter("Please use drugs responsibly", "http://www.dosebot.org/images/dose.png")
@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   .addField("[:warning:] Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   .addField("Tolerance", buildToleranceMessage(substance))
-  .addField("[:globe_with_meridians:] Links", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name} \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
+  .addField("[:globe_with_meridians:] Links", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
   message.channel.send({embed});
   
@@ -82,7 +82,7 @@ function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
   if (!!tolerances) {
-    return `Full: ${tolerances.full}\nHalf: ${tolerances.half}\nBaseline: ${tolerances.zero}`
+    return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
   } else {
     return "No information"
   }
