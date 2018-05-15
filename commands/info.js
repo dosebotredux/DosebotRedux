@@ -55,21 +55,21 @@ exports.run = (client, message, args) => {
   
   message.channel.send({embed});
   
-  var messages = []
-  messages.push(`**[:pill:] ${substance.name} information**`);
-  messages.push("");
-  messages.push("**Chemical class:** " + substance.class.chemical[0]);
-  messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
-  messages.push("");
-  messages.push(buildDosageMessage(substance));
-  messages.push("**[:warning:️] Addiction potential**");
-  messages.push("```" + (substance.addictionPotential || "No information") + "```");
-  messages.push("**[:exclamation:] Tolerance**");
-  messages.push(buildToleranceMessage(substance));
+  // var messages = []
+  // messages.push(`**[:pill:] ${substance.name} information**`);
+  // messages.push("");
+  // messages.push("**Chemical class:** " + substance.class.chemical[0]);
+  // messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
+  // messages.push("");
+  // messages.push(buildDosageMessage(substance));
+  // messages.push("**[:warning:️] Addiction potential**");
+  // messages.push("```" + (substance.addictionPotential || "No information") + "```");
+  // messages.push("**[:exclamation:] Tolerance**");
+  // messages.push(buildToleranceMessage(substance));
   
-  message.channel.send(messages.join("\n")).catch(console.error);
+  // message.channel.send(messages.join("\n")).catch(console.error);
   
-  message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error);
+  // message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error);
 })
 .catch(function(error) {
   console.log("promise rejected/errored out");
@@ -115,8 +115,7 @@ function buildDosageMessage(substance) {
       return undefined
     }
     
-    messages.push(`**[:pill:] Dosage** (${roa.name})`)
-    messages.push("\n```")
+    messages.push(`**${roa.name}`)
     if (!!dose) {
       messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
       messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -126,19 +125,16 @@ function buildDosageMessage(substance) {
     } else {
       messages.push("No dosage information.")
     }
-    messages.push("\n```")
     
     // Duration
-    messages.push(`**[:clock2:] Duration** (${roa.name})`)
+    messages.push(`${roa.name}`)
     if (!!roa.duration) {
-      messages.push("\n```")
       messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
       messages.push(`Comeup: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
       messages.push(`Peak: ${durationObjectToString(roa.duration.peak) || "no information"}`)
       messages.push(`Offset: ${durationObjectToString(roa.duration.offset) || "no information"}`)
       messages.push(`Afterglow: ${durationObjectToString(roa.duration.afterglow) || "no information"}`)
       messages.push(`Total: ${durationObjectToString(roa.duration.total) || "no information"}`)
-      messages.push("\n```")
     } else {
       messages.push("```No duration information.```")
     }
