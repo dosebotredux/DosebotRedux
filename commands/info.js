@@ -41,11 +41,11 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField("[:scales:] Dosages", buildDosageMessage(substance))
-  .addField("[:clock2: ] Duration",
-  "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
-  + "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
-  + "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
-  + "Fourth plateau: " + strongMaxHeavy + "mg+")
+  // .addField("[:clock2: ] Duration",
+  // "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
+  // + "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
+  // + "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
+  // + "Fourth plateau: " + strongMaxHeavy + "mg+")
   .addField("[:warning:] Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   .addField("[:globe_with_meridians:] Links",
