@@ -81,8 +81,8 @@ function capitalize(name) {
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
-  if (!!t) {
-    return `Full: ${t.full}\nHalf: ${t.half}\nBaseline: ${t.zero}`
+  if (!!tolerances) {
+    retolerancesurn `Full: ${tolerances.full}\nHalf: ${tolerances.half}\nBaseline: ${tolerances.zero}`
   } else {
     return "No information"
   }
