@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
   const embed = new Discord.RichEmbed()
   .setTitle("DXM Dosage Calculator")
   .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
-  .setColor("ea125e")
+  .setColor("747474")
   // .setDescription("This is the main body of text, it can hold 2048 characters.")
   .setFooter("Please use drugs responsiblty", "http://www.dosebot.org/images/dose.png")
   // .setImage("http://www.dosebot.org/images/dose.png")
@@ -43,11 +43,13 @@ exports.run = (client, message, args) => {
   * Inline fields may not display as inline if the thumbnail and/or image is too big.
   */
   .addField("Second plateau",
-  lightMaxCommonMin + "-" + commonMaxStrongMin + "mg")
+  lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n" + "test")
   .addField("Third plateau",
   commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
   .addField("Fourth plateau",
   strongMaxHeavy + "mg+")
+  .addField("Caution",
+  "Dosages are estimates, please use responsibly and take into account your tolerance")
   /*
   * Blank field, useful to create some space.
   */
