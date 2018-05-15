@@ -42,9 +42,9 @@ exports.run = (client, message, args) => {
   .setURL("http://www.dosebot.org")
   .addField("Chemical Class", substance.class.chemical[0])
   .addField("Psychoactive class", substance.class.psychoactive[0])
-  .addField("[:scales:] Dosages", buildDosageMessage(substance))
-  .addField("[:clock2:] Duration", buildDurationMessage(substance))
-  .addField("[:warning:] Warning",
+  .addField(":scales: Dosages", buildDosageMessage(substance))
+  .addField(":clock2: Duration", buildDurationMessage(substance))
+  .addField(":warning: Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   .addField("Tolerance", buildToleranceMessage(substance))
   .addField("[:globe_with_meridians:] Links", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
