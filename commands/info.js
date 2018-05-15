@@ -82,7 +82,7 @@ function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
   if (!!tolerances) {
-    retolerancesurn `Full: ${tolerances.full}\nHalf: ${tolerances.half}\nBaseline: ${tolerances.zero}`
+    return `Full: ${tolerances.full}\nHalf: ${tolerances.half}\nBaseline: ${tolerances.zero}`
   } else {
     return "No information"
   }
