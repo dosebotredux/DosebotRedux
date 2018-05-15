@@ -32,14 +32,14 @@ exports.run = (client, message, args) => {
   .setThumbnail("http://www.dosebot.org/images/dose.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":scales: Dosages",
+  .addField("[:scales:] Dosages",
   "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
 + "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
 + "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
 + "Fourth plateau: " + strongMaxHeavy + "mg+")
-  .addField(":warning: Warning",
+  .addField("[:warning:] Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
-  .addField(":globe_with_meridians: Links",
+  .addField("[:globe_with_meridians:] Links",
   "[PsychonautWiki](https://psychonautwiki.org/wiki/DXM)" + "\n" 
 + "[Tripsit](http://drugs.tripsit.me/dxm)" + "\n"
 + "[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)")
