@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
   .setColor("ea125e")
   // .setDescription("This is the main body of text, it can hold 2048 characters.")
   .setFooter("Please use drugs responsiblty", "http://www.dosebot.org/images/dose.png")
-  .setImage("http://www.dosebot.org/images/dose.png")
+  // .setImage("http://www.dosebot.org/images/dose.png")
   .setThumbnail("http://www.dosebot.org/images/dose.png")
   /*
   * Takes a Date object, defaults to current date.
@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   .addField("Third plateau",
   commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
   .addField("Fourth plateau",
-  strongMaxHeavy + "mg")
+  strongMaxHeavy + "mg+")
   /*
   * Blank field, useful to create some space.
   */
