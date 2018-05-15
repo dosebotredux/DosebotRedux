@@ -9,16 +9,16 @@
   "dependencies": {
     "discord-anti-spam": "^1.1.1",
     "discord.io": "^2.5.3",
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.3.2",
     "dotenv": "^5.0.1",
     "forever": "^0.15.3",
     "graphql": "^0.13.2",
-    "graphql-request": "^1.5.1",
-    "jquery": "^3.2.1",
-    "js-yaml": "^3.10.0",
+    "graphql-request": "^1.5.2",
+    "jquery": "^3.3.1",
+    "js-yaml": "^3.11.0",
     "request": "^2.85.0",
-    "winston": "^2.4.0",
-    "zombie": "^5.0.7"
+    "winston": "^2.4.2",
+    "zombie": "^5.0.8"
   },
   "devDependencies": {
     "eslint-config-google": "^0.9.1"
