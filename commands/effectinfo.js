@@ -51,17 +51,25 @@ exports.run = (client, message, args) => {
   
   // build message
   if (messageContent[3] !== undefined) {
+    // Name
     messages.push(`**${messageContent[0]}**`);
     messages.push(`\`\`\``);
+    // Description
     messages.push(messageContent[1]);
     messages.push(`\`\`\``);
-    messages.push(`More information: ${messageContent[2]}`);
-    messages.push(`Replication: ${messageContent[3]}`);
+    // Link
+    messages.push(`**More information**: ${messageContent[2]}`);
+    messages.push("");
+    // Replication
+    messages.push(`**Replication**: ${messageContent[3]}`);
   } else if (messageContent[0] !== undefined) {
+    // Name
     messages.push(`**${messageContent[0]}**`);
     messages.push(`\`\`\``);
+    // Description
     messages.push(messageContent[1]);
     messages.push(`\`\`\``);
+    // Link
     messages.push(`More information: ${messageContent[2]}`);
   } else {
     messages.push(`**Error**: Undefined effect`);
