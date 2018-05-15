@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
   var messages = [];
   
   // build message
-  messages.push(`**DoseBot DXM calculator recommends:**\n`);
+  messages.push(`**DoseBot DXM calculator recommends:**`);
   messages.push(`\`\`\``);
   messages.push(`1st plateau: ${lightMin} - ${lightMaxCommonMin}mg`);
   messages.push(`2nd plateau: ${lightMaxCommonMin} - ${commonMaxStrongMin}mg`);
