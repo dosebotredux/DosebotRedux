@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   .addField(":warning: __Warning__",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages.")
   .addField("Tolerance", buildToleranceMessage(substance))
-  .addField(":globe_with_meridians] __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
+  .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
   message.channel.send({embed});
 })
