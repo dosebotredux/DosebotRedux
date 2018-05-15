@@ -28,37 +28,22 @@ exports.run = (client, message, args) => {
   .setTitle("DXM Dosage Calculator")
   .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
   .setColor("747474")
-  // .setDescription("This is the main body of text, it can hold 2048 characters.")
-  .setFooter("Please use drugs responsiblty", "http://www.dosebot.org/images/dose.png")
-  // .setImage("http://www.dosebot.org/images/dose.png")
+  .setFooter("Please use drugs responsibly", "http://www.dosebot.org/images/dose.png")
   .setThumbnail("http://www.dosebot.org/images/dose.png")
-  /*
-  * Takes a Date object, defaults to current date.
-  */
   .setTimestamp()
-  .setURL("https://discord.js.org/#/docs/main/indev/class/RichEmbed")
-  .addField("Dosages",
+  .setURL("http://www.dosebot.org")
+  .addField(":scales: Dosages",
   "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
 + "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
 + "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
 + "Fourth plateau: " + strongMaxHeavy + "mg+")
-  /*
-  * Inline fields may not display as inline if the thumbnail and/or image is too big.
-  */
-  // .addField("Second plateau",
-  // lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n" + "test")
-  // .addField("Third plateau",
-  // commonMaxStrongMin + "-" + strongMaxHeavy + "mg")    
-  // .addField("Fourth plateau",
-  // strongMaxHeavy + "mg+")
-  .addField("Warning",
+  .addField(":warning: Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
-  /*
-  * Blank field, useful to create some space.
-  */
-  // .addBlankField(true)
-  // .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
-  
+  .addField(":globe_with_meridians: Links",
+  "[PsychonautWiki](https://psychonautwiki.org/wiki/DXM)" + "\n" 
++ "[Tripsit](http://drugs.tripsit.me/dxm)" + "\n"
++ "[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)")
+
   message.channel.send({embed});
 };
 
