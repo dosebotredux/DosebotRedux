@@ -40,32 +40,16 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField("Chemical Class", substance.class.chemical[0])
-  .addField("Psychoactive class", substance.class.psychoactive[0])
-  .addField(":scales: Dosages", buildDosageMessage(substance))
-  .addField(":clock2: Duration", buildDurationMessage(substance))
-  .addField(":warning: Warning",
-  "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
+  .addField("__Chemical class__", substance.class.chemical[0])
+  .addField("__Psychoactive class__", substance.class.psychoactive[0])
+  .addField(":scales: __Dosages__", buildDosageMessage(substance))
+  .addField(":clock2: __Duration__", buildDurationMessage(substance))
+  .addField(":warning: __Warning__",
+  "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages.")
   .addField("Tolerance", buildToleranceMessage(substance))
   .addField("[:globe_with_meridians:] Links", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
   message.channel.send({embed});
-  
-  // var messages = []
-  // messages.push(`**[:pill:] ${substance.name} information**`);
-  // messages.push("");
-  // messages.push("**Chemical class:** " + substance.class.chemical[0]);
-  // messages.push("**Psychoactive class: **" +substance.class.psychoactive[0]);
-  // messages.push("");
-  // messages.push(buildDosageMessage(substance));
-  // messages.push("**[:warning:️] Addiction potential**");
-  // messages.push("```" + (substance.addictionPotential || "No information") + "```");
-  // messages.push("**[:exclamation:] Tolerance**");
-  // messages.push(buildToleranceMessage(substance));
-  
-  // message.channel.send(messages.join("\n")).catch(console.error);
-  
-  // message.channel.send(`More information: <https://psychonautwiki.org/wiki/${substance.name}>`).catch(console.error);
 })
 .catch(function(error) {
   console.log("promise rejected/errored out");
@@ -108,7 +92,7 @@ function buildDosageMessage(substance) {
       }
     }
     
-    messages.push(`__(${name})__`)
+    messages.push(`*(${name})*`)
     if (!!dose) {
       messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
       messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -142,7 +126,7 @@ function buildDurationMessage(substance) {
       return undefined
     }
     // Duration
-    messages.push(`__(${name})__`)
+    messages.push(`*(${name})*`)
     if (!!roa.duration) {
       messages.push(`**Onset**: ${durationObjectToString(roa.duration.onset) || "no information"}`)
       messages.push(`**Comeup**: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
