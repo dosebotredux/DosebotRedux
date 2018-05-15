@@ -41,11 +41,7 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField("[:scales:] Dosages", buildDosageMessage(substance))
-  // .addField("[:clock2: ] Duration",
-  // "First plateau: " + lightMin + "-" + lightMaxCommonMin + "mg" + "\n"
-  // + "Second plateau: " + lightMaxCommonMin + "-" + commonMaxStrongMin + "mg" + "\n"
-  // + "Third plateau: " + commonMaxStrongMin + "-" + strongMaxHeavy + "mg" + "\n"
-  // + "Fourth plateau: " + strongMaxHeavy + "mg+")
+  .addField("[:clock2:] Duration" + buildDurationMessage(substance))
   .addField("[:warning:] Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   .addField("[:globe_with_meridians:] Links",
@@ -111,16 +107,8 @@ function buildDosageMessage(substance) {
         return `${x.min} - ${x.max}${unit}`
       }
     }
-    let durationObjectToString = function(x) {
-      // console.log(x)
-      // { max: 48, min: 12, units: 'hours' }
-      if (!!x) {
-        return `${x.min} - ${x.max} ${x.units}`
-      }
-      return undefined
-    }
     
-    messages.push(`*${name}*`)
+    messages.push(`*(${name})*`)
     if (!!dose) {
       messages.push(`Threshold: ${dosageObjectToString(dose.threshold) || "no information"}`)
       messages.push(`Light: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -131,7 +119,28 @@ function buildDosageMessage(substance) {
     } else {
       messages.push("No dosage information.")
     }
+  }
+  // console.log(messages)
+  return messages.join("\n")
+}
+
+function buildDurationMessage(substance) {
+  var messages = []
+  
+  var i
+  for (i = 0; i < substance.roas.length; i++) {
+    let roa = substance.roas[i];
+    let dose = roa.dose;
+    let name = capitalize(roa.name);
     
+    let durationObjectToString = function(x) {
+      // console.log(x)
+      // { max: 48, min: 12, units: 'hours' }
+      if (!!x) {
+        return `${x.min} - ${x.max} ${x.units}`
+      }
+      return undefined
+    }
     // Duration
     messages.push(`*(${name})*`)
     if (!!roa.duration) {
