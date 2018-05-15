@@ -34,9 +34,9 @@ exports.run = (client, message, args) => {
   
   const embed = new Discord.RichEmbed()
   .setTitle(`**${substance.name} drug information**`)
-  .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
+  .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
   .setColor("747474")
-  .setFooter("Please use drugs responsibly", "http://www.dosebot.org/images/dose.png")
+  .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
