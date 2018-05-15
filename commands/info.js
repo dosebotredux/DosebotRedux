@@ -108,7 +108,7 @@ function buildDosageMessage(substance) {
       }
     }
     
-    messages.push(`*(${name})*`)
+    messages.push(`__(${name})__`)
     if (!!dose) {
       messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
       messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -142,7 +142,7 @@ function buildDurationMessage(substance) {
       return undefined
     }
     // Duration
-    messages.push(`*(${name})*`)
+    messages.push(`__(${name})__`)
     if (!!roa.duration) {
       messages.push(`**Onset**: ${durationObjectToString(roa.duration.onset) || "no information"}`)
       messages.push(`**Comeup**: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
