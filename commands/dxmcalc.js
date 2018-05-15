@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
   .setAuthor("DoseBot", "http://www.dosebot.org/images/dose.png")
   .setColor("747474")
   .setFooter("Please use drugs responsibly", "http://www.dosebot.org/images/dose.png")
-  .setThumbnail("https://kek.gg/i/6P2Ftt.png")
+  .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField("[:scales:] Dosages",
