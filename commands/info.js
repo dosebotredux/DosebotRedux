@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField("[:scales:] Dosages", buildDosageMessage(substance))
-  .addField("[:clock2:] Duration" + buildDurationMessage(substance))
+  .addField("[:clock2:] Duration". buildDurationMessage(substance))
   .addField("[:warning:] Warning",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.")
   .addField("[:globe_with_meridians:] Links",
