@@ -128,7 +128,7 @@ function buildDosageMessage(substance) {
     }
     
     // Duration
-    messages.push(`$**({roa.name})**`)
+    messages.push(`**(${roa.name})**`)
     if (!!roa.duration) {
       messages.push(`Onset: ${durationObjectToString(roa.duration.onset) || "no information"}`)
       messages.push(`Comeup: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
