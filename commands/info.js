@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField("__Class__", substance.class.chemical[0] + "\n" + substance.class.psychoactive[0])
+  .addField("__Class__", "**Chemical**: " + substance.class.chemical[0] + "\n" + "**Psychoactive**: " + substance.class.psychoactive[0])
   .addField(":scales: __Dosages__", buildDosageMessage(substance))
   .addBlankField()
   .addField(":clock2: __Duration__", buildDurationMessage(substance))
