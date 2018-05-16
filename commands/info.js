@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   .addField(":clock2: __Duration__", buildDurationMessage(substance))
   .addBlankField()
   .addField(":warning: __Addiction potential__",
-  substance.addictionPotential)
+  capitalize(substance.addictionPotential))
   .addBlankField()
   .addField(":chart_with_upwards_trend: __Tolerance__", buildToleranceMessage(substance))
   .addBlankField()
