@@ -63,6 +63,8 @@ exports.run = (client, message, args) => {
     .setURL("http://www.dosebot.org")
     .addField(messageContent[0], `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`)
     .setImage(messageContent[3])
+
+    message.channel.send({embed}).catch(console.error);
   } else if (messageContent[0] !== undefined) {
     const embed = new Discord.RichEmbed()
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -73,17 +75,8 @@ exports.run = (client, message, args) => {
     .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
     .setURL("http://www.dosebot.org")
     .addField(messageContent[0], `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`)
-    .setImage(messageContent[3])
-  } else if (messageContent[0] !== undefined) {
-    const embed = new Discord.RichEmbed()
-    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-    .setColor("747474")
-    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
-    .setTimestamp()
-    .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
-    .setURL("http://www.dosebot.org")
-    .addField(messageContent[0], `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`)
+
+    message.channel.send({embed}).catch(console.error);
   } else {
     const embed = new Discord.RichEmbed()
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -94,7 +87,8 @@ exports.run = (client, message, args) => {
     .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
     .setURL("http://www.dosebot.org")
     .addField("Error", "Undefined effect")
+
+    message.channel.send({embed}).catch(console.error);
   }
   
-  message.channel.send({embed}).catch(console.error);
 };
