@@ -40,8 +40,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField("__Chemical class__", substance.class.chemical[0])
-  .addField("__Psychoactive class__", substance.class.psychoactive[0])
+  .addField("__Class__", substance.class.chemical[0] + "\n" + substance.class.psychoactive[0])
   .addField(":scales: __Dosages__", buildDosageMessage(substance))
   .addBlankField()
   .addField(":clock2: __Duration__", buildDurationMessage(substance))
@@ -49,6 +48,7 @@ exports.run = (client, message, args) => {
   .addField(":warning: __Warning__",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages.")
   .addField("__Tolerance__", buildToleranceMessage(substance))
+  .addBlankField()
   .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
   message.channel.send({embed});
