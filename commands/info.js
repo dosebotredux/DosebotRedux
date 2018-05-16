@@ -43,7 +43,9 @@ exports.run = (client, message, args) => {
   .addField("__Chemical class__", substance.class.chemical[0])
   .addField("__Psychoactive class__", substance.class.psychoactive[0])
   .addField(":scales: __Dosages__", buildDosageMessage(substance))
+  .addBlankField()
   .addField(":clock2: __Duration__", buildDurationMessage(substance))
+  .addBlankField()
   .addField(":warning: __Warning__",
   "These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages.")
   .addField("__Tolerance__", buildToleranceMessage(substance))
