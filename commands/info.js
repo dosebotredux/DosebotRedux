@@ -40,13 +40,13 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":telescope: __Class__", "**Chemical**: " + substance.class.chemical[0] + "\n\n" + "**Psychoactive**: " + substance.class.psychoactive[0])
-  .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n\n`)
-  .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n\n`)
+  .addField(":telescope: __Class__", "**Chemical**: " + substance.class.chemical[0] + "\n" + "**Psychoactive**: " + substance.class.psychoactive[0])
+  .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
+  .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
   .addField(":warning: __Addiction potential__",
-  `${capitalize(substance.addictionPotential)}\n\n`)
-  .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n\n`)
-  .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
+  `${capitalize(substance.addictionPotential)}\n`)
+  .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n`)
+  .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
   message.channel.send({embed});
 })
