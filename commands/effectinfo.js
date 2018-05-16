@@ -59,7 +59,6 @@ exports.run = (client, message, args) => {
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
     .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
-    .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
     .setURL("http://www.dosebot.org")
     .addField(messageContent[0], `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`)
     .setImage(messageContent[3])
@@ -72,7 +71,6 @@ exports.run = (client, message, args) => {
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
     .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
-    .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
     .setURL("http://www.dosebot.org")
     .addField(messageContent[0], `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`)
 
@@ -84,7 +82,6 @@ exports.run = (client, message, args) => {
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
     .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
-    .setImage("https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif")
     .setURL("http://www.dosebot.org")
     .addField("Error", "Undefined effect")
 
