@@ -11,6 +11,8 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField("Available commands", buildCommandList())
+
+    message.channel.send({embed});
 };
 
 function buildCommandList() {
