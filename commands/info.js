@@ -1,5 +1,6 @@
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js")
 const Discord = require("discord.js");
+const customsJSON = require("./customs.json")
 
 exports.run = (client, message, args) => {
   const { request } = require("graphql-request");
@@ -32,8 +33,12 @@ exports.run = (client, message, args) => {
   
   if (drug !== "ayahuasca") {
     let substance = data.substances[0]
+  } else {
+    let substance = customsJSON.substances[0]
   }
-  
+
+  message.channel.send(substance.name);
+
   const embed = new Discord.RichEmbed()
   .setTitle(`**${substance.name} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
