@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
   message.channel.send(substance.name);
   
   const embed = new Discord.RichEmbed()
-  .setTitle(`**${substance.name} drug information**`)
+  .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
   .setColor("747474")
   .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
@@ -118,7 +118,7 @@ function buildDosageMessage(substance) {
       messages.push(`*(${name})*`)
       
       if (!!dose) {
-        messages.push(`: ${dose.dosage} || "no information"}`)
+        messages.push(`${dose.dosage}`)
         messages.push("")
       } else {
         messages.push("No dosage information.")
