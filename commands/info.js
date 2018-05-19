@@ -35,6 +35,7 @@ exports.run = (client, message, args) => {
     let substance = data.substances[0]
   } else {
     let substance = customsJSON.substances[0]
+    console.log(substance);
   }
 
   message.channel.send(substance.name);
