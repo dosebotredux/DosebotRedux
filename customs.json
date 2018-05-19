@@ -3,6 +3,9 @@
     "substances": [
       {
         "name": "ayahuasca",
+        "tolerance": {
+          "tolerance": "Ayahuasca does not have a tolerance"
+        },
         "class": {
           "chemical": ["Tryptamine"],
           "psychoactive": ["Psychedelics"]

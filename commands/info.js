@@ -72,10 +72,12 @@ function capitalize(name) {
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
-  if (!!tolerances) {
+  if (!!tolerances && substance.name !== "ayahuasca") {
     return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+  } else if (substance.name == "ayahuasca") {
+    return substance.tolerance.tolerance;
   } else {
-    return "No information"
+    return "No information";
   }
 }
 
@@ -87,7 +89,7 @@ function buildDosageMessage(substance) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
-
+    
     let dosageObjectToString = function(x) {
       // console.log(x)
       let unit = dose.units
@@ -100,7 +102,7 @@ function buildDosageMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-
+      
       messages.push(`*(${name})*`)
       
       if (!!dose) {
@@ -137,7 +139,7 @@ function buildDurationMessage(substance) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
-
+    
     let durationObjectToString = function(x) {
       // console.log(x)
       // { max: 48, min: 12, units: 'hours' }
@@ -148,7 +150,7 @@ function buildDurationMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-
+      
       // Duration
       messages.push(`*(${name})*`)
       
@@ -184,13 +186,13 @@ function buildDurationMessage(substance) {
 }
 
 function buildChemicalClassMessage(substance) {
-
+  
 }
 
 function buildPsychoactiveClassMessage(substance) {
-
+  
 }
 
 function buildAddictionPotentialMessage(substance) {
-
+  
 }
