@@ -30,7 +30,9 @@ exports.run = (client, message, args) => {
     return
   }
   
-  let substance = data.substances[0]
+  if (drug !== "ayahuasca") {
+    let substance = data.substances[0]
+  }
   
   const embed = new Discord.RichEmbed()
   .setTitle(`**${substance.name} drug information**`)
