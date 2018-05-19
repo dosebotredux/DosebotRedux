@@ -3,14 +3,14 @@
     "substances": [
       {
         "name": "ayahuasca",
+        "class": {
+          "chemical": ["Tryptamine"],
+          "psychoactive": ["Psychedelics"]
+        },
+        "addictionPotential": "not habit-forming",
         "roas": [
           {
             "bioavailability": null,
-            "class": {
-              "chemical": ["Tryptamine"],
-              "psychoactive": ["Psychedelics"]
-            },
-            "addictionPotential": "not habit-forming",
             "dose": {
               "dosage": "Varies drastically depending on the preparation method and plant materials."
             },
