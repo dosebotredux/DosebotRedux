@@ -136,7 +136,7 @@ function buildDurationMessage(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
-    if (substance[0].name !== "ayahuasca") {
+    if (substance.name !== "ayahuasca") {
       let durationObjectToString = function(x) {
         // console.log(x)
         // { max: 48, min: 12, units: 'hours' }
