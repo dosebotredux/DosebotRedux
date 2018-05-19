@@ -34,12 +34,12 @@ exports.run = (client, message, args) => {
   if (drug !== "ayahuasca") {
     var substance = data.substances[0];
   } else {
-    var substance = customsJSON.substances[0];
+    var substance = customsJSON.data.substances[0];
     console.log(substance);
   }
-
+  
   message.channel.send(substance.name);
-
+  
   const embed = new Discord.RichEmbed()
   .setTitle(`**${substance.name} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -88,27 +88,39 @@ function buildDosageMessage(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
-    let dosageObjectToString = function(x) {
-      // console.log(x)
-      let unit = dose.units
-      if (!!x) {
-        if (typeof x == "number") {
-          return  `${x}${unit}`
+    if (substance[0].name !== "ayahuasca") {
+      let dosageObjectToString = function(x) {
+        // console.log(x)
+        let unit = dose.units
+        if (!!x) {
+          if (typeof x == "number") {
+            return  `${x}${unit}`
+          }
+          return `${x.min} - ${x.max}${unit}`
         }
-        return `${x.min} - ${x.max}${unit}`
       }
-    }
-    
-    messages.push(`*(${name})*`)
-    if (!!dose) {
-      messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
-      messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
-      messages.push(`**Common**: ${dosageObjectToString(dose.common) || "no information"}`)
-      messages.push(`**Strong**: ${dosageObjectToString(dose.strong) || "no information"}`)
-      messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`)
-      messages.push("")
+      messages.push(`*(${name})*`)
+      
+      if (!!dose) {
+        messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
+        messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
+        messages.push(`**Common**: ${dosageObjectToString(dose.common) || "no information"}`)
+        messages.push(`**Strong**: ${dosageObjectToString(dose.strong) || "no information"}`)
+        messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`)
+        messages.push("")
+      } else {
+        messages.push("No dosage information.")
+      }
     } else {
-      messages.push("No dosage information.")
+      // Ayahuasca hardcoded message
+      messages.push(`*(${name})*`)
+      
+      if (!!dose) {
+        messages.push(`: ${dose.dosage} || "no information"}`)
+        messages.push("")
+      } else {
+        messages.push("No dosage information.")
+      }
     }
   }
   // console.log(messages)
@@ -124,26 +136,43 @@ function buildDurationMessage(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
-    let durationObjectToString = function(x) {
-      // console.log(x)
-      // { max: 48, min: 12, units: 'hours' }
-      if (!!x) {
-        return `${x.min} - ${x.max} ${x.units}`
+    if (substance[0].name !== "ayahuasca") {
+      let durationObjectToString = function(x) {
+        // console.log(x)
+        // { max: 48, min: 12, units: 'hours' }
+        if (!!x) {
+          return `${x.min} - ${x.max} ${x.units}`
+        }
+        return undefined
       }
-      return undefined
-    }
-    // Duration
-    messages.push(`*(${name})*`)
-    if (!!roa.duration) {
-      messages.push(`**Onset**: ${durationObjectToString(roa.duration.onset) || "no information"}`)
-      messages.push(`**Comeup**: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
-      messages.push(`**Peak**: ${durationObjectToString(roa.duration.peak) || "no information"}`)
-      messages.push(`**Offset**: ${durationObjectToString(roa.duration.offset) || "no information"}`)
-      messages.push(`**Afterglow**: ${durationObjectToString(roa.duration.afterglow) || "no information"}`)
-      messages.push(`**Total**: ${durationObjectToString(roa.duration.total) || "no information"}`)
-      messages.push("")
+      // Duration
+      messages.push(`*(${name})*`)
+      
+      if (!!roa.duration) {
+        messages.push(`**Onset**: ${durationObjectToString(roa.duration.onset) || "no information"}`)
+        messages.push(`**Comeup**: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
+        messages.push(`**Peak**: ${durationObjectToString(roa.duration.peak) || "no information"}`)
+        messages.push(`**Offset**: ${durationObjectToString(roa.duration.offset) || "no information"}`)
+        messages.push(`**Afterglow**: ${durationObjectToString(roa.duration.afterglow) || "no information"}`)
+        messages.push(`**Total**: ${durationObjectToString(roa.duration.total) || "no information"}`)
+        messages.push("")
+      } else {
+        messages.push("No duration information.")
+      }
     } else {
-      messages.push("No duration information.")
+      messages.push(`*(${name})*`)
+      
+      if (!!roa.duration) {
+        messages.push(`**Onset**: ${durationObjectToString(roa.duration.onset) || "no information"}`)
+        messages.push(`**Comeup**: ${durationObjectToString(roa.duration.comeup) || "no information"}`)
+        messages.push(`**Peak**: ${durationObjectToString(roa.duration.peak) || "no information"}`)
+        messages.push(`**Offset**: ${durationObjectToString(roa.duration.offset) || "no information"}`)
+        messages.push(`**Afterglow**: ${durationObjectToString(roa.duration.afterglow) || "no information"}`)
+        messages.push(`**Total**: ${durationObjectToString(roa.duration.total) || "no information"}`)
+        messages.push("")
+      } else {
+        messages.push("No duration information.")
+      }
     }
   }
   // console.log(messages)

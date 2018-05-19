@@ -1,8 +1,47 @@
 {
-  "substances": [
-    {
-      "name": "ayahuasca"
-    }
-  ]
-
+  "data": {
+    "substances": [
+      {
+        "name": "ayahuasca",
+        "roas": [
+          {
+            "bioavailability": null,
+            "dose": {
+              "dosage": "Varies drastically depending on the preparation method and plant materials."
+            },
+            "duration": {
+              "afterglow": {
+                "max": 8,
+                "min": 1,
+                "units": "hours"
+              },
+              "comeup": null,
+              "duration": null,
+              "offset": {
+                "max": 8,
+                "min": 1,
+                "units": "hours"
+              },
+              "onset": {
+                "max": 60,
+                "min": 20,
+                "units": "minutes"
+              },
+              "peak": {
+                "max": 2,
+                "min": 1,
+                "units": "hours"
+              },
+              "total": {
+                "max": 10,
+                "min": 5,
+                "units": "hours"
+              }
+            },
+            "name": "oral"
+          }
+        ]
+      }
+    ]
+  }
 }
