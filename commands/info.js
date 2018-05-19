@@ -32,9 +32,9 @@ exports.run = (client, message, args) => {
   }
   
   if (drug !== "ayahuasca") {
-    let substance = data.substances[0];
+    var substance = data.substances[0];
   } else {
-    let substance = customsJSON.substances[0];
+    var substance = customsJSON.substances[0];
     console.log(substance);
   }
 
