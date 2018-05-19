@@ -7,9 +7,10 @@
           {
             "bioavailability": null,
             "class": {
-              "chemical": "Tryptamine",
-              "psychoactive": "Psychedelic"
+              "chemical": ["Tryptamine"],
+              "psychoactive": ["Psychedelics"]
             },
+            "addictionPotential": "not habit-forming",
             "dose": {
               "dosage": "Varies drastically depending on the preparation method and plant materials."
             },
