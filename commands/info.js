@@ -1,6 +1,6 @@
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js")
 const Discord = require("discord.js");
-const customsJSON = require("./customs.json")
+const customsJSON = require("../customs.json")
 
 exports.run = (client, message, args) => {
   const { request } = require("graphql-request");
@@ -32,9 +32,9 @@ exports.run = (client, message, args) => {
   }
   
   if (drug !== "ayahuasca") {
-    let substance = data.substances[0]
+    let substance = data.substances[0];
   } else {
-    let substance = customsJSON.substances[0]
+    let substance = customsJSON.substances[0];
     console.log(substance);
   }
 
