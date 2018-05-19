@@ -87,18 +87,20 @@ function buildDosageMessage(substance) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
+
+    let dosageObjectToString = function(x) {
+      // console.log(x)
+      let unit = dose.units
+      if (!!x) {
+        if (typeof x == "number") {
+          return  `${x}${unit}`
+        }
+        return `${x.min} - ${x.max}${unit}`
+      }
+    }
     
     if (substance.name !== "ayahuasca") {
-      let dosageObjectToString = function(x) {
-        // console.log(x)
-        let unit = dose.units
-        if (!!x) {
-          if (typeof x == "number") {
-            return  `${x}${unit}`
-          }
-          return `${x.min} - ${x.max}${unit}`
-        }
-      }
+
       messages.push(`*(${name})*`)
       
       if (!!dose) {
@@ -135,16 +137,18 @@ function buildDurationMessage(substance) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
+
+    let durationObjectToString = function(x) {
+      // console.log(x)
+      // { max: 48, min: 12, units: 'hours' }
+      if (!!x) {
+        return `${x.min} - ${x.max} ${x.units}`
+      }
+      return undefined
+    }
     
     if (substance.name !== "ayahuasca") {
-      let durationObjectToString = function(x) {
-        // console.log(x)
-        // { max: 48, min: 12, units: 'hours' }
-        if (!!x) {
-          return `${x.min} - ${x.max} ${x.units}`
-        }
-        return undefined
-      }
+
       // Duration
       messages.push(`*(${name})*`)
       
