@@ -6,6 +6,10 @@
         "roas": [
           {
             "bioavailability": null,
+            "class": {
+              "chemical": "Tryptamine",
+              "psychoactive": "Psychedelic"
+            },
             "dose": {
               "dosage": "Varies drastically depending on the preparation method and plant materials."
             },
