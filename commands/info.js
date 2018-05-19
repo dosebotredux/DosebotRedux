@@ -88,7 +88,7 @@ function buildDosageMessage(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
-    if (substance[0].name !== "ayahuasca") {
+    if (substance.name !== "ayahuasca") {
       let dosageObjectToString = function(x) {
         // console.log(x)
         let unit = dose.units
@@ -177,4 +177,16 @@ function buildDurationMessage(substance) {
   }
   // console.log(messages)
   return messages.join("\n")
+}
+
+function buildChemicalClassMessage(substance) {
+
+}
+
+function buildPsychoactiveClassMessage(substance) {
+
+}
+
+function buildAddictionPotentialMessage(substance) {
+
 }
