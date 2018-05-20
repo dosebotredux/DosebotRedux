@@ -83,14 +83,18 @@ function checkIfCustomSheet(drug) {
 }
 
 function locateCustomSheetLocation(drug) {
+  var testArr = [];
+
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
     console.log("name: " + customsJSON.data.substances[i].name)   
+    testArr.push({"name": customsJSON.data.substances[i].name, "location": i})
     if (customsJSON.data.substances[i].name = drug) {
       location = i;
     }
     var substance = customsJSON.data.substances[location];
-
   }
+  console.log(testArr);
+
   return substance;
 }
 
