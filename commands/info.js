@@ -31,12 +31,12 @@ exports.run = (client, message, args) => {
     return
   }
   
-  if (drug !== "ayahuasca") {
-    var substance = data.substances[0];
-  } else {
-    var substance = customsJSON.data.substances[0];
-    console.log(substance);
-  }
+  // if (drug !== "ayahuasca") {
+  //   var substance = data.substances[0];
+  // } else {
+  //   var substance = customsJSON.data.substances[0];
+  //   console.log(substance);
+  // }
 
   if (drug == "ayahuasca" || drug == "datura") {
     var location;
@@ -48,6 +48,8 @@ exports.run = (client, message, args) => {
         location = i;
         console.log(location);
       }
+
+      var substance = customsJSON.data.substances[location];
     }
   } else {
     var substance = data.substances[0];
