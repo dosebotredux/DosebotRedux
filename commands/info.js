@@ -39,9 +39,8 @@ exports.run = (client, message, args) => {
     var substance = data.substances[0];
   }
   
-  createChannelMessage(substance, message);
-  
-  
+  console.log(substance);
+  createChannelMessage(substance, message);  
 })
 .catch(function(error) {
   console.log("promise rejected/errored out");
