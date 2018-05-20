@@ -185,11 +185,86 @@
                 "units": "minutes"
               }
             },
-            "name": "smoked"
+            "name": "sublingual"
           }
         ],
         "tolerance": {
           "tolerance": "Salvia does not have a tolerance"
+        }
+      },
+      {
+        "name": "lsa",
+        "class": {
+          "chemical": [
+            "Lysergamide"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "roas": [
+          {
+            "bioavailability": null,
+            "dose": {
+              "common": {
+                "max": 250,
+                "min": 100
+              },
+              "heavy": 400,
+              "light": {
+                "max": 100,
+                "min": 50
+              },
+              "strong": {
+                "max": 400,
+                "min": 250
+              },
+              "threshold": {
+                "max": 50,
+                "min": 20
+              },
+              "units": "seeds"
+            },
+            "duration": {
+              "afterglow": {
+                "max": 48,
+                "min": 4,
+                "units": "hours"
+              },
+              "comeup": {
+                "max": 75,
+                "min": 30,
+                "units": "minutes"
+              },
+              "duration": null,
+              "offset": {
+                "max": 2,
+                "min": 1,
+                "units": "hours"
+              },
+              "onset": {
+                "max": 40,
+                "min": 15,
+                "units": "minutes"
+              },
+              "peak": {
+                "max": 3.5,
+                "min": 2,
+                "units": "hours"
+              },
+              "total": {
+                "max": 7,
+                "min": 4.5,
+                "units": "hours"
+              }
+            },
+            "name": "oral"
+          }
+        ],
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
         }
       }
     ]
