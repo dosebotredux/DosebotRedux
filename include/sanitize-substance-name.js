@@ -20,7 +20,7 @@ module.exports = function sanitizeSubstanceName(drug) {
   if (drug === "lsz") { return "LSZ" }
   if (drug === "pargylad") { return "PARGY-LAD" }
   if (drug === "prolad") { return "PRO-LAD" }
-  if (drug === "lsa") { return "LSA" }
+  // if (drug === "lsa") { return "LSA" }
 
   // 2C-{x}: B, C, D, E, H, I, iP, P, TFM, T-2, T-4, T-7, T-21
   // if (drug === "2cip") { return "2C-iP" } // doesn't exist
