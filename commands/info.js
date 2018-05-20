@@ -185,7 +185,7 @@ function buildDurationMessage(substance) {
 
 function buildChemicalClassMessage(substance) {
   console.log(substance.class);
-  if (substance.class.chemical !== null) {
+  if (!!substance.class.chemical) {
     return "**Chemical**: " + substance.class.chemical[0];
   } else {
     return "No information";
@@ -193,7 +193,7 @@ function buildChemicalClassMessage(substance) {
 }
 
 function buildPsychoactiveClassMessage(substance) {
-  if (substance.class.psychoactive !== null) {
+  if (!!substance.class.psychoactive) {
     return "\n**Psychoactive**: " + substance.class.psychoactive[0];
   } else {
     return "No information";
@@ -201,7 +201,7 @@ function buildPsychoactiveClassMessage(substance) {
 }
 
 function buildAddictionPotentialMessage(substance) {
-  if (substance.addictionPotential !== null) {
+  if (!!substance.addictionPotential) {
     return `${capitalize(substance.addictionPotential)}\n`
   } else {
     return "No information";
