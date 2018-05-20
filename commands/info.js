@@ -186,7 +186,7 @@ function buildDurationMessage(substance) {
 function buildChemicalClassMessage(substance) {
   console.log(substance.class);
   if (substance.class !== null) {
-    return "**Chemical**: " + substance.class.chemical[0];
+    return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
     return "No information";
   }
@@ -194,7 +194,7 @@ function buildChemicalClassMessage(substance) {
 
 function buildPsychoactiveClassMessage(substance) {
   if (substance.class !== null) {
-    return "\n**Psychoactive**: " + substance.class.psychoactive[0];
+    return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
     return "No information";
   }
