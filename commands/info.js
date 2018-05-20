@@ -28,7 +28,7 @@ exports.run = (client, message, args) => {
     message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
     return;
   }
-  
+    
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     var location;
