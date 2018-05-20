@@ -22,32 +22,24 @@ exports.run = (client, message, args) => {
   console.log(data) // SHOW ME WHAT YOU GOT
   
   if (data.substances.length == 0) {
-    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
-    return;
+    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
+    return
   }
   
   if (data.substances.length > 1) {
-    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
-    return;
+    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
+    return
   }
   
-  if (drug !== "ayahuasca" || drug !== "datura") {
+  if (drug !== "ayahuasca") {
     var substance = data.substances[0];
-    console.log("we are in the wrong spot");
   } else {
-    var location;
-
-    for (let i = 0; i < customsJSON.length; i++) {
-      console.log(customsJSON.data.substances[i].name);
-      if (customsJSON.data.substances[i].name == drug) {
-        location = i;
-        console.log("Location: " + location);
-      }
-    }
-    var substance = customsJSON.data.substances[location];
+    var substance = customsJSON.data.substances[0];
     console.log(substance);
   }
-      
+    
+  console.log(buildChemicalClassMessage(substance));
+  
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -109,6 +101,7 @@ function buildDosageMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
+      
       messages.push(`*(${name})*`)
       
       if (!!dose) {
@@ -156,6 +149,7 @@ function buildDurationMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
+      
       // Duration
       messages.push(`*(${name})*`)
       
@@ -192,6 +186,7 @@ function buildDurationMessage(substance) {
 
 function buildChemicalClassMessage(substance) {
   if (substance.class !== null) {
+    console.log("chen")
     return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
     return "No information";
@@ -200,6 +195,7 @@ function buildChemicalClassMessage(substance) {
 
 function buildPsychoactiveClassMessage(substance) {
   if (substance.class !== null) {
+    console.log("psy")
     return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
     return "No information";
@@ -208,6 +204,7 @@ function buildPsychoactiveClassMessage(substance) {
 
 function buildAddictionPotentialMessage(substance) {
   if (substance.addictionPotential !== null) {
+    console.log("add")
     return `${capitalize(substance.addictionPotential)}\n`
   } else {
     return "No information";
