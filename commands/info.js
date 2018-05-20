@@ -31,7 +31,7 @@ exports.run = (client, message, args) => {
     return
   }
   
-  if (drug !== "ayahuasca") {
+  if (drug !== "ayahuasca" && drug !== "datura") {
     var substance = data.substances[0];
   } else {
     var location;
@@ -109,7 +109,6 @@ function buildDosageMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-      
       messages.push(`*(${name})*`)
       
       if (!!dose) {
@@ -157,7 +156,6 @@ function buildDurationMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-      
       // Duration
       messages.push(`*(${name})*`)
       
@@ -194,7 +192,6 @@ function buildDurationMessage(substance) {
 
 function buildChemicalClassMessage(substance) {
   if (substance.class !== null) {
-    console.log("chen")
     return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
     return "No information";
@@ -203,7 +200,6 @@ function buildChemicalClassMessage(substance) {
 
 function buildPsychoactiveClassMessage(substance) {
   if (substance.class !== null) {
-    console.log("psy")
     return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
     return "No information";
@@ -212,7 +208,6 @@ function buildPsychoactiveClassMessage(substance) {
 
 function buildAddictionPotentialMessage(substance) {
   if (substance.addictionPotential !== null) {
-    console.log("add")
     return `${capitalize(substance.addictionPotential)}\n`
   } else {
     return "No information";
