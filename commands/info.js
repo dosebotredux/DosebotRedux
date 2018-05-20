@@ -35,9 +35,9 @@ exports.run = (client, message, args) => {
   if (drug == "ayahuasca" || drug == "datura" || drug == "salvia") {
     var location;
     // Find the location of the substance object in the JSON
-    for (let i = 0; i <= customsJSON.data.substances.length; i++) {    
+    for (let i = 0; i < customsJSON.data.substances.length; i++) {    
       console.log(customsJSON.data.substances[i]);
-      console.log(customsJSON.data.substances.length)
+      console.log("length: " + customsJSON.data.substances.length)
       console.log(customsJSON.data.substances[i].name)
       if (customsJSON.data.substances[i].name = drug) {
         location = i;
