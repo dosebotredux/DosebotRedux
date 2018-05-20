@@ -49,6 +49,58 @@
             "name": "oral"
           }
         ]
+      },
+      {
+        "name": "datura",
+        "tolerance": {
+          "full": "Reached with repeated use",
+          "half": "3-7 days",
+          "zero": "1-2 weeks"
+        },
+        "class": "null",
+        "addictionPotential": "Mildly addictive with a high potential for adverse side effects such as psychosis",
+        "roas": [
+          {
+            "bioavailability": null,
+            "dose": {
+              "dosage": "Varies drastically depending on the preparation method and plant materials."
+            },
+            "duration": {
+              "afterglow": {
+                "max": 24,
+                "min": 6,
+                "units": "hours"
+              },
+              "comeup": {
+                "max": 120,
+                "min": 60,
+                "units": "minutes"
+              },
+              "duration": null,
+              "offset": {
+                "max": 3,
+                "min": 2,
+                "units": "hours"
+              },
+              "onset": {
+                "max": 120,
+                "min": 20,
+                "units": "minutes"
+              },
+              "peak": {
+                "max": 12,
+                "min": 5,
+                "units": "hours"
+              },
+              "total": {
+                "max": 18,
+                "min": 8,
+                "units": "hours"
+              }
+            },
+            "name": "oral"
+          }
+        ]
       }
     ]
   }

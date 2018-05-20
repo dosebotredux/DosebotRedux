@@ -34,7 +34,15 @@ exports.run = (client, message, args) => {
   if (drug !== "ayahuasca") {
     var substance = data.substances[0];
   } else {
-    var substance = customsJSON.data.substances[0];
+    var location;
+
+    for (let i = 0; i < customsJSON.length; i++) {
+      if (customsJSON.data.substances[i].name == drug) {
+        location = i;
+        console.log("Location: " + location);
+      }
+    }
+    var substance = customsJSON.data.substances[location];
     console.log(substance);
   }
     
