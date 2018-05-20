@@ -58,8 +58,8 @@
           "zero": "1-2 weeks"
         },
         "class": {
-          "chemical": ["Test"],
-          "psychoactive": ["Test2"]
+          "chemical": ["Tropane alkaloids"],
+          "psychoactive": ["Deliriant"]
         },
         "addictionPotential": "Mildly addictive with a high potential for adverse side effects such as psychosis",
         "roas": [

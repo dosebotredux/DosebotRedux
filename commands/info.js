@@ -30,28 +30,20 @@ exports.run = (client, message, args) => {
     message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
     return
   }
-  
-  // if (drug !== "ayahuasca") {
-  //   var substance = data.substances[0];
-  // } else {
-  //   var substance = customsJSON.data.substances[0];
-  //   console.log(substance);
-  // }
 
+  // Checks to see if drug is on the customs list
   if (drug == "ayahuasca" || drug == "datura") {
     var location;
-
-    for (let i = 0; i < customsJSON.data.substances.length; i++) {
-      console.log(customsJSON.data.substances[i]);
-      
+    // Find the location of the substance object in the JSON
+    for (let i = 0; i < customsJSON.data.substances.length; i++) {    
       if (customsJSON.data.substances.name = drug) {
         location = i;
         console.log(location);
       }
-
       var substance = customsJSON.data.substances[location];
     }
   } else {
+    // Sets to PW API query results
     var substance = data.substances[0];
   }
       
