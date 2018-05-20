@@ -22,15 +22,13 @@ exports.run = (client, message, args) => {
   console.log(data) // SHOW ME WHAT YOU GOT
   
   if (data.substances.length == 0) {
-    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
+    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
+  } else if (data.substances.length > 1) {
+    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
   }
   
-  if (data.substances.length > 1) {
-    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
-  }
-
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     var location;
@@ -45,7 +43,7 @@ exports.run = (client, message, args) => {
     // Sets to PW API query results
     var substance = data.substances[0];
   }
-      
+  
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -115,7 +113,6 @@ function buildDosageMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-      
       messages.push(`*(${name})*`)
       
       if (!!dose) {
