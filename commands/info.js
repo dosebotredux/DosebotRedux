@@ -28,7 +28,7 @@ exports.run = (client, message, args) => {
     hasCustom = false;
   }
   console.log(hasCustom);
-
+  
   // console.log(substance)
   // console.log(customsJSON.data.substances[1])
   
@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
       message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
     } 
-
+    
     if (data.substances.length > 1) {
       message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
@@ -58,10 +58,10 @@ exports.run = (client, message, args) => {
     console.log(error);
   });
   console.log(hasCustom);
-
+  
   hasCustom = false;
   console.log(hasCustom);
-
+  
 }
 };
 
@@ -131,12 +131,22 @@ function buildToleranceMessage(substance) {
   console.log(tolerances);
   console.log(tolerances.full);
   if (!!tolerances) {
-    if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
+    if (substance.name == "ayahuasca" || substance.name == "salvia") {
       return substance.tolerance.tolerance;
     } else {
       console.log("we're in the right spot");
       return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
     }
+    
+    // if (hasCustom == true) {
+    //   if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
+    //     return substance.tolerance.tolerance;
+    //   } else {
+    //     return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+    //   }
+    // } else {
+    //   return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+    // }
   }
 }
 
