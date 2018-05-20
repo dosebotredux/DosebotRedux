@@ -5,6 +5,7 @@ const customsJSON = require("../customs.json")
 exports.run = (client, message, args) => {
   const { request } = require("graphql-request");
   
+  var hasCustom;
   var str = message.content;
   var result = str.split(" ");
   var drug = str
@@ -16,53 +17,56 @@ exports.run = (client, message, args) => {
   
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
+    hasCustom = true;
     var location;
     // Find the location of the substance object in the JSON and set substance
     substance = locateCustomSheetLocation(drug);
     console.log("pulling from custom");
-
+    
     createChannelMessage(substance, message);
+  } else {
+    hasCustom = false;
   }
   // console.log(substance)
   // console.log(customsJSON.data.substances[1])
-
-  console.log(`Requesting info for ${drug}`); 
-  // loads graphql query from separate file as "query" variable
-  let query = require("../queries/info.js").info(drug);
-  request("https://api.psychonautwiki.org", query).then(data => {
   
-  console.log(data) // SHOW ME WHAT YOU GOT
-  
-  if (data.substances.length == 0) {
-    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
-    return;
-  } 
-  if (data.substances.length > 1) {
-    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
-    return;
-  }
-  
-  // Checks to see if drug is on the customs list
-  // if (checkIfCustomSheet(drug)) {
-  //   var location;
-  //   // Find the location of the substance object in the JSON and set substance
-  //   substance = locateCustomSheetLocation(drug);
-  //   console.log("pulling from custom");
-  // } else {
-  //   console.log("pulling from PW")
-  //   // Sets to PW API query results
-  //   var substance = data.substances[0];
-  // }
-  // // console.log(substance)
-  // // console.log(customsJSON.data.substances[1])
-  createChannelMessage(substance, message);
-  
-  
-})
-.catch(function(error) {
-  console.log("promise rejected/errored out");
-  console.log(error);
-});
+  if (hasCustom) {
+    console.log(`Requesting info for ${drug}`); 
+    // loads graphql query from separate file as "query" variable
+    let query = require("../queries/info.js").info(drug);
+    request("https://api.psychonautwiki.org", query).then(data => {
+    
+    console.log(data) // SHOW ME WHAT YOU GOT
+    
+    if (data.substances.length == 0) {
+      message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+      return;
+    } 
+    if (data.substances.length > 1) {
+      message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+      return;
+    }
+    
+    // Checks to see if drug is on the customs list
+    // if (checkIfCustomSheet(drug)) {
+    //   var location;
+    //   // Find the location of the substance object in the JSON and set substance
+    //   substance = locateCustomSheetLocation(drug);
+    //   console.log("pulling from custom");
+    // } else {
+    //   console.log("pulling from PW")
+    //   // Sets to PW API query results
+    //   var substance = data.substances[0];
+    // }
+    // // console.log(substance)
+    // // console.log(customsJSON.data.substances[1])
+    createChannelMessage(substance, message);
+  })
+  .catch(function(error) {
+    console.log("promise rejected/errored out");
+    console.log(error);
+  });
+}
 };
 
 // Functions
@@ -98,13 +102,13 @@ function locateCustomSheetLocation(drug) {
   var testArr = [];
   var loc;
   var substance;
-
+  
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
     console.log("name: " + customsJSON.data.substances[i].name)   
     testArr.push({"name": customsJSON.data.substances[i].name, "location": i})
   }
   console.log(testArr);
-
+  
   for (let i = 0; i < testArr.length; i++) {
     console.log(drug);
     console.log(testArr[i].name);
