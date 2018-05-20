@@ -72,6 +72,7 @@ function createChannelMessage(substance, message) {
 }
 //// Custom sheet functions
 function checkIfCustomSheet(drug) {
+  console.log("drug: " + drug)
   if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
     return true;
   } else {
@@ -80,7 +81,8 @@ function checkIfCustomSheet(drug) {
 }
 
 function locateCustomSheetLocation(drug) {
-  for (let i = 0; i < customsJSON.data.substances.length; i++) {    
+  for (let i = 0; i < customsJSON.data.substances.length; i++) { 
+    console.log("name: " + customsJSON.data.substances[i].name)   
     if (customsJSON.data.substances[i].name = drug) {
       location = i;
     }
