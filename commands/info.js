@@ -31,7 +31,7 @@ exports.run = (client, message, args) => {
     return
   }
   
-  if (drug !== "ayahuasca" && drug !== "datura") {
+  if (drug !== "ayahuasca") {
     var substance = data.substances[0];
     console.log("we are in the wrong spot");
   } else {
