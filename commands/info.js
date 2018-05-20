@@ -33,15 +33,20 @@ exports.run = (client, message, args) => {
   if (checkIfCustomSheet(drug)) {
     var location;
     // Find the location of the substance object in the JSON
+    substance = locateCustomSheetLocation(drug);
+  } else {
+    // Sets to PW API query results
+    var substance = data.substances[0];
+  }
+
+  function locateCustomSheetLocation(drug) {
     for (let i = 0; i < customsJSON.data.substances.length; i++) {    
       if (customsJSON.data.substances[i].name = drug) {
         location = i;
       }
       var substance = customsJSON.data.substances[location];
     }
-  } else {
-    // Sets to PW API query results
-    var substance = data.substances[0];
+    return substance;
   }
   
   const embed = new Discord.RichEmbed()
@@ -80,6 +85,7 @@ function capitalize(name) {
   return name[0].toUpperCase() + name.slice(1);
 }
 
+// Message builders
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
@@ -160,7 +166,6 @@ function buildDurationMessage(substance) {
     }
     
     if (substance.name !== "ayahuasca") {
-      
       // Duration
       messages.push(`*(${name})*`)
       
