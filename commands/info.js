@@ -37,6 +37,7 @@ exports.run = (client, message, args) => {
     var location;
 
     for (let i = 0; i < customsJSON.length; i++) {
+      console.log(customsJSON.data.substances[i].name);
       if (customsJSON.data.substances[i].name == drug) {
         location = i;
         console.log("Location: " + location);
