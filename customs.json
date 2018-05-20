@@ -107,14 +107,15 @@
       },
       {
         "name": "salvia",
-          "class": {
-            "chemical": [
-              "Terpenoid"
-            ],
-            "psychoactive": [
-              "Hallucinogen"
-            ]
-          },
+        "class": {
+          "chemical": [
+            "Terpenoid"
+          ],
+          "psychoactive": [
+            "Hallucinogen"
+          ]
+        },
+        "addictionPotential": "not habit-forming",
         "roas": [
           {
             "bioavailability": null,
