@@ -41,7 +41,8 @@ exports.run = (client, message, args) => {
     // Sets to PW API query results
     var substance = data.substances[0];
   }
-  
+  console.log(substance)
+  console.log(customsJSON.data.substances[3])
   createChannelMessage(substance, message);
   
   
@@ -88,8 +89,7 @@ function locateCustomSheetLocation(drug) {
       location = i;
     }
     var substance = customsJSON.data.substances[location];
-    console.log(substance)
-    console.log(customsJSON.data.substances[3])
+
   }
   return substance;
 }
