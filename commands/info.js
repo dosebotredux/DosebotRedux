@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
   }
 
   // Checks to see if drug is on the customs list
-  if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
+  if (checkIfCustomSheet(drug)) {
     var location;
     // Find the location of the substance object in the JSON
     for (let i = 0; i < customsJSON.data.substances.length; i++) {    
@@ -70,6 +70,14 @@ exports.run = (client, message, args) => {
 };
 
 // Functions
+function checkIfCustomSheet(drug) {
+  if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function capitalize(name) {
   return name[0].toUpperCase() + name.slice(1);
 }
