@@ -207,4 +207,6 @@ function buildAddictionPotentialMessage(substance) {
   }
 }
 
-function buildLinksMessage(substance)
+function buildLinksMessage(substance) {
+  
+}
