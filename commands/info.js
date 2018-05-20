@@ -32,16 +32,14 @@ exports.run = (client, message, args) => {
   }
 
   // Checks to see if drug is on the customs list
-  if (drug == "ayahuasca" || drug == "datura" || drug == "salvia") {
+  if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
     var location;
     // Find the location of the substance object in the JSON
     for (let i = 0; i < customsJSON.data.substances.length; i++) {    
       if (customsJSON.data.substances[i].name = drug) {
         location = i;
-        console.log(location);
       }
       var substance = customsJSON.data.substances[location];
-      console.log(substance);
     }
   } else {
     // Sets to PW API query results
@@ -61,7 +59,7 @@ exports.run = (client, message, args) => {
   .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
   .addField(":warning: __Addiction potential__", buildAddictionPotentialMessage(substance))
   .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n`)
-  .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
+  .addField(":globe_with_meridians: __Links__", buildLinksMessage(substance))
   
   message.channel.send({embed});
 })
@@ -73,7 +71,6 @@ exports.run = (client, message, args) => {
 
 // Functions
 function capitalize(name) {
-  console.log(name);
   return name[0].toUpperCase() + name.slice(1);
 }
 
@@ -218,5 +215,5 @@ function buildAddictionPotentialMessage(substance) {
 }
 
 function buildLinksMessage(substance) {
-
+  return `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`
 }
