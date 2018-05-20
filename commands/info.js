@@ -66,6 +66,8 @@ exports.run = (client, message, args) => {
     console.log("promise rejected/errored out");
     console.log(error);
   });
+
+  hasCustom = false;
 }
 };
 
