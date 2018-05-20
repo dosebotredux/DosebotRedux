@@ -85,6 +85,7 @@ function locateCustomSheetLocation(drug) {
       location = i;
     }
     var substance = customsJSON.data.substances[location];
+    console.log("SUBSTANCE: " + substance)
   }
   return substance;
 }
