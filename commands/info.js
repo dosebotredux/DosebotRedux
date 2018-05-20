@@ -73,6 +73,7 @@ exports.run = (client, message, args) => {
 
 // Functions
 function capitalize(name) {
+  console.log(name);
   return name[0].toUpperCase() + name.slice(1);
 }
 
