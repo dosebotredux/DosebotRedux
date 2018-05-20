@@ -37,6 +37,12 @@ exports.run = (client, message, args) => {
     var substance = customsJSON.data.substances[0];
     console.log(substance);
   }
+
+  if (drug == "ayahuasca") {
+    for (let i = 0; i < customsJSON.data.substances.length; i++) {
+      console.log(customsJSON.data.substance[i].name);
+    }
+  }
     
   console.log(buildChemicalClassMessage(substance));
   
