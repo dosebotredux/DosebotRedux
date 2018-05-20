@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
 
   if (drug == "ayahuasca") {
     for (let i = 0; i < customsJSON.data.substances.length; i++) {
-      console.log(customsJSON.data.substance[i].name);
+      console.log(customsJSON.data.substance[i]);
     }
   }
     
@@ -192,7 +192,6 @@ function buildDurationMessage(substance) {
 
 function buildChemicalClassMessage(substance) {
   if (substance.class !== null) {
-    console.log("chen")
     return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
     return "No information";
@@ -201,7 +200,6 @@ function buildChemicalClassMessage(substance) {
 
 function buildPsychoactiveClassMessage(substance) {
   if (substance.class !== null) {
-    console.log("psy")
     return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
     return "No information";
@@ -210,7 +208,6 @@ function buildPsychoactiveClassMessage(substance) {
 
 function buildAddictionPotentialMessage(substance) {
   if (substance.addictionPotential !== null) {
-    console.log("add")
     return `${capitalize(substance.addictionPotential)}\n`
   } else {
     return "No information";
