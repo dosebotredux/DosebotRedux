@@ -72,8 +72,8 @@
               "afterglow": {
                 "max": 24,
                 "min": 6,
-                "units": "hours"
-              },
+                "units": "hours" 
+              }, 
               "comeup": {
                 "max": 120,
                 "min": 60,
@@ -194,6 +194,7 @@
       },
       {
         "name": "lsa",
+        "addictionPotential": "not habit-forming",
         "class": {
           "chemical": [
             "Lysergamide"
