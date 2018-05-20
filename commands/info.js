@@ -5,41 +5,46 @@ const customsJSON = require("../customs.json")
 exports.run = (client, message, args) => {
   const { request } = require("graphql-request");
   
+  // For keeping track of whether or not a substance is found in the custom sheets
   var hasCustom;
+  
+  // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var result = str.split(" ");
   var drug = str
   .toLowerCase()
   .replace("--info ", "", -1)
   .replace(/-/g, "", -1)
-  .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+  .replace(/ /g, "", -1); 
+  
+  // Sanitizes input names to match PsychonautWiki API names
   drug = sanitizeSubstanceName(drug)
-  console.log(hasCustom);
+  
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
+    console.log("Pulling from custom");
+    
     hasCustom = true;
-    var location;
+    
     // Find the location of the substance object in the JSON and set substance
+    var location;
     substance = locateCustomSheetLocation(drug);
-    console.log("pulling from custom");
     
     createChannelMessage(substance, message);
   } else {
     hasCustom = false;
   }
-  console.log(hasCustom);
-  
-  // console.log(substance)
-  // console.log(customsJSON.data.substances[1])
   
   if (hasCustom == false) {
     console.log(`Requesting info for ${drug}`); 
-    // loads graphql query from separate file as "query" variable
+    // Loads GraphQL query as "query" variable
     let query = require("../queries/info.js").info(drug);
     request("https://api.psychonautwiki.org", query).then(data => {
+    // Logs API's returned object of requested substance
+    console.log(data) 
     
-    console.log(data) // SHOW ME WHAT YOU GOT
-    
+    // Send a message to channel if there are zero or more than one substances returned by the API 
+    // Not sure if the API in its current configuration can return more than one substance
     if (data.substances.length == 0) {
       message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
@@ -57,15 +62,14 @@ exports.run = (client, message, args) => {
     console.log("promise rejected/errored out");
     console.log(error);
   });
-  console.log(hasCustom);
   
+  // Reset hasCustom
   hasCustom = false;
-  console.log(hasCustom);
-  
 }
 };
 
 // Functions
+//// Create a RichEmbed powered message utilizing the various field builder functions
 function createChannelMessage(substance, message) {
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
@@ -75,16 +79,17 @@ function createChannelMessage(substance, message) {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":telescope: __Class__", buildChemicalClassMessage(substance) + buildPsychoactiveClassMessage(substance))
-  .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
-  .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
-  .addField(":warning: __Addiction potential__", buildAddictionPotentialMessage(substance))
-  .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n`)
-  .addField(":globe_with_meridians: __Links__", buildLinksMessage(substance))
+  .addField(":telescope: __Class__", buildChemicalClassField(substance) + buildPsychoactiveClassField(substance))
+  .addField(":scales: __Dosages__", `${buildDosageField(substance)}\n`)
+  .addField(":clock2: __Duration__", `${buildDurationField(substance)}\n`)
+  .addField(":warning: __Addiction potential__", buildAddictionPotentialField(substance))
+  .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceField(substance)}\n`)
+  .addField(":globe_with_meridians: __Links__", buildLinksField(substance))
   
   message.channel.send({embed});
 }
-//// Custom sheet functions
+// Custom sheet functions
+//// Check if the requested substance is in the customs.json file
 function checkIfCustomSheet(drug) {
   console.log("drug: " + drug)
   if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
@@ -94,63 +99,50 @@ function checkIfCustomSheet(drug) {
   }
 }
 
+//// Find the location of a given substance in the customs.json file
 function locateCustomSheetLocation(drug) {
   var locationsArray = [];
   var loc;
   var substance;
   
+  // Loop through the JSON file and add all of the names and locations to locationsArray
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
     locationsArray.push({"name": customsJSON.data.substances[i].name, "location": i})
   }
   
+  // Loop through the locationsArray to find the location of a given substance 
   for (let i = 0; i < locationsArray.length; i++) {
     if (locationsArray[i].name == drug) {
       loc = i;
     }
   }
+
+  // Set substance equal to the correct substance in the JSON file
   substance = customsJSON.data.substances[loc];
   return substance;
 }
 
-//// Capitalization function
+// Capitalization function
 function capitalize(name) {
   return name[0].toUpperCase() + name.slice(1);
 }
 
-//// Message builders
-function buildToleranceMessage(substance) {
+// Message builders
+function buildToleranceField(substance) {
   let tolerances = substance.tolerance
-  // console.log(t)
-  // if (!!tolerances && substance.name !== "ayahuasca" || "salvia") {
-  //   return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
-  // } else if (substance.name == "ayahuasca") {
-  //   return substance.tolerance.tolerance;
-  // } else {
-  //   return "No information";
-  // }
-  console.log(tolerances);
-  console.log(tolerances.full);
+  
   if (!!tolerances) {
+    // If substance does not have standard tolerances return the custom tolerance
     if (substance.name == "ayahuasca" || substance.name == "salvia") {
       return substance.tolerance.tolerance;
     } else {
-      console.log("we're in the right spot");
+    // return standard tolerances
       return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
     }
-    
-    // if (hasCustom == true) {
-    //   if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
-    //     return substance.tolerance.tolerance;
-    //   } else {
-    //     return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
-    //   }
-    // } else {
-    //   return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
-    // }
   }
 }
 
-function buildDosageMessage(substance) {
+function buildDosageField(substance) {
   var messages = []
   
   var i
@@ -199,7 +191,7 @@ function buildDosageMessage(substance) {
   return messages.join("\n")
 }
 
-function buildDurationMessage(substance) {
+function buildDurationField(substance) {
   var messages = []
   
   var i
@@ -252,7 +244,7 @@ function buildDurationMessage(substance) {
   return messages.join("\n")
 }
 
-function buildChemicalClassMessage(substance) {
+function buildChemicalClassField(substance) {
   if (substance.class !== null) {
     return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
@@ -260,7 +252,7 @@ function buildChemicalClassMessage(substance) {
   }
 }
 
-function buildPsychoactiveClassMessage(substance) {
+function buildPsychoactiveClassField(substance) {
   if (substance.class !== null) {
     return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
@@ -268,7 +260,7 @@ function buildPsychoactiveClassMessage(substance) {
   }
 }
 
-function buildAddictionPotentialMessage(substance) {
+function buildAddictionPotentialField(substance) {
   if (substance.addictionPotential !== null) {
     console.log(substance);
     return `${capitalize(substance.addictionPotential)}\n`
@@ -277,6 +269,6 @@ function buildAddictionPotentialMessage(substance) {
   }
 }
 
-function buildLinksMessage(substance) {
+function buildLinksField(substance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`
 }
