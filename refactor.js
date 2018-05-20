@@ -16,10 +16,10 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", member => {
-  //logs every user who joins into the console
-  console.log(member.user.username);
-  console.log(member.toString());
-  console.log(member.id.toString());
+  // //logs every user who joins into the console
+  // console.log(member.user.username);
+  // console.log(member.toString());
+  // console.log(member.id.toString());
 });
 
 client.on("guildCreate", guild => {

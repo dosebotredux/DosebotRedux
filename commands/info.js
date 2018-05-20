@@ -46,11 +46,11 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":telescope: __Class__", "**Chemical**: " + substance.class.chemical[0] + "\n" + "**Psychoactive**: " + substance.class.psychoactive[0])
+  .addField(":telescope: __Class__", buildChemicalClassMessage() + buildPsychoactiveClassMessage)
   .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
   .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
   .addField(":warning: __Addiction potential__",
-  `${capitalize(substance.addictionPotential)}\n`)
+  buildPsychoactiveClassMessage())
   .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n`)
   .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
@@ -184,13 +184,25 @@ function buildDurationMessage(substance) {
 }
 
 function buildChemicalClassMessage(substance) {
-  
+  if (substance.class.chemical !== null) {
+    return "**Chemical**: " + substance.class.chemical[0];
+  } else {
+    return "No information";
+  }
 }
 
 function buildPsychoactiveClassMessage(substance) {
-  
+  if (substance.class.psychoactive !== null) {
+    return "\n**Psychoactive**: " + substance.class.psychoactive[0];
+  } else {
+    return "No information";
+  }
 }
 
 function buildAddictionPotentialMessage(substance) {
-  
+  if (substance.addictionPotential !== null) {
+    return `${capitalize(substance.addictionPotential)}\n`
+  } else {
+    return "No information";
+  }
 }
