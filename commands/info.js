@@ -34,7 +34,9 @@ exports.run = (client, message, args) => {
     var location;
     // Find the location of the substance object in the JSON and set substance
     substance = locateCustomSheetLocation(drug);
+    console.log("pulling from custom");
   } else {
+    console.log("pulling from PW")
     // Sets to PW API query results
     var substance = data.substances[0];
   }
