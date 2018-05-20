@@ -104,6 +104,92 @@
             "name": "oral"
           }
         ]
+      },
+      {
+        "name": "Salvia",
+          "class": {
+            "chemical": [
+              "Terpenoid"
+            ],
+            "psychoactive": [
+              "Hallucinogen"
+            ]
+          },
+        "roas": [
+          {
+            "bioavailability": null,
+            "dose": {
+              "common": 0.5,
+              "heavy": 1,
+              "light": 0.25,
+              "strong": {
+                "max": 1.0,
+                "min": 0.75
+              },
+              "units": "g"
+            },
+            "duration": {
+              "afterglow": {
+                "max": 60,
+                "min": 15,
+                "units": "seconds"
+              },
+              "comeup": null,
+              "duration": null,
+              "offset": null,
+              "onset": {
+                "max": 60,
+                "min": 15,
+                "units": "seconds"
+              },
+              "peak": null,
+              "total": {
+                "max": 90,
+                "min": 15,
+                "units": "minutes"
+              }
+            },
+            "name": "smoked"
+          },
+          {
+            "bioavailability": null,
+            "dose": {
+              "common": 0.5,
+              "heavy": 1,
+              "light": 0.25,
+              "strong": {
+                "max": 1.0,
+                "min": 0.75
+              },
+              "units": "g"
+            },
+            "duration": {
+              "afterglow": {
+                "max": 120,
+                "min": 30,
+                "units": "seconds"
+              },
+              "comeup": null,
+              "duration": null,
+              "offset": null,
+              "onset": {
+                "max": 20,
+                "min": 10,
+                "units": "minutes"
+              },
+              "peak": null,
+              "total": {
+                "max": 90,
+                "min": 30,
+                "units": "minutes"
+              }
+            },
+            "name": "smoked"
+          }
+        ],
+        "tolerance": {
+          "tolerance": "Salvia does not have a tolerance"
+        }
       }
     ]
   }
