@@ -184,6 +184,7 @@ function buildDurationMessage(substance) {
 }
 
 function buildChemicalClassMessage(substance) {
+  console.log(substance.class);
   if (substance.class.chemical !== null) {
     return "**Chemical**: " + substance.class.chemical[0];
   } else {
@@ -208,5 +209,5 @@ function buildAddictionPotentialMessage(substance) {
 }
 
 function buildLinksMessage(substance) {
-  
+
 }
