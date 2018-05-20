@@ -41,8 +41,8 @@ exports.run = (client, message, args) => {
     // Sets to PW API query results
     var substance = data.substances[0];
   }
-  console.log(substance)
-  console.log(customsJSON.data.substances[1])
+  // console.log(substance)
+  // console.log(customsJSON.data.substances[1])
   createChannelMessage(substance, message);
   
   
@@ -84,17 +84,23 @@ function checkIfCustomSheet(drug) {
 
 function locateCustomSheetLocation(drug) {
   var testArr = [];
+  var loc;
+  var substance;
 
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
     console.log("name: " + customsJSON.data.substances[i].name)   
     testArr.push({"name": customsJSON.data.substances[i].name, "location": i})
-    if (customsJSON.data.substances[i].name = drug) {
-      location = i;
-    }
-    var substance = customsJSON.data.substances[location];
   }
   console.log(testArr);
 
+  for (let i = 0; i < testArr.length; i++) {
+    console.log(drug);
+    console.log(testArr[i].name);
+    if (testArr[i].name == drug) {
+      loc = i;
+    }
+  }
+  substance = customsJSON.data.substances[loc];
   return substance;
 }
 
