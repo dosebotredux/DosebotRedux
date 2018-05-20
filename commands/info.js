@@ -39,7 +39,7 @@ exports.run = (client, message, args) => {
   }
     
   console.log(buildChemicalClassMessage(substance));
-  
+
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -48,7 +48,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":telescope: __Class__", buildChemicalClassMessage(substance) + buildPsychoactiveClassMessage(substance))
+  .addField(":telescope: __Class__", buildChemicalClassMessage(substance) 
   .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
   .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
   .addField(":warning: __Addiction potential__",
