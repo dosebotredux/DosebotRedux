@@ -22,16 +22,16 @@ exports.run = (client, message, args) => {
   console.log(data) // SHOW ME WHAT YOU GOT
   
   if (data.substances.length == 0) {
-    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
+    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
   }
   
   if (data.substances.length > 1) {
-    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
+    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
   }
   
-  if (drug !== "ayahuasca") {
+  if (drug !== "ayahuasca" || drug !== "datura") {
     var substance = data.substances[0];
     console.log("we are in the wrong spot");
   } else {
