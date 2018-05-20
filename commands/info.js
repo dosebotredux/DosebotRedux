@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
   }
 
   // Checks to see if drug is on the customs list
-  if (drug == "ayahuasca" || drug == "datura") {
+  if (drug == "ayahuasca" || drug == "datura" || drug == "salvia") {
     var location;
     // Find the location of the substance object in the JSON
     for (let i = 0; i < customsJSON.data.substances.length; i++) {    
@@ -78,7 +78,7 @@ function capitalize(name) {
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
-  if (!!tolerances && substance.name !== "ayahuasca") {
+  if (!!tolerances && substance.name !== "ayahuasca" || "salvia") {
     return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
   } else if (substance.name == "ayahuasca") {
     return substance.tolerance.tolerance;
