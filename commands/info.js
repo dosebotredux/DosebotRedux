@@ -42,7 +42,7 @@ exports.run = (client, message, args) => {
     var substance = data.substances[0];
   }
   console.log(substance)
-  console.log(customsJSON.data.substances[3])
+  console.log(customsJSON.data.substances[1])
   createChannelMessage(substance, message);
   
   
