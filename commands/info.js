@@ -88,8 +88,8 @@ function locateCustomSheetLocation(drug) {
       location = i;
     }
     var substance = customsJSON.data.substances[location];
-    console.log("SUBSTANCE: " + substance)
-    console.log("correct: " + customsJSON.data.substances[3])
+    console.log(substance)
+    console.log(customsJSON.data.substances[3])
   }
   return substance;
 }
