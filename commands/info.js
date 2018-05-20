@@ -46,7 +46,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(":telescope: __Class__", buildChemicalClassMessage() + buildPsychoactiveClassMessage)
+  .addField(":telescope: __Class__", buildChemicalClassMessage(substance) + buildPsychoactiveClassMessage(substance))
   .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
   .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
   .addField(":warning: __Addiction potential__",
@@ -206,3 +206,5 @@ function buildAddictionPotentialMessage(substance) {
     return "No information";
   }
 }
+
+function buildLinksMessage(substance)
