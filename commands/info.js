@@ -51,8 +51,7 @@ exports.run = (client, message, args) => {
   .addField(":telescope: __Class__", buildChemicalClassMessage(substance)) + buildPsychoactiveClassMessage(substance)
   .addField(":scales: __Dosages__", `${buildDosageMessage(substance)}\n`)
   .addField(":clock2: __Duration__", `${buildDurationMessage(substance)}\n`)
-  .addField(":warning: __Addiction potential__",
-  buildAddictionPotentialMessage(substance))
+  .addField(":warning: __Addiction potential__", buildAddictionPotentialMessage(substance))
   .addField(":chart_with_upwards_trend: __Tolerance__", `${buildToleranceMessage(substance)}\n`)
   .addField(":globe_with_meridians: __Links__", `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`)
   
