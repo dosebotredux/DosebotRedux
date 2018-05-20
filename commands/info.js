@@ -32,23 +32,25 @@ exports.run = (client, message, args) => {
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     var location;
-    // Find the location of the substance object in the JSON
+    // Find the location of the substance object in the JSON and set substance
     substance = locateCustomSheetLocation(drug);
   } else {
     // Sets to PW API query results
     var substance = data.substances[0];
   }
-
-  function locateCustomSheetLocation(drug) {
-    for (let i = 0; i < customsJSON.data.substances.length; i++) {    
-      if (customsJSON.data.substances[i].name = drug) {
-        location = i;
-      }
-      var substance = customsJSON.data.substances[location];
-    }
-    return substance;
-  }
   
+  createChannelMessage(substance);
+  
+  
+})
+.catch(function(error) {
+  console.log("promise rejected/errored out");
+  console.log(error);
+});
+};
+
+// Functions
+function createChannelMessage(substance) {
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
@@ -65,14 +67,8 @@ exports.run = (client, message, args) => {
   .addField(":globe_with_meridians: __Links__", buildLinksMessage(substance))
   
   message.channel.send({embed});
-})
-.catch(function(error) {
-  console.log("promise rejected/errored out");
-  console.log(error);
-});
-};
-
-// Functions
+}
+//// Custom sheet functions
 function checkIfCustomSheet(drug) {
   if (drug == "ayahuasca" || drug == "datura" || drug == "salvia" || drug == "lsa") {
     return true;
@@ -81,11 +77,22 @@ function checkIfCustomSheet(drug) {
   }
 }
 
+function locateCustomSheetLocation(drug) {
+  for (let i = 0; i < customsJSON.data.substances.length; i++) {    
+    if (customsJSON.data.substances[i].name = drug) {
+      location = i;
+    }
+    var substance = customsJSON.data.substances[location];
+  }
+  return substance;
+}
+
+//// Capitalization function
 function capitalize(name) {
   return name[0].toUpperCase() + name.slice(1);
 }
 
-// Message builders
+//// Message builders
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
