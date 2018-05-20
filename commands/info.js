@@ -44,26 +44,13 @@ exports.run = (client, message, args) => {
       message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
     } 
+
     if (data.substances.length > 1) {
       message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
     }
-
     var substance = data.substances[0];
     
-    // Checks to see if drug is on the customs list
-    // if (checkIfCustomSheet(drug)) {
-    //   var location;
-    //   // Find the location of the substance object in the JSON and set substance
-    //   substance = locateCustomSheetLocation(drug);
-    //   console.log("pulling from custom");
-    // } else {
-    //   console.log("pulling from PW")
-    //   // Sets to PW API query results
-    //   var substance = data.substances[0];
-    // }
-    // // console.log(substance)
-    // // console.log(customsJSON.data.substances[1])
     createChannelMessage(substance, message);
   })
   .catch(function(error) {
@@ -108,20 +95,20 @@ function checkIfCustomSheet(drug) {
 }
 
 function locateCustomSheetLocation(drug) {
-  var testArr = [];
+  var locationsArray = [];
   var loc;
   var substance;
   
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
     console.log("name: " + customsJSON.data.substances[i].name)   
-    testArr.push({"name": customsJSON.data.substances[i].name, "location": i})
+    locationsArray.push({"name": customsJSON.data.substances[i].name, "location": i})
   }
-  console.log(testArr);
+  console.log(locationsArray);
   
-  for (let i = 0; i < testArr.length; i++) {
+  for (let i = 0; i < locationsArray.length; i++) {
     console.log(drug);
-    console.log(testArr[i].name);
-    if (testArr[i].name == drug) {
+    console.log(locationsArray[i].name);
+    if (locationsArray[i].name == drug) {
       loc = i;
     }
   }
@@ -138,12 +125,19 @@ function capitalize(name) {
 function buildToleranceMessage(substance) {
   let tolerances = substance.tolerance
   // console.log(t)
-  if (!!tolerances && substance.name !== "ayahuasca" || "salvia") {
-    return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
-  } else if (substance.name == "ayahuasca") {
-    return substance.tolerance.tolerance;
-  } else {
-    return "No information";
+  // if (!!tolerances && substance.name !== "ayahuasca" || "salvia") {
+  //   return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+  // } else if (substance.name == "ayahuasca") {
+  //   return substance.tolerance.tolerance;
+  // } else {
+  //   return "No information";
+  // }
+  if (!!tolerances) {
+    if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
+      return substance.tolerance.tolerance;
+    } else {
+      return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+    }
   }
 }
 
