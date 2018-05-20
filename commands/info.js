@@ -100,14 +100,10 @@ function locateCustomSheetLocation(drug) {
   var substance;
   
   for (let i = 0; i < customsJSON.data.substances.length; i++) { 
-    console.log("name: " + customsJSON.data.substances[i].name)   
     locationsArray.push({"name": customsJSON.data.substances[i].name, "location": i})
   }
-  console.log(locationsArray);
   
   for (let i = 0; i < locationsArray.length; i++) {
-    console.log(drug);
-    console.log(locationsArray[i].name);
     if (locationsArray[i].name == drug) {
       loc = i;
     }
@@ -132,6 +128,7 @@ function buildToleranceMessage(substance) {
   // } else {
   //   return "No information";
   // }
+  console.log(tolerances);
   if (!!tolerances) {
     if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
       return substance.tolerance.tolerance;
