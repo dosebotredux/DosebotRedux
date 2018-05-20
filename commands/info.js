@@ -24,11 +24,12 @@ exports.run = (client, message, args) => {
   if (data.substances.length == 0) {
     message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
     return;
-  } else if (data.substances.length > 1) {
+  } 
+  if (data.substances.length > 1) {
     message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
     return;
   }
-    
+  
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     var location;
@@ -230,6 +231,7 @@ function buildPsychoactiveClassMessage(substance) {
 
 function buildAddictionPotentialMessage(substance) {
   if (substance.addictionPotential !== null) {
+    console.log(substance);
     return `${capitalize(substance.addictionPotential)}\n`
   } else {
     return "No information";
