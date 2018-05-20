@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
 
   if (drug == "ayahuasca") {
     for (let i = 0; i < customsJSON.data.substances.length; i++) {
-      console.log(customsJSON.data.substance[i]);
+      console.log(customsJSON.data.substances[i]);
     }
   }
     
