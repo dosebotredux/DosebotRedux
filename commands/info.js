@@ -33,6 +33,7 @@ exports.run = (client, message, args) => {
   
   if (drug !== "ayahuasca" && drug !== "datura") {
     var substance = data.substances[0];
+    console.log("we are in the wrong spot");
   } else {
     var location;
 
