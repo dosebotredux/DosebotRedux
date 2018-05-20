@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
   // console.log(substance)
   // console.log(customsJSON.data.substances[1])
   
-  if (hasCustom) {
+  if (hasCustom == false) {
     console.log(`Requesting info for ${drug}`); 
     // loads graphql query from separate file as "query" variable
     let query = require("../queries/info.js").info(drug);
