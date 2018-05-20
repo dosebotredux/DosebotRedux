@@ -38,14 +38,21 @@ exports.run = (client, message, args) => {
     console.log(substance);
   }
 
-  if (drug == "ayahuasca") {
+  if (drug == "ayahuasca" || drug == "datura") {
+    var location;
+
     for (let i = 0; i < customsJSON.data.substances.length; i++) {
       console.log(customsJSON.data.substances[i]);
+      
+      if (customsJSON.data.substances.name = drug) {
+        location = i;
+        console.log(location);
+      }
     }
+  } else {
+    var substance = data.substances[0];
   }
-    
-  console.log(buildChemicalClassMessage(substance));
-  
+      
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
