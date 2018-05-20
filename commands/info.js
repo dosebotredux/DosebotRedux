@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
 };
 
 // Functions
-function createChannelMessage(substance) {
+function createChannelMessage(substance, message) {
   const embed = new Discord.RichEmbed()
   .setTitle(`**${capitalize(substance.name)} drug information**`)
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
