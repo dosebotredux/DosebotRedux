@@ -134,6 +134,7 @@ function buildToleranceMessage(substance) {
     if (substance.name !== "ayahuasca" || substance.name !== "salvia") {
       return substance.tolerance.tolerance;
     } else {
+      console.log("we're in the right spot");
       return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
     }
   }
