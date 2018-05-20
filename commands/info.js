@@ -39,7 +39,7 @@ exports.run = (client, message, args) => {
     var substance = data.substances[0];
   }
   
-  createChannelMessage(substance);
+  createChannelMessage(substance, message);
   
   
 })
