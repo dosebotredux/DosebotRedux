@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
   .replace(/-/g, "", -1)
   .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   drug = sanitizeSubstanceName(drug)
-  
+  console.log(hasCustom);
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     hasCustom = true;
@@ -27,6 +27,8 @@ exports.run = (client, message, args) => {
   } else {
     hasCustom = false;
   }
+  console.log(hasCustom);
+
   // console.log(substance)
   // console.log(customsJSON.data.substances[1])
   
@@ -66,8 +68,11 @@ exports.run = (client, message, args) => {
     console.log("promise rejected/errored out");
     console.log(error);
   });
+  console.log(hasCustom);
 
   hasCustom = false;
+  console.log(hasCustom);
+
 }
 };
 
