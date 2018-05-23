@@ -32,6 +32,8 @@ exports.run = (client, message, args) => {
     
     createChannelMessage(substance, message);
   } else {
+    console.log("Pulling from PW");
+    
     hasCustom = false;
   }
   
@@ -48,18 +50,17 @@ exports.run = (client, message, args) => {
     if (data.substances.length == 0) {
       message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
-    } 
-    
-    if (data.substances.length > 1) {
+    } else if (data.substances.length > 1) {
       message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
       return;
     }
+    // Set substance to the first returned substance from PW API
     var substance = data.substances[0];
     
     createChannelMessage(substance, message);
   })
   .catch(function(error) {
-    console.log("promise rejected/errored out");
+    console.log("Promise rejected/errored out");
     console.log(error);
   });
   
@@ -116,7 +117,7 @@ function locateCustomSheetLocation(drug) {
       loc = i;
     }
   }
-
+  
   // Set substance equal to the correct substance in the JSON file
   substance = customsJSON.data.substances[loc];
   return substance;
@@ -124,7 +125,11 @@ function locateCustomSheetLocation(drug) {
 
 // Capitalization function
 function capitalize(name) {
-  return name[0].toUpperCase() + name.slice(1);
+  if (name === "lsa") {
+    return name.toUpperCase();
+  } else {
+    return name[0].toUpperCase() + name.slice(1);
+  }
 }
 
 // Message builders
@@ -136,7 +141,7 @@ function buildToleranceField(substance) {
     if (substance.name == "ayahuasca" || substance.name == "salvia") {
       return substance.tolerance.tolerance;
     } else {
-    // return standard tolerances
+      // return standard tolerances
       return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
     }
   }

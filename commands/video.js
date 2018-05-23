@@ -1,4 +1,4 @@
-// Sends a random Bob Ross video to the channel
+// Sends a random trippy video to the channel
 exports.run = (client, message, args) => {
 
   response = `<@${message.author.id}> `
@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
     })
   }
 
-  response += `Enjoy a random episode of The Joy of Painting: <https://mityurl.com/y/cDIn/r>\n`
+  response += `Enjoy a random trippy video: <http://mityurl.com/y/VuLy/r>\n`
 
   message.channel.send(response).catch(console.error);
 }
