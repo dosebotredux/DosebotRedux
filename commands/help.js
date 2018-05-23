@@ -28,7 +28,8 @@ function buildCommandList() {
     "--memes",
     "--psytolerance [days]",
     "--randomeffect",
-    "--triptoy"
+    "--triptoy",
+    "--video"
   ];
 
   return commands.join("\n");

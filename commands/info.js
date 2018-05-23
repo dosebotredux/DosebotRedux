@@ -160,10 +160,12 @@ function buildDosageField(substance) {
       // Set substance dose units
       let unit = dose.units;
       
+      // If there's a dose return dose + unit
       if (!!x) {
         if (typeof x == "number") {
           return `${x}${unit}`;
         }
+        // If there's a dose range return dose range + unit
         return `${x.min} - ${x.max}${unit}`;
       }
     }
@@ -172,15 +174,18 @@ function buildDosageField(substance) {
       // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
       messages.push(`*(${name})*`)
       
+      // If nonstandard dose add dosage information to messages array
       if (!!dose) {
         messages.push(`${dose.dosage}`)
         messages.push("")
       } else {
+        // This should really never happen
         messages.push("No dosage information.")
       }
     } else {
       messages.push(`*(${name})*`)
       
+      // Add all dosage information
       if (!!dose) {
         messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
         messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
@@ -189,50 +194,26 @@ function buildDosageField(substance) {
         messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`)
         messages.push("")
       } else {
+        // Or none if there is none
         messages.push("No dosage information.")
       }
     }
-    // if (substance.name !== "ayahuasca" || substance.name !== "datura") {
-    //   messages.push(`*(${name})*`)
-      
-    //   if (!!dose) {
-    //     messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
-    //     messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
-    //     messages.push(`**Common**: ${dosageObjectToString(dose.common) || "no information"}`)
-    //     messages.push(`**Strong**: ${dosageObjectToString(dose.strong) || "no information"}`)
-    //     messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`)
-    //     messages.push("")
-    //   } else {
-    //     messages.push("No dosage information.")
-    //   }
-    // } else {
-    //   // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
-    //   messages.push(`*(${name})*`)
-      
-    //   if (!!dose) {
-    //     messages.push(`${dose.dosage}`)
-    //     messages.push("")
-    //   } else {
-    //     messages.push("No dosage information.")
-    //   }
-    // }
   }
-  // console.log(messages)
+  // Join the message array into a string
   return messages.join("\n")
 }
 
 function buildDurationField(substance) {
   var messages = []
   
-  var i
+  var i;
   for (i = 0; i < substance.roas.length; i++) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
     let durationObjectToString = function(x) {
-      // console.log(x)
-      // { max: 48, min: 12, units: 'hours' }
+      // If there's a duration range return it + units
       if (!!x) {
         return `${x.min} - ${x.max} ${x.units}`
       }
@@ -270,10 +251,10 @@ function buildDurationField(substance) {
       }
     }
   }
-  // console.log(messages)
   return messages.join("\n")
 }
 
+// Builds the chemical class field
 function buildChemicalClassField(substance) {
   if (substance.class !== null) {
     return `**Chemical**: ${substance.class.chemical[0]}`;
@@ -282,6 +263,7 @@ function buildChemicalClassField(substance) {
   }
 }
 
+// Builds the psychoactive class field
 function buildPsychoactiveClassField(substance) {
   if (substance.class !== null) {
     return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
@@ -290,6 +272,7 @@ function buildPsychoactiveClassField(substance) {
   }
 }
 
+// Builds the addiction potential field
 function buildAddictionPotentialField(substance) {
   if (substance.addictionPotential !== null) {
     console.log(substance);
@@ -299,6 +282,7 @@ function buildAddictionPotentialField(substance) {
   }
 }
 
+// Builds the link field
 function buildLinksField(substance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${substance.name}) \n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`
 }
