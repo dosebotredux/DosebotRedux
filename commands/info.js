@@ -134,7 +134,7 @@ function capitalize(name) {
 
 // Message builders
 function buildToleranceField(substance) {
-  let tolerances = substance.tolerance
+  let tolerances = substance.tolerance;
   
   if (!!tolerances) {
     // If substance does not have standard tolerances return the custom tolerance
@@ -142,32 +142,43 @@ function buildToleranceField(substance) {
       return substance.tolerance.tolerance;
     } else {
       // return standard tolerances
-      return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`
+      return `**Full**: ${tolerances.full}\n**Half**: ${tolerances.half}\n**Baseline**: ${tolerances.zero}`;
     }
   }
 }
 
 function buildDosageField(substance) {
-  var messages = []
+  var messages = [];
   
-  var i
+  var i;
   for (i = 0; i < substance.roas.length; i++) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
     
     let dosageObjectToString = function(x) {
-      // console.log(x)
-      let unit = dose.units
+      // Set substance dose units
+      let unit = dose.units;
+      
       if (!!x) {
         if (typeof x == "number") {
-          return  `${x}${unit}`
+          return `${x}${unit}`;
         }
-        return `${x.min} - ${x.max}${unit}`
+        return `${x.min} - ${x.max}${unit}`;
       }
     }
     
-    if (substance.name !== "ayahuasca") {
+    if (substance.name == "ayahuasca" || substance.name == "datura") {
+      // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
+      messages.push(`*(${name})*`)
+      
+      if (!!dose) {
+        messages.push(`${dose.dosage}`)
+        messages.push("")
+      } else {
+        messages.push("No dosage information.")
+      }
+    } else {
       messages.push(`*(${name})*`)
       
       if (!!dose) {
@@ -180,17 +191,31 @@ function buildDosageField(substance) {
       } else {
         messages.push("No dosage information.")
       }
-    } else {
-      // Ayahuasca hardcoded message
-      messages.push(`*(${name})*`)
-      
-      if (!!dose) {
-        messages.push(`${dose.dosage}`)
-        messages.push("")
-      } else {
-        messages.push("No dosage information.")
-      }
     }
+    // if (substance.name !== "ayahuasca" || substance.name !== "datura") {
+    //   messages.push(`*(${name})*`)
+      
+    //   if (!!dose) {
+    //     messages.push(`**Threshold**: ${dosageObjectToString(dose.threshold) || "no information"}`)
+    //     messages.push(`**Light**: ${dosageObjectToString(dose.light) || "no information"}`)
+    //     messages.push(`**Common**: ${dosageObjectToString(dose.common) || "no information"}`)
+    //     messages.push(`**Strong**: ${dosageObjectToString(dose.strong) || "no information"}`)
+    //     messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`)
+    //     messages.push("")
+    //   } else {
+    //     messages.push("No dosage information.")
+    //   }
+    // } else {
+    //   // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
+    //   messages.push(`*(${name})*`)
+      
+    //   if (!!dose) {
+    //     messages.push(`${dose.dosage}`)
+    //     messages.push("")
+    //   } else {
+    //     messages.push("No dosage information.")
+    //   }
+    // }
   }
   // console.log(messages)
   return messages.join("\n")
