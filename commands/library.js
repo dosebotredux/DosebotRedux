@@ -27,6 +27,7 @@ exports.run = (client, message, args) => {
     }
   }
 
+  console.log(parseURL(testArr));
   // console.log(testArr);
   
   // message.channel
@@ -34,12 +35,14 @@ exports.run = (client, message, args) => {
   // .catch(console.error);
 };
 
-// function parseURL(str) {
-//   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
-//   //returns
-//   // \\Collections by Author\\Alan Watts\\1960 - Alan Watts - The New Alchemy.pdf
+function parseURL(arr) {
+  const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
 
-// }
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = theEye + arr[i];
+  }
+
+}
 
 //http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0/
 //https://the-eye.eu/public/Psychedelics/texts%20by%20author/Alan%20Watts/1960%20-%20Alan%20Watts%20-%20The%20New%20Alchemy.pdf
