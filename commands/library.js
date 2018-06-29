@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
   
   for (let i = 0; i < testArr.length; i++) {
-    testArr[i] = theEye + testArr[i];
+    testArr[i] = testArr[i] + "\n" + theEye + testArr[i];
   }
   
   console.log(testArr);
