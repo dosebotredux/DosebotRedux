@@ -15,17 +15,29 @@ exports.run = (client, message, args) => {
   
   for (let i = 0; i < library.library.length; i++) {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
+      // Replace backslashes with forward slash
       var strForwardSlash = library.library[i].replace(/\\/g, "/");
+
+      // Filename for search results
+      var fileName = strForwardSlash.substring(strForwardSlash.lastIndexOf("/") + 1);
+
+      // Replace spaces for URL
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
       
-      testArr.push(strSpaces);
+      // testArr.push(strSpaces);
+      testArr.push(
+        {
+          "name": fileName,
+          "location": strSpaces
+        }
+      )
     }
   }
   
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
   
   for (let i = 0; i < testArr.length; i++) {
-    testArr[i] = testArr[i] + "\n" + theEye + testArr[i];
+    testArr[i] = testArr[i].name + "\n" + theEye + testArr[i].location;
   }
   
   console.log(testArr);
