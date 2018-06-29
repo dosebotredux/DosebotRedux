@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var search = str
   .toLowerCase()
-  .replace("--info ", "", -1)
+  .replace("--library ", "", -1)
   .replace(/-/g, "", -1)
   // .replace(/ /g, "", -1); 
 
