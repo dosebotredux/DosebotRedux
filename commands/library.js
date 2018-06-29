@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   .catch(console.error);
   
   function buildMessage() {
-    var results = [`Search results for: ${search}`];
+    var results = [`Search results for: **${search}**`];
     
     if (testArr.length > 5) {
       for (let i = 0; i < 5; i++) {
