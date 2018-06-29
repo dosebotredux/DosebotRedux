@@ -16,8 +16,6 @@ exports.run = (client, message, args) => {
 
   for (let i = 0; i < library.library.length; i++) {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
-      testArr.push(library.library[i]);
-
       var strForwardSlash = library.library[i].replace(/\\/g, "/");
       console.log("forward slash: " + strForwardSlash);
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
@@ -42,14 +40,14 @@ exports.run = (client, message, args) => {
   // .catch(console.error);
 };
 
-function parseURL() {
-  const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
+// function parseURL() {
+//   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
 
-  for (let i = 0; i < testArr.length; i++) {
-    testArr[i] = theEye + testArr[i];
-  }
+//   for (let i = 0; i < testArr.length; i++) {
+//     testArr[i] = theEye + testArr[i];
+//   }
 
-}
+// }
 
 //http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0/
 //https://the-eye.eu/public/Psychedelics/texts%20by%20author/Alan%20Watts/1960%20-%20Alan%20Watts%20-%20The%20New%20Alchemy.pdf
