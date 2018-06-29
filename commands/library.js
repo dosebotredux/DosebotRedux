@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
       testArr.push(library.library[i]);
 
-      var strForwardSlash = library.library[i].replace(/\/\//g, "/");
+      var strForwardSlash = library.library[i].replace(/\\/g, "/");
       console.log("forward slash: " + strForwardSlash);
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
       console.log("spaces: " + strSpaces);
