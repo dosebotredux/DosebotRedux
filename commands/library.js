@@ -17,15 +17,11 @@ exports.run = (client, message, args) => {
   for (let i = 0; i < library.library.length; i++) {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
       var strForwardSlash = library.library[i].replace(/\\/g, "/");
-      console.log("forward slash: " + strForwardSlash);
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
-      console.log("spaces: " + strSpaces);
 
       testArr.push(strSpaces);
     }
   }
-
-  console.log(testArr);
 
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
 
@@ -34,10 +30,24 @@ exports.run = (client, message, args) => {
   }
 
   console.log(testArr);
+
+  var results = [];
+
+  if (testArr.length > 5) {
+    for (let i = 0; i < 4; i++) {
+      results.push(testArr[i]);
+    }
+  } else {
+    for (let i = 0; i < testArr.length; i++) {
+      results.push(testArr[i]);
+    }
+  }
   
-  // message.channel
-  // .send()
-  // .catch(console.error);
+  message.channel
+  .send(
+    "Search results: " + "\n" + results.join("\n")
+  )
+  .catch(console.error);
 };
 
 // function parseURL() {
