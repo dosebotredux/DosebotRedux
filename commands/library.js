@@ -27,19 +27,26 @@ exports.run = (client, message, args) => {
     }
   }
 
-  console.log(parseURL(testArr));
-  // console.log(testArr);
+  console.log(testArr);
+
+  const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
+
+  for (let i = 0; i < testArr.length; i++) {
+    testArr[i] = theEye + testArr[i];
+  }
+
+  console.log(testArr);
   
   // message.channel
   // .send()
   // .catch(console.error);
 };
 
-function parseURL(arr) {
+function parseURL() {
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
 
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = theEye + arr[i];
+  for (let i = 0; i < testArr.length; i++) {
+    testArr[i] = theEye + testArr[i];
   }
 
 }
