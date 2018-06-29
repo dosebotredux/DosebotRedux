@@ -31,12 +31,12 @@ exports.run = (client, message, args) => {
   console.log(testArr);
   
   message.channel
-  .send(buildMessage())
+  .send(buildMessage(search))
   .catch(console.error);
 };
 
-function buildMessage() {
-  var results = [`Search results for: ${search}`];
+function buildMessage(str) {
+  var results = [`Search results for: ${str}`];
 
   if (testArr.length > 5) {
     for (let i = 0; i < 5; i++) {
