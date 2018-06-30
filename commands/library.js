@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
   
   console.log("Search: " + search);
   
-  var testArr = [];
+  var librarySearchResultsArray = [];
   
   for (let i = 0; i < library.library.length; i++) {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
@@ -24,8 +24,8 @@ exports.run = (client, message, args) => {
       // Replace spaces for URL
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
       
-      // testArr.push(strSpaces);
-      testArr.push(
+      // librarySearchResultsArray.push(strSpaces);
+      librarySearchResultsArray.push(
         {
           "name": fileName,
           "location": strSpaces
@@ -36,12 +36,10 @@ exports.run = (client, message, args) => {
   
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
   
-  for (let i = 0; i < testArr.length; i++) {
-    testArr[i] = testArr[i].name + "\n" + theEye + testArr[i].location;
+  for (let i = 0; i < librarySearchResultsArray.length; i++) {
+    librarySearchResultsArray[i] = librarySearchResultsArray[i].name + "\n" + theEye + librarySearchResultsArray[i].location;
   }
-  
-  console.log(testArr);
-  
+    
   message.channel
   .send(buildMessage())
   .catch(console.error);
@@ -49,13 +47,13 @@ exports.run = (client, message, args) => {
   function buildMessage() {
     var results = [`Search results for: **${search}**`];
     
-    if (testArr.length > 5) {
+    if (librarySearchResultsArray.length > 5) {
       for (let i = 0; i < 5; i++) {
-        results.push(testArr[i]);
+        results.push(librarySearchResultsArray[i]);
       }
     } else {
-      for (let i = 0; i < testArr.length; i++) {
-        results.push(testArr[i]);
+      for (let i = 0; i < librarySearchResultsArray.length; i++) {
+        results.push(librarySearchResultsArray[i]);
       }
     }
     return results.join("\n\n");
