@@ -1,7 +1,6 @@
 var fs = require("fs")
 
 module.exports = function CommandSystem() {
-
   const commandPrefix = "--";
 
   var commandTable = {}

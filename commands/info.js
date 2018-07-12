@@ -217,7 +217,7 @@ function buildDurationField(substance) {
       if (!!x) {
         return `${x.min} - ${x.max} ${x.units}`
       }
-      return undefined
+      return undefined;
     }
     
     if (substance.name !== "ayahuasca") {

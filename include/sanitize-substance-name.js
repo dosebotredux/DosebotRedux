@@ -1,6 +1,7 @@
 module.exports = function sanitizeSubstanceName(drug) {
   if (drug === "dck") { return "deschloroketamine" }
   if (drug === "pce") { return "Eticyclidine" }
+  if (drug === "3meopce") { return "3-meo-pce" }
   if (drug === "pcp") { return "Phencyclidine" }
   if (drug === "mxp") { return "Methoxphenidine" }
   if (drug === "14bdo") { return "1,4-Butanediol" }
