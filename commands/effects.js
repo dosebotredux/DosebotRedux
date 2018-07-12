@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
 
     // loops through effects and add their name to the message variable
     for (let i = 0; i < 10; i++) {
-      messages.push(effects[i].name)
+      messages.push(`-${effects[i].name}`)
     }
 
     let effectsJoined = messages.join("\n")
