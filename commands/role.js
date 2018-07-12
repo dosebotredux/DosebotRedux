@@ -19,9 +19,9 @@ exports.run = (client, message, args) => {
 
   if (!!guildRoles.get(desiredRole)) {
     console.log("Guild has desired role");
-    let desiredGuildRole = guildRoles.find(role => role.name === desiredRole);
+    let desiredGuildRole = guildRoles.find(role => role.name === desiredRole.name);
 
-    if (!!author.roles.find(role => role.name === desiredGuildRole)) {
+    if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
       console.log("not falsy, removing role");
 
     } else {
