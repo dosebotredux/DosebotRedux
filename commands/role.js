@@ -16,15 +16,14 @@ exports.run = (client, message, args) => {
   let guildRoles = guild.roles; // role snowflake
   // console.log(guildRoles);
   console.log(`Desired role: ${desiredRole}`);
-  console.log(`Results: ${guildRoles.find(role => role.name === desiredRole.name)}`)
+  console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`)
 
-  if (!!guildRoles.get(desiredRole)) {
+  if (!!guildRoles.find(role => role.name === desiredRole)) {
     console.log("Guild has desired role");
-    let desiredGuildRole = guildRoles.find(role => role.name === desiredRole.name);
+    let desiredGuildRole = guildRoles.find(role => role.name === desiredRole);
 
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
       console.log("not falsy, removing role");
-
     } else {
       console.log("falsy, adding role");
     }
