@@ -24,8 +24,10 @@ exports.run = (client, message, args) => {
 
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
       console.log("not falsy, removing role");
+      author.removeRole(desiredGuildRole.id);
     } else {
       console.log("falsy, adding role");
+      author.addRole(desiredGuildRole.id);
     }
   } else {
     console.log("Guild does not have desired role");
