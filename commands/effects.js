@@ -37,12 +37,12 @@ exports.run = (client, message, args) => {
     messages.push("```")
 
     // loops through effects and add their name to the message variable
-    for (let i = 0; i < effects.length; i++) {
+    for (let i = 0; i < 10; i++) {
       messages.push(effects[i].name)
     }
 
     messages.push("```")
-    messages.push(`More information: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`)
+    messages.push(`See all effects: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`)
 
     let channelMessage = messages.join("\n")
 
