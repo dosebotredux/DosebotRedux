@@ -13,12 +13,12 @@ client.on("ready", () => {
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
   let guilds = client.guilds;
-  
-  if (guild.id == "332288651394547712") {
-    let guildMembers = guild.members;
-    console.log(guildMembers);
-    let cocoa;
-  }
+  console.log(guilds);
+  // if (guild.id == "332288651394547712") {
+  //   let guildMembers = guild.members;
+  //   console.log(guildMembers);
+  //   let cocoa;
+  // }
 });
 
 // Log new guild joins
