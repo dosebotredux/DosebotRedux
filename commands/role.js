@@ -37,6 +37,6 @@ exports.run = (client, message, args) => {
     }
   } else {
     console.log("Guild does not have desired role");
-    message.channel.send(`Error: Guild does not have **${desiredRole} role`);
+    message.channel.send(`Error: Guild does not have **${desiredRole}** role`);
   }
 };
