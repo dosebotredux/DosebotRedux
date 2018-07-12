@@ -10,20 +10,19 @@ exports.run = (client, message, args) => {
   let guildRoles = guild.roles; // role snowflake
   console.log(`Desired role: ${desiredRole}`);
   console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
-  console.log(`Author: ${author}`);
 
   if (!!guildRoles.find(role => role.name === desiredRole)) {
     console.log("Guild has desired role");
     let desiredGuildRole = guildRoles.find(role => role.name === desiredRole);
 
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
-      console.log(`Removed ${desiredRole} from ${author.name}`);
+      console.log(`Removed ${desiredRole} from @<${message.author.id}>`);
       author.removeRole(desiredGuildRole.id);
-      message.channel.send(`Removed ${desiredRole} from ${author.name}`);
+      message.channel.send(`Removed ${desiredRole} from @<${message.author.id}>`);
     } else {
-      console.log(`Added ${desiredRole} to ${author.name}`);
+      console.log(`Added ${desiredRole} to @<${message.author.id}>`);
       author.addRole(desiredGuildRole.id);
-      message.channel.send(`Added ${desiredRole} to ${author.name}`);
+      message.channel.send(`Added ${desiredRole} to @<${message.author.id}>`);
     }
   } else {
     console.log("Guild does not have desired role");
