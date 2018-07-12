@@ -28,18 +28,7 @@ exports.run = (client, message, args) => {
     message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
     return
   }
-  
   const substance = data.substances[0]
-  // const effects = substance.effects
-  
-  // var messages = []
-  
-  // // loops through effects and add their name to the message variable
-  // for (let i = 0; i < 10; i++) {
-  //   messages.push(`-${effects[i].name}`)
-  // }
-  
-  // let effectsJoined = messages.join("\n")
   
   const embed = new Discord.RichEmbed()
   .setTitle(`${substance.name} effect information`)
@@ -65,16 +54,11 @@ function createEffectsList(substance) {
   while (randomNumberArray.length < 10) {
     randomNumberArray.push(Math.floor(Math.random() * numberOfEffects));
   }
-
   var messages = [];
 
-  // randomNumberArray.forEach(number, index => {
-  //   messages.push(`-${effects[number[index]].name}`);
-  // });
   // loops through effects and add their name to the message variable
-
   for (let i = 0; i < randomNumberArray.length; i++) {
-    messages.push(`-${effects[randomNumberArray[i]].name}`)
+    messages.push(`-[${effects[randomNumberArray[i]].name}](https://psychonautwiki.org/wiki/${effects[randomNumberArray[i]].name})`);
   }
   return messages.join("\n");
 }
