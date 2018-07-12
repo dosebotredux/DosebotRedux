@@ -10,24 +10,30 @@ exports.run = (client, message, args) => {
   let guildRoles = guild.roles; // role snowflake
   console.log(`Desired role: ${desiredRole}`);
   console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
-
+  
   guildRoles.forEach(role => {
     console.log(`Role: ${role.name} Position: ${role.calculatedPosition}`);
   });
-
+  
   if (!!guildRoles.find(role => role.name.toLowerCase() === desiredRole)) {
     console.log("Guild has desired role");
     let desiredGuildRole = guildRoles.find(role => role.name.toLowerCase() === desiredRole);
-    console.log(`Calculated position: ${desiredGuildRole.calculatedPosition}`);
-
-    if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
-      console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
-      author.removeRole(desiredGuildRole.id);
-      message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
+    let doseBotRole = guildRoles.find(role => role.name.toLowerCase() === "dosebot");
+    let doseBotCalculatedPosition = doseBotRole.calculatedPosition;
+    console.log(`DoseBot position: ${doseBotCalculatedPosition}`);
+    
+    if (desiredGuildRole.calculatedPosition < doseBotCalculatedPosition) {
+      if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
+        console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
+        author.removeRole(desiredGuildRole.id);
+        message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
+      } else {
+        console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+        author.addRole(desiredGuildRole.id);
+        message.channel.send(`Added ${desiredRole} to <@${message.author.id}>`);
+      }
     } else {
-      console.log(`Added ${desiredRole} to <@${message.author.id}>`);
-      author.addRole(desiredGuildRole.id);
-      message.channel.send(`Added ${desiredRole} to <@${message.author.id}>`);
+      message.channel.send(`Error: ${desiredRole} has higher permissions than DoseBot`);
     }
   } else {
     console.log("Guild does not have desired role");
