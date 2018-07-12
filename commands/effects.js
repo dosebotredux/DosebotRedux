@@ -60,13 +60,11 @@ function createEffectsList(substance) {
     namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, "_"));
   });
 
-  console.log(namesUnderscoresRemovedArray);
-
   var messages = [];
 
   // loops through effects and add their name to the message variable
   for (let i = 0; i < randomNumberArray.length; i++) {
-    messages.push(`-[${effects[randomNumberArray[i]].name}](https://psychonautwiki.org/wiki/${effects[randomNumberArray[i]].name})`);
+    messages.push(`-[${effects[randomNumberArray[i]].name}](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`);
   }
   return messages.join("\n");
 }
