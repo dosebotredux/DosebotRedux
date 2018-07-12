@@ -49,11 +49,19 @@ function createEffectsList(substance) {
   // const substance = data.substances[0];
   const effects = substance.effects;
   const numberOfEffects = effects.length;
-  const randomNumberArray = [];
+  let randomNumberArray = [];
+  let namesUnderscoresRemovedArray = []; 
   
   while (randomNumberArray.length < 10) {
     randomNumberArray.push(Math.floor(Math.random() * numberOfEffects));
   }
+
+  randomNumberArray.forEach(element => {
+    namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, "_"));
+  });
+
+  console.log(namesUnderscoresRemovedArray);
+
   var messages = [];
 
   // loops through effects and add their name to the message variable
