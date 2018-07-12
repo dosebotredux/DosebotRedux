@@ -27,7 +27,7 @@ client.on("ready", () => {
   });
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
   let botGame = `Serving ${userCount} users on ${servercount} servers`;
-  ClientUser.setGame(botGame);
+  client.user.setGame(botGame);
   console.log("DoseBot is online - beep boop");
 });
 
