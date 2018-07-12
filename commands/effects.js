@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(`Effects`, createEffectsList(substance))
+  .addField(`Effects (randomly selected)`, createEffectsList(substance))
   .addField(`More information`, createFullEffectListLink(substance))
   
   message.channel.send({embed}).catch(console.error);
@@ -70,5 +70,5 @@ function createEffectsList(substance) {
 }
 
 function createFullEffectListLink(substance) {
-  return `[See all effects](https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects)`;
+  return `These effects were randomly selected from a larger list - [see all effects](https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects)`;
 }
