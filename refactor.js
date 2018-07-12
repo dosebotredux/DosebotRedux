@@ -12,6 +12,13 @@ client.on("ready", () => {
   // Update game message on launch
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
+  let guilds = client.guilds;
+  
+  if (guild.id == "332288651394547712") {
+    let guildMembers = guild.members;
+    console.log(guildMembers);
+    let cocoa;
+  }
 });
 
 // Log new guild joins
@@ -19,13 +26,6 @@ client.on("guildCreate", guild => {
   // Update game message on new server join
   updateGameMessage();
   console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
-
-  if (guild.id == "332288651394547712") {
-    let guildMembers = guild.members;
-    console.log(guildMembers);
-    let cocoa;
-    
-  }
 });
 
 // Pass messages to the CommandSystem
