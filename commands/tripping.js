@@ -13,10 +13,10 @@ exports.run = (client, message, args) => {
 
   if (!!author.roles.get("467024926394679307")) {
     console.log("not falsy, remove role");
-    author.roles.removeRole("467024926394679307");
+    author.removeRole("467024926394679307");
   } else {
     console.log("falsy, adding role");
-    author.roles.addRole("467024926394679307");
+    author.addRole("467024926394679307");
   }
 
   // let guilds = client.guilds;
