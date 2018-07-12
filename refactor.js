@@ -18,7 +18,14 @@ client.on("ready", () => {
 client.on("guildCreate", guild => {
   // Update game message on new server join
   updateGameMessage();
-  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`)
+  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
+
+  if (guild.id == "332288651394547712") {
+    let guildMembers = guild.members;
+    console.log(guildMembers);
+    let cocoa;
+    
+  }
 });
 
 // Pass messages to the CommandSystem
