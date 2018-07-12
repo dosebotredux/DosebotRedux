@@ -11,9 +11,9 @@ exports.run = (client, message, args) => {
   console.log(`Desired role: ${desiredRole}`);
   console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
 
-  if (!!guildRoles.find(role => role.name === desiredRole)) {
+  if (!!guildRoles.find(role => role.name.toLowerCase() === desiredRole)) {
     console.log("Guild has desired role");
-    let desiredGuildRole = guildRoles.find(role => role.name === desiredRole);
+    let desiredGuildRole = guildRoles.find(role => role.name.toLowerCase() === desiredRole);
 
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
       console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
