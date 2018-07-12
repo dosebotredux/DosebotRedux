@@ -14,6 +14,7 @@ client.on("ready", () => {
   console.log("DoseBot is online - beep boop");
   let guilds = client.guilds;
   for (let i = 0; i < 1; i++) {
+    console.log("we're here");
     console.log[guilds[i]];
   }
   // guilds.forEach(guild => {
