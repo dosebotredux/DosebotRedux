@@ -13,18 +13,18 @@ client.on("ready", () => {
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
   let guilds = client.guilds;
-  let SED;
+  let SED = guilds.get("332288651394547712");
   // guilds.forEach(guild => {
   //   console.log(guild.id + " " + index);
   //   if (guild.id == "332288651394547712") {
   //     SED = guild[]
   //   }
   // });
-  for (let i = 0; i < guilds.length; i++) {
-    if (guilds[i].id == "332288651394547712") {
-      SED = guilds[i];
-    }
-  }
+  // for (let i = 0; i < guilds.length; i++) {
+  //   if (guilds[i].id == "332288651394547712") {
+  //     SED = guilds[i];
+  //   }
+  // }
   console.log(SED);
   // if (guild.id == "332288651394547712") {
   //   let guildMembers = guild.members;
