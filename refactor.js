@@ -13,13 +13,9 @@ client.on("ready", () => {
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
   let guilds = client.guilds;
-  for (let i = 0; i < 1; i++) {
-    console.log("we're here");
-    console.log[guilds[1]];
-  }
-  // guilds.forEach(guild => {
-  //   console.log(guild.id);
-  // })
+  guilds.forEach((guild, index) => {
+    console.log(guild.id + " " + index);
+  });
   let SED;
   // if (guild.id == "332288651394547712") {
   //   let guildMembers = guild.members;
