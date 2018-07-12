@@ -11,16 +11,18 @@ client.on("ready", () => {
   const servers = client.guilds;
   let userCount = 0;
   let servercount = 0;
-
+  
   servers.forEach(guild => {
-    userCount += guild.memberCount;
-    servercount++;
+    if (guild.id !== "110373943822540800" || guild.id !== "264445053596991498") {
+      userCount += guild.memberCount;
+      servercount++;
+    }
     console.log(`Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`);
   });
-
+  
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
   console.log("DoseBot is online - beep boop");
-
+  
 });
 
 client.on("guildMemberAdd", member => {
