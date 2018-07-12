@@ -74,7 +74,7 @@ function createEffectsList(substance) {
   // loops through effects and add their name to the message variable
 
   for (let i = 0; i < randomNumberArray.length; i++) {
-    messages.push(`-${effects[randomNumberArray[i]]}.name`)
+    messages.push(`-${effects[randomNumberArray[i]].name}`)
   }
   return messages.join("\n");
 }
