@@ -12,12 +12,6 @@ client.on("ready", () => {
   // Update game message on launch
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
-  let guilds = client.guilds;
-  let SED = guilds.get("332288651394547712");
-  console.log(SED);
-  let cocoa = SED.members.get("278301453620084736");
-  console.log(cocoa);
-  cocoa.addRole("467024926394679307");
 });
 
 // Log new guild joins
