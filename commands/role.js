@@ -14,6 +14,7 @@ exports.run = (client, message, args) => {
   console.log(desiredRole);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
+  console.log(guildRoles);
 
   if (!!guildRoles.get(desiredRole)) {
     console.log("Guild has desired role");
