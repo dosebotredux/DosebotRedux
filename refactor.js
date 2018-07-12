@@ -14,9 +14,11 @@ client.on("ready", () => {
   
   servers.forEach(guild => {
     // if (guild.id !== "110373943822540800" || guild.id !== "264445053596991498") {
-
+    
     // }
     if (guild.id == "264445053596991498") {
+      console.log("Ignoring bot server");
+    } else if (guild.id == "110373943822540800") {
       console.log("Ignoring bot server");
     } else {
       userCount += guild.memberCount;
