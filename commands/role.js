@@ -30,12 +30,13 @@ exports.run = (client, message, args) => {
       } else {
         console.log(`Added ${desiredRole} to <@${message.author.id}>`);
         author.addRole(desiredGuildRole.id);
-        message.channel.send(`Added ${desiredRole} to <@${message.author.id}>`);
+        message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
       }
     } else {
-      message.channel.send(`Error: ${desiredRole} has higher permissions than DoseBot`);
+      message.channel.send(`Error: **${desiredRole}** has higher permissions than DoseBot`);
     }
   } else {
     console.log("Guild does not have desired role");
+    message.channel.send(`Error: Guild does not have **${desiredRole} role`);
   }
 };
