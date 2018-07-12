@@ -9,7 +9,9 @@ var util = require("util");
 
 client.on("ready", () => {
   const servers = client.guilds;
-    
+  servers.forEach(guild => {
+    console.log(guild.name);
+  })
   // console.log(servers);
   console.log("DoseBot is online - beep boop");
 
