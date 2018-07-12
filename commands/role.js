@@ -9,7 +9,8 @@ exports.run = (client, message, args) => {
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
   console.log(`Desired role: ${desiredRole}`);
-  console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`)
+  console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
+  console.log(`Author: ${author}`);
 
   if (!!guildRoles.find(role => role.name === desiredRole)) {
     console.log("Guild has desired role");
