@@ -7,6 +7,7 @@ var fs = require("fs");
 var path = require("path");
 var util = require("util");
 
+// On ready logic
 client.on("ready", () => {
   // Logs guilds and member counts 
   const servers = client.guilds;
@@ -25,17 +26,22 @@ client.on("ready", () => {
     console.log(`Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`);
   });
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
+  let botGame = `Serving ${userCount} users on ${servercount} servers`;
+  ClientUser.setGame(botGame);
   console.log("DoseBot is online - beep boop");
 });
 
+// Log new guild joins
 client.on("guildCreate", guild => {
   console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`)
 });
 
+// Pass messages to the CommandSystem
 client.on("message", message => {
   CommandSystem.execute(client, message)
 });
 
+//
 CommandSystem.load(function() {
   console.log("Command system loaded.")
 });
