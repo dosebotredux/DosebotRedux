@@ -14,23 +14,9 @@ client.on("ready", () => {
   console.log("DoseBot is online - beep boop");
   let guilds = client.guilds;
   let SED = guilds.get("332288651394547712");
-  // guilds.forEach(guild => {
-  //   console.log(guild.id + " " + index);
-  //   if (guild.id == "332288651394547712") {
-  //     SED = guild[]
-  //   }
-  // });
-  // for (let i = 0; i < guilds.length; i++) {
-  //   if (guilds[i].id == "332288651394547712") {
-  //     SED = guilds[i];
-  //   }
-  // }
   console.log(SED);
-  // if (guild.id == "332288651394547712") {
-  //   let guildMembers = guild.members;
-  //   console.log(guildMembers);
-  //   let cocoa;
-  // }
+  let cocoa = SED.members.get("278301453620084736");
+  console.log(cocoa);
 });
 
 // Log new guild joins
