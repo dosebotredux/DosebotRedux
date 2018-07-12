@@ -10,14 +10,14 @@ var util = require("util");
 // On ready logic
 client.on("ready", () => {
   // Update game message on launch
-  // updateGameMessage();
+  updateGameMessage();
   console.log("DoseBot is online - beep boop");
 });
 
 // Log new guild joins
 client.on("guildCreate", guild => {
   // Update game message on new server join
-  // updateGameMessage();
+  updateGameMessage();
   console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
 });
 

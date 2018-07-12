@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 // Welcome to role management
 exports.run = (client, message, args) => {
-  let author = message.member; // author object
+  var author = message.member; // author object
   let str = message.content; // "--role role"
   let desiredRole = str.toLowerCase().replace("--role ", "", -1).replace(/-/g, "", -1).replace(/ /g, "", -1); // "role"
   console.log(desiredRole);
