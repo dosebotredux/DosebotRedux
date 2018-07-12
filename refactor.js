@@ -15,7 +15,7 @@ client.on("ready", () => {
   servers.forEach(guild => {
     userCount += guild.memberCount;
     servercount++;
-    console.log(guild.name);
+    console.log(`Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`);
   });
 
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
