@@ -9,10 +9,16 @@ var util = require("util");
 
 client.on("ready", () => {
   const servers = client.guilds;
+  let userCount = 0;
+  let servercount = 0;
+
   servers.forEach(guild => {
+    userCount += guild.memberCount;
+    servercount++;
     console.log(guild.name);
-  })
-  // console.log(servers);
+  });
+
+  console.log(`Currently serving ${userCount} users on ${servercount} servers`);
   console.log("DoseBot is online - beep boop");
 
 });
