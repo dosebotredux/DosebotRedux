@@ -16,13 +16,13 @@ exports.run = (client, message, args) => {
     let desiredGuildRole = guildRoles.find(role => role.name === desiredRole);
 
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
-      console.log(`Removed ${desiredRole} from @<${message.author.id}>`);
+      console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
       author.removeRole(desiredGuildRole.id);
-      message.channel.send(`Removed ${desiredRole} from @<${message.author.id}>`);
+      message.channel.send(`Removed ${desiredRole} from <$@{message.author.id}>`);
     } else {
-      console.log(`Added ${desiredRole} to @<${message.author.id}>`);
+      console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(desiredGuildRole.id);
-      message.channel.send(`Added ${desiredRole} to @<${message.author.id}>`);
+      message.channel.send(`Added ${desiredRole} to <@${message.author.id}>`);
     }
   } else {
     console.log("Guild does not have desired role");
