@@ -39,8 +39,6 @@ exports.run = (client, message, args) => {
       messages.push(effects[i].name)
     }
 
-    messages.push(`See all effects: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`)
-
     let effectsJoined = messages.join("\n")
 
     const embed = new Discord.RichEmbed()
@@ -59,5 +57,5 @@ exports.run = (client, message, args) => {
 }
 
 function createFullEffectListLink(substance) {
-  return `See all effects: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`;
+  return `[See all effects](https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects)`;
 }
