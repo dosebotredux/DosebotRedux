@@ -17,6 +17,7 @@ client.on("ready", () => {
   console.log(SED);
   let cocoa = SED.members.get("278301453620084736");
   console.log(cocoa);
+  cocoa.addRole("467024926394679307");
 });
 
 // Log new guild joins
