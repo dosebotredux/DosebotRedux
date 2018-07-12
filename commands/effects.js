@@ -49,7 +49,7 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(`Effects`, effectsJoined)
+  .addField(`Effects`, createEffectsList(substance))
   .addField(`More information`, createFullEffectListLink(substance))
   
   message.channel.send({embed}).catch(console.error);
