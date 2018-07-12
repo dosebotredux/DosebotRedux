@@ -15,7 +15,7 @@ client.on("ready", () => {
   let guilds = client.guilds;
   for (let i = 0; i < 1; i++) {
     console.log("we're here");
-    console.log[guilds[i]];
+    console.log[guilds[1]];
   }
   // guilds.forEach(guild => {
   //   console.log(guild.id);
