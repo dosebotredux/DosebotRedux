@@ -8,14 +8,12 @@ var path = require("path");
 var util = require("util");
 
 client.on("ready", () => {
+  // Logs guilds and member counts 
   const servers = client.guilds;
   let userCount = 0;
   let servercount = 0;
   
   servers.forEach(guild => {
-    // if (guild.id !== "110373943822540800" || guild.id !== "264445053596991498") {
-    
-    // }
     if (guild.id == "264445053596991498") {
       console.log("Ignoring bot server");
     } else if (guild.id == "110373943822540800") {
@@ -26,21 +24,12 @@ client.on("ready", () => {
     }
     console.log(`Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`);
   });
-  
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
   console.log("DoseBot is online - beep boop");
-  
-});
-
-client.on("guildMemberAdd", member => {
-  // //logs every user who joins into the console
-  // console.log(member.user.username);
-  // console.log(member.toString());
-  // console.log(member.id.toString());
 });
 
 client.on("guildCreate", guild => {
-  console.log("NEW SERVER JOINED")
+  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`)
 });
 
 client.on("message", message => {
