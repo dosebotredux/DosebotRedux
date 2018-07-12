@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
   let str = message.content; // "--role role"
   let desiredRole = str.toLowerCase().replace("--role ", "", -1).replace(/-/g, "", -1).replace(/ /g, "", -1); // "role"
   console.log(desiredRole);
-  let guild = messages.guild; // guild snowflake
+  let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
 
   if (!!guildRoles.get(desiredRole)) {
