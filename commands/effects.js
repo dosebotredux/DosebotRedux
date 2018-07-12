@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
     return
   }
   
-  // const substance = data.substances[0]
+  const substance = data.substances[0]
   // const effects = substance.effects
   
   // var messages = []
@@ -57,7 +57,7 @@ exports.run = (client, message, args) => {
 }
 
 function createEffectsList(substance) {
-  const substance = data.substances[0];
+  // const substance = data.substances[0];
   const effects = substance.effects;
   const numberOfEffects = effects.length;
   const randomNumberArray = [];
