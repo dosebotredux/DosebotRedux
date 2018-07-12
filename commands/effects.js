@@ -68,16 +68,14 @@ function createEffectsList(substance) {
 
   var messages = [];
 
-  randomNumberArray.forEach(number, index => {
-    messages.push(`-${effects[number[index]].name}`);
-  });
-  
-  
-  // // loops through effects and add their name to the message variable
-  // for (let i = 0; i < 10; i++) {
-  //   messages.push(`-${effects[i].name}`)
-  // }
-  
+  // randomNumberArray.forEach(number, index => {
+  //   messages.push(`-${effects[number[index]].name}`);
+  // });
+  // loops through effects and add their name to the message variable
+
+  for (let i = 0; i < randomNumberArray.length; i++) {
+    messages.push(`-${effects[randomNumberArray[i]]}.name`)
+  }
   return messages.join("\n");
 }
 
