@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
     if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
       console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
       author.removeRole(desiredGuildRole.id);
-      message.channel.send(`Removed ${desiredRole} from <$@{message.author.id}>`);
+      message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
     } else {
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(desiredGuildRole.id);
