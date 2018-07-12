@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js")
 
 exports.run = (client, message, args) => {
