@@ -12,7 +12,8 @@ client.on("ready", () => {
   // Update game message on launch
   updateGameMessage();
   console.log("DoseBot is online - beep boop");
-  let guilds = client.guilds;
+  let guilds = client.guilds.id;
+  let SED;
   console.log(guilds);
   // if (guild.id == "332288651394547712") {
   //   let guildMembers = guild.members;
