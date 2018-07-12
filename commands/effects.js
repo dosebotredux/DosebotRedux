@@ -33,19 +33,30 @@ exports.run = (client, message, args) => {
 
     var messages = []
 
-    messages.push(`**${substance.name} effect information**`)
-    messages.push("```")
-
     // loops through effects and add their name to the message variable
     for (let i = 0; i < 10; i++) {
       messages.push(effects[i].name)
     }
 
-    messages.push("```")
     messages.push(`See all effects: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`)
 
-    let channelMessage = messages.join("\n")
+    let effectsJoined = messages.join("\n")
 
-    message.channel.send(channelMessage).catch(console.error)
+    const embed = new Discord.RichEmbed()
+    .setTitle(`${substance.name} effect information`)
+    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+    .setColor("747474")
+    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+    .setThumbnail("https://kek.gg/i/svRNH.png")
+    .setTimestamp()
+    .setURL("http://www.dosebot.org")
+    .addField(`Effects`, effectsJoined)
+    .addField(`More information`, createFullEffectListLink(substance))
+
+    message.channel.send({embed}).catch(console.error);
   }).catch(console.log)
+}
+
+function createFullEffectListLink(substance) {
+  return `See all effects: <https://psychonautwiki.org/wiki/${substance.name}#Subjective_effects>`;
 }
