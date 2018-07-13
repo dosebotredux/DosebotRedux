@@ -39,6 +39,7 @@ exports.run = (client, message, args) => {
   
   if (hasCustom == false) {
     console.log(`Requesting info for ${drug}`); 
+    console.log(`Command on ${message.guild.name}`)
     // Loads GraphQL query as "query" variable
     let query = require("../queries/info.js").info(drug);
     request("https://api.psychonautwiki.org", query).then(data => {
@@ -56,7 +57,6 @@ exports.run = (client, message, args) => {
     }
     // Set substance to the first returned substance from PW API
     var substance = data.substances[0];
-    
     createChannelMessage(substance, message);
   })
   .catch(function(error) {
