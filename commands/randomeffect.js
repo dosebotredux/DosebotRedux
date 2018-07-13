@@ -1,5 +1,5 @@
 //grabs glossary info from local json and builds message based on random effect
-const discord = require("discord.js");
+const Discord = require("discord.js");
 const glossary = require("../glossary.json");
 const replications = require("../replications.json");
 
