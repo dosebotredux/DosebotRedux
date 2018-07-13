@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
     let doseBotCalculatedPosition = doseBotRole.calculatedPosition;
     console.log(`DoseBot position: ${doseBotCalculatedPosition}`);
 
-    if (desiredGuildRole === "tripping") {
+    if (desiredGuildRole.name.toLowerCase() === "tripping") {
       toggleRole(desiredGuildRole);
     } else if (desiredGuildRole.name === "stimmed") {
       toggleRole(desiredGuildRole);
