@@ -64,7 +64,7 @@ exports.run = (client, message, args) => {
     message.channel.send(`Error: Guild does not have **${desiredRole}** role`);
   }
   function toggleRole(roleToApply, author) {
-    if (!!author.roles.find(role => role.name === roleToApply.name.toLowerCase())) {
+    if (!!author.roles.find(role => role.name === roleToApply.name)) {
       console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
       author.removeRole(roleToApply.id);
       message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
