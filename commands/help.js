@@ -26,7 +26,6 @@ function buildCommandList() {
     "--effects [substance]",
     "--info [substance]",
     "--library [search string]",
-    "--memes",
     "--psytolerance [days]",
     "--randomeffect",
     "--triptoy",
