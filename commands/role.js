@@ -11,9 +11,9 @@ exports.run = (client, message, args) => {
   console.log(`Desired role: ${desiredRole}`);
   console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
   
-  guildRoles.forEach(role => {
-    console.log(`Role: ${role.name} Position: ${role.calculatedPosition}`);
-  });
+  // guildRoles.forEach(role => {
+  //   console.log(`Role: ${role.name} Position: ${role.calculatedPosition}`);
+  // });
   
   if (!!guildRoles.find(role => role.name.toLowerCase() === desiredRole)) {
     console.log("Guild has desired role");
