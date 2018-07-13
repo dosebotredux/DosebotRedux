@@ -21,22 +21,58 @@ exports.run = (client, message, args) => {
     let doseBotRole = guildRoles.find(role => role.name.toLowerCase() === "dosebot");
     let doseBotCalculatedPosition = doseBotRole.calculatedPosition;
     console.log(`DoseBot position: ${doseBotCalculatedPosition}`);
-    
-    if (desiredGuildRole.calculatedPosition < doseBotCalculatedPosition) {
-      if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
-        console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
-        author.removeRole(desiredGuildRole.id);
-        message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
-      } else {
-        console.log(`Added ${desiredRole} to <@${message.author.id}>`);
-        author.addRole(desiredGuildRole.id);
-        message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
-      }
+
+    if (desiredGuildRole === "tripping") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "stimmed") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "barred") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "nodding") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "drunk") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "dissod") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "rolling") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "stoned") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "hungover") {
+      toggleRole(desiredGuildRole);
+    } else if (desiredGuildRole === "delirious") {
+      toggleRole(desiredGuildRole);
     } else {
-      message.channel.send(`Error: **${desiredRole}** has higher permissions than DoseBot`);
+      message.channel.send(`Error: DoseBot cannot assign ${desiredGuildRole}`)
     }
+    
+    // if (desiredGuildRole.calculatedPosition < doseBotCalculatedPosition) {
+    //   if (!!author.roles.find(role => role.name === desiredGuildRole.name)) {
+    //     console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
+    //     author.removeRole(desiredGuildRole.id);
+    //     message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
+    //   } else {
+    //     console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+    //     author.addRole(desiredGuildRole.id);
+    //     message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+    //   }
+    // } else {
+    //   message.channel.send(`Error: **${desiredRole}** has higher permissions than DoseBot`);
+    // }
   } else {
     console.log("Guild does not have desired role");
     message.channel.send(`Error: Guild does not have **${desiredRole}** role`);
   }
 };
+
+function toggleRole(roleToApply) {
+  if (!!author.roles.find(role => role.name === roleToApply.toLowerCase())) {
+    console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
+    author.removeRole(roleToApply.id);
+    message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
+  } else {
+    console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+    author.addRole(roleToApply.id);
+    message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+  }
+}
