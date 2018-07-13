@@ -74,6 +74,6 @@ exports.run = (client, message, args) => {
 
   function buildMoreResultsField() {
     search = search.replace(/ /g, "-", -1);
-    return `[More results](${theEye}${search})`;
+    return `[More results](${theEyeSearch}${search})\nNote: TheEye searches are case sensitive`;
   }
 };
