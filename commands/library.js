@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField(`Description`, buildMessageField())
-  .addField(`More results`, buildMoreResultsField())
+  .addField(buildMoreResultsField())
 
   message.channel.send({embed}).catch(console.error);
   
@@ -74,6 +74,6 @@ exports.run = (client, message, args) => {
 
   function buildMoreResultsField() {
     search = search.replace(/ /g, "-", -1);
-    return `[${theEye}${search}`;
+    return `[More results](${theEye}${search})`;
   }
 };
