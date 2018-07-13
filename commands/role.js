@@ -24,23 +24,23 @@ exports.run = (client, message, args) => {
     
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "stimmed") {
+    } else if (desiredGuildRole.name.toLowerCase() === "stimmed") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "barred") {
+    } else if (desiredGuildRole.name.toLowerCase() === "barred") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "nodding") {
+    } else if (desiredGuildRole.name.toLowerCase() === "nodding") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "drunk") {
+    } else if (desiredGuildRole.name.toLowerCase() === "drunk") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "dissod") {
+    } else if (desiredGuildRole.name.toLowerCase() === "dissod") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "rolling") {
+    } else if (desiredGuildRole.name.toLowerCase() === "rolling") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "stoned") {
+    } else if (desiredGuildRole.name.toLowerCase() === "stoned") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "hungover") {
+    } else if (desiredGuildRole.name.toLowerCase() === "hungover") {
       toggleRole(desiredGuildRole, author);
-    } else if (desiredGuildRole.name === "delirious") {
+    } else if (desiredGuildRole.name.toLowerCase() === "delirious") {
       toggleRole(desiredGuildRole, author);
     } else {
       message.channel.send(`Error: DoseBot cannot assign ${desiredRole}`)
