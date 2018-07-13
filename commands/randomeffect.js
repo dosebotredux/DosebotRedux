@@ -48,7 +48,7 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField(`Description`, messageContent[1])
-    .addField(`More information`, messagecontent[2])
+    .addField(`More information`, messageContent[2])
     .setImage(messageContent[3])
 
     message.channel.send({embed});
@@ -63,7 +63,7 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField(`Description`, messageContent[1])
-    .addField(`More information`, messagecontent[2])
+    .addField(`More information`, messageContent[2])
 
     message.channel.send({embed});
   }
