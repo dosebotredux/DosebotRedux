@@ -19,18 +19,18 @@ exports.run = (client, message, args) => {
   const query = require("../queries/effects.js").effect(drug)
   
   request("https://api.psychonautwiki.org", query).then(data => {
-  console.log(data) // SHOW ME WHAT YOU GOT
+  console.log(data); // SHOW ME WHAT YOU GOT
   
   if (data.substances.length == 0) {
-    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
+    message.channel.send(`There are no substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
   }
   
   if (data.substances.length > 1) {
-    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error)
-    return
+    message.channel.send(`There are multiple substances matching \`${drug}\` on PsychonautWiki.`).catch(console.error);
+    return;
   }
-  const substance = data.substances[0]
+  const substance = data.substances[0];
   
   const embed = new Discord.RichEmbed()
   .setTitle(`${substance.name} effect information`)

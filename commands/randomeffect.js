@@ -1,18 +1,13 @@
-//grabs glossary info from local json and builds message based on random effect
+// Grabs glossary info from local json and builds message based on random effect
+// This code is honestly a disaster and requires a complete refactor at some point
 const Discord = require("discord.js");
 const glossary = require("../glossary.json");
 const replications = require("../replications.json");
 
 exports.run = (client, message, args) => {
-  console.log(`**********Executing randomeffect on ${message.guild.name}**********`);
-
-  var str = message.content;
-  var result = str.split(" ");
-  var effect = str
-  .toLowerCase()
-  .replace("--randomeffect ", "", -1)
-  .replace(/-/g, "", -1)
-  
+  console.log(
+    `**********Executing randomeffect on ${message.guild.name}**********`
+  );
   // define message array
   var messageContent = [];
   
@@ -24,19 +19,25 @@ exports.run = (client, message, args) => {
   var name = glossary.effects[glossaryRand].name;
   
   // push glossary info to message
-  messageContent.push(glossary.effects[glossaryRand].name);
-  messageContent.push(glossary.effects[glossaryRand].body);
-  messageContent.push(glossary.effects[glossaryRand].url);
+  messageContent.push(glossary.effects[glossaryRand].name); // messsageContent[0] = effect name
+  messageContent.push(glossary.effects[glossaryRand].body); // messageContent[1] = effect body
+  messageContent.push(glossary.effects[glossaryRand].url); // messageContent[2] = effect url
   
   // loop through replications json to find matching effect
   for (let i = 0; i < replications.effects.length; i++) {
     // if effect is found and has replications add to message
     if (replications.effects[i].name.toLowerCase() === name.toLowerCase()) {
-      replicationsRand = Math.floor(Math.random() * replications.effects[i].replications.length)
-      messageContent.push(replications.effects[i].replications[replicationsRand].url)
+      // Get a random number for finding random replication
+      replicationsRand = Math.floor(
+        Math.random() * replications.effects[i].replications.length
+      );
+      // Push the URL to the messageContent array
+      messageContent.push(
+        replications.effects[i].replications[replicationsRand].url
+      );
     }
   }
-
+  
   // If has replication(s) construct message
   if (messageContent[3]) {
     const embed = new Discord.RichEmbed()
@@ -49,9 +50,9 @@ exports.run = (client, message, args) => {
     .setURL("http://www.dosebot.org")
     .addField(`Description`, messageContent[1])
     .addField(`More information`, messageContent[2])
-    .setImage(messageContent[3])
-
-    message.channel.send({embed});
+    .setImage(messageContent[3]);
+    
+    message.channel.send({ embed });
   } else {
     // If no replication(s) construct message
     const embed = new Discord.RichEmbed()
@@ -63,8 +64,8 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField(`Description`, messageContent[1])
-    .addField(`More information`, messageContent[2])
-
-    message.channel.send({embed});
+    .addField(`More information`, messageContent[2]);
+    
+    message.channel.send({ embed });
   }
-}
+};
