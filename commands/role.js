@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
     let doseBotRole = guildRoles.find(role => role.name.toLowerCase() === "dosebot");
     let doseBotCalculatedPosition = doseBotRole.calculatedPosition;
     console.log(`DoseBot position: ${doseBotCalculatedPosition}`);
-
+    
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
       toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "stimmed") {
@@ -63,16 +63,16 @@ exports.run = (client, message, args) => {
     console.log("Guild does not have desired role");
     message.channel.send(`Error: Guild does not have **${desiredRole}** role`);
   }
+  function toggleRole(roleToApply, author) {
+    if (!!author.roles.find(role => role.name === roleToApply.name.toLowerCase())) {
+      console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
+      author.removeRole(roleToApply.id);
+      message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
+    } else {
+      console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+      author.addRole(roleToApply.id);
+      message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+    }
+  }
 };
 
-function toggleRole(roleToApply, author) {
-  if (!!author.roles.find(role => role.name === roleToApply.name.toLowerCase())) {
-    console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
-    author.removeRole(roleToApply.id);
-    message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
-  } else {
-    console.log(`Added ${desiredRole} to <@${message.author.id}>`);
-    author.addRole(roleToApply.id);
-    message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
-  }
-}
