@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
   .setTimestamp()
   .setURL("http://www.dosebot.org")
   .addField(`Description`, buildMessageField())
-  .addField(buildMoreResultsField())
+  .addField(`Full results`, buildMoreResultsField())
 
   message.channel.send({embed}).catch(console.error);
   
