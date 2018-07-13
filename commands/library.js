@@ -62,8 +62,8 @@ exports.run = (client, message, args) => {
   function buildMessage() {
     var results = [];
     
-    if (librarySearchResultsArray.length > 5) {
-      for (let i = 0; i < 5; i++) {
+    if (librarySearchResultsArray.length > 3) {
+      for (let i = 0; i < 3; i++) {
         results.push(librarySearchResultsArray[i]);
       }
     } else {
