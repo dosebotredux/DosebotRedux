@@ -71,6 +71,7 @@ exports.run = (client, message, args) => {
         results.push(librarySearchResultsArray[i]);
       }
     }
+    console.log(results.join("\n"));
     return results.join("\n");
   }
 };
