@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 const customsJSON = require("../customs.json")
 
 exports.run = (client, message, args) => {
+  console.log(`**********Executing info on ${message.guild.name}**********`);
+
   const { request } = require("graphql-request");
   
   // For keeping track of whether or not a substance is found in the custom sheets

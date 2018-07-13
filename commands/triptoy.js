@@ -2,6 +2,8 @@
 const toys = require("../triptoys.json");
 
 exports.run = (client, message, args) => {
+  console.log(`**********Executing triptoy on ${message.guild.name}**********`);
+
   var str = message.content;
   var result = str.split(" ");
   var effect = str

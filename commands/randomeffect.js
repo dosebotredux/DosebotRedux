@@ -3,6 +3,8 @@ const glossary = require("../glossary.json");
 const replications = require("../replications.json");
 
 exports.run = (client, message, args) => {
+  console.log(`**********Executing randomeffect on ${message.guild.name}**********`);
+
   var str = message.content;
   var result = str.split(" ");
   var effect = str

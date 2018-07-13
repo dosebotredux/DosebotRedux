@@ -1,5 +1,6 @@
 // Sends a random Bob Ross video to the channel
 exports.run = (client, message, args) => {
+  console.log(`**********Executing bobross on ${message.guild.name}**********`);
 
   response = `<@${message.author.id}> `
 

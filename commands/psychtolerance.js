@@ -1,5 +1,7 @@
 // Usage --tolerance [days since last trip]. calculates tolerance/extra dose needed to achieve normal effects
 exports.run = (client, message, args) => {
+  console.log(`**********Executing psychtolerance on ${message.guild.name}**********`);
+
   var str = message.content;
   var result = str.split(" ");
   var x = parseFloat(result[result.length - 1]);

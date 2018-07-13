@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 
 //about message
 exports.run = (client, message, args) => {
+  console.log(`**********Executing about on ${message.guild.name}**********`);
+
   const embed = new Discord.RichEmbed()
   .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
   .setColor("747474")

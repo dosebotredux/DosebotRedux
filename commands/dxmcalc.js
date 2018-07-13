@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 
 //calc dxm plateau dosages. usage --dxmcalc [weight in pounds]
 exports.run = (client, message, args) => {
+  console.log(`**********Executing dxmcalc on ${message.guild.name}**********`);
+
   // message variables
   var str = message.content;
   var result = str.split(" ");

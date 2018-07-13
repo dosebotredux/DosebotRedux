@@ -2,6 +2,8 @@
 const library = require('../include/output.json')
 
 exports.run = (client, message, args) => {
+  console.log(`**********Executing library on ${message.guild.name}**********`);
+
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var search = str
