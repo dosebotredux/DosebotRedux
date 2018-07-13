@@ -66,7 +66,7 @@ exports.run = (client, message, args) => {
 };
 
 function toggleRole(roleToApply, author) {
-  if (!!author.roles.find(role => role.name === roleToApply.toLowerCase())) {
+  if (!!author.roles.find(role => role.name === roleToApply.name.toLowerCase())) {
     console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
     author.removeRole(roleToApply.id);
     message.channel.send(`Removed ${desiredRole} from <@${message.author.id}>`);
