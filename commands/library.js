@@ -38,9 +38,10 @@ exports.run = (client, message, args) => {
   }
   
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
+  const theEyeSearch = `https://the-eye.eu/search/?s=`;
   
   for (let i = 0; i < librarySearchResultsArray.length; i++) {
-    librarySearchResultsArray[i] = `[${librarySearchResultsArray[i].name}](${theEye}${librarySearchResultsArray[i].location})\n`;
+    librarySearchResultsArray[i] = `[${librarySearchResultsArray[i].name}](${theEye}${librarySearchResultsArray[i].location})`;
   }
 
   const embed = new Discord.RichEmbed()
@@ -51,15 +52,12 @@ exports.run = (client, message, args) => {
   .setThumbnail("https://kek.gg/i/svRNH.png")
   .setTimestamp()
   .setURL("http://www.dosebot.org")
-  .addField(`Description`, buildMessage())
+  .addField(`Description`, buildMessageField())
+  .addField(`More results`, buildMoreResultsField())
 
   message.channel.send({embed}).catch(console.error);
-    
-  // message.channel
-  // .send(buildMessage())
-  // .catch(console.error);
   
-  function buildMessage() {
+  function buildMessageField() {
     var results = [];
     
     if (librarySearchResultsArray.length > 3) {
@@ -71,7 +69,11 @@ exports.run = (client, message, args) => {
         results.push(librarySearchResultsArray[i]);
       }
     }
-    console.log(results.join("\n"));
     return results.join("\n");
+  }
+
+  function buildMoreResultsField() {
+    search = search.replace(/ /g, "-", -1);
+    return `[${theEye}${search}`;
   }
 };
