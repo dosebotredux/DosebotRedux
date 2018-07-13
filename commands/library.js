@@ -1,4 +1,5 @@
 // Searches library and returns results
+const Discord = require("discord.js")
 const library = require('../include/output.json')
 
 exports.run = (client, message, args) => {
@@ -39,15 +40,27 @@ exports.run = (client, message, args) => {
   const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
   
   for (let i = 0; i < librarySearchResultsArray.length; i++) {
-    librarySearchResultsArray[i] = librarySearchResultsArray[i].name + "\n" + theEye + librarySearchResultsArray[i].location;
+    librarySearchResultsArray[i] = `[${librarySearchResultsArray[i].name}](${theEye}${librarySearchResultsArray[i].location})\n`;
   }
+
+  const embed = new Discord.RichEmbed()
+  .setTitle(`Library search results`)
+  .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+  .setColor("747474")
+  .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+  .setThumbnail("https://kek.gg/i/svRNH.png")
+  .setTimestamp()
+  .setURL("http://www.dosebot.org")
+  .addField(`Description`, buildMessage())
+
+  message.channel.send({embed}).catch(console.error);
     
-  message.channel
-  .send(buildMessage())
-  .catch(console.error);
+  // message.channel
+  // .send(buildMessage())
+  // .catch(console.error);
   
   function buildMessage() {
-    var results = [`Search results for: **${search}**`];
+    var results = [];
     
     if (librarySearchResultsArray.length > 5) {
       for (let i = 0; i < 5; i++) {
@@ -58,6 +71,6 @@ exports.run = (client, message, args) => {
         results.push(librarySearchResultsArray[i]);
       }
     }
-    return results.join("\n\n");
+    return results.join("\n");
   }
 };
