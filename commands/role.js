@@ -24,23 +24,23 @@ exports.run = (client, message, args) => {
 
     if (desiredGuildRole === "tripping") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "stimmed") {
+    } else if (desiredGuildRole.name === "stimmed") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "barred") {
+    } else if (desiredGuildRole.name === "barred") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "nodding") {
+    } else if (desiredGuildRole.name === "nodding") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "drunk") {
+    } else if (desiredGuildRole.name === "drunk") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "dissod") {
+    } else if (desiredGuildRole.name === "dissod") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "rolling") {
+    } else if (desiredGuildRole.name === "rolling") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "stoned") {
+    } else if (desiredGuildRole.name === "stoned") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "hungover") {
+    } else if (desiredGuildRole.name === "hungover") {
       toggleRole(desiredGuildRole);
-    } else if (desiredGuildRole === "delirious") {
+    } else if (desiredGuildRole.name === "delirious") {
       toggleRole(desiredGuildRole);
     } else {
       message.channel.send(`Error: DoseBot cannot assign ${desiredGuildRole}`)
