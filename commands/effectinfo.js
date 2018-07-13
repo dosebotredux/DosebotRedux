@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 
 //grabs glossary info from local json and builds message based on arg
-const glossary = require("../glossary.json");
-const replications = require("../replications.json");
+const glossary = require("../include/glossary.json");
+const replications = require("../include/replications.json");
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing effectinfo on ${message.guild.name}**********`);

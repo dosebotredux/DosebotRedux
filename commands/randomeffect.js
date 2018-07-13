@@ -1,8 +1,8 @@
 // Grabs glossary info from local json and builds message based on random effect
 // This code is honestly a disaster and requires a complete refactor at some point
 const Discord = require("discord.js");
-const glossary = require("../glossary.json");
-const replications = require("../replications.json");
+const glossary = require("../include/glossary.json");
+const replications = require("../include/replications.json");
 
 exports.run = (client, message, args) => {
   console.log(

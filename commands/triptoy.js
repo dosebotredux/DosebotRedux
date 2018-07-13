@@ -1,5 +1,5 @@
-//grabs glossary info from local json and builds message based on random effect
-const toys = require("../triptoys.json");
+// sends a random triptoy to the server
+const toys = require("../include/triptoys.json");
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing triptoy on ${message.guild.name}**********`);

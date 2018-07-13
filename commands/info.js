@@ -1,6 +1,6 @@
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js")
 const Discord = require("discord.js");
-const customsJSON = require("../customs.json")
+const customsJSON = require("../include/customs.json")
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing info on ${message.guild.name}**********`);
