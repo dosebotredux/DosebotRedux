@@ -23,27 +23,27 @@ exports.run = (client, message, args) => {
     console.log(`DoseBot position: ${doseBotCalculatedPosition}`);
 
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "stimmed") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "barred") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "nodding") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "drunk") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "dissod") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "rolling") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "stoned") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "hungover") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name === "delirious") {
-      toggleRole(desiredGuildRole);
+      toggleRole(desiredGuildRole, author);
     } else {
-      message.channel.send(`Error: DoseBot cannot assign ${desiredGuildRole}`)
+      message.channel.send(`Error: DoseBot cannot assign ${desiredRole}`)
     }
     
     // if (desiredGuildRole.calculatedPosition < doseBotCalculatedPosition) {
@@ -65,7 +65,7 @@ exports.run = (client, message, args) => {
   }
 };
 
-function toggleRole(roleToApply) {
+function toggleRole(roleToApply, author) {
   if (!!author.roles.find(role => role.name === roleToApply.toLowerCase())) {
     console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
     author.removeRole(roleToApply.id);
