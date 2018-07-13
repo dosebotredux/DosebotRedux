@@ -35,28 +35,6 @@ exports.run = (client, message, args) => {
       messageContent.push(replications.effects[i].replications[replicationsRand].url)
     }
   }
-  
-  // if has replications construct message
-  if (messageContent[3]) {
-    message.channel
-    .send("**[:exclamation:] " + messageContent[0] + "**" + 
-    "\n" + 
-    "```" + messageContent[1] + "```" +
-    "\n" + 
-    "**More information: **" + messageContent[2] +
-    "\n\n" +
-    messageContent[3]) 
-    .catch(console.error);
-  } else {
-    // if no replications construct message
-    message.channel
-    .send("**[:exclamation:] " + messageContent[0] + "**" + 
-    "\n" + 
-    "```" + messageContent[1] + "```" +
-    "\n" + 
-    "**More information: **" + messageContent[2])
-    .catch(console.error);
-  } 
 
   // If has replication(s) construct message
   if (messageContent[3]) {
