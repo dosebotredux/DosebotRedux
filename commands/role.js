@@ -64,13 +64,10 @@ exports.run = (client, message, args) => {
       // Adds role
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(roleToApply.id);
-      // message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
-      // setTimeout(function() {
-      //   console.log("this is where we'd remove the role");
-      // }), 5000
+      // Define an async function to handle automatic role removal
       const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
       const asyncFunc = () => {
-        delay(5000).then(() => console.log("this is where'd we remove"));
+        delay(28800000).then(() => author.removeRole(roleToApply.id));
       }
       asyncFunc();
     }
