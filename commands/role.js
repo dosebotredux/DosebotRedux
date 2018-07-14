@@ -70,7 +70,7 @@ exports.run = (client, message, args) => {
       // }), 5000
       const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
       const asyncFunc = () => {
-        delay(5000).then(() => console.log("this is where'd we remove")));
+        delay(5000).then(() => console.log("this is where'd we remove"));
       }
     }
   }
