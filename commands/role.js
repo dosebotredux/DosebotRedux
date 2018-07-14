@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 // Welcome to role management
 exports.run = (client, message, args) => {
   console.log(`**********Executing role on ${message.guild.name}**********`);
-
+  
   var author = message.member; // author object
   let str = message.content; // "--role role"
   let desiredRole = str.toLowerCase().replace("--role ", "", -1).replace(/-/g, "", -1).replace(/ /g, "", -1); // "role"
@@ -64,10 +64,14 @@ exports.run = (client, message, args) => {
       // Adds role
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(roleToApply.id);
-      message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
-      setTimeout(function() {
-        console.log("this is where we'd remove the role");
-      }), 5000
+      // message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+      // setTimeout(function() {
+      //   console.log("this is where we'd remove the role");
+      // }), 5000
+      const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
+      const asyncFunc = () => {
+        delay(5000).then(() => console.log("this is where'd we remove")));
+      }
     }
   }
 };
