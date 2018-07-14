@@ -65,6 +65,9 @@ exports.run = (client, message, args) => {
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(roleToApply.id);
       message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+      setTimeout(function() {
+        console.log("this is where we'd remove the role");
+      }), 5000
     }
   }
 };
