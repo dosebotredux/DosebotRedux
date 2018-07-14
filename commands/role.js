@@ -72,6 +72,7 @@ exports.run = (client, message, args) => {
       const asyncFunc = () => {
         delay(5000).then(() => console.log("this is where'd we remove"));
       }
+      asyncFunc();
     }
   }
 };
