@@ -15,7 +15,8 @@
           {
             "bioavailability": null,
             "dose": {
-              "dosage": "Varies drastically depending on the preparation method and plant materials."
+              "dosage":
+                "Varies drastically depending on the preparation method and plant materials."
             },
             "duration": {
               "afterglow": {
@@ -61,19 +62,21 @@
           "chemical": ["Tropane alkaloids"],
           "psychoactive": ["Deliriant"]
         },
-        "addictionPotential": "Mildly addictive with a high potential for adverse side effects such as psychosis",
+        "addictionPotential":
+          "Mildly addictive with a high potential for adverse side effects such as psychosis",
         "roas": [
           {
             "bioavailability": null,
             "dose": {
-              "dosage": "Varies drastically depending on the preparation method and plant materials."
+              "dosage":
+                "Varies drastically depending on the preparation method and plant materials."
             },
             "duration": {
               "afterglow": {
                 "max": 24,
                 "min": 6,
-                "units": "hours" 
-              }, 
+                "units": "hours"
+              },
               "comeup": {
                 "max": 120,
                 "min": 60,
@@ -108,12 +111,8 @@
       {
         "name": "salvia",
         "class": {
-          "chemical": [
-            "Terpenoid"
-          ],
-          "psychoactive": [
-            "Hallucinogen"
-          ]
+          "chemical": ["Terpenoid"],
+          "psychoactive": ["Hallucinogen"]
         },
         "addictionPotential": "not habit-forming",
         "roas": [
@@ -196,12 +195,8 @@
         "name": "lsa",
         "addictionPotential": "not habit-forming",
         "class": {
-          "chemical": [
-            "Lysergamide"
-          ],
-          "psychoactive": [
-            "Psychedelics"
-          ]
+          "chemical": ["Lysergamide"],
+          "psychoactive": ["Psychedelics"]
         },
         "roas": [
           {

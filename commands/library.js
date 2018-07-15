@@ -1,6 +1,6 @@
 // Searches library and returns results
-const Discord = require("discord.js")
-const library = require('../include/output.json')
+const Discord = require("discord.js");
+const library = require("../include/output.json");
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing library on ${message.guild.name}**********`);
@@ -8,14 +8,14 @@ exports.run = (client, message, args) => {
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var search = str
-  .toLowerCase()
-  .replace("--library ", "", -1)
-  .replace(/-/g, "", -1)
-  
+    .toLowerCase()
+    .replace("--library ", "", -1)
+    .replace(/-/g, "", -1);
+
   console.log(`Search: ${search}`);
   // Create an array to hold search results
   var librarySearchResultsArray = [];
-  
+
   // Loop through the library and push all matching results to librarySearchResultsArray
   for (let i = 0; i < library.library.length; i++) {
     if (library.library[i].toLowerCase().includes(search.toLowerCase())) {
@@ -23,53 +23,56 @@ exports.run = (client, message, args) => {
       var strForwardSlash = library.library[i].replace(/\\/g, "/");
 
       // Filename for search results
-      var fileName = strForwardSlash.substring(strForwardSlash.lastIndexOf("/") + 1);
+      var fileName = strForwardSlash.substring(
+        strForwardSlash.lastIndexOf("/") + 1
+      );
 
       // Replace spaces for URL
       var strSpaces = strForwardSlash.replace(/ /g, "%20");
-      
+
       // librarySearchResultsArray.push(strSpaces);
-      librarySearchResultsArray.push(
-        {
-          "name": fileName,
-          "location": strSpaces
-        }
-      )
+      librarySearchResultsArray.push({
+        name: fileName,
+        location: strSpaces
+      });
     }
   }
-  
+
   // The-Eye library URL
-  const theEye = "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
+  const theEye =
+    "http://the-eye.eu/public/Psychedelics/Psychedelic%20Praxis%20Library%203.0";
   // The-Eye search URL
   const theEyeSearch = `https://the-eye.eu/search/?s=`;
-  
+
   // Overwrite librarySearchResultsArray with markdown formatted links to results
   for (let i = 0; i < librarySearchResultsArray.length; i++) {
-    librarySearchResultsArray[i] = `[${librarySearchResultsArray[i].name}](${theEye}${librarySearchResultsArray[i].location})`;
+    librarySearchResultsArray[i] = `[${
+      librarySearchResultsArray[i].name
+    }](${theEye}${librarySearchResultsArray[i].location})`;
   }
 
   // Create an embed to be sent to the server
   const embed = new Discord.RichEmbed()
-  .setTitle(`Library search results`)
-  .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-  .setColor("747474")
-  .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-  .setThumbnail("https://kek.gg/i/svRNH.png")
-  .setTimestamp()
-  .setURL("http://www.dosebot.org")
-  .addField(`Description`, buildMessageField())
-  .addField(`Full results`, buildMoreResultsField())
+    .setTitle(`Library search results`)
+    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+    .setColor("747474")
+    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+    .setThumbnail("https://kek.gg/i/svRNH.png")
+    .setTimestamp()
+    .setURL("http://www.dosebot.org")
+    .addField(`Description`, buildMessageField())
+    .addField(`Full results`, buildMoreResultsField());
 
   // Send embed as a message
-  message.channel.send({embed}).catch(console.error);
-  
+  message.channel.send({ embed }).catch(console.error);
+
   //// Functions
   // Logic for building the message field
   // Note that embeds have a 1024 character limits
   // and as such only 3 results can be displayed
   function buildMessageField() {
     var results = [];
-    
+
     // If more than three search items push first three results
     if (librarySearchResultsArray.length > 3) {
       for (let i = 0; i < 3; i++) {

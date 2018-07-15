@@ -12,9 +12,9 @@ exports.run = (client, message, args) => {
     .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
-    .addField("Available commands", buildCommandList())
+    .addField("Available commands", buildCommandList());
 
-    message.channel.send({embed});
+  message.channel.send({ embed });
 };
 
 function buildCommandList() {

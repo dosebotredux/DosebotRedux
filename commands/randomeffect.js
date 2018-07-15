@@ -10,19 +10,19 @@ exports.run = (client, message, args) => {
   );
   // define message array
   var messageContent = [];
-  
+
   // get random value for selecting random glossary item
   var glossaryRand = Math.floor(Math.random() * glossary.effects.length);
-  
+
   // initialize random variable for finding random replication
   var replicationsRand;
   var name = glossary.effects[glossaryRand].name;
-  
+
   // push glossary info to message
   messageContent.push(glossary.effects[glossaryRand].name); // messsageContent[0] = effect name
   messageContent.push(glossary.effects[glossaryRand].body); // messageContent[1] = effect body
   messageContent.push(glossary.effects[glossaryRand].url); // messageContent[2] = effect url
-  
+
   // loop through replications json to find matching effect
   for (let i = 0; i < replications.effects.length; i++) {
     // if effect is found and has replications add to message
@@ -37,35 +37,35 @@ exports.run = (client, message, args) => {
       );
     }
   }
-  
+
   // If has replication(s) construct message
   if (messageContent[3]) {
     const embed = new Discord.RichEmbed()
-    .setTitle(`${messageContent[0]} effect information`)
-    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-    .setColor("747474")
-    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
-    .setTimestamp()
-    .setURL("http://www.dosebot.org")
-    .addField(`Description`, messageContent[1])
-    .addField(`More information`, messageContent[2])
-    .setImage(messageContent[3]);
-    
+      .setTitle(`${messageContent[0]} effect information`)
+      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+      .setColor("747474")
+      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+      .setThumbnail("https://kek.gg/i/svRNH.png")
+      .setTimestamp()
+      .setURL("http://www.dosebot.org")
+      .addField(`Description`, messageContent[1])
+      .addField(`More information`, messageContent[2])
+      .setImage(messageContent[3]);
+
     message.channel.send({ embed });
   } else {
     // If no replication(s) construct message
     const embed = new Discord.RichEmbed()
-    .setTitle(`${messageContent[0]} effect information`)
-    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-    .setColor("747474")
-    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
-    .setTimestamp()
-    .setURL("http://www.dosebot.org")
-    .addField(`Description`, messageContent[1])
-    .addField(`More information`, messageContent[2]);
-    
+      .setTitle(`${messageContent[0]} effect information`)
+      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+      .setColor("747474")
+      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+      .setThumbnail("https://kek.gg/i/svRNH.png")
+      .setTimestamp()
+      .setURL("http://www.dosebot.org")
+      .addField(`Description`, messageContent[1])
+      .addField(`More information`, messageContent[2]);
+
     message.channel.send({ embed });
   }
 };

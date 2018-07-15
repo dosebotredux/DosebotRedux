@@ -7,6 +7,7 @@
 The **drug abuse epidemic** that has been sweeping the the United States has cost 63,600 lives in 2016 alone [CDC](https://www.cdc.gov/nchs/products/databriefs/db294.htm), with a median age of 20. Our hope is that by providing accurate, scientifically backed best practices for substance use that we may reduce this number significantly, but we consider even one life saved a success.
 
 ## Commands
+
 - --about => Displays information about DoseBot
 - --badtrip => Provides user with information useful during a bad trip
 - --bobross => Links a random, calming Bob Ross video
@@ -24,10 +25,10 @@ The **drug abuse epidemic** that has been sweeping the the United States has cos
 
 ## Contributors
 
-Currently this project is maintained by Cocoa, voreskin, maethor, and josikinz. 
+Currently this project is maintained by Cocoa, voreskin, maethor, and josikinz.
 
 ## Usage
 
-1. Clone repo
-2. `npm install` to download dependencies
-3. `node refactor.js` to start bot
+1.  Clone repo
+2.  `npm install` to download dependencies
+3.  `node refactor.js` to start bot

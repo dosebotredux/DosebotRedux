@@ -1,5 +1,5 @@
 exports.info = function(substance) {
-	return `{
+  return `{
 		substances(query: "${substance}") {
 			name
 			addictionPotential
@@ -15,7 +15,7 @@ exports.info = function(substance) {
 			# routes of administration
 			roas {
 				name
-				
+
 				dose {
 					units
 					threshold
@@ -24,7 +24,7 @@ exports.info = function(substance) {
 					light { min max }
 					strong { min max }
 				}
-				
+
 				duration {
 					afterglow { min max units }
 					comeup { min max units }
@@ -34,12 +34,11 @@ exports.info = function(substance) {
 					peak { min max units }
 					total { min max units }
 				}
-				
+
 				bioavailability {
 					min max
 				}
 			}
 		}
 	}`;
-	
 };
