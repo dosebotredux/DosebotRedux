@@ -77,8 +77,19 @@ exports.run = (client, message, args) => {
       // Define an async function to handle automatic role removal
       const delay = duration =>
         new Promise(resolve => setTimeout(resolve, duration));
+      // Delay for 8 hours and then remove role
       const asyncFunc = () => {
-        delay(28800000).then(() => author.removeRole(roleToApply.id));
+        delay(28800000).then(() => {
+          console.log(
+            `Removed **${roleToApply.name}** from ${author.displayName}`
+          );
+          author.removeRole(roleToApply.id);
+          message.channel.send(
+            `Removed **${roleToApply.name}** from <@${
+              message.author.id
+            }> - Role timer expired`
+          );
+        });
       };
       asyncFunc();
     }
