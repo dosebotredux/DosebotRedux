@@ -16,7 +16,7 @@
     "graphql-request": "^1.5.2",
     "jquery": "^3.3.1",
     "js-yaml": "^3.11.0",
-    "request": "^2.85.0",
+    "request": "^2.87.0",
     "winston": "^2.4.2",
     "zombie": "^5.0.8"
   },
