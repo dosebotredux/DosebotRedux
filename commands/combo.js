@@ -6,9 +6,6 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing effects on ${message.guild.name}**********`);
 
   const { request } = require("graphql-request");
-  let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
-    drug[0]
-  }`;
 
   var str = message.content;
   var drug = str
@@ -18,6 +15,9 @@ exports.run = (client, message, args) => {
 
   let drugArr = drug.split(" ");
   console.log(drugArr);
+  let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
+    drug[0]
+  }`;
 
   if (drugArr.length > 1) {
     drugArr[0] = sanitizeSubstanceName(drugArr[0]);
