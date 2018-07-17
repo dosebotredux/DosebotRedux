@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
   let drugArr = drug.split(" ");
   console.log(drugArr);
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
-    drug[0]
+    drugArr[0]
   }`;
 
   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
