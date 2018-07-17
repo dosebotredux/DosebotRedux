@@ -234,23 +234,36 @@ function buildDosageField(substance) {
       messages.push(`*(${name})*`);
 
       // Add all dosage information
+      // Uses double conditional to prevent massive no information walls
       if (!!dose) {
-        messages.push(
-          `**Threshold**: ${dosageObjectToString(dose.threshold) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Light**: ${dosageObjectToString(dose.light) || "no information"}`
-        );
-        messages.push(
-          `**Common**: ${dosageObjectToString(dose.common) || "no information"}`
-        );
-        messages.push(
-          `**Strong**: ${dosageObjectToString(dose.strong) || "no information"}`
-        );
-        messages.push(
-          `**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`
-        );
+        if (!!dose.threshold) {
+          messages.push(
+            `**Threshold**: ${dosageObjectToString(dose.threshold) ||
+              "no information"}`
+          );
+        }
+        if (!!dose.light) {
+          messages.push(
+            `**Light**: ${dosageObjectToString(dose.light) || "no information"}`
+          );
+        }
+        if (!!dose.common) {
+          messages.push(
+            `**Common**: ${dosageObjectToString(dose.common) ||
+              "no information"}`
+          );
+        }
+        if (!!dose.strong) {
+          messages.push(
+            `**Strong**: ${dosageObjectToString(dose.strong) ||
+              "no information"}`
+          );
+        }
+        if (!!dose.heavy) {
+          messages.push(
+            `**Heavy**: ${dosageObjectToString(dose.heavy) || "no information"}`
+          );
+        }
         messages.push("");
       } else {
         // Or none if there is none
@@ -284,31 +297,43 @@ function buildDurationField(substance) {
       messages.push(`*(${name})*`);
 
       if (!!roa.duration) {
-        messages.push(
-          `**Onset**: ${durationObjectToString(roa.duration.onset) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Comeup**: ${durationObjectToString(roa.duration.comeup) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Peak**: ${durationObjectToString(roa.duration.peak) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Offset**: ${durationObjectToString(roa.duration.offset) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Afterglow**: ${durationObjectToString(roa.duration.afterglow) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Total**: ${durationObjectToString(roa.duration.total) ||
-            "no information"}`
-        );
-        messages.push("");
+        if (!!roa.duration.onset) {
+          messages.push(
+            `**Onset**: ${durationObjectToString(roa.duration.onset) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.comeup) {
+          messages.push(
+            `**Comeup**: ${durationObjectToString(roa.duration.comeup) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.peak) {
+          messages.push(
+            `**Peak**: ${durationObjectToString(roa.duration.peak) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.offset) {
+          messages.push(
+            `**Offset**: ${durationObjectToString(roa.duration.offset) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.afterglow) {
+          messages.push(
+            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.total) {
+          messages.push(
+            `**Total**: ${durationObjectToString(roa.duration.total) ||
+              "no information"}`
+          );
+        }
+        messages.push(" ");
       } else {
         messages.push("No duration information.");
       }
@@ -316,31 +341,43 @@ function buildDurationField(substance) {
       messages.push(`*(${name})*`);
 
       if (!!roa.duration) {
-        messages.push(
-          `**Onset**: ${durationObjectToString(roa.duration.onset) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Comeup**: ${durationObjectToString(roa.duration.comeup) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Peak**: ${durationObjectToString(roa.duration.peak) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Offset**: ${durationObjectToString(roa.duration.offset) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Afterglow**: ${durationObjectToString(roa.duration.afterglow) ||
-            "no information"}`
-        );
-        messages.push(
-          `**Total**: ${durationObjectToString(roa.duration.total) ||
-            "no information"}`
-        );
-        messages.push("");
+        if (!!roa.duration.onset) {
+          messages.push(
+            `**Onset**: ${durationObjectToString(roa.duration.onset) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.comeup) {
+          messages.push(
+            `**Comeup**: ${durationObjectToString(roa.duration.comeup) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.peak) {
+          messages.push(
+            `**Peak**: ${durationObjectToString(roa.duration.peak) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.offset) {
+          messages.push(
+            `**Offset**: ${durationObjectToString(roa.duration.offset) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.afterglow) {
+          messages.push(
+            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow) ||
+              "no information"}`
+          );
+        }
+        if (!!roa.duration.total) {
+          messages.push(
+            `**Total**: ${durationObjectToString(roa.duration.total) ||
+              "no information"}`
+          );
+        }
+        messages.push(" ");
       } else {
         messages.push("No duration information.");
       }
