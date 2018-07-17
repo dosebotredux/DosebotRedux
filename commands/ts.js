@@ -27,10 +27,13 @@ exports.run = (client, message, args) => {
   request(tripSitURL)
     .then(function(response) {
       console.log(response);
+      queryResults = JSON.parse(response);
     })
     .catch(function(err) {
       console.log(err);
     });
 
-  // message.channel.send(queryResults.data[0].summary).catch(console.error);
+  message.channel
+    .send(queryResults.data[0].properties.summary)
+    .catch(console.error);
 };
