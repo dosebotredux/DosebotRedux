@@ -19,7 +19,6 @@ exports.run = (client, message, args) => {
 
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
   console.log(tripSitURL);
-  let queryResults;
   // request(tripSitURL, function(error, response, body) {
   //   queryResults = JSON.parse(body);
   //   console.log(queryResults.data[0].summary);
@@ -27,7 +26,9 @@ exports.run = (client, message, args) => {
   request(tripSitURL)
     .then(function(response) {
       // console.log(response);
-      queryResults = JSON.parse(response);
+      let queryResults = JSON.parse(response);
+
+      message.channel.send(queryResults.data[0].properties.summary);
     })
     .catch(function(err) {
       console.log(err);
