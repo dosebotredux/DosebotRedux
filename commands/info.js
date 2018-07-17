@@ -6,6 +6,7 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing info on ${message.guild.name}**********`);
 
   const { request } = require("graphql-request");
+  const rp = require("request-promise");
 
   // For keeping track of whether or not a substance is found in the custom sheets
   var hasCustom;
@@ -52,11 +53,24 @@ exports.run = (client, message, args) => {
         // Send a message to channel if there are zero or more than one substances returned by the API
         // Not sure if the API in its current configuration can return more than one substance
         if (data.substances.length == 0) {
-          message.channel
-            .send(
-              `There are no substances matching \`${drug}\` on PsychonautWiki.`
-            )
-            .catch(console.error);
+          // message.channel
+          //   .send(
+          //     `There are no substances matching \`${drug}\` on PsychonautWiki.`
+          //   )
+          //   .catch(console.error);
+          let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
+          rp(tripSitURL)
+            .then(function(response) {
+              // console.log(response);
+              let queryResults = JSON.parse(response);
+              let substance = queryResults.data[0];
+
+              createTSChannelMessage(substance, message);
+            })
+            .catch(function(err) {
+              console.log(err);
+            });
+
           return;
         } else if (data.substances.length > 1) {
           message.channel
@@ -64,6 +78,7 @@ exports.run = (client, message, args) => {
               `There are multiple substances matching \`${drug}\` on PsychonautWiki.`
             )
             .catch(console.error);
+
           return;
         } else {
           // Set substance to the first returned substance from PW API
@@ -371,3 +386,46 @@ function buildLinksField(substance) {
     substance.name
   })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
 }
+
+function createTSChannelMessage(substance, message) {
+  const embed = new Discord.RichEmbed()
+    .setTitle(`**${substance.pretty_name} drug information**`)
+    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+    .setColor("747474")
+    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+    .setThumbnail("https://kek.gg/i/svRNH.png")
+    .setTimestamp()
+    .setURL("http://www.dosebot.org")
+    .addField(":scales: __Dosages__", `${buildTSDosageField(substance)}\n`)
+    .addField(":clock2: __Duration__", `${buildTSDurationField(substance)}\n`)
+    .addField(
+      ":globe_with_meridians: __Links__",
+      buildTSLinksField(substance)
+    );
+  message.channel.send({ embed }).catch(console.error);
+
+  // Capitalization function
+  function capitalize(name) {
+    if (name === "lsa") {
+      return name.toUpperCase();
+    } else {
+      return name[0].toUpperCase() + name.slice(1);
+    }
+  }
+
+  // Build TS dosage field
+  function buildTSDosageField(substance) {
+    return `${substance.properties.dose}`;
+  }
+
+  // Build TS duration field
+  function buildTSDurationField(substance) {
+    return `${substance.properties.duration}`;
+  }
+
+  // Build TS links field
+  function buildTSLinksField(substance) {
+    return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
+      substance.name
+    })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
+  }

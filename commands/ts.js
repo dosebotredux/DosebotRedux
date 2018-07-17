@@ -1,6 +1,6 @@
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
 const Discord = require("discord.js");
-const request = require("request-promise");
+const rp = require("request-promise");
 
 // Mascot lol
 exports.run = (client, message, args) => {
@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
   drug = sanitizeSubstanceName(drug);
 
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
-  request(tripSitURL)
+  rp(tripSitURL)
     .then(function(response) {
       // console.log(response);
       let queryResults = JSON.parse(response);
@@ -30,6 +30,7 @@ exports.run = (client, message, args) => {
       console.log(err);
     });
 
+  //// TS functions
   // Create TS message
   function createTSChannelMessage(substance, message) {
     const embed = new Discord.RichEmbed()
