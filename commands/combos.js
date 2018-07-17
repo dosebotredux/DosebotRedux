@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
 
         for (let i = 0; i < keys.length; i++) {
           if (keys[i] === drugArr[1]) {
-            comboArr.push(`${capitalize(keys[i])}: ${combos[keys[i]]}`);
+            comboArr.push(`${capitalize(keys[i])}: ${combos[keys[i]].status}`);
           }
         }
 
