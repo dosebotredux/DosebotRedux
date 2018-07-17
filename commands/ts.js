@@ -10,8 +10,8 @@ exports.run = (client, message, args) => {
   let queryResults;
   request(tripSitURL, function(error, response, body) {
     queryResults = body;
-    console.log(body);
+    console.log(body.data.summary);
   });
 
-  message.channel.send(response).catch(console.error);
+  // message.channel.send(response).catch(console.error);
 };
