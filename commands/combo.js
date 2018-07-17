@@ -17,6 +17,7 @@ exports.run = (client, message, args) => {
     .replace(/-/g, "", -1);
 
   drugArr = drug.split(" ");
+  console.log(drugArr);
 
   if (drugArr.length > 1) {
     drugArr[0] = sanitizeSubstanceName(drugArr[0]);
