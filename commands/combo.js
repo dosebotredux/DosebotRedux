@@ -14,8 +14,8 @@ exports.run = (client, message, args) => {
   var drug = str
     .toLowerCase()
     .replace("--combos ", "", -1)
-    .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+    .replace(/-/g, "", -1);
+
   drugArr = drug.split(" ");
 
   if (drugArr.length > 1) {
