@@ -19,42 +19,64 @@ exports.run = (client, message, args) => {
     drug[0]
   }`;
 
-  if (drugArr.length > 1) {
-    drugArr[0] = sanitizeSubstanceName(drugArr[0]);
+  drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
-    rp(tripSitURL)
-      .then(function(response) {
-        let queryResults = JSON.parse(response);
-        let combos = queryResults.data[0].combos;
+  rp(tripSitURL)
+    .then(function(response) {
+      let queryResults = JSON.parse(response);
+      let combos = queryResults.data[0].combos;
+      console.log(combos);
+      combos = JSON.parse(combos);
+      let comboArr = [];
 
-        combos.forEach(combo => {
-          if (combo === drugArr[1]) {
-            message.channel.send(`${combo.status}`);
-          }
-        });
-      })
-      .catch(function(err) {
-        console.log(err);
+      combos.forEach(combo => {
+        comboArr.push(combo.status);
       });
-  } else if (drugArr.length === 1) {
-    drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
-    rp(tripSitURL)
-      .then(function(response) {
-        let queryResults = JSON.parse(response);
-        let combos = queryResults.data[0].combos;
-        let comboArr = [];
+      let channelMessage = comboArr.join("\n");
 
-        combos.forEach(combo => {
-          comboArr.push(combo.status);
-        });
+      message.channel.send(channelMessage);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
-        let channelMessage = comboArr.join("\n");
+  // if (drugArr.length > 1) {
+  //   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
-        message.channel.send(channelMessage);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-  }
+  //   rp(tripSitURL)
+  //     .then(function(response) {
+  //       let queryResults = JSON.parse(response);
+  //       let combos = queryResults.data[0].combos;
+
+  //       combos.forEach(combo => {
+  //         if (combo === drugArr[1]) {
+  //           message.channel.send(`${combo.status}`);
+  //         }
+  //       });
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     });
+  // } else if (drugArr.length === 1) {
+  //   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
+
+  //   rp(tripSitURL)
+  //     .then(function(response) {
+  //       let queryResults = JSON.parse(response);
+  //       let combos = queryResults.data[0].combos;
+  //       let comboArr = [];
+
+  //       combos.forEach(combo => {
+  //         comboArr.push(combo.status);
+  //       });
+
+  //       let channelMessage = comboArr.join("\n");
+
+  //       message.channel.send(channelMessage);
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     });
+  // }
 };
