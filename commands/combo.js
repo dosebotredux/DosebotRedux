@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
     drugArr[0]
   }`;
 
-  drugArr[0] = sanitizeSubstanceName(drugArr[0], message, name);
+  drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
   rp(tripSitURL)
     .then(function(response) {
