@@ -53,4 +53,13 @@ exports.run = (client, message, args) => {
 
     message.channel.send({ embed });
   }
+
+  // Capitalization function
+  function capitalize(name) {
+    if (name === "lsa") {
+      return name.toUpperCase();
+    } else {
+      return name.toUpperCase() + name.slice(1);
+    }
+  }
 };
