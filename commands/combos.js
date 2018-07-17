@@ -3,7 +3,7 @@ const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
 const rp = require("request-promise");
 
 exports.run = (client, message, args) => {
-  console.log(`**********Executing effects on ${message.guild.name}**********`);
+  console.log(`**********Executing combos on ${message.guild.name}**********`);
 
   const { request } = require("graphql-request");
 

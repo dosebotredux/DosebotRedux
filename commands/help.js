@@ -23,7 +23,7 @@ function buildCommandList() {
     "--badtrip",
     "--bobross",
     "--combochart",
-    "--combos",
+    "--combos [drug] (optional: [drug 2])",
     "--dxmcalc [weight in lbs]",
     "--effectinfo [effect]",
     "--effects [substance]",
