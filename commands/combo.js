@@ -56,10 +56,6 @@ exports.run = (client, message, args) => {
 
   // Capitalization function
   function capitalize(name) {
-    if (name === "lsa") {
-      return name.toUpperCase();
-    } else {
-      return name.toUpperCase() + name.slice(1);
-    }
+    return name.toUpperCase();
   }
 };
