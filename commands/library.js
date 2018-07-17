@@ -92,7 +92,18 @@ exports.run = (client, message, args) => {
   // Note that this feature is mostly broken due to the
   // The-Eye's case sensitivity in search results
   function buildMoreResultsField() {
+    search = search.split(" ");
+    let searchArr = [];
+    search.forEach(word => {
+      searchArr.push(capitalize(word));
+    });
+    search = searchArr.join("");
     search = search.replace(/ /g, "-", -1);
     return `[More results](${theEyeSearch}${search})\nNote: TheEye searches are case sensitive`;
+  }
+
+  // Capitalization function
+  function capitalize(name) {
+    return name[0].toUpperCase() + name.slice(1);
   }
 };
