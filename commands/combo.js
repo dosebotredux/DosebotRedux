@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
     .replace("--combos ", "", -1)
     .replace(/-/g, "", -1)
     .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
-  drugArr = str.split(" ");
+  drugArr = drug.split(" ");
 
   if (drugArr.length > 1) {
     drugArr[0] = sanitizeSubstanceName(drugArr[0]);
