@@ -16,10 +16,10 @@ exports.run = (client, message, args) => {
     .replace("--combos ", "", -1)
     .replace(/-/g, "", -1)
     .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
-  drug = str.split(" ");
+  drugArr = str.split(" ");
 
-  if (drug.length > 1) {
-    drug[0] = sanitizeSubstanceName(drug[0]);
+  if (drugArr.length > 1) {
+    drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
     rp(tripSitURL)
       .then(function(response) {
@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
         let combos = queryResults.data[0].combos;
 
         combos.forEach(combo => {
-          if (combo === drug[1]) {
+          if (combo === drugArr[1]) {
             message.channel.send(`${combo.status}`);
           }
         });
@@ -35,8 +35,8 @@ exports.run = (client, message, args) => {
       .catch(function(err) {
         console.log(err);
       });
-  } else if (drug.length === 1) {
-    drug[0] = sanitizeSubstanceName(drug[0]);
+  } else if (drugArr.length === 1) {
+    drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
     rp(tripSitURL)
       .then(function(response) {

@@ -58,6 +58,7 @@ exports.run = (client, message, args) => {
           //     `There are no substances matching \`${drug}\` on PsychonautWiki.`
           //   )
           //   .catch(console.error);
+          console.log(`Pulling from TS`);
           let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
           rp(tripSitURL)
             .then(function(response) {
