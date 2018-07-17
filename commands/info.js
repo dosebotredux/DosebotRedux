@@ -335,7 +335,9 @@ function buildDurationField(substance) {
 // Builds the chemical class field
 function buildChemicalClassField(substance) {
   if (substance.class !== null) {
-    return `**Chemical**: ${substance.class.chemical[0]}`;
+    if (substance.class.chemical !== null) {
+      return `**Chemical**: ${substance.class.chemical[0]}`;
+    }
   } else {
     return "No information";
   }
@@ -344,7 +346,9 @@ function buildChemicalClassField(substance) {
 // Builds the psychoactive class field
 function buildPsychoactiveClassField(substance) {
   if (substance.class !== null) {
-    return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
+    if (substance.class.psychoactive !== null) {
+      return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
+    }
   } else {
     return "No information";
   }
