@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
 
   let response = `Hello <@${
     message.author.id
-  }> I'm DoseBot https://kek.gg/i/6YmvrJ.png! Nice to meet you ^_^`;
+  }> I'm DoseBot https://kek.gg/i/6YmvrJ.png Nice to meet you ^_^`;
 
   message.channel.send(response).catch(console.error);
 };
