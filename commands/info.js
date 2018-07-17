@@ -52,12 +52,7 @@ exports.run = (client, message, args) => {
 
         // Send a message to channel if there are zero or more than one substances returned by the API
         // Not sure if the API in its current configuration can return more than one substance
-        if (data.substances.length == 0) {
-          // message.channel
-          //   .send(
-          //     `There are no substances matching \`${drug}\` on PsychonautWiki.`
-          //   )
-          //   .catch(console.error);
+        if (data.substances.length === 0) {
           console.log(`Pulling from TS`);
           let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
           rp(tripSitURL)
