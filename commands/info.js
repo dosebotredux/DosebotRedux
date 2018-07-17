@@ -188,9 +188,17 @@ function buildToleranceField(substance) {
       return substance.tolerance.tolerance;
     } else {
       // return standard tolerances
-      return `**Full**: ${tolerances.full}\n**Half**: ${
-        tolerances.half
-      }\n**Baseline**: ${tolerances.zero}`;
+      let toleranceArr = [];
+      if (!!tolerances.full) {
+        toleranceArr.push(`**Full:** ${tolerances.full}`);
+      }
+      if (!!tolerances.half) {
+        toleranceArr.push(`**Half**: ${tolerances.half}`);
+      }
+      if (!!tolerances.zero) {
+        toleranceArr.push(`**Baseline:** ${tolerance.zero}`);
+      }
+      return toleranceArr.join("\n");
     }
   }
 }
