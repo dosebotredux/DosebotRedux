@@ -33,7 +33,5 @@ exports.run = (client, message, args) => {
       console.log(err);
     });
 
-  message.channel
-    .send(queryResults.data[0].properties.summary)
-    .catch(console.error);
+  message.channel.send(queryResults.data[0]).catch(console.error);
 };
