@@ -97,7 +97,7 @@ exports.run = (client, message, args) => {
     search.forEach(word => {
       searchArr.push(capitalize(word));
     });
-    search = searchArr.join("");
+    search = searchArr.join(" ");
     search = search.replace(/ /g, "-", -1);
     return `[More results](${theEyeSearch}${search})\nNote: TheEye searches are case sensitive`;
   }
