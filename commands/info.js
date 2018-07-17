@@ -191,7 +191,7 @@ function buildToleranceField(substance) {
         toleranceArr.push(`**Half**: ${tolerances.half}`);
       }
       if (!!tolerances.zero) {
-        toleranceArr.push(`**Baseline:** ${tolerance.zero}`);
+        toleranceArr.push(`**Baseline:** ${tolerances.zero}`);
       }
       return toleranceArr.join("\n");
     }
