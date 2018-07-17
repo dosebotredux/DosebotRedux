@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
     .replace("--combos ", "", -1)
     .replace(/-/g, "", -1);
 
-  drugArr = drug.split(" ");
+  let drugArr = drug.split(" ");
   console.log(drugArr);
 
   if (drugArr.length > 1) {
