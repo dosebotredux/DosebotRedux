@@ -398,34 +398,33 @@ function createTSChannelMessage(substance, message) {
     .setURL("http://www.dosebot.org")
     .addField(":scales: __Dosages__", `${buildTSDosageField(substance)}\n`)
     .addField(":clock2: __Duration__", `${buildTSDurationField(substance)}\n`)
-    .addField(
-      ":globe_with_meridians: __Links__",
-      buildTSLinksField(substance)
-    );
+    .addField(":globe_with_meridians: __Links__", buildTSLinksField(substance));
+
   message.channel.send({ embed }).catch(console.error);
+}
 
-  // Capitalization function
-  function capitalize(name) {
-    if (name === "lsa") {
-      return name.toUpperCase();
-    } else {
-      return name[0].toUpperCase() + name.slice(1);
-    }
+// Capitalization function
+function capitalize(name) {
+  if (name === "lsa") {
+    return name.toUpperCase();
+  } else {
+    return name[0].toUpperCase() + name.slice(1);
   }
+}
 
-  // Build TS dosage field
-  function buildTSDosageField(substance) {
-    return `${substance.properties.dose}`;
-  }
+// Build TS dosage field
+function buildTSDosageField(substance) {
+  return `${substance.properties.dose}`;
+}
 
-  // Build TS duration field
-  function buildTSDurationField(substance) {
-    return `${substance.properties.duration}`;
-  }
+// Build TS duration field
+function buildTSDurationField(substance) {
+  return `${substance.properties.duration}`;
+}
 
-  // Build TS links field
-  function buildTSLinksField(substance) {
-    return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
-      substance.name
-    })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
-  }
+// Build TS links field
+function buildTSLinksField(substance) {
+  return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
+    substance.name
+  })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
+}
