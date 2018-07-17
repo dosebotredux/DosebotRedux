@@ -39,6 +39,30 @@ exports.run = (client, message, args) => {
       .catch(function(err) {
         console.log(err);
       });
+  } else if (drugArr.length > 1) {
+    rp(tripSitURL)
+      .then(function(response) {
+        let queryResults = JSON.parse(response);
+        let name = queryResults.data[0].pretty_name;
+        let combos = queryResults.data[0].combos;
+        let comboArr = [];
+
+        Object.keys(combos).forEach(key => {
+          comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
+        });
+
+        Object.keys(combo).forEach(key => {
+          if (combo[key].toLowerCase() === drugArr[1].toLowerCase()) {
+            comboArr.push(`${capitalize(key)}: ${combos[key]}`);
+          }
+        });
+
+        let channelMessage = comboArr.join("\n");
+        createComboMessage(channelMessage, message, name);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   //// Functions

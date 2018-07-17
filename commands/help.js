@@ -23,6 +23,7 @@ function buildCommandList() {
     "--badtrip",
     "--bobross",
     "--combochart",
+    "--combos",
     "--dxmcalc [weight in lbs]",
     "--effectinfo [effect]",
     "--effects [substance]",
