@@ -48,11 +48,7 @@ exports.run = (client, message, args) => {
         let comboArr = [];
 
         Object.keys(combos).forEach(key => {
-          comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
-        });
-
-        Object.keys(combos).forEach(key => {
-          if (combos[key].toLowerCase() === drugArr[1].toLowerCase()) {
+          if (combos[key] === drugArr[1]) {
             comboArr.push(`${capitalize(key)}: ${combos[key]}`);
           }
         });
