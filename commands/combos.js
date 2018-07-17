@@ -51,8 +51,8 @@ exports.run = (client, message, args) => {
           comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
         });
 
-        Object.keys(combo).forEach(key => {
-          if (combo[key].toLowerCase() === drugArr[1].toLowerCase()) {
+        Object.keys(combos).forEach(key => {
+          if (combos[key].toLowerCase() === drugArr[1].toLowerCase()) {
             comboArr.push(`${capitalize(key)}: ${combos[key]}`);
           }
         });
@@ -63,6 +63,8 @@ exports.run = (client, message, args) => {
       .catch(function(err) {
         console.log(err);
       });
+  } else {
+    message.channel.send(`Error: Tell Cocoa to stop writing spaghetti code`);
   }
 
   //// Functions
