@@ -46,12 +46,19 @@ exports.run = (client, message, args) => {
         let name = queryResults.data[0].pretty_name;
         let combos = queryResults.data[0].combos;
         let comboArr = [];
+        let keys = Object.keys(combos);
 
-        Object.keys(combos).forEach(key => {
-          if (combos[key] === drugArr[1]) {
-            comboArr.push(`${capitalize(key)}: ${combos[key]}`);
+        for (let i = 0; i < keys.length; i++) {
+          if (keys[i] === drugArr[1]) {
+            comboArr.push(`${capitalize(keys[i])}: ${combos[key]}`);
           }
-        });
+        }
+
+        // Object.keys(combos).forEach(key => {
+        //   if (Object.keys(combos[key]) === drugArr[1]) {
+        //     comboArr.push(`${capitalize(key)}: ${combos[key]}`);
+        //   }
+        // });
 
         let channelMessage = comboArr.join("\n");
         createComboMessage(channelMessage, message, name);
