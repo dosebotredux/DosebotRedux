@@ -26,13 +26,16 @@ exports.run = (client, message, args) => {
       let queryResults = JSON.parse(response);
       console.log(queryResults);
       let combos = queryResults.data[0].combos;
-      console.log(combos);
-      combos = JSON.parse(combos);
       let comboArr = [];
 
-      combos.forEach(combo => {
-        comboArr.push(combo.status);
+      Object.keys(combos).forEach(key => {
+        console.log(`${key}: ${combos[key].status}`);
+        comboArr.push(`${key}: ${combos[key].status}`);
       });
+
+      // combos.forEach(combo => {
+      //   comboArr.push(combo.status);
+      // });
 
       let channelMessage = comboArr.join("\n");
 
