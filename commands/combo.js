@@ -24,6 +24,7 @@ exports.run = (client, message, args) => {
   rp(tripSitURL)
     .then(function(response) {
       let queryResults = JSON.parse(response);
+      console.log(queryResults);
       let combos = queryResults.data[0].combos;
       console.log(combos);
       combos = JSON.parse(combos);
