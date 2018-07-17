@@ -31,6 +31,7 @@ function buildCommandList() {
     "--library [search string]",
     "--psytolerance [days]",
     "--randomeffect",
+    "--randomtdc",
     "--sei",
     "--triptoy",
     "--video"
