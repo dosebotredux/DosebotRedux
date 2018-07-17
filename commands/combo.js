@@ -15,11 +15,12 @@ exports.run = (client, message, args) => {
 
   let drugArr = drug.split(" ");
   console.log(drugArr);
+  let name = drugArr[0];
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
     drugArr[0]
   }`;
 
-  drugArr[0] = sanitizeSubstanceName(drugArr[0]);
+  drugArr[0] = sanitizeSubstanceName(drugArr[0], message, name);
 
   rp(tripSitURL)
     .then(function(response) {
@@ -40,9 +41,9 @@ exports.run = (client, message, args) => {
     });
   //// Functions
   // Create combo message
-  function createComboMessage(combos, message) {
+  function createComboMessage(combos, message, name) {
     const embed = new Discord.RichEmbed()
-      .setTitle(`**${capitalize(substance.name)} combo information**`)
+      .setTitle(`**${capitalize(name)} combo information**`)
       .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
       .setColor("747474")
       .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
