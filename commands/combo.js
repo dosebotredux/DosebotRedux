@@ -21,23 +21,26 @@ exports.run = (client, message, args) => {
 
   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
 
-  rp(tripSitURL)
-    .then(function(response) {
-      let queryResults = JSON.parse(response);
-      let name = queryResults.data[0].pretty_name;
-      let combos = queryResults.data[0].combos;
-      let comboArr = [];
+  if (drugArr.length === 1) {
+    rp(tripSitURL)
+      .then(function(response) {
+        let queryResults = JSON.parse(response);
+        let name = queryResults.data[0].pretty_name;
+        let combos = queryResults.data[0].combos;
+        let comboArr = [];
 
-      Object.keys(combos).forEach(key => {
-        comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
+        Object.keys(combos).forEach(key => {
+          comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
+        });
+
+        let channelMessage = comboArr.join("\n");
+        createComboMessage(channelMessage, message, name);
+      })
+      .catch(function(err) {
+        console.log(err);
       });
+  }
 
-      let channelMessage = comboArr.join("\n");
-      createComboMessage(channelMessage, message, name);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
   //// Functions
   // Create combo message
   function createComboMessage(combos, message, name) {
