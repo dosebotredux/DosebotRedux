@@ -29,58 +29,37 @@ exports.run = (client, message, args) => {
       let comboArr = [];
 
       Object.keys(combos).forEach(key => {
-        console.log(`${key}: ${combos[key].status}`);
-        comboArr.push(`${key}: ${combos[key].status}`);
+        comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
       });
 
-      // combos.forEach(combo => {
-      //   comboArr.push(combo.status);
-      // });
-
       let channelMessage = comboArr.join("\n");
-
-      message.channel.send(channelMessage);
+      createComboMessage(channelMessage, message);
     })
     .catch(function(err) {
       console.log(err);
     });
+  //// Functions
+  // Create combo message
+  function createComboMessage(combos, message) {
+    const embed = new Discord.RichEmbed()
+      .setTitle(`**${capitalize(substance.name)} combo information**`)
+      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+      .setColor("747474")
+      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+      .setThumbnail("https://kek.gg/i/svRNH.png")
+      .setTimestamp()
+      .setURL("http://www.dosebot.org")
+      .addField(`Combos`, combos);
 
-  // if (drugArr.length > 1) {
-  //   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
+    message.channel.send({ embed });
+  }
 
-  //   rp(tripSitURL)
-  //     .then(function(response) {
-  //       let queryResults = JSON.parse(response);
-  //       let combos = queryResults.data[0].combos;
-
-  //       combos.forEach(combo => {
-  //         if (combo === drugArr[1]) {
-  //           message.channel.send(`${combo.status}`);
-  //         }
-  //       });
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     });
-  // } else if (drugArr.length === 1) {
-  //   drugArr[0] = sanitizeSubstanceName(drugArr[0]);
-
-  //   rp(tripSitURL)
-  //     .then(function(response) {
-  //       let queryResults = JSON.parse(response);
-  //       let combos = queryResults.data[0].combos;
-  //       let comboArr = [];
-
-  //       combos.forEach(combo => {
-  //         comboArr.push(combo.status);
-  //       });
-
-  //       let channelMessage = comboArr.join("\n");
-
-  //       message.channel.send(channelMessage);
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     });
-  // }
+  // Capitalization function
+  function capitalize(name) {
+    if (name === "lsa") {
+      return name.toUpperCase();
+    } else {
+      return name[0].toUpperCase() + name.slice(1);
+    }
+  }
 };
