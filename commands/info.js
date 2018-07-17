@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
     var location;
     substance = locateCustomSheetLocation(drug);
 
-    createChannelMessage(substance, message);
+    createPWChannelMessage(substance, message);
   } else {
     console.log("Pulling from PW");
 
@@ -65,10 +65,11 @@ exports.run = (client, message, args) => {
             )
             .catch(console.error);
           return;
+        } else {
+          // Set substance to the first returned substance from PW API
+          var substance = data.substances[0];
+          createPWChannelMessage(substance, message);
         }
-        // Set substance to the first returned substance from PW API
-        var substance = data.substances[0];
-        createChannelMessage(substance, message);
       })
       .catch(function(error) {
         console.log("Promise rejected/errored out");
@@ -82,7 +83,7 @@ exports.run = (client, message, args) => {
 
 // Functions
 //// Create a RichEmbed powered message utilizing the various field builder functions
-function createChannelMessage(substance, message) {
+function createPWChannelMessage(substance, message) {
   const embed = new Discord.RichEmbed()
     .setTitle(`**${capitalize(substance.name)} drug information**`)
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")

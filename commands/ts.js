@@ -18,11 +18,6 @@ exports.run = (client, message, args) => {
   drug = sanitizeSubstanceName(drug);
 
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
-  console.log(tripSitURL);
-  // request(tripSitURL, function(error, response, body) {
-  //   queryResults = JSON.parse(body);
-  //   console.log(queryResults.data[0].summary);
-  // });
   request(tripSitURL)
     .then(function(response) {
       // console.log(response);
@@ -76,7 +71,7 @@ exports.run = (client, message, args) => {
     function buildTSLinksField(substance) {
       return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
         substance.name
-      })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.org)\n\nInformation sourced from TripSit`;
+      })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
     }
   }
 };
