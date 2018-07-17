@@ -73,19 +73,23 @@ exports.run = (client, message, args) => {
   function buildMessageField() {
     var results = [];
 
-    // If more than three search items push first three results
-    if (librarySearchResultsArray.length > 3) {
-      for (let i = 0; i < 3; i++) {
-        results.push(librarySearchResultsArray[i]);
+    if (librarySearchResultsArray.length > 0) {
+      // If more than three search items push first three results
+      if (librarySearchResultsArray.length > 3) {
+        for (let i = 0; i < 3; i++) {
+          results.push(librarySearchResultsArray[i]);
+        }
+      } else {
+        // If less than three items push all results
+        for (let i = 0; i < librarySearchResultsArray.length; i++) {
+          results.push(librarySearchResultsArray[i]);
+        }
       }
+      // Return a string of the joined array separated by new lines
+      return results.join("\n");
     } else {
-      // If less than three items push all results
-      for (let i = 0; i < librarySearchResultsArray.length; i++) {
-        results.push(librarySearchResultsArray[i]);
-      }
+      return `No results`;
     }
-    // Return a string of the joined array separated by new lines
-    return results.join("\n");
   }
 
   // Build function for building the more results link
