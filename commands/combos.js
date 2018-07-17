@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var drug = str
     .toLowerCase()
-    .replace("--combo ", "", -1)
+    .replace("--combos ", "", -1)
     .replace(/-/g, "", -1);
 
   let drugArr = drug.split(" ");
