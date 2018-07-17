@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
   let tripSitURL = "http://tripbot.tripsit.me/api/tripsit/getDrug?name=lsd";
   let queryResults;
   request(tripSitURL, function(error, response, body) {
-    queryResults = body;
+    queryResults = JSON.parse(body);
     console.log(body.data.summary);
   });
 
