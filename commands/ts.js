@@ -26,12 +26,14 @@ exports.run = (client, message, args) => {
   // });
   request(tripSitURL)
     .then(function(response) {
-      console.log(response);
+      // console.log(response);
       queryResults = JSON.parse(response);
     })
     .catch(function(err) {
       console.log(err);
     });
 
-  message.channel.send(queryResults.data[0]).catch(console.error);
+  console.log(queryResults);
+
+  // message.channel.send(queryResults.data[0]).catch(console.error);
 };
