@@ -60,7 +60,7 @@ exports.run = (client, message, args) => {
     if (name === "lsa") {
       return name.toUpperCase();
     } else {
-      return name[0].toUpperCase() + name.slice(1);
+      return name.toUpperCase() + name.slice(1);
     }
   }
 };
