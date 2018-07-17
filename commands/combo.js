@@ -15,7 +15,6 @@ exports.run = (client, message, args) => {
 
   let drugArr = drug.split(" ");
   console.log(drugArr);
-  let name = drugArr[0];
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
     drugArr[0]
   }`;
@@ -25,7 +24,7 @@ exports.run = (client, message, args) => {
   rp(tripSitURL)
     .then(function(response) {
       let queryResults = JSON.parse(response);
-      console.log(queryResults);
+      let name = queryResults.data[0].pretty_name;
       let combos = queryResults.data[0].combos;
       let comboArr = [];
 
@@ -34,7 +33,7 @@ exports.run = (client, message, args) => {
       });
 
       let channelMessage = comboArr.join("\n");
-      createComboMessage(channelMessage, message);
+      createComboMessage(channelMessage, message, name);
     })
     .catch(function(err) {
       console.log(err);
@@ -43,7 +42,7 @@ exports.run = (client, message, args) => {
   // Create combo message
   function createComboMessage(combos, message, name) {
     const embed = new Discord.RichEmbed()
-      .setTitle(`**${capitalize(name)} combo information**`)
+      .setTitle(`**${name} combo information**`)
       .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
       .setColor("747474")
       .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
@@ -53,14 +52,5 @@ exports.run = (client, message, args) => {
       .addField(`Combos`, combos);
 
     message.channel.send({ embed });
-  }
-
-  // Capitalization function
-  function capitalize(name) {
-    if (name === "lsa") {
-      return name.toUpperCase();
-    } else {
-      return name.toUpperCase() + name.slice(1);
-    }
   }
 };
