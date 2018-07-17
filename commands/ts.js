@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
       let queryResults = JSON.parse(response);
       let substance = queryResults.data[0];
 
-      message.channel.send(queryResults.data[0].properties.summary);
+      createTSChannelMessage(substance, message);
     })
     .catch(function(err) {
       console.log(err);
