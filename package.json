@@ -17,6 +17,7 @@
     "jquery": "^3.3.1",
     "js-yaml": "^3.11.0",
     "request": "^2.87.0",
+    "request-promise": "^4.2.2",
     "winston": "^2.4.2",
     "zombie": "^5.0.8"
   },

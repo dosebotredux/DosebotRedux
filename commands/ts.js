@@ -1,6 +1,6 @@
 const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
 const Discord = require("discord.js");
-const request = require("request");
+const request = require("request-promise");
 
 // Mascot lol
 exports.run = (client, message, args) => {
@@ -18,11 +18,19 @@ exports.run = (client, message, args) => {
   drug = sanitizeSubstanceName(drug);
 
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
+  console.log(tripSitURL);
   let queryResults;
-  request(tripSitURL, function(error, response, body) {
-    queryResults = JSON.parse(body);
-    console.log(queryResults.data[0].summary);
-  });
+  // request(tripSitURL, function(error, response, body) {
+  //   queryResults = JSON.parse(body);
+  //   console.log(queryResults.data[0].summary);
+  // });
+  request(tripSitURL)
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
-  message.channel.send(queryResults.data[0].summary).catch(console.error);
+  // message.channel.send(queryResults.data[0].summary).catch(console.error);
 };
