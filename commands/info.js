@@ -195,6 +195,8 @@ function buildToleranceField(substance) {
       }
       return toleranceArr.join("\n");
     }
+  } else {
+    return `No information`;
   }
 }
 
