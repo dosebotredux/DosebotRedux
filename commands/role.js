@@ -147,8 +147,8 @@ exports.run = (client, message, args) => {
           nickToRestoreArr.push(letter);
         }
 
-        let nickToRestore = nickToRestoreArr.join("");
         console.log(nickToRestoreArr);
+        let nickToRestore = nickToRestoreArr.join("");
         console.log(nickToRestore);
 
         console.log(`Restoring original nickname: ${nickToRestore}`);
