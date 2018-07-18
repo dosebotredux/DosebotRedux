@@ -43,6 +43,7 @@ exports.run = (client, message, args) => {
     // TODO - make this a switch or something
     // Currently servers must use these named roles
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
+      console.log(`Calling toggleRole`);
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "stimmed") {
       toggleRole(desiredGuildRole, author, substance, dosage);
@@ -148,7 +149,7 @@ exports.run = (client, message, args) => {
         console.log(indexOfSeparator);
 
         for (let i = 0; i < indexOfSeparator; i++) {
-          const letter = nickToRestoreArr[i];
+          const letter = currentNickArr[i];
           nickToRestoreArr.push(letter);
         }
 
