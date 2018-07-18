@@ -67,6 +67,9 @@ exports.run = (client, message, args) => {
   function toggleRole(roleToApply, author) {
     if (message.guild.id === "332288651394547712") {
       console.log(`we're on the SED!`);
+      let nickName = message.member.nickname;
+      console.log(`nickname: ${nickName}`);
+      message.member.setNickname(`Doofus`).catch(console.error);
     }
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Removes role
