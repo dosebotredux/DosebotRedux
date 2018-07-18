@@ -80,15 +80,15 @@ exports.run = (client, message, args) => {
   function toggleRole(roleToApply, author, substance, dosage) {
     var nickName;
     var nickNameModifier = ` | ${substance} ${dosage}`;
-    // Sets the nickname
-    setTripNickName();
     // Conditional to determine whether user has role
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
+      // Restores nickname
+      restoreNickName();
       // Removes role
       removeRole(roleToApply, author);
-      // Restores nickname
-      restoreNickName(nickName);
     } else {
+      // Sets the nickname
+      setTripNickName();
       // Adds role
       addRole(roleToApply, author);
     }
@@ -114,7 +114,7 @@ exports.run = (client, message, args) => {
             `Removed **${roleToApply.name}** from ${author.displayName}`
           );
           removeRole(roleToApply, author);
-          restoreNickName(nickName);
+          restoreNickName();
         });
       };
       asyncFunc();
@@ -136,11 +136,18 @@ exports.run = (client, message, args) => {
           .catch(console.error);
       }
     }
-    function restoreNickName(nick) {
+    function restoreNickName() {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
-        console.log(`Restoring original nickname: ${nick}`);
-        message.member.setNickname(nick).catch(console.error);
+        let nickToRestoreArr = message.member.displayName.split("");
+        let nickToRestore = "";
+        for (let i = 0; i < nickToRestoreArr.indexOf("|"); i++) {
+          const letter = nickToRestore[i];
+          nickToRestore += letter;
+        }
+
+        console.log(`Restoring original nickname: ${nickToRestore}`);
+        message.member.setNickname(nickToRestore).catch(console.error);
       }
     }
   }
