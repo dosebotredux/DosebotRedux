@@ -89,7 +89,7 @@ exports.run = (client, message, args) => {
       unassignRole(roleToApply, author);
     } else {
       // Sets the nickname
-      setTripNickName();
+      setTripNickName(nickName, nickNameModifier);
       // Adds role
       assignRole(roleToApply, author);
     }
@@ -104,7 +104,7 @@ exports.run = (client, message, args) => {
         `Added **${desiredRole}** to <@${message.author.id}>`
       );
       // Change nickname
-      setTripNickName();
+      setTripNickName(nickName, nickNameModifier);
       // Define an async function to handle automatic role removal
       const delay = duration =>
         new Promise(resolve => setTimeout(resolve, duration));
@@ -128,11 +128,11 @@ exports.run = (client, message, args) => {
         `Removed **${desiredRole}** from <@${message.author.id}>`
       );
     }
-    function setTripNickName() {
+    function setTripNickName(nick, modifier) {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
         nickName = message.member.displayName;
-        if (nickNameModifier !== undefined) {
+        if (nickNameModifier !== undefined && nickName !== undefined) {
           console.log(`Nickname: ${nickName} ${nickNameModifier}`);
           message.member
             .setNickname(`${nickName} ${nickNameModifier}`)
