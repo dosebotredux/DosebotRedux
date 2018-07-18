@@ -7,13 +7,15 @@ exports.run = (client, message, args) => {
   var author = message.member; // author object
   let str = message.content; // "--role role <lsd>"
   // Create array so we can access multiple args
+  let substance;
+  let dosage;
   let strArr = str.replace("--role ", "", -1).split(" "); // "[role, lsd]"
   if (strArr.length === 2) {
-    const substance = strArr[1];
-    const dosage = "";
+    substance = strArr[1];
+    dosage = "";
   } else if (strArr.length === 3) {
-    const substance = strArr[1];
-    const dosage = strArr[2];
+    substance = strArr[1];
+    dosage = strArr[2];
   }
   // Set desired role
   let desiredRole = str
@@ -40,27 +42,27 @@ exports.run = (client, message, args) => {
     // TODO - make this a switch or something
     // Currently servers must use these named roles
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "stimmed") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "barred") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "nodding") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "drunk") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "dissod") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "rolling") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "stoned") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "hungover") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "delirious") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "altered") {
-      toggleRole(desiredGuildRole, author);
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else {
       // Send message stating role cannot be assigned
       message.channel.send(
@@ -74,7 +76,7 @@ exports.run = (client, message, args) => {
   }
   //// Functions
   // Function for toggling the role of a user based on their current role state
-  function toggleRole(roleToApply, author) {
+  function toggleRole(roleToApply, author, substance, dosage) {
     var nickName;
     var nickNameModifier = ` | ${substance} ${dosage}`;
     // Sets the nickname
