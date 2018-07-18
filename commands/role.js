@@ -86,7 +86,7 @@ exports.run = (client, message, args) => {
       // Restores nickname
       restoreNickName();
       // Removes role
-      removeRole(roleToApply, author);
+      unassignRole(roleToApply, author);
     } else {
       // Sets the nickname
       setTripNickName();
