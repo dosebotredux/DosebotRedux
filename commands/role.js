@@ -142,8 +142,10 @@ exports.run = (client, message, args) => {
         let currentNick = message.member.displayName;
         let currentNickArr = currentNick.split("");
         let nickToRestoreArr = [];
-        for (let i = 0; i < currentNickArr.indexOf("|"); i++) {
-          const letter = nickToRestore[i];
+        let indexOfSeparator = currentNickArr.indexOf("|");
+
+        for (let i = 0; i < indexOfSeparator; i++) {
+          const letter = nickToRestoreArr[i];
           nickToRestoreArr.push(letter);
         }
 
