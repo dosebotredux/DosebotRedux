@@ -79,7 +79,7 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author, substance, dosage) {
-    var nickName;
+    var nickName = author.displayName;
     var nickNameModifier = ` | ${substance} ${dosage}`;
     // Conditional to determine whether user has role
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
@@ -132,10 +132,10 @@ exports.run = (client, message, args) => {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
         nickName = message.member.displayName;
-        if (nickNameModifier !== undefined && nickName !== undefined) {
-          console.log(`Nickname: ${nickName} ${nickNameModifier}`);
+        if (nick !== undefined && modifier !== undefined) {
+          console.log(`Nickname: ${nick} ${modifier}`);
           message.member
-            .setNickname(`${nickName} ${nickNameModifier}`)
+            .setNickname(`${nick} ${modifier}`)
             .catch(console.error);
         } else {
           console.log(`Nickname is undefined, not modifying name`);
