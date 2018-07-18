@@ -33,6 +33,8 @@ exports.run = (client, message, args) => {
           comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
         });
 
+        comboArr.sort();
+
         let channelMessage = comboArr.join("\n");
         createComboMessage(channelMessage, message, name);
       })
@@ -54,11 +56,7 @@ exports.run = (client, message, args) => {
           }
         }
 
-        // Object.keys(combos).forEach(key => {
-        //   if (Object.keys(combos[key]) === drugArr[1]) {
-        //     comboArr.push(`${capitalize(key)}: ${combos[key]}`);
-        //   }
-        // });
+        comboArr.sort();
 
         let channelMessage = comboArr.join("\n");
         createComboMessage(channelMessage, message, name);
