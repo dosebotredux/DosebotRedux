@@ -416,8 +416,16 @@ function createTSChannelMessage(substance, message) {
     .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
-    .addField(":scales: __Dosages__", `${buildTSDosageField(substance)}\n`)
-    .addField(":clock2: __Duration__", `${buildTSDurationField(substance)}\n`)
+    .addField(
+      ":scales: __Dosages__",
+      `${buildTSDosageField(substance)}\n`,
+      true
+    )
+    .addField(
+      ":clock2: __Duration__",
+      `${buildTSDurationField(substance)}\n`,
+      true
+    )
     .addField(":globe_with_meridians: __Links__", buildTSLinksField(substance));
 
   message.channel.send({ embed }).catch(console.error);
