@@ -65,7 +65,7 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
-    if (message.guild.id === "332288651394547712") {
+    if (message.guild.id === "469206008078663691") {
       console.log(`we're on the SED!`);
       let nickName = message.member.nickname;
       console.log(`nickname: ${nickName}`);
