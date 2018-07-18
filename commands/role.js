@@ -132,7 +132,7 @@ exports.run = (client, message, args) => {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
         nickName = message.member.displayName;
-        if (nickName !== undefined) {
+        if (nickNameModifier !== undefined) {
           console.log(`Nickname: ${nickName} ${nickNameModifier}`);
           message.member
             .setNickname(`${nickName} ${nickNameModifier}`)
