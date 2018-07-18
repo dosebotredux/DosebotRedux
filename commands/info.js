@@ -418,6 +418,7 @@ function createTSChannelMessage(substance, message) {
     .setTitle(`**${substance.pretty_name} drug information**`)
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
     .setColor("747474")
+    .setThumbnail("https://kek.gg/i/svRNH.png")
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")

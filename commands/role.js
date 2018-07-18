@@ -108,7 +108,7 @@ exports.run = (client, message, args) => {
         new Promise(resolve => setTimeout(resolve, duration));
       // Delay for 8 hours and then remove role
       const asyncFunc = () => {
-        delay(5000).then(() => {
+        delay(28800000).then(() => {
           // 28800000ms
           console.log(
             `Removed **${roleToApply.name}** from ${author.displayName}`
