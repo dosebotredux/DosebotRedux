@@ -91,13 +91,14 @@ exports.run = (client, message, args) => {
       // Sets the nickname
       setTripNickName();
       // Adds role
-      addRole(roleToApply, author);
+      assignRole(roleToApply, author);
     }
 
-    function addRole(roleToApply, author) {
+    function assignRole(roleToApply, author) {
       // Log role and author and add role
-      console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+      console.log(`we're in addrole`);
       author.addRole(roleToApply.id).catch(console.error);
+      console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       // Send message to channel
       message.channel.send(
         `Added **${desiredRole}** to <@${message.author.id}>`
@@ -114,13 +115,13 @@ exports.run = (client, message, args) => {
           console.log(
             `Removed **${roleToApply.name}** from ${author.displayName}`
           );
-          removeRole(roleToApply, author);
+          unassignRole(roleToApply, author);
           restoreNickName();
         });
       };
       asyncFunc();
     }
-    function removeRole(roleToApply, author) {
+    function unassignRole(roleToApply, author) {
       console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
       author.removeRole(roleToApply.id).catch(console.error);
       message.channel.send(
@@ -131,10 +132,14 @@ exports.run = (client, message, args) => {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
         nickName = message.member.displayName;
-        console.log(`Nickname: ${nickName} ${nickNameModifier}`);
-        message.member
-          .setNickname(`${nickName} ${nickNameModifier}`)
-          .catch(console.error);
+        if (nickName !== undefined) {
+          console.log(`Nickname: ${nickName} ${nickNameModifier}`);
+          message.member
+            .setNickname(`${nickName} ${nickNameModifier}`)
+            .catch(console.error);
+        } else {
+          console.log(`Nickname is undefined, not modifying name`);
+        }
       }
     }
     function restoreNickName() {
@@ -142,23 +147,27 @@ exports.run = (client, message, args) => {
       if (message.guild.id === "335167514961248256") {
         let currentNick = message.member.displayName;
         console.log(currentNick);
-        let currentNickArr = currentNick.split("");
-        console.log(currentNickArr);
-        let nickToRestoreArr = [];
-        let indexOfSeparator = currentNickArr.indexOf("|");
-        console.log(indexOfSeparator);
+        if (currentNick.includes("|")) {
+          let currentNickArr = currentNick.split("");
+          console.log(currentNickArr);
+          let nickToRestoreArr = [];
+          let indexOfSeparator = currentNickArr.indexOf("|");
+          console.log(indexOfSeparator);
 
-        for (let i = 0; i < indexOfSeparator; i++) {
-          const letter = currentNickArr[i];
-          nickToRestoreArr.push(letter);
+          for (let i = 0; i < indexOfSeparator; i++) {
+            const letter = currentNickArr[i];
+            nickToRestoreArr.push(letter);
+          }
+
+          console.log(nickToRestoreArr);
+          let nickToRestore = nickToRestoreArr.join("");
+          console.log(nickToRestore);
+
+          console.log(`Restoring original nickname: ${nickToRestore}`);
+          message.member.setNickname(nickToRestore).catch(console.error);
+        } else {
+          console.log(`Not restoring nickname, no | detected`);
         }
-
-        console.log(nickToRestoreArr);
-        let nickToRestore = nickToRestoreArr.join("");
-        console.log(nickToRestore);
-
-        console.log(`Restoring original nickname: ${nickToRestore}`);
-        message.member.setNickname(nickToRestore).catch(console.error);
       }
     }
   }
