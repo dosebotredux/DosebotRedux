@@ -84,7 +84,11 @@ exports.run = (client, message, args) => {
   function toggleRole(roleToApply, author, substance, dosage) {
     console.log(`${substance} ${dosage}`);
     var nickName = author.displayName;
-    var nickNameModifier = ` | ${substance} ${dosage}`;
+    if (substance !== " ") {
+      var nickNameModifier = ` | ${substance} ${dosage}`;
+    } else {
+      var nickNameModifier = " ";
+    }
     // Conditional to determine whether user has role
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Restores nickname
