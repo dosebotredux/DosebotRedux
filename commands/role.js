@@ -113,7 +113,7 @@ exports.run = (client, message, args) => {
           console.log(
             `Removed **${roleToApply.name}** from ${author.displayName}`
           );
-          author.removeRole(roleToApply.id).catch(console.error);
+          removeRole(roleToApply, author);
           restoreNickName(nickName);
           message.channel.send(
             `Removed **${roleToApply.name}** from <@${
