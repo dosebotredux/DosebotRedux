@@ -16,6 +16,9 @@ exports.run = (client, message, args) => {
   } else if (strArr.length === 3) {
     substance = strArr[1];
     dosage = strArr[2];
+  } else {
+    substance = " ";
+    dosage = " ";
   }
   // Set desired role
   let desiredRole = str
@@ -79,6 +82,7 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author, substance, dosage) {
+    console.log(`${substance} ${dosage}`);
     var nickName = author.displayName;
     var nickNameModifier = ` | ${substance} ${dosage}`;
     // Conditional to determine whether user has role
@@ -149,19 +153,15 @@ exports.run = (client, message, args) => {
         console.log(currentNick);
         if (currentNick.includes("|")) {
           let currentNickArr = currentNick.split("");
-          console.log(currentNickArr);
           let nickToRestoreArr = [];
           let indexOfSeparator = currentNickArr.indexOf("|");
-          console.log(indexOfSeparator);
 
           for (let i = 0; i < indexOfSeparator; i++) {
             const letter = currentNickArr[i];
             nickToRestoreArr.push(letter);
           }
 
-          console.log(nickToRestoreArr);
           let nickToRestore = nickToRestoreArr.join("");
-          console.log(nickToRestore);
 
           console.log(`Restoring original nickname: ${nickToRestore}`);
           message.member.setNickname(nickToRestore).catch(console.error);
