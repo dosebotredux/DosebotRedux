@@ -139,7 +139,8 @@ exports.run = (client, message, args) => {
     function restoreNickName() {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
-        let nickToRestoreArr = message.member.displayName.split("");
+        let currentNick = message.member.displayName;
+        let nickToRestoreArr = currentNick.split("");
         let nickToRestore = "";
         for (let i = 0; i < nickToRestoreArr.indexOf("|"); i++) {
           const letter = nickToRestore[i];
