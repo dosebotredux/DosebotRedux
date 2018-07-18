@@ -22,9 +22,9 @@ exports.run = (client, message, args) => {
     .toLowerCase()
     .replace("--role ", "", -1)
     .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1) // "role"
-    .split(" ");
-  desiredRole = desiredRole[0];
+    .replace(/ /g, "", -1); // "role"
+  let desiredRoleArr = desiredRole.split(" ");
+  desiredRole = desiredRoleArr[0];
   console.log(desiredRole);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
