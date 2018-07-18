@@ -42,14 +42,16 @@ function updateGameMessage() {
   let servercount = 0;
 
   servers.forEach(guild => {
-    if (guild.id == "264445053596991498") {
-      console.log("Ignoring bot server");
-    } else if (guild.id == "110373943822540800") {
-      console.log("Ignoring bot server");
-    } else {
-      userCount += guild.memberCount;
-      servercount++;
-    }
+    // if (guild.id == "264445053596991498") {
+    //   console.log("Ignoring bot server");
+    // } else if (guild.id == "110373943822540800") {
+    //   console.log("Ignoring bot server");
+    // } else {
+    //   userCount += guild.memberCount;
+    //   servercount++;
+    // }
+    userCount += guild.memberCount;
+    servercount++;
     console.log(
       `Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`
     );
