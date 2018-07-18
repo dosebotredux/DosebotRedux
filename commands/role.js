@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
   // Create array so we can access multiple args
   let substance;
   let dosage;
-  let strArr = str.replace("--role ", "", -1).split(" "); // "[role, lsd]"
+  let strArr = str.replace("--role ", "", -1).split(" "); // "[lsd, 50ug]"
   if (strArr.length === 2) {
     substance = strArr[1];
     dosage = "";
@@ -22,7 +22,9 @@ exports.run = (client, message, args) => {
     .toLowerCase()
     .replace("--role ", "", -1)
     .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1); // "role"
+    .replace(/ /g, "", -1) // "role"
+    .split(" ");
+  desiredRole = desiredRole[0];
   console.log(desiredRole);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
