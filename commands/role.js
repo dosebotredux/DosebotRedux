@@ -66,46 +66,13 @@ exports.run = (client, message, args) => {
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
     var nickName;
-    // if (message.guild.id === "469206008078663691") {
-    //   console.log(`we're on the SED!`);
-    //   let nickName = message.member.nickname;
-    //   console.log(`nickname: ${nickName}`);
-    //   message.member.setNickname(`Doofus`).catch(console.error);
-    // }
+    // Sets the nickname
     setTripNickName();
-
-    // if (!!author.roles.find(role => role.name === roleToApply.name)) {
-    //   // Removes role
-    //   removeRole(roleToApply, author);
-    // } else {
-    //   // Adds role
-    //   console.log(`Added ${desiredRole} to <@${message.author.id}>`);
-    //   author.addRole(roleToApply.id).catch(console.error);
-    //   message.channel.send(
-    //     `Added **${desiredRole}** to <@${message.author.id}>`
-    //   );
-    //   // Define an async function to handle automatic role removal
-    //   const delay = duration =>
-    //     new Promise(resolve => setTimeout(resolve, duration));
-    //   // Delay for 8 hours and then remove role
-    //   const asyncFunc = () => {
-    //     delay(28800000).then(() => {
-    //       console.log(
-    //         `Removed **${roleToApply.name}** from ${author.displayName}`
-    //       );
-    //       author.removeRole(roleToApply.id).catch(console.error);
-    //       message.channel.send(
-    //         `Removed **${roleToApply.name}** from <@${
-    //           message.author.id
-    //         }> - Role timer expired`
-    //       );
-    //     });
-    //   };
-    //   asyncFunc();
-    // }
+    // Conditional to determine whether user has role
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Removes role
       removeRole(roleToApply, author);
+      // Restores nickname
       restoreNickName(nickName);
     } else {
       // Adds role
@@ -152,7 +119,7 @@ exports.run = (client, message, args) => {
     }
     function setTripNickName() {
       if (message.guild.id === "469206008078663691") {
-        nickName = message.member.nickname;
+        nickName = message.member.displayName;
         console.log(`Nickname: ${nickName}`);
         message.member.setNickname(`Doofus`).catch(console.error);
         console.log(message.member.nickname);
@@ -160,7 +127,7 @@ exports.run = (client, message, args) => {
     }
     function restoreNickName(nick) {
       if (message.guild.id === "469206008078663691") {
-        console.log(message.member.nickname);
+        console.log(message.member.displayName);
         console.log(`Restoring original nickname: ${nick}`);
         message.member.setNickname(nick).catch(console.error);
       }
