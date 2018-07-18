@@ -140,12 +140,16 @@ exports.run = (client, message, args) => {
       // Psy Experience
       if (message.guild.id === "335167514961248256") {
         let currentNick = message.member.displayName;
-        let nickToRestoreArr = currentNick.split("");
-        let nickToRestore = "";
-        for (let i = 0; i < nickToRestoreArr.indexOf("|"); i++) {
+        let currentNickArr = currentNick.split("");
+        let nickToRestoreArr = [];
+        for (let i = 0; i < currentNickArr.indexOf("|"); i++) {
           const letter = nickToRestore[i];
-          nickToRestore += letter;
+          nickToRestoreArr.push(letter);
         }
+
+        let nickToRestore = nickToRestoreArr.join("");
+        console.log(nickToRestoreArr);
+        console.log(nickToRestore);
 
         console.log(`Restoring original nickname: ${nickToRestore}`);
         message.member.setNickname(nickToRestore).catch(console.error);
