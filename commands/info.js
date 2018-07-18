@@ -100,7 +100,6 @@ function createPWChannelMessage(substance, message) {
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
     .setColor("747474")
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField(
@@ -108,8 +107,12 @@ function createPWChannelMessage(substance, message) {
       buildChemicalClassField(substance) +
         buildPsychoactiveClassField(substance)
     )
-    .addField(":scales: __Dosages__", `${buildDosageField(substance)}\n`)
-    .addField(":clock2: __Duration__", `${buildDurationField(substance)}\n`)
+    .addField(":scales: __Dosages__", `${buildDosageField(substance)}\n`, true)
+    .addField(
+      ":clock2: __Duration__",
+      `${buildDurationField(substance)}\n`,
+      true
+    )
     .addField(
       ":warning: __Addiction potential__",
       buildAddictionPotentialField(substance)
