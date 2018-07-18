@@ -32,6 +32,7 @@ function buildCommandList() {
     "--psytolerance [days]",
     "--randomeffect",
     "--randomtdc",
+    "--role <drug> <dose>",
     "--sei",
     "--triptoy",
     "--video"
