@@ -99,6 +99,7 @@ function createPWChannelMessage(substance, message) {
     .setTitle(`**${capitalize(substance.name)} drug information**`)
     .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
     .setColor("747474")
+    .setThumbnail("https://kek.gg/i/svRNH.png")
     .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
@@ -115,11 +116,13 @@ function createPWChannelMessage(substance, message) {
     )
     .addField(
       ":warning: __Addiction potential__",
-      buildAddictionPotentialField(substance)
+      buildAddictionPotentialField(substance),
+      true
     )
     .addField(
       ":chart_with_upwards_trend: __Tolerance__",
-      `${buildToleranceField(substance)}\n`
+      `${buildToleranceField(substance)}\n`,
+      true
     )
     .addField(":globe_with_meridians: __Links__", buildLinksField(substance));
 
