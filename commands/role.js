@@ -65,6 +65,7 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
+    var nickName;
     // if (message.guild.id === "469206008078663691") {
     //   console.log(`we're on the SED!`);
     //   let nickName = message.member.nickname;
@@ -105,6 +106,7 @@ exports.run = (client, message, args) => {
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Removes role
       removeRole(roleToApply, author);
+      restoreNickName(nickName);
     } else {
       // Adds role
       addRole(roleToApply, author);
@@ -150,7 +152,7 @@ exports.run = (client, message, args) => {
     }
     function setTripNickName() {
       if (message.guild.id === "469206008078663691") {
-        const nickName = message.member.nickname;
+        nickName = message.member.nickname;
         console.log(`Nickname: ${nickName}`);
         message.member.setNickname(`Doofus`).catch(console.error);
         console.log(message.member.nickname);
