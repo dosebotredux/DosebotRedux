@@ -5,7 +5,17 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing role on ${message.guild.name}**********`);
 
   var author = message.member; // author object
-  let str = message.content; // "--role role"
+  let str = message.content; // "--role role <lsd>"
+  // Create array so we can access multiple args
+  let strArr = str.replace("--role ", "", -1).split(" "); // "[role, lsd]"
+  if (strArr.length === 2) {
+    const substance = strArr[1];
+    const dosage = "";
+  } else if (strArr.length === 3) {
+    const substance = strArr[1];
+    const dosage = strArr[2];
+  }
+  // Set desired role
   let desiredRole = str
     .toLowerCase()
     .replace("--role ", "", -1)
@@ -66,6 +76,7 @@ exports.run = (client, message, args) => {
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
     var nickName;
+    var nickNameModifier = ` | ${substance} ${dosage}`;
     // Sets the nickname
     setTripNickName();
     // Conditional to determine whether user has role
@@ -120,14 +131,14 @@ exports.run = (client, message, args) => {
     function setTripNickName() {
       if (message.guild.id === "469206008078663691") {
         nickName = message.member.displayName;
-        console.log(`Nickname: ${nickName}`);
-        message.member.setNickname(`Doofus`).catch(console.error);
-        console.log(message.member.nickname);
+        console.log(`Nickname: ${nickName} ${nickNameModifier}`);
+        message.member
+          .setNickname(`${nickName} ${nickNameModifier}`)
+          .catch(console.error);
       }
     }
     function restoreNickName(nick) {
       if (message.guild.id === "469206008078663691") {
-        console.log(message.member.displayName);
         console.log(`Restoring original nickname: ${nick}`);
         message.member.setNickname(nick).catch(console.error);
       }
