@@ -88,6 +88,7 @@ exports.run = (client, message, args) => {
       // Return a string of the joined array separated by new lines
       return results.join("\n");
     } else {
+      console.log(`Search returned no results`);
       return `No results`;
     }
   }

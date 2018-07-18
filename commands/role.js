@@ -49,6 +49,8 @@ exports.run = (client, message, args) => {
       toggleRole(desiredGuildRole, author);
     } else if (desiredGuildRole.name.toLowerCase() === "delirious") {
       toggleRole(desiredGuildRole, author);
+    } else if (desiredGuildRole.name.toLowerCase() === "altered") {
+      toggleRole(desiredGuildRole, author);
     } else {
       // Send message stating role cannot be assigned
       message.channel.send(
@@ -63,17 +65,20 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
+    if (message.guild.id === "332288651394547712") {
+      console.log(`we're on the SED!`);
+    }
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Removes role
       console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
-      author.removeRole(roleToApply.id);
+      author.removeRole(roleToApply.id).catch(console.error);
       message.channel.send(
         `Removed **${desiredRole}** from <@${message.author.id}>`
       );
     } else {
       // Adds role
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
-      author.addRole(roleToApply.id);
+      author.addRole(roleToApply.id).catch(console.error);
       message.channel.send(
         `Added **${desiredRole}** to <@${message.author.id}>`
       );
@@ -86,7 +91,7 @@ exports.run = (client, message, args) => {
           console.log(
             `Removed **${roleToApply.name}** from ${author.displayName}`
           );
-          author.removeRole(roleToApply.id);
+          author.removeRole(roleToApply.id).catch(console.error);
           message.channel.send(
             `Removed **${roleToApply.name}** from <@${
               message.author.id
