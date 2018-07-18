@@ -115,11 +115,6 @@ exports.run = (client, message, args) => {
           );
           removeRole(roleToApply, author);
           restoreNickName(nickName);
-          message.channel.send(
-            `Removed **${roleToApply.name}** from <@${
-              message.author.id
-            }> - Role timer expired`
-          );
         });
       };
       asyncFunc();
@@ -132,7 +127,8 @@ exports.run = (client, message, args) => {
       );
     }
     function setTripNickName() {
-      if (message.guild.id === "469206008078663691") {
+      // Psy Experience
+      if (message.guild.id === "335167514961248256") {
         nickName = message.member.displayName;
         console.log(`Nickname: ${nickName} ${nickNameModifier}`);
         message.member
@@ -141,7 +137,8 @@ exports.run = (client, message, args) => {
       }
     }
     function restoreNickName(nick) {
-      if (message.guild.id === "469206008078663691") {
+      // Psy Experience
+      if (message.guild.id === "335167514961248256") {
         console.log(`Restoring original nickname: ${nick}`);
         message.member.setNickname(nick).catch(console.error);
       }
