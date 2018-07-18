@@ -65,36 +65,73 @@ exports.run = (client, message, args) => {
   //// Functions
   // Function for toggling the role of a user based on their current role state
   function toggleRole(roleToApply, author) {
-    if (message.guild.id === "469206008078663691") {
-      console.log(`we're on the SED!`);
-      let nickName = message.member.nickname;
-      console.log(`nickname: ${nickName}`);
-      message.member.setNickname(`Doofus`).catch(console.error);
-    }
+    // if (message.guild.id === "469206008078663691") {
+    //   console.log(`we're on the SED!`);
+    //   let nickName = message.member.nickname;
+    //   console.log(`nickname: ${nickName}`);
+    //   message.member.setNickname(`Doofus`).catch(console.error);
+    // }
+    setTripNickName();
+
+    // if (!!author.roles.find(role => role.name === roleToApply.name)) {
+    //   // Removes role
+    //   removeRole(roleToApply, author);
+    // } else {
+    //   // Adds role
+    //   console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+    //   author.addRole(roleToApply.id).catch(console.error);
+    //   message.channel.send(
+    //     `Added **${desiredRole}** to <@${message.author.id}>`
+    //   );
+    //   // Define an async function to handle automatic role removal
+    //   const delay = duration =>
+    //     new Promise(resolve => setTimeout(resolve, duration));
+    //   // Delay for 8 hours and then remove role
+    //   const asyncFunc = () => {
+    //     delay(28800000).then(() => {
+    //       console.log(
+    //         `Removed **${roleToApply.name}** from ${author.displayName}`
+    //       );
+    //       author.removeRole(roleToApply.id).catch(console.error);
+    //       message.channel.send(
+    //         `Removed **${roleToApply.name}** from <@${
+    //           message.author.id
+    //         }> - Role timer expired`
+    //       );
+    //     });
+    //   };
+    //   asyncFunc();
+    // }
     if (!!author.roles.find(role => role.name === roleToApply.name)) {
       // Removes role
-      console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
-      author.removeRole(roleToApply.id).catch(console.error);
-      message.channel.send(
-        `Removed **${desiredRole}** from <@${message.author.id}>`
-      );
+      removeRole(roleToApply, author);
     } else {
       // Adds role
+      addRole(roleToApply, author);
+    }
+
+    function addRole(roleToApply, author) {
+      // Log role and author and add role
       console.log(`Added ${desiredRole} to <@${message.author.id}>`);
       author.addRole(roleToApply.id).catch(console.error);
+      // Send message to channel
       message.channel.send(
         `Added **${desiredRole}** to <@${message.author.id}>`
       );
+      // Change nickname
+      setTripNickName();
       // Define an async function to handle automatic role removal
       const delay = duration =>
         new Promise(resolve => setTimeout(resolve, duration));
       // Delay for 8 hours and then remove role
       const asyncFunc = () => {
-        delay(28800000).then(() => {
+        delay(5000).then(() => {
+          // 28800000ms
           console.log(
             `Removed **${roleToApply.name}** from ${author.displayName}`
           );
           author.removeRole(roleToApply.id).catch(console.error);
+          restoreNickName(nickName);
           message.channel.send(
             `Removed **${roleToApply.name}** from <@${
               message.author.id
@@ -103,6 +140,28 @@ exports.run = (client, message, args) => {
         });
       };
       asyncFunc();
+    }
+    function removeRole(roleToApply, author) {
+      console.log(`Removed ${desiredRole} from <@${message.author.id}>`);
+      author.removeRole(roleToApply.id).catch(console.error);
+      message.channel.send(
+        `Removed **${desiredRole}** from <@${message.author.id}>`
+      );
+    }
+    function setTripNickName() {
+      if (message.guild.id === "469206008078663691") {
+        const nickName = message.member.nickname;
+        console.log(`Nickname: ${nickName}`);
+        message.member.setNickname(`Doofus`).catch(console.error);
+        console.log(message.member.nickname);
+      }
+    }
+    function restoreNickName(nick) {
+      if (message.guild.id === "469206008078663691") {
+        console.log(message.member.nickname);
+        console.log(`Restoring original nickname: ${nick}`);
+        message.member.setNickname(nick).catch(console.error);
+      }
     }
   }
 };
