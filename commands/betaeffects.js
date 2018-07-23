@@ -33,7 +33,7 @@ exports.run = (client, message, args) => {
           "Please use drugs responsibly",
           "https://i.imgur.com/kE2rWdv.png"
         )
-        .setThumbnail("https://kek.gg/i/svRNH.png")
+        .setThumbnail("https://i.imgur.com/kE2rWdv.png")
         .setTimestamp()
         .setURL("http://www.dosebot.org")
         .addField(
@@ -46,6 +46,8 @@ exports.run = (client, message, args) => {
     })
     .catch(function(err) {
       console.error(err);
+
+      message.channel.send(`Unknown error has occurred`);
     });
 
   function createSummaryField(effectJSON) {
