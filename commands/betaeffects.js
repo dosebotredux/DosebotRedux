@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
     .replace(/-/g, "", -1)
     .replace(/ /g, "-", -1); // acuity enhancement
 
-  console(`effect: ${effect}`);
+  console.log(`effect: ${effect}`);
 
   // Declare the location of the API URL
   let url = `https://beta.effectindex.com/api/effects/${effect}`;
