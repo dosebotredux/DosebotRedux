@@ -27,13 +27,20 @@ exports.run = (client, message, args) => {
       console.log(effectInfo.effect.summary_raw);
 
       const embed = new Discord.RichEmbed()
-        .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+        .setAuthor("DoseBot", "https://i.imgur.com/kE2rWdv.png")
         .setColor("747474")
-        .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+        .setFooter(
+          "Please use drugs responsibly",
+          "https://i.imgur.com/kE2rWdv.png"
+        )
         .setThumbnail("https://kek.gg/i/svRNH.png")
         .setTimestamp()
         .setURL("http://www.dosebot.org")
-        .addField("Effect description", createSummaryField(effectInfo));
+        .addField(
+          `**${createEffectFieldTitle(effectInfo)} description**`,
+          createSummaryField(effectInfo)
+        )
+        .addfield(`Links`, createLinksField());
 
       message.channel.send({ embed });
     })
@@ -45,7 +52,16 @@ exports.run = (client, message, args) => {
     return `${effectJSON.effect.summary_raw}`;
   }
 
-  function createLinksField() {}
+  function createEffectFieldTitle(effectJSON) {
+    return `${effectJSON.effect.name}`;
+  }
+
+  // Builds the link field
+  function createLinksField(effect) {
+    const effectURL = `https://beta.effectindex.com/effects/${effect}`;
+
+    return `[Effect Index article](${effectURL})`;
+  }
 
   function createReplicationField() {}
 };
