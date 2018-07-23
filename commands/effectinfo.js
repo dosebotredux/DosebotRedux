@@ -73,7 +73,8 @@ exports.run = (client, message, args) => {
 
       return replicationURL;
     } else {
-      return `https://i.imgur.com/9eZow4n.png`;
+      // Return a blank image if no replicaiton is for as richembed fields cant be empty
+      return `https://i.imgur.com/3mENLpk.png`;
     }
   }
 };
