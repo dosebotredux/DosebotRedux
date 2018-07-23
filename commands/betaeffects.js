@@ -23,7 +23,8 @@ exports.run = (client, message, args) => {
 
   rp(`${url}`)
     .then(function(body) {
-      console.log(body.summary_raw);
+      const effectInfo = JSON.parse(body);
+      console.log(effectInfo.effect.summary_raw);
     })
     .catch(function(err) {
       console.error(err);
