@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
           `**${createEffectFieldTitle(effectInfo)} description**`,
           createSummaryField(effectInfo)
         )
-        .addField(`Links`, createLinksField(effect, effectJSON));
+        .addField(`Links`, createLinksField(effect, effectInfo));
 
       message.channel.send({ embed });
     })
