@@ -67,7 +67,7 @@ exports.run = (client, message, args) => {
   }
 
   function createReplicationField(effectJSON) {
-    if (effectJSON.replicaitons.length > 1) {
+    if (effectJSON.effect.replications.length > 1) {
       const replicationName = effectJSON.effect[0].resource;
       const replicationURL = `https://beta.effectindex.com/img/gallery/${replicationName}`;
 
