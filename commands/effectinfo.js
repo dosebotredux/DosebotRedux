@@ -1,104 +1,79 @@
+// About message
 const Discord = require("discord.js");
-
-//grabs glossary info from local json and builds message based on arg
-const glossary = require("../include/glossary.json");
-const replications = require("../include/replications.json");
+const rp = require("request-promise");
 
 exports.run = (client, message, args) => {
   console.log(
     `**********Executing effectinfo on ${message.guild.name}**********`
   );
 
-  var str = message.content;
-  var result = str.split(" ");
+  // Capture messages posted to a given channel and remove all symbols and put everything into lower case
+  var str = message.content; // --betaeffects acuity enhancement
+  var result = str.split(" "); // [--betaeffects, acuity, enhancement]
   var effect = str
     .toLowerCase()
     .replace("--effectinfo ", "", -1)
-    .replace(/-/g, "", -1);
-  console.log("str: " + str);
-  console.log("result: " + effect);
-  var messageContent = [];
-  var finalMessage;
+    .replace(/-/g, "", -1)
+    .replace(/ /g, "-", -1); // acuity enhancement
 
-  // loop through glossary to find matching effect
-  for (let i = 0; i < glossary.effects.length; i++) {
-    if (glossary.effects[i].name.toLowerCase() === effect) {
-      // build message components
-      console.log(glossary.effects[i].name);
-      messageContent.push(glossary.effects[i].name);
-      messageContent.push(glossary.effects[i].body);
-      messageContent.push(glossary.effects[i].url);
+  console.log(`effect: ${effect}`);
+
+  // Declare the location of the API URL
+  let url = `https://beta.effectindex.com/api/effects/${effect}`;
+
+  rp(`${url}`)
+    .then(function(body) {
+      const effectInfo = JSON.parse(body);
+      console.log(effectInfo.effect.summary_raw);
+
+      const embed = new Discord.RichEmbed()
+        .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
+        .setColor("747474")
+        .setFooter(
+          "Please use drugs responsibly",
+          "https://i.imgur.com/7R8WDwE.png"
+        )
+        .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+        .setTimestamp()
+        .setURL("http://www.dosebot.org")
+        .setImage(createReplicationField(effectInfo))
+        .addField(
+          `**${createEffectFieldTitle(effectInfo)} description**`,
+          createSummaryField(effectInfo)
+        )
+        .addField(`Links`, createLinksField());
+
+      message.channel.send({ embed });
+    })
+    .catch(function(err) {
+      console.error(err);
+
+      message.channel.send(`Error: ${effect} is not found on Effect Index`);
+    });
+
+  function createSummaryField(effectJSON) {
+    return `${effectJSON.effect.summary_raw}`;
+  }
+
+  function createEffectFieldTitle(effectJSON) {
+    return `${effectJSON.effect.name}`;
+  }
+
+  // Builds the link field
+  function createLinksField(effect) {
+    const effectURL = `https://beta.effectindex.com/effects/${effect}`;
+
+    return `[Effect Index article](${effectURL})`;
+  }
+
+  function createReplicationField(effectJSON) {
+    if (effectJSON.effect.replications.length > 1) {
+      const replicationName = effectJSON.effect.replications[0].resource;
+      const replicationURL = `https://beta.effectindex.com/img/gallery/${replicationName}`;
+
+      return replicationURL;
+    } else {
+      return `https://i.imgur.com/9eZow4n.png`;
     }
-  }
-
-  // variables for matching to replications.json
-  var rand;
-  var locationOfEffect;
-
-  // loop through replications.json to find matching effect
-  for (let i = 0; i < replications.effects.length; i++) {
-    if (replications.effects[i].name.toLowerCase() === effect) {
-      // generate random number for pulling replications
-      rand = Math.floor(
-        Math.random() * replications.effects[i].replications.length
-      );
-
-      // store location
-      locationOfEffect = i;
-    }
-  }
-
-  // if effect has replications add to messageContent array
-  if (replications.effects[locationOfEffect] !== undefined) {
-    messageContent.push(
-      replications.effects[locationOfEffect].replications[rand].url
-    );
-  }
-  console.log(messageContent);
-
-  // messageBuilder();
-  var messages = [];
-
-  // build message
-  if (messageContent[3] !== undefined) {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-      .setColor("747474")
-      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-      .setThumbnail("https://kek.gg/i/svRNH.png")
-      .setTimestamp()
-      .setURL("http://www.dosebot.org")
-      .addField(
-        messageContent[0],
-        `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`
-      )
-      .setImage(messageContent[3]);
-
-    message.channel.send({ embed }).catch(console.error);
-  } else if (messageContent[0] !== undefined) {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-      .setColor("747474")
-      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-      .setThumbnail("https://kek.gg/i/svRNH.png")
-      .setTimestamp()
-      .setURL("http://www.dosebot.org")
-      .addField(
-        messageContent[0],
-        `${messageContent[1]}\n\n**More information**: ${messageContent[2]}`
-      );
-
-    message.channel.send({ embed }).catch(console.error);
-  } else {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-      .setColor("747474")
-      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-      .setThumbnail("https://kek.gg/i/svRNH.png")
-      .setTimestamp()
-      .setURL("http://www.dosebot.org")
-      .addField("Error", "Undefined effect");
-
-    message.channel.send({ embed }).catch(console.error);
   }
 };
