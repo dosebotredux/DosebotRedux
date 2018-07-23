@@ -34,12 +34,12 @@ exports.run = (client, message, args) => {
         .setTimestamp()
         .setURL("http://www.dosebot.org")
         .addField("Effect description", createSummaryField(effectInfo));
+
+      message.channel.send({ embed });
     })
     .catch(function(err) {
       console.error(err);
     });
-
-  message.channel.send({ embed });
 
   function createSummaryField(effectJSON) {
     return `${effectJSON.effect.summary_raw}`;
