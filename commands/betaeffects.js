@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
 
   rp(`${url}`)
     .then(function(body) {
-      console.log(body.effect.summary_raw);
+      console.log(body.effect);
     })
     .catch(function(err) {
       console.error(err);
