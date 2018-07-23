@@ -27,15 +27,16 @@ exports.run = (client, message, args) => {
       console.log(effectInfo.effect.summary_raw);
 
       const embed = new Discord.RichEmbed()
-        .setAuthor("DoseBot", "https://i.imgur.com/kE2rWdv.png")
+        .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
         .setColor("747474")
         .setFooter(
           "Please use drugs responsibly",
-          "https://i.imgur.com/kE2rWdv.png"
+          "https://i.imgur.com/7R8WDwE.png"
         )
-        .setThumbnail("https://i.imgur.com/kE2rWdv.png")
+        .setThumbnail("https://i.imgur.com/7R8WDwE.png")
         .setTimestamp()
         .setURL("http://www.dosebot.org")
+        .setImage(createReplicationField(effectInfo))
         .addField(
           `**${createEffectFieldTitle(effectInfo)} description**`,
           createSummaryField(effectInfo)
@@ -65,5 +66,14 @@ exports.run = (client, message, args) => {
     return `[Effect Index article](${effectURL})`;
   }
 
-  function createReplicationField() {}
+  function createReplicationField(effectJSON) {
+    if (effectJSON.replicaitons.length > 1) {
+      const replicationName = effectJSON.effect[0].resource;
+      const replicationURL = `https://beta.effectindex.com/img/gallery/${replicationName}`;
+
+      return replicationURL;
+    } else {
+      return `https://i.imgur.com/pYV5Mex.png`;
+    }
+  }
 };
