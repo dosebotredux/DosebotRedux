@@ -73,10 +73,13 @@ exports.run = (client, message, args) => {
   function createComboMessage(combos, message, name) {
     const embed = new Discord.RichEmbed()
       .setTitle(`**${name} combo information**`)
-      .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+      .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
       .setColor("747474")
-      .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-      .setThumbnail("https://kek.gg/i/svRNH.png")
+      .setFooter(
+        "Please use drugs responsibly",
+        "https://i.imgur.com/7R8WDwE.png"
+      )
+      .setThumbnail("https://i.imgur.com/7R8WDwE.png")
       .setTimestamp()
       .setURL("http://www.dosebot.org")
       .addField(`Combos`, combos);

@@ -5,10 +5,13 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing badtrip on ${message.guild.name}**********`);
 
   const embed = new Discord.RichEmbed()
-    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+    .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
     .setColor("747474")
-    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
+    .setFooter(
+      "Please use drugs responsibly",
+      "https://i.imgur.com/7R8WDwE.png"
+    )
+    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
     .setTimestamp()
     .setImage(
       "https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif"

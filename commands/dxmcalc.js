@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
       "Please use drugs responsibly",
       "http://www.dosebot.org/images/dose.png"
     )
-    .setThumbnail("https://kek.gg/i/svRNH.png")
+    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField(
