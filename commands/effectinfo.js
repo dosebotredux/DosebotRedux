@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
           `**${createEffectFieldTitle(effectInfo)} description**`,
           createSummaryField(effectInfo)
         )
-        .addField(`Links`, createLinksField(effect));
+        .addField(`Links`, createLinksField(effect, effectJSON));
 
       message.channel.send({ embed });
     })
@@ -60,10 +60,10 @@ exports.run = (client, message, args) => {
   }
 
   // Builds the link field
-  function createLinksField(effect) {
+  function createLinksField(effect, effectJSON) {
     const effectURL = `https://beta.effectindex.com/effects/${effect}`;
 
-    return `[Effect Index article](${effectURL})`;
+    return `[${effectJSON.effect.name} on Effect Index](${effectURL})`;
   }
 
   function createReplicationField(effectJSON) {
