@@ -25,23 +25,25 @@ exports.run = (client, message, args) => {
     .then(function(body) {
       const effectInfo = JSON.parse(body);
       console.log(effectInfo.effect.summary_raw);
+
+      const embed = new Discord.RichEmbed()
+        .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
+        .setColor("747474")
+        .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
+        .setThumbnail("https://kek.gg/i/svRNH.png")
+        .setTimestamp()
+        .setURL("http://www.dosebot.org")
+        .addField("Effect description", createSummaryField(effectInfo));
     })
     .catch(function(err) {
       console.error(err);
     });
 
-  const embed = new Discord.RichEmbed()
-    .setAuthor("DoseBot", "https://kek.gg/i/JGVVV.png")
-    .setColor("747474")
-    .setFooter("Please use drugs responsibly", "https://kek.gg/i/JGVVV.png")
-    .setThumbnail("https://kek.gg/i/svRNH.png")
-    .setTimestamp()
-    .setURL("http://www.dosebot.org")
-    .addField("Title", "Summary field");
-
   message.channel.send({ embed });
 
-  function createSummaryField() {}
+  function createSummaryField(effectJSON) {
+    return `${effectJSON.effect.summary_raw}`;
+  }
 
   function createLinksField() {}
 
