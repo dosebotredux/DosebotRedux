@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     console.log("Pulling from custom");
-    setHasCustom(true);
+    hasCustom = true;
 
     // Find the location of the substance object in the JSON and set substance
     let substance = locateCustomSheetLocation(drug);
@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
     createPWChannelMessage(substance, message);
   } else {
     console.log("Pulling from PW");
-    setHasCustom(false);
+    hasCustom = false;
   }
 
   if (hasCustom == false) {
@@ -293,34 +293,24 @@ function buildDurationField(substance) {
 
       if (!!roa.duration) {
         if (!!roa.duration.onset) {
-          messages.push(
-            `**Onset**: ${durationObjectToString(roa.duration.onset)}`
-          );
+          messages.push(createMessageString(`onset`, roa.duration.onset));
         }
         if (!!roa.duration.comeup) {
-          messages.push(
-            `**Comeup**: ${durationObjectToString(roa.duration.comeup)}`
-          );
+          messages.push(createMessageString(`comeup`, roa.duration.comeup));
         }
         if (!!roa.duration.peak) {
-          messages.push(
-            `**Peak**: ${durationObjectToString(roa.duration.peak)}`
-          );
+          messages.push(createMessageString(`peak`, roa.duration.peak));
         }
         if (!!roa.duration.offset) {
-          messages.push(
-            `**Offset**: ${durationObjectToString(roa.duration.offset)}`
-          );
+          messages.push(createMessageString(`offset`, roa.duration.offset));
         }
         if (!!roa.duration.afterglow) {
           messages.push(
-            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow)}`
+            createMessageString(`afterglow`, roa.duration.afterglow)
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createMessageString(`total`, roa.duration.total));
         }
         messages.push(" ");
       } else {
@@ -331,34 +321,24 @@ function buildDurationField(substance) {
 
       if (!!roa.duration) {
         if (!!roa.duration.onset) {
-          messages.push(
-            `**Onset**: ${durationObjectToString(roa.duration.onset)}`
-          );
+          messages.push(createMessageString(`onset`, roa.duration.onset));
         }
         if (!!roa.duration.comeup) {
-          messages.push(
-            `**Comeup**: ${durationObjectToString(roa.duration.comeup)}`
-          );
+          messages.push(createMessageString(`comeup`, roa.duration.comeup));
         }
         if (!!roa.duration.peak) {
-          messages.push(
-            `**Peak**: ${durationObjectToString(roa.duration.peak)}`
-          );
+          messages.push(createMessageString(`peak`, roa.duration.peak));
         }
         if (!!roa.duration.offset) {
-          messages.push(
-            `**Offset**: ${durationObjectToString(roa.duration.offset)}`
-          );
+          messages.push(createMessageString(`offset`, roa.duration.offset));
         }
         if (!!roa.duration.afterglow) {
           messages.push(
-            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow)}`
+            createMessageString(`afterglow`, roa.duration.afterglow)
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createMessageString(`total`, roa.duration.total));
         }
         messages.push(" ");
       } else {
@@ -471,9 +451,4 @@ function parseDrugName(string) {
 
   // Sanitizes input names to match PsychonautWiki API names
   return sanitizeSubstanceName(unsanitizedDrugName);
-}
-
-// Sets hasCustom depending on bool arg
-function setHasCustom(bool) {
-  hasCustom = bool;
 }
