@@ -296,29 +296,21 @@ function buildDurationField(substance) {
           messages.push(createMessageString(`onset`, roa.duration.onset));
         }
         if (!!roa.duration.comeup) {
-          messages.push(
-            `**Comeup**: ${durationObjectToString(roa.duration.comeup)}`
-          );
+          messages.push(createMessageString(`comeup`, roa.duration.comeup));
         }
         if (!!roa.duration.peak) {
-          messages.push(
-            `**Peak**: ${durationObjectToString(roa.duration.peak)}`
-          );
+          messages.push(createMessageString(`peak`, roa.duration.peak));
         }
         if (!!roa.duration.offset) {
-          messages.push(
-            `**Offset**: ${durationObjectToString(roa.duration.offset)}`
-          );
+          messages.push(createMessageString(`offset`, roa.duration.offset));
         }
         if (!!roa.duration.afterglow) {
           messages.push(
-            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow)}`
+            createMessageString(`afterglow`, roa.duration.afterglow)
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createMessageString(`total`, roa.duration.total));
         }
         messages.push(" ");
       } else {
@@ -329,34 +321,24 @@ function buildDurationField(substance) {
 
       if (!!roa.duration) {
         if (!!roa.duration.onset) {
-          messages.push(
-            `**Onset**: ${durationObjectToString(roa.duration.onset)}`
-          );
+          messages.push(createMessageString(`onset`, roa.duration.onset));
         }
         if (!!roa.duration.comeup) {
-          messages.push(
-            `**Comeup**: ${durationObjectToString(roa.duration.comeup)}`
-          );
+          messages.push(createMessageString(`comeup`, roa.duration.comeup));
         }
         if (!!roa.duration.peak) {
-          messages.push(
-            `**Peak**: ${durationObjectToString(roa.duration.peak)}`
-          );
+          messages.push(createMessageString(`peak`, roa.duration.peak));
         }
         if (!!roa.duration.offset) {
-          messages.push(
-            `**Offset**: ${durationObjectToString(roa.duration.offset)}`
-          );
+          messages.push(createMessageString(`offset`, roa.duration.offset));
         }
         if (!!roa.duration.afterglow) {
           messages.push(
-            `**Afterglow**: ${durationObjectToString(roa.duration.afterglow)}`
+            createMessageString(`afterglow`, roa.duration.afterglow)
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createMessageString(`total`, roa.duration.total));
         }
         messages.push(" ");
       } else {
