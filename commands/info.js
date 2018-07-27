@@ -13,36 +13,39 @@ exports.run = (client, message, args) => {
 
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
-  var result = str.split(" ");
-  var drug = str
-    .toLowerCase()
-    .replace("--info ", "", -1)
-    .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1);
+  var drug = parseDrugName(str);
 
-  // Sanitizes input names to match PsychonautWiki API names
-  drug = sanitizeSubstanceName(drug);
+  function parseDrugName(string) {
+    let unsanitizedDrugName = string
+      .toLowerCase()
+      .replace(`--info `, ``, -1)
+      .replace(/-/g, ``, -1)
+      .replace(/ /g, ``, -1);
+
+    // Sanitizes input names to match PsychonautWiki API names
+    return sanitizeSubstanceName(unsanitizedDrugName);
+  }
+
+  function setHasCustom(bool) {
+    hasCustom = bool;
+  }
 
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     console.log("Pulling from custom");
-
-    hasCustom = true;
+    setHasCustom(true);
 
     // Find the location of the substance object in the JSON and set substance
-    var location;
-    substance = locateCustomSheetLocation(drug);
+    let substance = locateCustomSheetLocation(drug);
 
     createPWChannelMessage(substance, message);
   } else {
     console.log("Pulling from PW");
-
-    hasCustom = false;
+    setHasCustom(false);
   }
 
   if (hasCustom == false) {
-    console.log(`Requesting info for ${drug}`);
-    console.log(`Command on ${message.guild.name}`);
+    console.log(`Requesting info for ${drug} on ${message.guild.name}`);
     // Loads GraphQL query as "query" variable
     let query = require("../queries/info.js").info(drug);
     request("https://api.psychonautwiki.org", query)
@@ -281,10 +284,8 @@ function buildDosageField(substance) {
 function buildDurationField(substance) {
   var messages = [];
 
-  var i;
-  for (i = 0; i < substance.roas.length; i++) {
+  for (let i = 0; i < substance.roas.length; i++) {
     let roa = substance.roas[i];
-    let dose = roa.dose;
     let name = capitalize(roa.name);
 
     let durationObjectToString = function(x) {
