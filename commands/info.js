@@ -15,21 +15,6 @@ exports.run = (client, message, args) => {
   var str = message.content;
   var drug = parseDrugName(str);
 
-  function parseDrugName(string) {
-    let unsanitizedDrugName = string
-      .toLowerCase()
-      .replace(`--info `, ``, -1)
-      .replace(/-/g, ``, -1)
-      .replace(/ /g, ``, -1);
-
-    // Sanitizes input names to match PsychonautWiki API names
-    return sanitizeSubstanceName(unsanitizedDrugName);
-  }
-
-  function setHasCustom(bool) {
-    hasCustom = bool;
-  }
-
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
     console.log("Pulling from custom");
@@ -327,9 +312,7 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createDurationMessage(total, roa));
         }
         messages.push(" ");
       } else {
@@ -365,9 +348,7 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(
-            `**Total**: ${durationObjectToString(roa.duration.total)}`
-          );
+          messages.push(createDurationMessage(total, roa));
         }
         messages.push(" ");
       } else {
@@ -376,6 +357,10 @@ function buildDurationField(substance) {
     }
   }
   return messages.join("\n");
+}
+
+function createDurationMessage(phase, roa) {
+  return `**${capitalize(phase)}**: ${durationObjectToString(roa.duration.phase)`
 }
 
 // Builds the chemical class field
@@ -468,4 +453,21 @@ function buildTSLinksField(substance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
     substance.name
   })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
+}
+
+// Parses and sanitizes substance name
+function parseDrugName(string) {
+  let unsanitizedDrugName = string
+    .toLowerCase()
+    .replace(`--info `, ``, -1)
+    .replace(/-/g, ``, -1)
+    .replace(/ /g, ``, -1);
+
+  // Sanitizes input names to match PsychonautWiki API names
+  return sanitizeSubstanceName(unsanitizedDrugName);
+}
+
+// Sets hasCustom depending on bool arg
+function setHasCustom(bool) {
+  hasCustom = bool;
 }
