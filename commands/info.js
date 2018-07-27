@@ -286,7 +286,7 @@ function buildDurationField(substance) {
 
     let pushDurationToMessageArray = function(durationString, phase) {
       if (!!phase) {
-        messages.push(createMessageString(phaseString, phase));
+        messages.push(createMessageString(durationString, phase));
       }
     };
 
