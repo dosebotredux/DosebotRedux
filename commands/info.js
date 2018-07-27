@@ -312,7 +312,7 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(createDurationMessage(total, roa));
+          messages.push(createDurationMessage(`total`, roa));
         }
         messages.push(" ");
       } else {
@@ -348,7 +348,7 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(createDurationMessage(total, roa));
+          messages.push(createDurationMessage(`total`, roa));
         }
         messages.push(" ");
       } else {
