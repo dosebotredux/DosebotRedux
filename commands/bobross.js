@@ -23,8 +23,9 @@ exports.run = (client, message, args) => {
       message.mentions.user.forEach(function(id) {
         response += `<@${id}> `;
       });
-
-      response += `Enjoy a random episode of The Joy of Painting by Bob Ross: <https://mityurl.com/y/cDIn/r`;
     }
+    response += `Enjoy a random episode of The Joy of Painting by Bob Ross: <https://mityurl.com/y/cDIn/r`;
+
+    return response;
   }
 };
