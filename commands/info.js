@@ -205,7 +205,7 @@ function buildDosageField(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
 
-    let dosageObjectToString = function(x) {
+    let dosageObjectToString = function(dosageTier) {
       // Set substance dose units
       let unit = dose.units;
 
