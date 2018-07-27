@@ -360,7 +360,9 @@ function buildDurationField(substance) {
 }
 
 function createDurationMessage(phase, roa) {
-  return `**${capitalize(phase)}**: ${durationObjectToString(roa.duration.phase)`
+  return `**${capitalize(phase)}**: ${durationObjectToString(
+    roa.duration.phase
+  )}`;
 }
 
 // Builds the chemical class field
