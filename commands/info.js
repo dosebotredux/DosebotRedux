@@ -208,6 +208,7 @@ function buildDosageField(substance) {
     let dose = roa.dose;
     let name = capitalize(roa.name);
 
+    // Convert dosage object into a string
     let dosageObjectToString = function(dosageTier) {
       // Set substance dose units
       let unit = dose.units;
@@ -222,10 +223,12 @@ function buildDosageField(substance) {
       }
     };
 
+    // Function for creating dosage message string
     let createMessageString = function(string, dosage) {
       return `**${capitalize(string)}**: ${dosageObjectToString(dosage)}`;
     };
 
+    // Function to push dosage message to array
     let pushDosageToMessageArray = function(phaseString, phase) {
       if (!!phase) {
         messages.push(createMessageString(phaseString, phase));
@@ -273,6 +276,7 @@ function buildDurationField(substance) {
     let roa = substance.roas[i];
     let name = capitalize(roa.name);
 
+    // Parses duration object and returns string
     let durationObjectToString = function(phaseDuration) {
       // If there's a duration range return it + units
       if (!!phaseDuration) {
@@ -283,10 +287,12 @@ function buildDurationField(substance) {
       return undefined;
     };
 
+    // Function for creating message string
     let createMessageString = function(string, phase) {
       return `**${capitalize(string)}**: ${durationObjectToString(phase)}`;
     };
 
+    // Function for pushing dosage message to array
     let pushDurationToMessageArray = function(durationString, phase) {
       if (!!phase) {
         messages.push(createMessageString(durationString, phase));
