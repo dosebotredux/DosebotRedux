@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
 
   // response += `Enjoy a random episode of The Joy of Painting: <https://mityurl.com/y/cDIn/r>\n`;
 
-  message.channel.send(generateBobRossResponse()).catch(console.error);
+  message.channel.send(generateBobRossResponse(message)).catch(console.error);
 
   function generateBobRossResponse(message) {
     let response = `<@${message.author.id}> `;
