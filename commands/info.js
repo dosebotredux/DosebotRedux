@@ -287,7 +287,7 @@ function buildDurationField(substance) {
       return `**${capitalize(string)}**: ${durationObjectToString(phase)}`;
     };
 
-    if (substance.name !== "ayahuasca") {
+    if (!!substance.name) {
       // Duration
       messages.push(`*(${name})*`);
 
@@ -317,33 +317,8 @@ function buildDurationField(substance) {
         messages.push("No duration information.");
       }
     } else {
-      messages.push(`*(${name})*`);
-
-      if (!!roa.duration) {
-        if (!!roa.duration.onset) {
-          messages.push(createMessageString(`onset`, roa.duration.onset));
-        }
-        if (!!roa.duration.comeup) {
-          messages.push(createMessageString(`comeup`, roa.duration.comeup));
-        }
-        if (!!roa.duration.peak) {
-          messages.push(createMessageString(`peak`, roa.duration.peak));
-        }
-        if (!!roa.duration.offset) {
-          messages.push(createMessageString(`offset`, roa.duration.offset));
-        }
-        if (!!roa.duration.afterglow) {
-          messages.push(
-            createMessageString(`afterglow`, roa.duration.afterglow)
-          );
-        }
-        if (!!roa.duration.total) {
-          messages.push(createMessageString(`total`, roa.duration.total));
-        }
-        messages.push(" ");
-      } else {
-        messages.push("No duration information.");
-      }
+      console.log(`Not sure why this would ever happen`);
+      messages.push(`An unknown error has occurred <@278301453620084736>`);
     }
   }
   return messages.join("\n");
