@@ -273,12 +273,18 @@ function buildDurationField(substance) {
     let roa = substance.roas[i];
     let name = capitalize(roa.name);
 
-    let durationObjectToString = function(x) {
+    let durationObjectToString = function(phaseDuration) {
       // If there's a duration range return it + units
-      if (!!x) {
-        return `${x.min} - ${x.max} ${x.units}`;
+      if (!!phaseDuration) {
+        return `${phaseDuration.min} - ${phaseDuration.max} ${
+          phaseDuration.units
+        }`;
       }
       return undefined;
+    };
+
+    let createMessageString = function(string, phase) {
+      return `**${capitalize(string)}**: ${durationObjectToString(phase)}`;
     };
 
     if (substance.name !== "ayahuasca") {
@@ -287,9 +293,7 @@ function buildDurationField(substance) {
 
       if (!!roa.duration) {
         if (!!roa.duration.onset) {
-          messages.push(
-            `**Onset**: ${durationObjectToString(roa.duration.onset)}`
-          );
+          messages.push(createMessageString(`onset`, roa.duration.onset));
         }
         if (!!roa.duration.comeup) {
           messages.push(
@@ -312,7 +316,9 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(createDurationMessage(`total`, roa));
+          messages.push(
+            `**Total**: ${durationObjectToString(roa.duration.total)}`
+          );
         }
         messages.push(" ");
       } else {
@@ -348,7 +354,9 @@ function buildDurationField(substance) {
           );
         }
         if (!!roa.duration.total) {
-          messages.push(createDurationMessage(`total`, roa));
+          messages.push(
+            `**Total**: ${durationObjectToString(roa.duration.total)}`
+          );
         }
         messages.push(" ");
       } else {
@@ -357,12 +365,6 @@ function buildDurationField(substance) {
     }
   }
   return messages.join("\n");
-}
-
-function createDurationMessage(phase, roa) {
-  return `**${capitalize(phase)}**: ${durationObjectToString(
-    roa.duration.phase
-  )}`;
 }
 
 // Builds the chemical class field
