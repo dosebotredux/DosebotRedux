@@ -247,22 +247,11 @@ function buildDosageField(substance) {
       // Add all dosage information
       // Uses double conditional to prevent massive no information walls
       if (!!dose) {
-        // if (!!dose.threshold) {
-        //   messages.push(createMessageString(`threshold`, dose.threshold));
-        // }
         pushDosageToMessageArray(`threshold`, dose.threshold);
-        if (!!dose.light) {
-          messages.push(createMessageString(`light`, dose.light));
-        }
-        if (!!dose.common) {
-          messages.push(createMessageString(`common`, dose.common));
-        }
-        if (!!dose.strong) {
-          messages.push(createMessageString(`strong`, dose.strong));
-        }
-        if (!!dose.heavy) {
-          messages.push(createMessageString(`heavy`, dose.heavy));
-        }
+        pushDosageToMessageArray(`light`, dose.light);
+        pushDosageToMessageArray(`common`, dose.common);
+        pushDosageToMessageArray(`strong`, dose.strong);
+        pushDosageToMessageArray(`heavy`, dose.heavy);
         messages.push("");
       } else {
         // Or none if there is none
@@ -295,31 +284,23 @@ function buildDurationField(substance) {
       return `**${capitalize(string)}**: ${durationObjectToString(phase)}`;
     };
 
+    let pushDurationToMessageArray = function(durationString, phase) {
+      if (!!phase) {
+        messages.push(createMessageString(phaseString, phase));
+      }
+    };
+
     if (!!substance.name) {
       // Duration
       messages.push(`*(${name})*`);
 
       if (!!roa.duration) {
-        if (!!roa.duration.onset) {
-          messages.push(createMessageString(`onset`, roa.duration.onset));
-        }
-        if (!!roa.duration.comeup) {
-          messages.push(createMessageString(`comeup`, roa.duration.comeup));
-        }
-        if (!!roa.duration.peak) {
-          messages.push(createMessageString(`peak`, roa.duration.peak));
-        }
-        if (!!roa.duration.offset) {
-          messages.push(createMessageString(`offset`, roa.duration.offset));
-        }
-        if (!!roa.duration.afterglow) {
-          messages.push(
-            createMessageString(`afterglow`, roa.duration.afterglow)
-          );
-        }
-        if (!!roa.duration.total) {
-          messages.push(createMessageString(`total`, roa.duration.total));
-        }
+        pushDurationToMessageArray(`onset`, roa.duration.onset);
+        pushDurationToMessageArray(`comeup`, roa.duration.comeup);
+        pushDurationToMessageArray(`peak`, roa.duration.peak);
+        pushDurationToMessageArray(`offset`, roa.duration.offset);
+        pushDurationToMessageArray(`afterglow`, roa.duration.afterglow);
+        pushDurationToMessageArray(`total`, roa.duration.total);
         messages.push(" ");
       } else {
         messages.push("No duration information.");
