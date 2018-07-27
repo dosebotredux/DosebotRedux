@@ -223,6 +223,12 @@ function buildDosageField(substance) {
       return `**${capitalize(string)}**: ${dosageObjectToString(dosage)}`;
     };
 
+    let pushDosageToMessageArray = function(phaseString, phase) {
+      if (!!phase) {
+        messages.push(createMessageString(phaseString, phase));
+      }
+    };
+
     if (substance.name == "ayahuasca" || substance.name == "datura") {
       // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
       messages.push(`*(${name})*`);
@@ -241,9 +247,10 @@ function buildDosageField(substance) {
       // Add all dosage information
       // Uses double conditional to prevent massive no information walls
       if (!!dose) {
-        if (!!dose.threshold) {
-          messages.push(createMessageString(`threshold`, dose.threshold));
-        }
+        // if (!!dose.threshold) {
+        //   messages.push(createMessageString(`threshold`, dose.threshold));
+        // }
+        pushDosageToMessageArray(`threshold`, dose.threshold);
         if (!!dose.light) {
           messages.push(createMessageString(`light`, dose.light));
         }
