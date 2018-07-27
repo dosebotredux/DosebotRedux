@@ -171,6 +171,7 @@ function capitalize(name) {
 // Message builders
 function buildToleranceField(substance) {
   let tolerances = substance.tolerance;
+  let toleranceArr = [];
 
   if (!!tolerances) {
     let createToleranceString = function(string, tolerance) {
@@ -188,8 +189,6 @@ function buildToleranceField(substance) {
       return substance.tolerance.tolerance;
     } else {
       // return standard tolerances
-      let toleranceArr = [];
-
       pushToleranceToArray(`full`, tolerances.full);
       pushToleranceToArray(`half`, tolerances.half);
       pushToleranceToArray(`baseline`, tolerances.zero);
