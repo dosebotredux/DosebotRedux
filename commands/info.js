@@ -139,7 +139,6 @@ function checkIfCustomSheet(drug) {
 function locateCustomSheetLocation(drug) {
   var locationsArray = [];
   var loc;
-  var substance;
 
   // Loop through the JSON file and add all of the names and locations to locationsArray
   for (let i = 0; i < customsJSON.data.substances.length; i++) {
@@ -157,8 +156,7 @@ function locateCustomSheetLocation(drug) {
   }
 
   // Set substance equal to the correct substance in the JSON file
-  substance = customsJSON.data.substances[loc];
-  return substance;
+  return customsJSON.data.substances[loc];
 }
 
 // Capitalization function
@@ -175,21 +173,27 @@ function buildToleranceField(substance) {
   let tolerances = substance.tolerance;
 
   if (!!tolerances) {
+    let createToleranceString = function(string, tolerance) {
+      return `**${capitalize(string)}**: ${tolerance}`;
+    };
+
+    let pushToleranceToArray = function(toleranceTier, tolerance) {
+      if (!!tolerance) {
+        toleranceArr.push(createToleranceString(toleranceTier, tolerance));
+      }
+    };
+
     // If substance does not have standard tolerances return the custom tolerance
     if (substance.name == "ayahuasca" || substance.name == "salvia") {
       return substance.tolerance.tolerance;
     } else {
       // return standard tolerances
       let toleranceArr = [];
-      if (!!tolerances.full) {
-        toleranceArr.push(`**Full:** ${tolerances.full}`);
-      }
-      if (!!tolerances.half) {
-        toleranceArr.push(`**Half**: ${tolerances.half}`);
-      }
-      if (!!tolerances.zero) {
-        toleranceArr.push(`**Baseline:** ${tolerances.zero}`);
-      }
+
+      pushToleranceToArray(`full`, tolerances.full);
+      pushToleranceToArray(`half`, tolerances.half);
+      pushToleranceToArray(`baseline`, tolerances.zero);
+
       return toleranceArr.join("\n");
     }
   } else {
