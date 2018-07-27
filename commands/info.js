@@ -200,8 +200,7 @@ function buildToleranceField(substance) {
 function buildDosageField(substance) {
   var messages = [];
 
-  var i;
-  for (i = 0; i < substance.roas.length; i++) {
+  for (let i = 0; i < substance.roas.length; i++) {
     let roa = substance.roas[i];
     let dose = roa.dose;
     let name = capitalize(roa.name);
@@ -211,13 +210,17 @@ function buildDosageField(substance) {
       let unit = dose.units;
 
       // If there's a dose return dose + unit
-      if (!!x) {
-        if (typeof x == "number") {
-          return `${x}${unit}`;
+      if (!!dosageTier) {
+        if (typeof dosageTier == "number") {
+          return `${dosageTier}${unit}`;
         }
         // If there's a dose range return dose range + unit
-        return `${x.min} - ${x.max}${unit}`;
+        return `${dosageTier.min} - ${dosageTier.max}${unit}`;
       }
+    };
+
+    let createMessageString = function(string, dosage) {
+      return `**${capitalize(string)}**: ${dosageObjectToString(dosage)}`;
     };
 
     if (substance.name == "ayahuasca" || substance.name == "datura") {
@@ -239,21 +242,19 @@ function buildDosageField(substance) {
       // Uses double conditional to prevent massive no information walls
       if (!!dose) {
         if (!!dose.threshold) {
-          messages.push(
-            `**Threshold**: ${dosageObjectToString(dose.threshold)}`
-          );
+          messages.push(createMessageString(`threshold`, dose.threshold));
         }
         if (!!dose.light) {
-          messages.push(`**Light**: ${dosageObjectToString(dose.light)}`);
+          messages.push(createMessageString(`light`, dose.light));
         }
         if (!!dose.common) {
-          messages.push(`**Common**: ${dosageObjectToString(dose.common)}`);
+          messages.push(createMessageString(`common`, dose.common));
         }
         if (!!dose.strong) {
-          messages.push(`**Strong**: ${dosageObjectToString(dose.strong)}`);
+          messages.push(createMessageString(`strong`, dose.strong));
         }
         if (!!dose.heavy) {
-          messages.push(`**Heavy**: ${dosageObjectToString(dose.heavy)}`);
+          messages.push(createMessageString(`heavy`, dose.heavy));
         }
         messages.push("");
       } else {
