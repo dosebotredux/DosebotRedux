@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 //displays list of memes. in future should scan commands directory and display info for each programmatically/dynamically
 exports.run = (client, message, args) => {
   console.log(
