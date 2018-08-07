@@ -47,9 +47,15 @@ exports.run = (client, message, args) => {
             .then(function(response) {
               // console.log(response);
               let queryResults = JSON.parse(response);
-              let substance = queryResults.data[0];
+              if (queryResults.err === true) {
+                message.channel.send(
+                  `Error: No API data available for **${drug}**`
+                );
+              } else {
+                let substance = queryResults.data[0];
 
-              createTSChannelMessage(substance, message);
+                createTSChannelMessage(substance, message);
+              }
             })
             .catch(function(err) {
               console.log(err);
