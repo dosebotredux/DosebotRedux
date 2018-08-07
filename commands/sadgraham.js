@@ -5,6 +5,6 @@ exports.run = (client, message, args) => {
   );
 
   message.channel
-    .send("<@200986075705901056> https://kek.gg/i/89J7Jh.png")
+    .send("<@200986075705901056> https://i.imgur.com/mGLiXhq.png")
     .catch(console.error);
 };
