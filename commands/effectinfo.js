@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
   console.log(`effect: ${effect}`);
 
   // Declare the location of the API URL
-  let url = `https://beta.effectindex.com/api/effects/${effect}`;
+  let url = `https://www.effectindex.com/api/effects/${effect}`;
 
   rp(`${url}`)
     .then(function(body) {
@@ -61,7 +61,7 @@ exports.run = (client, message, args) => {
 
   // Builds the link field
   function createLinksField(effect, effectJSON) {
-    const effectURL = `https://beta.effectindex.com/effects/${effect}`;
+    const effectURL = `https://www.effectindex.com/effects/${effect}`;
 
     return `[${effectJSON.effect.name} on Effect Index](${effectURL})`;
   }
@@ -69,7 +69,7 @@ exports.run = (client, message, args) => {
   function createReplicationField(effectJSON) {
     if (effectJSON.effect.replications.length > 1) {
       const replicationName = effectJSON.effect.replications[0].resource;
-      const replicationURL = `https://beta.effectindex.com/img/gallery/${replicationName}`;
+      const replicationURL = `https://www.effectindex.com/img/gallery/${replicationName}`;
 
       return replicationURL;
     } else {

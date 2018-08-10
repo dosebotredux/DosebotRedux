@@ -364,7 +364,7 @@ function buildAddictionPotentialField(substance) {
 function buildLinksField(substance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
     substance.name
-  })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
+  })\n[Effect Index](https://www.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
 }
 
 function createTSChannelMessage(substance, message) {
@@ -417,7 +417,7 @@ function buildTSDurationField(substance) {
 function buildTSLinksField(substance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
     substance.name
-  })\n[Effect Index](https://beta.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
+  })\n[Effect Index](https://www.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://www.tripsit.me)\n\nInformation sourced from TripSit`;
 }
 
 // Parses and sanitizes substance name
