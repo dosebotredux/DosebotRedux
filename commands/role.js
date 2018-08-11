@@ -27,6 +27,14 @@ exports.run = (client, message, args) => {
     .replace(/-/g, "", -1); // "role"
   let desiredRoleArr = desiredRole.split(" ");
   desiredRole = desiredRoleArr[0];
+  if (message.guild.id === 251433048896307200 && desiredRole === "tripping") {
+    desiredRole = `tripping💓`;
+  } else if (
+    message.guild.id === 251433048896307200 &&
+    desiredRole === "baked"
+  ) {
+    desiredRole = `baked🔥`;
+  }
   console.log(`Desired role: ${desiredRole}`);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
@@ -47,14 +55,7 @@ exports.run = (client, message, args) => {
     // Currently servers must use these named roles
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
       console.log(`Calling toggleRole`);
-      if (message.guild.id === 251433048896307200) {
-        let desiredGuildRole = guildRoles.find(
-          role => role.name.toLowerCase() === "tripping💓"
-        );
-        toggleRole(desiredGuildRole, author, substance, dosage);
-      } else {
-        toggleRole(desiredGuildRole, author, substance, dosage);
-      }
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "stimmed") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "barred") {
@@ -76,6 +77,8 @@ exports.run = (client, message, args) => {
     } else if (desiredGuildRole.name.toLowerCase() === "altered") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "baked🔥") {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === "tripping💓") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else {
       // Send message stating role cannot be assigned
