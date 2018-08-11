@@ -31,15 +31,13 @@ exports.run = (client, message, args) => {
   desiredRole = desiredRoleArr[0];
 
   if (message.guild.id === "251433048896307200") {
-    console.log(`we're setting desired role`);
     if (desiredRole === "tripping") {
       desiredRole = `tripping💓`;
     }
-  } else if (
-    message.guild.id === "251433048896307200" &&
-    desiredRole === "baked"
-  ) {
-    desiredRole = `baked🔥`;
+  } else if (message.guild.id === "251433048896307200") {
+    if (desiredRole === "baked") {
+      desiredRole = `baked🔥`;
+    }
   }
 
   console.log(`Desired role: ${desiredRole}`);
