@@ -68,6 +68,10 @@ exports.run = (client, message, args) => {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "altered") {
       toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === "tripping💓") {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === "baked🔥") {
+      toggleRole(desiredGuildRole, author, substance, dosage);
     } else {
       // Send message stating role cannot be assigned
       message.channel.send(
