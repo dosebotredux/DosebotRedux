@@ -30,9 +30,11 @@ exports.run = (client, message, args) => {
   let desiredRoleArr = desiredRole.split(" ");
   desiredRole = desiredRoleArr[0];
 
-  if (message.guild.id === 251433048896307200 && desiredRole === "tripping") {
+  if (message.guild.id === 251433048896307200) {
     console.log(`we're setting desired role`);
-    desiredRole = `tripping💓`;
+    if (desiredRole === "tripping") {
+      desiredRole = `tripping💓`;
+    }
   } else if (
     message.guild.id === 251433048896307200 &&
     desiredRole === "baked"
@@ -43,7 +45,6 @@ exports.run = (client, message, args) => {
   console.log(`Desired role: ${desiredRole}`);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
-  console.log(`Desired role: ${desiredRole}`);
   console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
 
   // Checks to see if the desiredRole is equal to any role object's name property
