@@ -33,9 +33,7 @@ exports.run = (client, message, args) => {
   if (message.guild.id === "251433048896307200") {
     if (desiredRole === "tripping") {
       desiredRole = `tripping💓`;
-    }
-  } else if (message.guild.id === "251433048896307200") {
-    if (desiredRole === "baked") {
+    } else if (desiredRole === "baked") {
       desiredRole = `baked🔥`;
     }
   }
