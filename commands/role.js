@@ -47,7 +47,14 @@ exports.run = (client, message, args) => {
     // Currently servers must use these named roles
     if (desiredGuildRole.name.toLowerCase() === "tripping") {
       console.log(`Calling toggleRole`);
-      toggleRole(desiredGuildRole, author, substance, dosage);
+      if (message.guild.id === 251433048896307200) {
+        let desiredGuildRole = guildRoles.find(
+          role => role.name.toLowerCase() === "tripping💓"
+        );
+        toggleRole(desiredGuildRole, author, substance, dosage);
+      } else {
+        toggleRole(desiredGuildRole, author, substance, dosage);
+      }
     } else if (desiredGuildRole.name.toLowerCase() === "stimmed") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "barred") {
@@ -67,8 +74,6 @@ exports.run = (client, message, args) => {
     } else if (desiredGuildRole.name.toLowerCase() === "delirious") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "altered") {
-      toggleRole(desiredGuildRole, author, substance, dosage);
-    } else if (desiredGuildRole.name.toLowerCase() === "tripping💓") {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === "baked🔥") {
       toggleRole(desiredGuildRole, author, substance, dosage);
