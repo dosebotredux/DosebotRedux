@@ -21,13 +21,17 @@ exports.run = (client, message, args) => {
     dosage = " ";
   }
   // Set desired role
-  let desiredRole = str
+  let desiredRole;
+  desiredRole = str
     .toLowerCase()
     .replace("--role ", "", -1)
     .replace(/-/g, "", -1); // "role"
+
   let desiredRoleArr = desiredRole.split(" ");
   desiredRole = desiredRoleArr[0];
+
   if (message.guild.id === 251433048896307200 && desiredRole === "tripping") {
+    console.log(`we're setting desired role`);
     desiredRole = `tripping💓`;
   } else if (
     message.guild.id === 251433048896307200 &&
@@ -35,6 +39,7 @@ exports.run = (client, message, args) => {
   ) {
     desiredRole = `baked🔥`;
   }
+
   console.log(`Desired role: ${desiredRole}`);
   let guild = message.guild; // guild snowflake
   let guildRoles = guild.roles; // role snowflake
