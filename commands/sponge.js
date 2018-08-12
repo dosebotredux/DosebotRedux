@@ -8,8 +8,8 @@ exports.run = (client, message, args) => {
     .replace(/-/g, ``, -1);
   let strArr = str.toLowerCase().split(` `);
   strArr.shift();
-  strArr.join(` `);
-  strArr = strArr.split(``);
+  let strMinusPing = strArr.join(` `);
+  strArr = strMinusPing.split(``);
   let outputArr = [];
 
   if (!!message.mentions) {
