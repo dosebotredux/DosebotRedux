@@ -6,10 +6,17 @@ exports.run = (client, message, args) => {
     .toLowerCase()
     .replace(`--sponge `, ``, -1)
     .replace(/-/g, ``, -1);
-  let strArr = str.toLowerCase().split(` `);
-  strArr.shift();
-  let strMinusPing = strArr.join(` `);
-  strArr = strMinusPing.split(``);
+
+  let strArr = str.toLowerCase().split(``);
+
+  if (strArr[0].startsWith(`@`)) {
+    strArr = strArr.join(``);
+    strArr = strArr.split(` `);
+    strArr.shift();
+    let strMinusPing = strArr.join(` `);
+    strArr = strMinusPing.split(``);
+  }
+
   let outputArr = [];
 
   if (!!message.mentions) {
