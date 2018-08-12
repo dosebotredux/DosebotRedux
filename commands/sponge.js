@@ -9,6 +9,12 @@ exports.run = (client, message, args) => {
   let strArr = str.toLowerCase().split(``);
   let outputArr = [];
 
+  if (!!message.mentions) {
+    message.mentions.users.forEach(function(user, id) {
+      outputArr.push(`<@${id}> `);
+    });
+  }
+
   for (let i = 0; i < strArr.length; i++) {
     const letter = strArr[i];
     if (i % 2 === 0) {
