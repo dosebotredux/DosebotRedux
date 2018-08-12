@@ -8,17 +8,15 @@ exports.run = (client, message, args) => {
     .replace(/-/g, ``, -1);
 
   let strArr = str.toLowerCase().split(``);
-  console.log(strArr.join(``));
 
-  if (strArr[0].startsWith(`@`)) {
-    strArr = strArr.join(``);
-    strArr = strArr.split(` `);
+  if (message.content.startsWith(`@`)) {
+    strArr = message.split(` `);
     strArr.shift();
-    let strMinusPing = strArr.join(` `);
-    strArr = strMinusPing.split(``);
-    console.log(strArr.join(``));
+    let newStr = strArr.join(` `);
+    strArr = newStr.split(``);
+  } else {
+    strArr = message.split(``);
   }
-  console.log(strArr.join(``));
 
   let outputArr = [];
 
@@ -27,7 +25,6 @@ exports.run = (client, message, args) => {
       outputArr.push(`<@${id}> `);
     });
   }
-  console.log(outputArr.join(``));
 
   for (let i = 0; i < strArr.length; i++) {
     const letter = strArr[i];
@@ -37,7 +34,6 @@ exports.run = (client, message, args) => {
       outputArr.push(letter.toUpperCase());
     }
   }
-  console.log(outputArr).join(``);
 
   message.channel.send(outputArr.join(``)).catch(console.error);
 };
