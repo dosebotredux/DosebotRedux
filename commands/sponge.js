@@ -6,7 +6,10 @@ exports.run = (client, message, args) => {
     .toLowerCase()
     .replace(`--sponge `, ``, -1)
     .replace(/-/g, ``, -1);
-  let strArr = str.toLowerCase().split(``);
+  let strArr = str.toLowerCase().split(` `);
+  strArr.shift();
+  strArr.join(` `);
+  strArr = strArr.split(``);
   let outputArr = [];
 
   if (!!message.mentions) {
