@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
 
   let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
 
-  if (msgArr.length < 1) {
+  if (msgString.length > 7) {
     name = quotes.names[randomUserNumber];
   } else {
     // [name, name, name]
