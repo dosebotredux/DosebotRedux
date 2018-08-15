@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
     )
     .setTimestamp()
     .setURL("http://www.dosebot.org")
-    .addField("Wise Words", `*${quote}*\n-${name}`);
+    .addField("Wise Words", `"*${quote}*"\n-${name}`);
 
   message.channel.send({ embed }).catch(console.error);
 };
