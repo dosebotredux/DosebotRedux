@@ -31,6 +31,9 @@ exports.run = (client, message, args) => {
     html
   ) {
     if (!error && response.statusCode == 200) {
+      virtualConsole.on("error", () => {
+        console.log(`jsdom error`);
+      });
       const dom = new JSDOM(
         html,
         { runScripts: `dangerously` },
