@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   //332288651394547712 SED
   let str = message.content.replace(`--praxis `, ``, -1).replace(`-`, ``, -1);
   // server channel message
-  let strSplit = str.split(``);
+  let strSplit = str.split(` `);
   let guildID = strSplit[0];
   let channelID = strSplit[1];
   let msg = strSplit.splice(2, strSplit.length);
