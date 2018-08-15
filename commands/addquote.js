@@ -9,6 +9,8 @@ exports.run = (client, message, args) => {
     }@ds121282.mlab.com:21282/dosebot_quotes`
   );
 
+  const db = mongoose.connection;
+
   db.on("error", console.error.bind(console, "connection error:"));
   db.once("open", function() {
     console.log(`Connected to database`);
