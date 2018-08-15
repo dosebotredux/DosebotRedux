@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 
   message.channel
     .send(
-      `Let us contemplate upon this wise quote by Deepak Chopra:\n\n"**${quote}**"`
+      `Let us contemplate upon this wise quote by Deepak Chopra:\n\n"*${quote}*"`
     )
     .catch(console.error);
 };
