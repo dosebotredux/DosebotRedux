@@ -16,11 +16,9 @@ exports.run = (client, message, args) => {
       const collection = db.collection("quotes");
 
       let randomQuote = collection.aggregate({ $sample: { size: 1 } });
-      console.log(randomQuote);
+      console.log(randomQuote.quote);
 
       client.close();
-
-      message.channel.send(`Added quote - Author: ${author} Quote: ${quote}`);
     }
   );
 };
