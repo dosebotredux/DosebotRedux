@@ -3,10 +3,6 @@ const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require("./command-system.js")();
 
-var fs = require("fs");
-var path = require("path");
-var util = require("util");
-
 // On ready logic
 client.on("ready", () => {
   // Update game message on launch
