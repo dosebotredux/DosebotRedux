@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 // get quote
 exports.run = (client, message, args) => {
   console.log(`**********Executing quote on ${message.guild.name}**********`);
@@ -29,7 +31,18 @@ exports.run = (client, message, args) => {
             let author = data.author;
             let quote = data.quote;
 
-            message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
+            const embed = new Discord.RichEmbed()
+              .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
+              .setColor("747474")
+              .setFooter(
+                "Please use drugs responsibly",
+                "https://i.imgur.com/7R8WDwE.png"
+              )
+              .setTimestamp()
+              .setURL("http://www.dosebot.org")
+              .addField("Quote", `*${quote}*\n-${author}`);
+
+            message.channel.send({ embed }).catch(console.error);
           });
       });
     }

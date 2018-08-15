@@ -32,7 +32,9 @@ exports.run = (client, message, args) => {
 
         client.close();
 
-        message.channel.send(`Added quote - Author: ${author} Quote: ${quote}`);
+        message.channel.send(
+          `Added quote - **Author:** ${author} **Quote:** ${quote}`
+        );
       }
     );
   } else {
