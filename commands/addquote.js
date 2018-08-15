@@ -13,9 +13,9 @@ exports.run = (client, message, args) => {
   // [murty, this, is, a, quote]
   let strArr = str.split(` `);
   let author = strArr[0];
-  let quoteToAdd = strArr.splice(1, strArr.length);
+  let quoteToAdd = strArr.splice(1, strArr.length).join(` `);
 
-  console.log(`Author: ${author} Quote: ${quoteToAdd}`);
+  console.log(`Adding quote - Author: ${author} Quote: ${quoteToAdd}`);
 
   MongoClient.connect(
     url,
@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection("quotes");
 
-      // collection.insertOne({ quote: "Test", author: "Bob" });
+      collection.insertOne({ quote: quoteToAdd, author: author });
 
       client.close();
     }
