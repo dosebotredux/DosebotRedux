@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
       console.log(`Connected to Mongo`);
       const db = client.db(dbName);
       const collection = db.collection("quotes");
-      const count = collections.count();
+      const count = collection.count();
       const rand = function() {
         return Math.floor(Math.random() * count);
       };
