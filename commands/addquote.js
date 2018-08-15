@@ -13,9 +13,13 @@ exports.run = (client, message, args) => {
   // [murty, this, is, a, quote]
   let strArr = str.split(` `);
   let author = strArr[0];
-  let quoteToAdd = strArr.splice(1, strArr.length).join(` `);
+  let quoteToAddArr = strArr.splice(1, strArr.length);
+  let quote = quoteToAddArr.join(` `);
 
-  console.log(`Adding quote - Author: ${author} Quote: ${quoteToAdd}`);
+  console.log(str);
+  console.log(strArr);
+  console.log(quoteToAddArr);
+  console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
 
   MongoClient.connect(
     url,

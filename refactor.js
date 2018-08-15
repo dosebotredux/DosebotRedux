@@ -2,19 +2,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require("./command-system.js")();
-const mongoose = require("mongoose");
-
-// DB logic
-mongoose.connect(
-  `mongodb://${process.env.MONGO_DB_USER}:${
-    process.env.MONGO_DB_PASS
-  }@ds121282.mlab.com:21282/dosebot_quotes`
-);
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function() {
-  console.log(`Connected in refactor`);
-});
 
 // On ready logic
 client.on("ready", () => {
