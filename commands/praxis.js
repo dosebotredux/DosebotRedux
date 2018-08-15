@@ -32,7 +32,6 @@ exports.run = (client, message, args) => {
 
   servers.forEach(guild => {
     if (guild.id == guildID) {
-      console.log(`we're in the guild`);
       let channels = guild.channels;
 
       channels.forEach(channel => {
