@@ -15,6 +15,7 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection("quotes");
       collection.count().then(data => {
+        let count = data;
         const rand = function() {
           return Math.floor(Math.random() * count);
         };
