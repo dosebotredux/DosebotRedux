@@ -15,17 +15,17 @@ exports.run = (client, message, args) => {
     console.log(`num`);
     guildID = strSplit[0];
     channelID = strSplit[1];
-    msg = strSplit.splice(2, strSplit.length).join(` `);
+    msg = strSplit.splice(1, strSplit.length).join(` `);
   } else if (strSplit[0] === `praxis`) {
     console.log(`prax`);
     guildID = `350132819307003905`;
     channelID = `433004930433810442`;
-    msg = strSplit.splice(2, strSplit.length).join(` `);
+    msg = strSplit.splice(1, strSplit.length).join(` `);
   } else if (strSplit[0] === `SED`) {
     console.log(`SED`);
-    guildID = `332288651394547712`;
+    guildID = `331288651394547712`;
     channelID = `332288651394547712`;
-    msg = strSplit.splice(2, strSplit.length).join(` `);
+    msg = strSplit.splice(1, strSplit.length).join(` `);
   }
 
   console.log(`Guild: ${guildID} Channel: ${channelID} Message: ${msg}`);
