@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const request = require("request");
-const virtualConsole = new jsdom.VirtualConsole();
 
 // quote message
 exports.run = (client, message, args) => {
@@ -14,8 +13,6 @@ exports.run = (client, message, args) => {
   let msgArr = msgString.split(` `);
   console.log(msgArr);
   let name;
-  // let randomQuoteNumber = Math.floor(Math.random() * quotes.quotes.length);
-  // let quote = quotes.quotes[randomQuoteNumber];
 
   let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
   console.log(msgString.length);
@@ -31,9 +28,6 @@ exports.run = (client, message, args) => {
     html
   ) {
     if (!error && response.statusCode == 200) {
-      virtualConsole.on("error", () => {
-        console.log(`jsdom error`);
-      });
       const dom = new JSDOM(
         html,
         { runScripts: `dangerously` },
