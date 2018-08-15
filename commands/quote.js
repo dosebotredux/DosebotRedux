@@ -14,7 +14,6 @@ exports.run = (client, message, args) => {
       "Please use drugs responsibly",
       "https://i.imgur.com/7R8WDwE.png"
     )
-    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
     .setTimestamp()
     .setURL("http://www.dosebot.org")
     .addField("Wise Words", `*${quote}*\n\n-<@278301453620084736>`);
