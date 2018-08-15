@@ -8,6 +8,7 @@ exports.run = (client, message, args) => {
     .replace(`--quote`, ``, -1)
     .replace(/-/g, ``, -1);
   let msgArr = msgString.split(` `);
+  console.log(msgArr);
   let name;
 
   let randomQuoteNumber = Math.floor(Math.random() * quotes.quotes.length);
