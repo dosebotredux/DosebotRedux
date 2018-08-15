@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     `**********Executing wisewords on ${message.guild.name}**********`
   );
   let msgString = message.content
-    .replace(`--quote`, ``, -1)
+    .replace(`--wisewords`, ``, -1)
     .replace(/-/g, ``, -1);
   let msgArr = msgString.split(` `);
   console.log(msgArr);
@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
 
   let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
   console.log(msgString.length);
-  if (msgString.length < 7) {
+  if (msgString.length < 10) {
     name = quotes.names[randomUserNumber];
   } else {
     name = msgArr.splice(1, msgArr.length).join(` `);
