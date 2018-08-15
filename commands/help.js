@@ -23,6 +23,7 @@ exports.run = (client, message, args) => {
 function buildCommandList() {
   var commands = [
     "--about",
+    "--addquote <author> <quote>",
     "--badtrip",
     "--bobross",
     "--combochart",
@@ -38,6 +39,7 @@ function buildCommandList() {
     "--role rolename <drug> <dose>",
     "--sei",
     "--triptoy",
+    "--wisewords",
     "--video"
   ];
 

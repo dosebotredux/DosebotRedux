@@ -35,7 +35,8 @@ exports.run = (client, message, args) => {
     `--uwotm8`,
     `--zen`,
     `--dust`,
-    `--obligatory`
+    `--obligatory`,
+    `--wisewords`
   ];
   const NSFW_MEMES_ARR = [`--dck`, `--dong`, `--nsfwmascot`];
 

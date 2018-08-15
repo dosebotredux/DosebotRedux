@@ -31,6 +31,8 @@ exports.run = (client, message, args) => {
         collection.insertOne({ quote: quote, author: author });
 
         client.close();
+
+        message.channel.send(`Added quote - Author: ${author} Quote: ${quote}`);
       }
     );
   } else {

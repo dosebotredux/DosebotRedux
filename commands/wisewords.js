@@ -3,28 +3,12 @@ const Discord = require("discord.js");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const request = require("request");
-const mongoose = require("mongoose");
 
-// mongoose.connect(
-//   `mongodb://${process.env.MONGO_DB_USER}:${
-//     process.env.MONGO_DB_PASS
-//   }@ds121282.mlab.com:21282/dosebot_quotes`
-// );
-
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", function() {
-//   console.log(`Connected to database`);
-//   let quoteSchema = new mongoose.Schema({
-//     name: String,
-//     author: String
-//   });
-//   let Quote = mongoose.model("quotes", quoteSchema);
-
-// });
-
-// quote message
+// wisewords message
 exports.run = (client, message, args) => {
-  console.log(`**********Executing quote on ${message.guild.name}**********`);
+  console.log(
+    `**********Executing wisewords on ${message.guild.name}**********`
+  );
   let msgString = message.content
     .replace(`--quote`, ``, -1)
     .replace(/-/g, ``, -1);
