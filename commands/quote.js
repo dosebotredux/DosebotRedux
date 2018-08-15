@@ -25,7 +25,10 @@ exports.run = (client, message, args) => {
         .skip(rand())
         .next()
         .then(data => {
-          console.log(data.author);
+          let author = data.author;
+          let quote = data.quote;
+
+          message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
         });
 
       client.close();
