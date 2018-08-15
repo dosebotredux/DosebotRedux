@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
       let channels = guild.channels;
       channels.forEach(channel => {
         if (channel.id == "370014438222331915") {
-          channel.id.send(`Hello`);
+          channel.send(`Hello`);
         }
       });
     }
