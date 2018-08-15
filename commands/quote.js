@@ -31,7 +31,15 @@ exports.run = (client, message, args) => {
     html
   ) {
     if (!error && response.statusCode == 200) {
-      const dom = new JSDOM(html, { runScripts: `dangerously` });
+      virtualConsole.on("error"),
+        () => {
+          console.log(`jsdom error`);
+        };
+      const dom = new JSDOM(
+        html,
+        { runScripts: `dangerously` },
+        { virtualConsole }
+      );
       let quote = dom.window.document.querySelector(`h2`).textContent;
 
       const embed = new Discord.RichEmbed()
