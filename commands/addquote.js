@@ -13,6 +13,9 @@ exports.run = (client, message, args) => {
     function(err, client) {
       console.log(`Connected to Mongo`);
       const db = client.db(dbName);
+      const collection = db.collection("quotes");
+
+      collection.insert({ quote: "Test", author: "Bob" });
 
       client.close();
     }
