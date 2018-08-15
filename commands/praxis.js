@@ -1,8 +1,6 @@
-// praxis message
+// praxis
 exports.run = (client, message, args) => {
   console.log(`**********Executing praxis**********`);
-  //350132819307003905 praxis
-  //332288651394547712 SED
   let str = message.content.replace(`--praxis `, ``, -1).replace(`-`, ``, -1);
   // server channel message
   let strSplit = str.split(` `);
