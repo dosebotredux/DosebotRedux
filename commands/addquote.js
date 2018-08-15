@@ -1,6 +1,8 @@
 // add quote
 exports.run = (client, message, args) => {
-  console.log(`**********Executing heart on ${message.guild.name}**********`);
+  console.log(
+    `**********Executing addquote on ${message.guild.name}**********`
+  );
 
   const MongoClient = require("mongodb").MongoClient;
   const url = `mongodb://${process.env.MONGO_DB_USER}:${
@@ -16,6 +18,7 @@ exports.run = (client, message, args) => {
   let quoteToAddArr = strArr.splice(2, strArr.length);
   let quote = quoteToAddArr.join(` `);
 
+  console.log(strArr.length);
   if (strArr.length > 2) {
     console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
 
