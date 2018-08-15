@@ -28,7 +28,7 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection("quotes");
 
-      collection.insertOne({ quote: quoteToAdd, author: author });
+      collection.insertOne({ quote: quote, author: author });
 
       client.close();
     }
