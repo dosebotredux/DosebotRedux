@@ -16,7 +16,9 @@ exports.run = (client, message, args) => {
       const collection = db.collection("quotes");
 
       let randomQuote = collection.aggregate({ $sample: { size: 1 } });
-      console.log(randomQuote.quote);
+      randomQuote.toArray().then(data => {
+        console.log(data.author);
+      });
 
       client.close();
     }
