@@ -56,10 +56,10 @@ exports.run = (client, message, args) => {
   message.channel.send({ embed }).catch(console.error);
 
   function generateSFWMemes(arr) {
-    return arr.join(`\n`);
+    return arr.sort().join(`\n`);
   }
 
   function generateNSFWMemes(arr) {
-    return arr.join(`\n`);
+    return arr.sort().join(`\n`);
   }
 };
