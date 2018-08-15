@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
   if (msgString.length < 7) {
     name = quotes.names[randomUserNumber];
   } else {
-    name = msgArr.splice(0, msgArr.length).join(` `);
+    name = msgArr.splice(1, msgArr.length).join(` `);
   }
 
   const embed = new Discord.RichEmbed()
