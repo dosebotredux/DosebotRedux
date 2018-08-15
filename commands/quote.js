@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
   let quote = quotes.quotes[randomQuoteNumber];
 
   let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
-
+  console.log(msgString.length);
   if (msgString.length > 7) {
     name = quotes.names[randomUserNumber];
   } else {
