@@ -17,6 +17,7 @@ exports.run = (client, message, args) => {
   let quote = quoteToAddArr.join(` `);
 
   console.log(str);
+  console.log(author);
   console.log(strArr);
   console.log(quoteToAddArr);
   console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
