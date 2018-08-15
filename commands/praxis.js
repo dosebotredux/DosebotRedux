@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
     msg = strSplit.splice(1, strSplit.length).join(` `);
   } else if (strSplit[0] === `SED`) {
     console.log(`SED`);
-    guildID = `331288651394547712`;
+    guildID = `332288651394547712`;
     channelID = `332288651394547712`;
     msg = strSplit.splice(1, strSplit.length).join(` `);
   }
