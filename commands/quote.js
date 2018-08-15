@@ -8,8 +8,6 @@ exports.run = (client, message, args) => {
   }@ds121282.mlab.com:21282/dosebot_quotes`;
   const dbName = "dosebot_quotes";
 
-  let count;
-
   MongoClient.connect(
     url,
     function(err, client) {
@@ -17,26 +15,23 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection("quotes");
       collection.count().then(data => {
-        count = data;
+        const rand = function() {
+          return Math.floor(Math.random() * count);
+        };
+
+        collection
+          .find()
+          .limit(-1)
+          .skip(rand())
+          .next()
+          .then(data => {
+            let author = data.author;
+            let quote = data.quote;
+
+            message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
+          });
       });
       console.log(`Count: ${count}`);
-      const rand = function() {
-        return Math.floor(Math.random() * count);
-      };
-
-      collection
-        .find()
-        .limit(-1)
-        .skip(rand())
-        .next()
-        .then(data => {
-          let author = data.author;
-          let quote = data.quote;
-
-          message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
-        });
-
-      client.close();
     }
   );
 };
