@@ -14,24 +14,23 @@ exports.run = (client, message, args) => {
       console.log(`Connected to Mongo`);
       const db = client.db(dbName);
       const collection = db.collection("quotes");
-      const count = collection.count().then(data => console.log(data));
-      console.log(`Count: ${count}`);
-      const rand = function() {
-        return Math.floor(Math.random() * count);
-      };
+      const count = collection.count().then(data => {
+        const rand = function() {
+          return Math.floor(Math.random() * count);
+        };
 
-      collection
-        .find()
-        .limit(-1)
-        .skip(rand())
-        .next()
-        .then(data => {
-          let author = data.author;
-          let quote = data.quote;
+        collection
+          .find()
+          .limit(-1)
+          .skip(rand())
+          .next()
+          .then(data => {
+            let author = data.author;
+            let quote = data.quote;
 
-          message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
-        });
-
+            message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
+          });
+      });
       client.close();
     }
   );
