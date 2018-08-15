@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
   let strSplit = str.split(` `);
   let guildID = strSplit[0];
   let channelID = strSplit[1];
-  let msg = strSplit.splice(2, strSplit.length);
+  let msg = strSplit.splice(2, strSplit.length).join(``);
   console.log(`Guild: ${guildID} Channel: ${channelID} Message: ${msg}`);
 
   let servers = client.guilds;
