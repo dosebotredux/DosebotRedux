@@ -18,8 +18,7 @@ exports.run = (client, message, args) => {
   let quoteToAddArr = strArr.splice(2, strArr.length);
   let quote = quoteToAddArr.join(` `);
 
-  console.log(strArr.length);
-  if (strArr.length > 2) {
+  if (message.content.length >= 9) {
     console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
 
     MongoClient.connect(
