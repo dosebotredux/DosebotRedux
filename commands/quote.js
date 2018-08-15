@@ -2,8 +2,8 @@ const quotes = require("../include/quotes.json");
 const Discord = require("discord.js");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const fs = require("fs");
 const request = require("request");
+const virtualConsole = new jsdom.VirtualConsole();
 
 // quote message
 exports.run = (client, message, args) => {
@@ -31,10 +31,6 @@ exports.run = (client, message, args) => {
     html
   ) {
     if (!error && response.statusCode == 200) {
-      virtualConsole.on("error"),
-        () => {
-          console.log(`jsdom error`);
-        };
       const dom = new JSDOM(
         html,
         { runScripts: `dangerously` },
@@ -51,7 +47,7 @@ exports.run = (client, message, args) => {
         )
         .setTimestamp()
         .setURL("http://www.dosebot.org")
-        .addField("Wise Words", `*"${quote}"*\n-${name}`);
+        .addField("Wise Words", `*${quote}*\n-${name}`);
 
       message.channel.send({ embed }).catch(console.error);
     } else {
