@@ -10,7 +10,12 @@ exports.run = (client, message, args) => {
   servers.forEach(guild => {
     if (guild.id == "332288651394547712") {
       console.log(`we're in the guild`);
-      // let channels = guild.channels;
+      let channels = guild.channels;
+      channels.forEach(channel => {
+        if (channel.id == "370014438222331915") {
+          channel.id.send(`Hello`);
+        }
+      });
     }
   });
 };
