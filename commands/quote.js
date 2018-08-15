@@ -16,10 +16,9 @@ exports.run = (client, message, args) => {
 
   let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
   console.log(msgString.length);
-  if (msgString.length > 7) {
+  if (msgString.length < 7) {
     name = quotes.names[randomUserNumber];
   } else {
-    // [name, name, name]
     name = msgArr.splice(0, msgArr.length).join(` `);
   }
 
