@@ -6,9 +6,22 @@ exports.run = (client, message, args) => {
   let str = message.content.replace(`--praxis `, ``, -1).replace(`-`, ``, -1);
   // server channel message
   let strSplit = str.split(` `);
-  let guildID = strSplit[0];
-  let channelID = strSplit[1];
-  let msg = strSplit.splice(2, strSplit.length).join(``);
+
+  let guildID;
+  let channelID;
+  let msg;
+
+  if (typeof strSplit[0] === `number`) {
+    guildID = strSplit[0];
+    channelID = strSplit[1];
+    msg = strSplit.splice(2, strSplit.length).join(` `);
+  } else if (strSplit[0] === `praxis`) {
+    guildID = `350132819307003905`;
+    channelID = `433004930433810442`;
+  } else if (strSplit[1] === `SED`) {
+    guildID = `332288651394547712`;
+    channelID = `332288651394547712`;
+  }
   console.log(`Guild: ${guildID} Channel: ${channelID} Message: ${msg}`);
 
   let servers = client.guilds;
