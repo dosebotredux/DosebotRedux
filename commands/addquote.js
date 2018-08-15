@@ -16,22 +16,24 @@ exports.run = (client, message, args) => {
   let quoteToAddArr = strArr.splice(2, strArr.length);
   let quote = quoteToAddArr.join(` `);
 
-  console.log(str);
-  console.log(author);
-  console.log(strArr);
-  console.log(quoteToAddArr);
-  console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
+  if (strArr.length > 2) {
+    console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
 
-  MongoClient.connect(
-    url,
-    function(err, client) {
-      console.log(`Connected to Mongo`);
-      const db = client.db(dbName);
-      const collection = db.collection("quotes");
+    MongoClient.connect(
+      url,
+      function(err, client) {
+        console.log(`Connected to Mongo`);
+        const db = client.db(dbName);
+        const collection = db.collection("quotes");
 
-      collection.insertOne({ quote: quote, author: author });
+        collection.insertOne({ quote: quote, author: author });
 
-      client.close();
-    }
-  );
+        client.close();
+      }
+    );
+  } else {
+    message.channel.send(
+      `**Error**: No quote provided - Syntax: --addquote <author> <quote>`
+    );
+  }
 };
