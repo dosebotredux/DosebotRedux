@@ -32,7 +32,6 @@ exports.run = (client, message, args) => {
             message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
           });
       });
-      console.log(`Count: ${count}`);
     }
   );
 };
