@@ -7,17 +7,27 @@ exports.run = (client, message, args) => {
   // server channel message
   let strSplit = str.split(` `);
 
+  let guildID;
+  let channelID;
+  let msg;
+
   if (typeof strSplit[0] === `number`) {
-    var guildID = strSplit[0];
-    var channelID = strSplit[1];
-    var msg = strSplit.splice(2, strSplit.length).join(` `);
+    console.log(`num`);
+    guildID = strSplit[0];
+    channelID = strSplit[1];
+    msg = strSplit.splice(2, strSplit.length).join(` `);
   } else if (strSplit[0] === `praxis`) {
-    var guildID = `350132819307003905`;
-    var channelID = `433004930433810442`;
-  } else if (strSplit[1] === `SED`) {
-    var guildID = `332288651394547712`;
-    var channelID = `332288651394547712`;
+    console.log(`prax`);
+    guildID = `350132819307003905`;
+    channelID = `433004930433810442`;
+    msg = strSplit.splice(2, strSplit.length).join(` `);
+  } else if (strSplit[0] === `SED`) {
+    console.log(`SED`);
+    guildID = `332288651394547712`;
+    channelID = `332288651394547712`;
+    msg = strSplit.splice(2, strSplit.length).join(` `);
   }
+
   console.log(`Guild: ${guildID} Channel: ${channelID} Message: ${msg}`);
 
   let servers = client.guilds;
