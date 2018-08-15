@@ -14,11 +14,16 @@ exports.run = (client, message, args) => {
       console.log(`Connected to Mongo`);
       const db = client.db(dbName);
       const collection = db.collection("quotes");
+      const count = collections.count();
+      const rand = function() {
+        return Math.floor(Math.random() * count);
+      };
 
-      let randomQuote = collection.aggregate({ $sample: { size: 1 } });
-      randomQuote
-        .find({})
-        .toArray()
+      collection
+        .find()
+        .limit(-1)
+        .skip(rand())
+        .next()
         .then(data => {
           console.log(data.author);
         });
