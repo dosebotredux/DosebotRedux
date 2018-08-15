@@ -1,4 +1,5 @@
 const quotes = require("../include/quotes.json");
+const Discord = require("discord.js");
 
 // quote message
 exports.run = (client, message, args) => {
@@ -6,9 +7,17 @@ exports.run = (client, message, args) => {
   let random = Math.floor(Math.random() * quotes.quotes.length);
   let quote = quotes.quotes[random];
 
-  message.channel
-    .send(
-      `Let us contemplate upon this wise quote by Deepak Chopra:\n\n"*${quote}*"`
+  const embed = new Discord.RichEmbed()
+    .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
+    .setColor("747474")
+    .setFooter(
+      "Please use drugs responsibly",
+      "https://i.imgur.com/7R8WDwE.png"
     )
-    .catch(console.error);
+    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+    .setTimestamp()
+    .setURL("http://www.dosebot.org")
+    .addField("Wise Words", `*${quote}*\n\n-<@278301453620084736>`);
+
+  message.channel.send({ embed }).catch(console.error);
 };
