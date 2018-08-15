@@ -8,29 +8,34 @@ exports.run = (client, message, args) => {
   }@ds121282.mlab.com:21282/dosebot_quotes`;
   const dbName = "dosebot_quotes";
 
+  const count;
+
   MongoClient.connect(
     url,
     function(err, client) {
       console.log(`Connected to Mongo`);
       const db = client.db(dbName);
       const collection = db.collection("quotes");
-      const count = collection.count().then(data => {
-        const rand = function() {
-          return Math.floor(Math.random() * count);
-        };
-
-        collection
-          .find()
-          .limit(-1)
-          .skip(rand())
-          .next()
-          .then(data => {
-            let author = data.author;
-            let quote = data.quote;
-
-            message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
-          });
+      collection.count().then(data => {
+        count = data;
       });
+      console.log(`Count: ${count}`);
+      const rand = function() {
+        return Math.floor(Math.random() * count);
+      };
+
+      collection
+        .find()
+        .limit(-1)
+        .skip(rand())
+        .next()
+        .then(data => {
+          let author = data.author;
+          let quote = data.quote;
+
+          message.channel.send(`Quote: ${quote}\nAuthor: ${author}`);
+        });
+
       client.close();
     }
   );
