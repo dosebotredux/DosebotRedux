@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
   }@ds121282.mlab.com:21282/dosebot_quotes`;
   const dbName = "dosebot_quotes";
 
-  const count;
+  let count;
 
   MongoClient.connect(
     url,
