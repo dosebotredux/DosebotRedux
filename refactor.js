@@ -4,36 +4,30 @@ const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require("./command-system.js")();
 
 // On ready logic
-client
-  .on("ready", () => {
-    // Update game message on launch
-    updateGameMessage();
-    console.log("DoseBot is online - beep boop");
-  })
-  .catch(console.error);
+client.on("ready", () => {
+  // Update game message on launch
+  updateGameMessage();
+  console.log("DoseBot is online - beep boop");
+});
 
 // Log new guild joins
-client
-  .on("guildCreate", guild => {
-    // Update game message on new server join
-    updateGameMessage();
-    console.log(
-      `New server joined - Name: ${guild.name} Members: ${guild.memberCount}`
-    );
-  })
-  .catch(console.error);
+client.on("guildCreate", guild => {
+  // Update game message on new server join
+  updateGameMessage();
+  console.log(
+    `New server joined - Name: ${guild.name} Members: ${guild.memberCount}`
+  );
+});
 
 // Pass messages to the CommandSystem
-client
-  .on("message", message => {
-    CommandSystem.execute(client, message);
-  })
-  .catch(console.error);
+client.on("message", message => {
+  CommandSystem.execute(client, message);
+});
 
 //
 CommandSystem.load(function() {
   console.log("Command system loaded.");
-}).catch(console.error);
+});
 
 client.login(token);
 
