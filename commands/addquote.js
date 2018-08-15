@@ -8,6 +8,15 @@ exports.run = (client, message, args) => {
   }@ds121282.mlab.com:21282/dosebot_quotes`;
   const dbName = "dosebot_quotes";
 
+  // --addquote murty this is a quote
+  let str = message.content.replace(`--addquote`, ``, -1).replace(/-/g, ``, -1);
+  // [murty, this, is, a, quote]
+  let strArr = str.split(` `);
+  let author = strArr[0];
+  let quoteToAdd = strArr.splice(1, strArr.length);
+
+  console.log(`Author: ${author} Quote: ${quoteToAdd}`);
+
   MongoClient.connect(
     url,
     function(err, client) {
@@ -15,7 +24,7 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection("quotes");
 
-      collection.insertOne({ quote: "Test", author: "Bob" });
+      // collection.insertOne({ quote: "Test", author: "Bob" });
 
       client.close();
     }
