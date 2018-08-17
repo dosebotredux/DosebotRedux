@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
         )
         .setTimestamp()
         .setURL("http://www.dosebot.org")
-        .setThumbnail(thumbRand)
+        .setThumbnail(thumbnail)
         .addField("Wise Words", `*${quote}*\n-${name}`);
 
       message.channel.send({ embed }).catch(console.error);
