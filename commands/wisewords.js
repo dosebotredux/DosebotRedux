@@ -24,6 +24,18 @@ exports.run = (client, message, args) => {
     name = msgArr.splice(1, msgArr.length).join(` `);
   }
 
+  let thumbArr = [
+    "https://i.imgur.com/WkYo3vd.png",
+    message.author.avatarURL,
+    "https://i.imgur.com/7uI3ri3.png",
+    "https://i.imgur.com/yTVmFhb.png",
+    "https://i.imgur.com/OmuI74P.png",
+    "https://i.imgur.com/q87TndD.png",
+    "https://i.imgur.com/ovxmB8L.png"
+  ];
+  let thumbRand = Math.floor(Math.random() * thumbArr.length);
+  let thumbnail = thumbArr[thumbRand];
+
   request("http://wisdomofchopra.com/iframe.php", function(
     error,
     response,
@@ -42,7 +54,7 @@ exports.run = (client, message, args) => {
         )
         .setTimestamp()
         .setURL("http://www.dosebot.org")
-        .setThumbnail(message.author.avatarURL)
+        .setThumbnail(thumbRand)
         .addField("Wise Words", `*${quote}*\n-${name}`);
 
       message.channel.send({ embed }).catch(console.error);
