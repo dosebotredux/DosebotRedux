@@ -31,7 +31,8 @@ exports.run = (client, message, args) => {
     "https://i.imgur.com/yTVmFhb.png",
     "https://i.imgur.com/OmuI74P.png",
     "https://i.imgur.com/q87TndD.png",
-    "https://i.imgur.com/ovxmB8L.png"
+    "https://i.imgur.com/ovxmB8L.png",
+    "https://i.imgur.com/7gf6ERz.jpg"
   ];
   let thumbRand = Math.floor(Math.random() * thumbArr.length);
   let thumbnail = thumbArr[thumbRand];
