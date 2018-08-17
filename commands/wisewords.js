@@ -4,6 +4,7 @@ const wiseWords = require("wisdom-of-chopra");
 
 // wisewords message
 exports.run = (client, message, args) => {
+  console.log(wiseWords.getQuote());
   console.log(
     `**********Executing wisewords on ${message.guild.name}**********`
   );
