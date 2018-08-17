@@ -26,10 +26,10 @@ module.exports = function CommandSystem() {
     },
 
     execute: function(client, message) {
-      if (message.author.bot) {
-        // console.log("Message author is bot")
-        return;
-      }
+      // if (message.author.bot) {
+      //   // console.log("Message author is bot")
+      //   return;
+      // }
 
       if (message.content.startsWith("—")) {
         message.content = message.content.replace("—", "--");
