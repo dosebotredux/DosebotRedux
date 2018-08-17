@@ -5,10 +5,15 @@ exports.run = (client, message, args) => {
   );
 
   let users = message.guild.members;
+  let usersWithRank;
 
   users.forEach(user => {
     console.log(user.displayName);
+    let roles = user.roles;
+    roles.forEach(role => {
+      console.log(
+        `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
+      );
+    });
   });
-
-  console.log(users);
 };
