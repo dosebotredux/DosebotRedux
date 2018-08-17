@@ -6,5 +6,9 @@ exports.run = (client, message, args) => {
 
   let users = message.guild.members;
 
+  users.forEach(user => {
+    console.log(user.displayName);
+  });
+
   console.log(users);
 };
