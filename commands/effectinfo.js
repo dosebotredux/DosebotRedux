@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
         .setURL("http://www.dosebot.org")
         .setImage(createReplicationField(effectInfo))
         .addField(
-          `**${createEffectFieldTitle(effectInfo)} description**`,
+          `**${createEffectFieldTitle(effectInfo)} summary**`,
           createSummaryField(effectInfo)
         )
         .addField(`Links`, createLinksField(effect, effectInfo));
