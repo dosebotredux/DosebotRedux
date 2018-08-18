@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
     });
 
     let rand = Math.floor(Math.random() * usersWithRank.length);
-    let randomUser = usersWithRank[rand];
+    let randomUser = [usersWithRank[rand]];
 
     randomUser.forEach(user => {
       console.log(user.user.displayName);
