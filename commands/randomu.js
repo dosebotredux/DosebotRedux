@@ -15,14 +15,18 @@ exports.run = (client, message, args) => {
       //   `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
       // );
       if (role.calculatedPosition > 0) {
-        usersWithRank.push(user);
+        usersWithRank.push({
+          snowflake: {
+            data: user
+          }
+        });
       }
     });
+  });
+  let rand = Math.floor(Math.random() * usersWithRank.length);
+  let randomUser = [usersWithRank[rand]];
 
-    let rand = Math.floor(Math.random() * usersWithRank.length);
-    let randomUser = [usersWithRank[rand]];
-    // [{snowflake: {user}}]
-
-    console.log(randomUser.displayName);
+  randomUser.forEach(user => {
+    console.log(user.snowflake.data.displayName);
   });
 };
