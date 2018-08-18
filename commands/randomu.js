@@ -15,11 +15,7 @@ exports.run = (client, message, args) => {
       //   `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
       // );
       if (role.calculatedPosition > 0) {
-        usersWithRank.push({
-          snowflake: {
-            userFlake: user
-          }
-        });
+        usersWithRank.push(user);
       }
     });
 
@@ -27,8 +23,6 @@ exports.run = (client, message, args) => {
     let randomUser = [usersWithRank[rand]];
     // [{snowflake: {user}}]
 
-    randomUser.forEach(user => {
-      console.log(user.snowflake.userFlake.displayName);
-    });
+    console.log(randomUser.displayName);
   });
 };
