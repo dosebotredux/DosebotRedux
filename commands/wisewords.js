@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
     .replace(/-/g, ``, -1);
   let msgArr = msgString.split(` `);
   let users = message.guild.members;
-  let randomUser = getRandomUser(users);
+  let randomUser;
   console.log(randomUser);
 
   // Creat richembed to send
@@ -52,7 +52,7 @@ exports.run = (client, message, args) => {
 
     randomUserArr.forEach(user => {
       console.log(user.snowflake.data);
-      return user.snowflake.data;
+      randomUser = user.snowflake.data;
     });
   }
 
