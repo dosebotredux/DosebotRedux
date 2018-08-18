@@ -13,6 +13,7 @@ exports.run = (client, message, args) => {
   let msgArr = msgString.split(` `);
   let users = message.guild.members;
   let randomUser;
+  getRandomUser(quotes);
   console.log(randomUser);
 
   // Creat richembed to send
