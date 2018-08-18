@@ -8,17 +8,27 @@ exports.run = (client, message, args) => {
   let usersWithRank = [];
 
   users.forEach(user => {
-    console.log(user.displayName);
+    // console.log(user.displayName);
     let roles = user.roles;
     roles.forEach(role => {
-      console.log(
-        `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
-      );
+      // console.log(
+      //   `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
+      // );
       if (role.calculatedPosition > 0) {
         usersWithRank.push(user.displayName);
+        usersWithRank.push({
+          [user.displayName]: {
+            user: user
+          }
+        });
       }
     });
 
-    console.log(usersWithRank);
+    let rand = Math.floor(Math.random() * usersWithRank.length);
+    let randomUser = usersWithRank[rand];
+
+    randomUser.forEach(user => {
+      console.log(user.user.displayName);
+    });
   });
 };
