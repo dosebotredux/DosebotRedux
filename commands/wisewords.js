@@ -4,7 +4,6 @@ const wiseWords = require("wisdom-of-chopra");
 
 // wisewords message
 exports.run = (client, message, args) => {
-  console.log(wiseWords.getQuote());
   console.log(
     `**********Executing wisewords on ${message.guild.name}**********`
   );
@@ -12,6 +11,8 @@ exports.run = (client, message, args) => {
     .replace(`--wisewords`, ``, -1)
     .replace(/-/g, ``, -1);
   let msgArr = msgString.split(` `);
+  let users = message.guild.members;
+  let randomUser = getRandomUser(users);
 
   // Creat richembed to send
   const embed = new Discord.RichEmbed()
@@ -29,31 +30,38 @@ exports.run = (client, message, args) => {
   // SEND IT
   message.channel.send({ embed }).catch(console.error);
 
+  // Function for getting a random user from the guild
+  function getRandomUser(users) {
+    let usersWithRank = [];
+
+    users.forEach(user => {
+      let roles = user.roles;
+      roles.forEach(role => {
+        if (role.calculatedPosition > 0) {
+          usersWithRank.push({
+            snowflake: {
+              data: user
+            }
+          });
+        }
+      });
+    });
+    let rand = Math.floor(Math.random() * usersWithRank.length);
+    let randomUser = [usersWithRank[rand]];
+
+    randomUser.forEach(user => {
+      return user;
+    });
+  }
+
   // Function for getting random thumbnail
   function generateThumbnail() {
-    let thumbArr = [
-      "https://i.imgur.com/WkYo3vd.png",
-      message.author.avatarURL,
-      "https://i.imgur.com/7uI3ri3.png",
-      "https://i.imgur.com/yTVmFhb.png",
-      "https://i.imgur.com/OmuI74P.png",
-      "https://i.imgur.com/q87TndD.png",
-      "https://i.imgur.com/ovxmB8L.png",
-      "https://i.imgur.com/7gf6ERz.jpg"
-    ];
-    let thumbRand = Math.floor(Math.random() * thumbArr.length);
-    return thumbArr[thumbRand];
+    return randomUser.avatarURL;
   }
 
   // Function for getting random name
   function generateName() {
-    let randomUserNumber = Math.floor(Math.random() * quotes.names.length);
-
-    if (msgString.length < 10) {
-      return quotes.names[randomUserNumber];
-    } else {
-      return msgArr.splice(1, msgArr.length).join(` `);
-    }
+    return randomUser.displayName;
   }
 
   // Function for getting random quote
