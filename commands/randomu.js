@@ -15,7 +15,6 @@ exports.run = (client, message, args) => {
       //   `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
       // );
       if (role.calculatedPosition > 0) {
-        usersWithRank.push(user.displayName);
         usersWithRank.push({
           [user.displayName]: {
             user: user
