@@ -47,21 +47,21 @@ exports.run = (client, message, args) => {
       });
     });
     let rand = Math.floor(Math.random() * usersWithRank.length);
-    let randomUser = [usersWithRank[rand]];
+    let randomUserArr = [usersWithRank[rand]];
 
-    randomUser.forEach(user => {
-      return user;
+    randomUserArr.forEach(user => {
+      return user.snowflake.data;
     });
   }
 
   // Function for getting random thumbnail
   function generateThumbnail() {
-    return randomUser.snowflake.data.avatarURL;
+    return randomUser.avatarURL;
   }
 
   // Function for getting random name
   function generateName() {
-    return randomUser.snowflake.data.displayName;
+    return randomUser.displayName;
   }
 
   // Function for getting random quote
