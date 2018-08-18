@@ -13,6 +13,7 @@ exports.run = (client, message, args) => {
   let msgArr = msgString.split(` `);
   let users = message.guild.members;
   let randomUser = getRandomUser(users);
+  console.log(randomUser.displayName);
 
   // Creat richembed to send
   const embed = new Discord.RichEmbed()
