@@ -1,4 +1,3 @@
-const quotes = require("../include/quotes.json");
 const Discord = require("discord.js");
 const wiseWords = require("wisdom-of-chopra");
 
