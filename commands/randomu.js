@@ -18,5 +18,7 @@ exports.run = (client, message, args) => {
         usersWithRank.push(user.displayName);
       }
     });
+
+    console.log(usersWithRank);
   });
 };
