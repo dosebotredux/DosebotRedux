@@ -13,9 +13,8 @@ exports.run = (client, message, args) => {
   let msgArr = msgString.split(` `);
   let randomUser;
   getRandomUser();
-  console.log(randomUser);
 
-  // Creat richembed to send
+  // Create richembed to send
   const embed = new Discord.RichEmbed()
     .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
     .setColor("747474")
