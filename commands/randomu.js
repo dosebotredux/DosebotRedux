@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
       // );
       if (role.calculatedPosition > 0) {
         usersWithRank.push({
-          [user.displayName]: {
+          snowflake: {
             user: user
           }
         });
@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
     let randomUser = [usersWithRank[rand]];
 
     randomUser.forEach(user => {
-      console.log(user.user.displayName);
+      console.log(snowflake.user.displayName);
     });
   });
 };
