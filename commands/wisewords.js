@@ -11,9 +11,8 @@ exports.run = (client, message, args) => {
     .replace(`--wisewords`, ``, -1)
     .replace(/-/g, ``, -1);
   let msgArr = msgString.split(` `);
-  let users = message.guild.members;
   let randomUser;
-  getRandomUser(quotes);
+  getRandomUser();
   console.log(randomUser);
 
   // Creat richembed to send
@@ -33,7 +32,8 @@ exports.run = (client, message, args) => {
   message.channel.send({ embed }).catch(console.error);
 
   // Function for getting a random user from the guild
-  function getRandomUser(users) {
+  function getRandomUser() {
+    let users = message.guild.members;
     let usersWithRank = [];
 
     users.forEach(user => {
