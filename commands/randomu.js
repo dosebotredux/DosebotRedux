@@ -14,6 +14,9 @@ exports.run = (client, message, args) => {
       console.log(
         `Role name: ${role.name} Permissions: ${role.calculatedPosition}`
       );
+      if (role.calculatedPosition > 0) {
+        usersWithRank.push(user.displayName);
+      }
     });
   });
 };
