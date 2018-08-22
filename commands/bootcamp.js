@@ -38,7 +38,12 @@ exports.run = (client, message, args) => {
     'You can go to Ireland when you\'ve finished!',
     'Almost done with Seattle partner!',
     'DoseBot believes in you!',
-    'THE GREAT SALT AWAITS YOU'
+    'THE GREAT SALT AWAITS YOU',
+    'You\'ll finally know why your code doesn\'t compile!',
+    'You\'ll finally understand how to work with promises!',
+    'Meetup 2019 - enough said',
+    'The lord\'s work awaits you comrade!',
+    'You\'ll finally experience four seasons!'
   ];
   const random = Math.floor(Math.random() * motivation.length);
 
