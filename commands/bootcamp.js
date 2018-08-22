@@ -43,7 +43,9 @@ exports.run = (client, message, args) => {
     'You\'ll finally understand how to work with promises!',
     'Meetup 2019 - enough said',
     'The lord\'s work awaits you comrade!',
-    'You\'ll finally experience four seasons!'
+    'You\'ll finally experience four seasons!',
+    'https://www.youtube.com/watch?v=TVcLIfSC4OE',
+    'https://www.youtube.com/watch?v=SY-KGRjOM08'
   ];
   const random = Math.floor(Math.random() * motivation.length);
 
