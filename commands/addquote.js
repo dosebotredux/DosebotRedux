@@ -13,9 +13,9 @@ exports.run = (client, message, args) => {
   // '' murty this is a quote
   let str = message.content.replace('--addquote', '', -1).replace(/-/g, '', -1);
   // ['', murty, this, is, a, quote]
-  let strArr = str.split(' ').shift();
-  let author = strArr[0];
-  let quoteToAddArr = strArr.splice(1, strArr.length);
+  let strArr = str.split(' ');
+  let author = strArr[1];
+  let quoteToAddArr = strArr.splice(2, strArr.length);
   let quote = quoteToAddArr.join(' ');
 
   if (message.content.length >= 9) {
