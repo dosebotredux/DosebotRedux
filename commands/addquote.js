@@ -4,19 +4,19 @@ exports.run = (client, message, args) => {
     `**********Executing addquote on ${message.guild.name}**********`
   );
 
-  const MongoClient = require("mongodb").MongoClient;
+  // MongoDB connection
+  const MongoClient = require('mongodb').MongoClient;
   const url = `mongodb://${process.env.MONGO_DB_USER}:${
     process.env.MONGO_DB_PASS
   }@ds121282.mlab.com:21282/dosebot_quotes`;
-  const dbName = "dosebot_quotes";
-
-  // --addquote murty this is a quote
-  let str = message.content.replace(`--addquote`, ``, -1).replace(/-/g, ``, -1);
-  // [murty, this, is, a, quote]
-  let strArr = str.split(` `);
-  let author = strArr[1];
-  let quoteToAddArr = strArr.splice(2, strArr.length);
-  let quote = quoteToAddArr.join(` `);
+  const dbName = 'dosebot_quotes';
+  // '' murty this is a quote
+  let str = message.content.replace('--addquote', '', -1).replace(/-/g, '', -1);
+  // ['', murty, this, is, a, quote]
+  let strArr = str.split(' ').shift();
+  let author = strArr[0];
+  let quoteToAddArr = strArr.splice(1, strArr.length);
+  let quote = quoteToAddArr.join(' ');
 
   if (message.content.length >= 9) {
     console.log(`Adding quote - Author: ${author} Quote: ${quote}`);
@@ -24,9 +24,9 @@ exports.run = (client, message, args) => {
     MongoClient.connect(
       url,
       function(err, client) {
-        console.log(`Connected to Mongo`);
+        console.log('Connected to Mongo');
         const db = client.db(dbName);
-        const collection = db.collection("quotes");
+        const collection = db.collection('quotes');
 
         collection.insertOne({ quote: quote, author: author });
 
@@ -39,7 +39,7 @@ exports.run = (client, message, args) => {
     );
   } else {
     message.channel.send(
-      `**Error**: No quote provided - Syntax: --addquote <author> <quote>`
+      '**Error**: No quote provided - Syntax: --addquote <author> <quote>'
     );
   }
 };
