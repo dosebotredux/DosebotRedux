@@ -1,18 +1,17 @@
-var fs = require("fs");
+var fs = require('fs');
 
 module.exports = function CommandSystem() {
   // Specify the DoseBot command prefix
-  const commandPrefix = "--";
+  const commandPrefix = '--';
   // Initialize an object to hold the list of commands
   var commandTable = {};
 
   return {
     load: function(ready) {
-      fs.readdir("./commands", function(err, items) {
-        var i;
-        for (i = 0; i < items.length; i++) {
+      fs.readdir('./commands', function(err, items) {
+        for (let i = 0; i < items.length; i++) {
           try {
-            var commandName = items[i].replace(/.js$/, "");
+            var commandName = items[i].replace(/.js$/, '');
             commandTable[commandName] = require(`./commands/${commandName}.js`);
           } catch (err) {
             console.error(
@@ -31,8 +30,8 @@ module.exports = function CommandSystem() {
       //   return;
       // }
 
-      if (message.content.startsWith("—")) {
-        message.content = message.content.replace("—", "--");
+      if (message.content.startsWith('—')) {
+        message.content = message.content.replace('—', '--');
       }
 
       if (!message.content.startsWith(commandPrefix)) {
@@ -47,7 +46,7 @@ module.exports = function CommandSystem() {
       const commandName = args.shift().toLowerCase();
       const commandFunction = commandTable[commandName];
 
-      if (!!commandFunction) {
+      if (commandFunction) {
         try {
           commandFunction.run(client, message, args);
         } catch (err) {
