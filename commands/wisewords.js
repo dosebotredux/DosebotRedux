@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const wiseWords = require("wisdom-of-chopra");
+const Discord = require('discord.js');
+const wiseWords = require('wisdom-of-chopra');
 
 // wisewords message
 exports.run = (client, message, args) => {
@@ -7,24 +7,23 @@ exports.run = (client, message, args) => {
     `**********Executing wisewords on ${message.guild.name}**********`
   );
   let msgString = message.content
-    .replace(`--wisewords`, ``, -1)
-    .replace(/-/g, ``, -1);
-  let msgArr = msgString.split(` `);
+    .replace('--wisewords', '', -1)
+    .replace(/-/g, '', -1);
   let randomUser;
   getRandomUser();
 
   // Create richembed to send
   const embed = new Discord.RichEmbed()
-    .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-    .setColor("747474")
+    .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+    .setColor('747474')
     .setFooter(
-      "Please use drugs responsibly",
-      "https://i.imgur.com/7R8WDwE.png"
+      'Please use drugs responsibly',
+      'https://i.imgur.com/7R8WDwE.png'
     )
     .setTimestamp()
-    .setURL("http://www.dosebot.org")
+    .setURL('http://www.dosebot.org')
     .setThumbnail(generateThumbnail())
-    .addField("Wise Words", `*${generateQuote()}*\n-${generateName()}`);
+    .addField('Wise Words', `*${generateQuote()}*\n-${generateName()}`);
 
   // SEND IT
   message.channel.send({ embed }).catch(console.error);

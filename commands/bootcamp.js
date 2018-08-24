@@ -45,7 +45,15 @@ exports.run = (client, message, args) => {
     'The lord\'s work awaits you comrade!',
     'You\'ll finally experience four seasons!',
     'https://www.youtube.com/watch?v=TVcLIfSC4OE',
-    'https://www.youtube.com/watch?v=SY-KGRjOM08'
+    'https://www.youtube.com/watch?v=SY-KGRjOM08',
+    'https://www.youtube.com/watch?v=5fuuwM0Afqo',
+    'Architect the revolution of your dreams!',
+    'Trump will be thrown out of office when you graduate!',
+    'What do you mean "spaghetti code"?',
+    'You\'ll finally understand why people comment their code!',
+    'Glorious days await!',
+    'Can\'t do a deep dive into deep dream until you finish!',
+    'Buenos Aires? More like Buenos Ayyyyyyyyyyres ;)'
   ];
   const random = Math.floor(Math.random() * motivation.length);
 
