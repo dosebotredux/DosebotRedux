@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 // Avatar message
 exports.run = (client, message, args) => {
   console.log(`**********Executing avatar on ${message.guild.name}**********`);
