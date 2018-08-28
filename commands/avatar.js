@@ -3,7 +3,14 @@ const Discord = require('discord.js');
 // Avatar message
 exports.run = (client, message, args) => {
   console.log(`**********Executing avatar on ${message.guild.name}**********`);
-  const avatar = message.author.avatarURL;
+  let avatar = message.author.avatarURL;
+  const mentionedUsers = [];
+
+  if (message.mentions) {
+    message.mentions.users.forEach(function(user) {
+      avatar = user.avatarURL;
+    });
+  }
 
   const embed = new Discord.RichEmbed()
     .setTitle('DoseBot Avatar Service')
