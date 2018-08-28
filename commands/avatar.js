@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
     .setColor('747474')
     .setURL('http://www.dosebot.org')
-    .attachFile(avatar);
+    .setImage(avatar);
 
   message.channel.send({ embed });
 };
