@@ -9,5 +9,5 @@ exports.run = (client, message, args) => {
 
   const messageString = str.toUpperCase();
 
-  message.channel.send(outputArr.join('')).catch(console.error);
+  message.channel.send(messageString).catch(console.error);
 };
