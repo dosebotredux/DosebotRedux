@@ -4,5 +4,5 @@ exports.run = (client, message, args) => {
     `**********Executing Lord's Work on ${message.guild.name}**********`
   );
 
-  message.channel.send("https://i.imgur.com/1RGqN6y.jpg").catch(console.error);
+  message.channel.send('https://i.imgur.com/1RGqN6y.jpg').catch(console.error);
 };
