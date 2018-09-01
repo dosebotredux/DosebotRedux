@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
 
   let str = message.content
     .toLowerCase()
-    .replace('--sponge ', '', -1)
+    .replace('--katcase ', '', -1)
     .replace(/-/g, '', -1);
 
   const messageString = str.toUpperCase();
