@@ -49,7 +49,6 @@ exports.run = (client, message, args) => {
     let randomUserArr = [usersWithRank[rand]];
 
     randomUserArr.forEach(user => {
-      console.log(user.snowflake.data);
       randomUser = user.snowflake.data;
     });
   }
