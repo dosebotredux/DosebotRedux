@@ -191,6 +191,7 @@ exports.run = (client, message, args) => {
 
   // Function for toggling a role
   function toggleRole(isPermanent, roleToApply, author, substance, dosage) {
+    console.log(`In toggleRole Author is: ${author}`);
     if (isPermanent) {
       console.log('toggling permanent role');
       // let nickName = author.displayName;
@@ -209,7 +210,7 @@ exports.run = (client, message, args) => {
         // Restores nickname
         // restoreNickname();
         // Removes role
-        unassignRole(roleToApply);
+        unassignRole(roleToApply, author);
       } else {
         console.log('Author does not currently have role');
         // Sets trip nickname
@@ -235,7 +236,7 @@ exports.run = (client, message, args) => {
         // Restores nickname
         restoreNickname();
         // Removes role
-        unassignRole(roleToApply);
+        unassignRole(roleToApply, author);
       } else {
         console.log('Author does not currently have role');
         // Sets trip nickname
@@ -248,6 +249,8 @@ exports.run = (client, message, args) => {
 
   // Function for checking if a user has a role
   function checkIfUserHasRole(author, roleToApply) {
+    console.log(`In checkIfUserHasRole Author is: ${author}`);
+
     if (author.roles.find(role => role.name === roleToApply.name)) {
       return true;
     }
