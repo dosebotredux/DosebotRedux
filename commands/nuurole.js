@@ -110,10 +110,10 @@ exports.run = (client, message, args) => {
     // Now that we have the desired guild role snowflake we can check if its temporary or permanent
     if (checkIfRoleIsTemporary(desiredRole, acceptableTemporaryRoles)) {
       console.log('Role is temporary');
-      toggleRole(false, desiredGuildRole, substance, dosage);
+      toggleRole(false, desiredGuildRole, author, substance, dosage);
     } else if (checkIfRoleIsPermanent(desiredRole, acceptablePermanentRoles)) {
       console.log('Role is permanent');
-      toggleRole(true, desiredGuildRole, substance, dosage);
+      toggleRole(true, desiredGuildRole, author, substance, dosage);
     }
   } else {
     // Send a message saying role can't be assigned
@@ -190,7 +190,7 @@ exports.run = (client, message, args) => {
   }
 
   // Function for toggling a role
-  function toggleRole(isPermanent, roleToApply, substance, dosage) {
+  function toggleRole(isPermanent, roleToApply, author, substance, dosage) {
     if (isPermanent) {
       console.log('toggling permanent role');
       // let nickName = author.displayName;
