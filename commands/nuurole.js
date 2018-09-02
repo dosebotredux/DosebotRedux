@@ -311,7 +311,7 @@ exports.run = (client, message, args) => {
         delay(28800000).then(() => {
           // 28800000ms
           console.log(
-            `Removed **${roleToApply.name}** from ${author.displayName}`
+            `Removed **${roleToApply.name}** from ${message.author.id}`
           );
           unassignRole(roleToApply, author);
           restoreNickname();
@@ -323,7 +323,7 @@ exports.run = (client, message, args) => {
 
   // Function for unassigning role
   function unassignRole(roleToApply, author) {
-    console.log(`Removed **${desiredRole}** from ${author.displayName}`);
+    console.log(`Removed **${desiredRole}** from ${message.author.id}`);
     author.removeRole(roleToApply.id).catch(console.error);
     message.channel.send(
       `Removed **${desiredRole}** from <@${message.author.id}>`
