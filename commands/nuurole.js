@@ -94,7 +94,11 @@ exports.run = (client, message, args) => {
 
   console.log(`Desired role: ${desiredRole}`);
   // Log the result of a find operation on the desired role
-  console.log(`Results: ${guildRoles.find(role => role.name === desiredRole)}`);
+  console.log(
+    `Results: ${guildRoles.find(
+      role => role.name.toLowerCase() === desiredRole
+    )}`
+  );
 
   // Checks to see if the desiredRole is equal to any role object's name property
   if (checkIfGuildHasDesiredRole(guildRoles, desiredRole)) {
@@ -114,7 +118,9 @@ exports.run = (client, message, args) => {
   } else {
     // Send a message saying role can't be assigned
     console.log('cannot apply role');
-    message.channel.send(`Error: DoseBot cannot assign role **${desiredRole}`);
+    message.channel.send(
+      `Error: DoseBot cannot assign role **${desiredRole}**`
+    );
   }
 
   // Check to see if the current server has role exceptions
