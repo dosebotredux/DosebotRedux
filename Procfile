@@ -1,1 +1,1 @@
-worker: forever --minUptime 1000 refactor.js 
+worker: forever --minUptime 1000 bot.js

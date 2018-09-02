@@ -2,7 +2,7 @@
   "name": "DoseBot",
   "version": "3.0.0",
   "description": "Dosage bot",
-  "main": "refactor.js",
+  "main": "bot.js",
   "repository": "https://github.com/GabrielMorris/discordbot.git",
   "author": "CocoaBunny",
   "license": "Unlicense",
@@ -28,6 +28,6 @@
     "eslint-plugin-import": "^2.13.0"
   },
   "scripts": {
-    "start": "node refactor.js"
+    "start": "node bot.js"
   }
 }
