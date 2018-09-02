@@ -307,23 +307,23 @@ exports.run = (client, message, args) => {
       const delay = duration =>
         new Promise(resolve => setTimeout(resolve, duration));
       // Delay for 8 hours then remove role
-      const asyncFunc = () => {
+      const asyncFunc = author => {
         delay(28800000).then(() => {
           // 28800000ms
           console.log(
-            `Removed **${roleToApply.name}** from ${message.author.id}`
+            `Removed **${roleToApply.name}** from ${author.displayName}`
           );
           unassignRole(roleToApply, author);
           restoreNickname();
         });
       };
-      asyncFunc();
+      asyncFunc(author);
     }
   }
 
   // Function for unassigning role
   function unassignRole(roleToApply, author) {
-    console.log(`Removed **${desiredRole}** from ${message.author.id}`);
+    console.log(`Removed **${desiredRole}** from ${author.displayName}`);
     author.removeRole(roleToApply.id).catch(console.error);
     message.channel.send(
       `Removed **${desiredRole}** from <@${message.author.id}>`
