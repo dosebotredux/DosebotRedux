@@ -84,6 +84,35 @@ exports.run = (client, message, args) => {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === 'he/him') {
       toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'she/her') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'they/them') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'any pronouns') { // test this one
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 've/ver') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'e/em/eir') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'earthling') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'pup/pupself') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'shi/hir') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'kit/kitself') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'fel/feline') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'it/its') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'per/perself') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'meow') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    } else if (desiredGuildRole.name.toLowerCase() === 'rib/ribbit') {
+      toggleRole(desiredGuildRole, author, substance, dosage);
+    }
     } else {
       // Send message stating role cannot be assigned
       message.channel.send(
