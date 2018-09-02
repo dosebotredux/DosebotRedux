@@ -1,19 +1,19 @@
-const Discord = require("discord.js");
-const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
-const rp = require("request-promise");
+const Discord = require('discord.js');
+const sanitizeSubstanceName = require('../include/sanitize-substance-name.js');
+const rp = require('request-promise');
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing combos on ${message.guild.name}**********`);
 
-  const { request } = require("graphql-request");
+  const { request } = require('graphql-request');
 
   var str = message.content;
   var drug = str
     .toLowerCase()
-    .replace("--combos ", "", -1)
-    .replace(/-/g, "", -1);
+    .replace('--combos ', '', -1)
+    .replace(/-/g, '', -1);
 
-  let drugArr = drug.split(" ");
+  let drugArr = drug.split(' ');
   console.log(drugArr);
   let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
     drugArr[0]
@@ -35,11 +35,12 @@ exports.run = (client, message, args) => {
 
         comboArr.sort();
 
-        let channelMessage = comboArr.join("\n");
+        let channelMessage = comboArr.join('\n');
         createComboMessage(channelMessage, message, name);
       })
       .catch(function(err) {
         console.log(err);
+        message.channel.send(`Error getting ${drug} combos from TripSit API`);
       });
   } else if (drugArr.length > 1) {
     rp(tripSitURL)
@@ -58,14 +59,15 @@ exports.run = (client, message, args) => {
 
         comboArr.sort();
 
-        let channelMessage = comboArr.join("\n");
+        let channelMessage = comboArr.join('\n');
         createComboMessage(channelMessage, message, name);
       })
       .catch(function(err) {
         console.log(err);
+        message.channel.send(`Error getting ${drug} combos from TripSit API`);
       });
   } else {
-    message.channel.send(`Error: Tell Cocoa to stop writing spaghetti code`);
+    message.channel.send('Error: Tell Cocoa to stop writing spaghetti code');
   }
 
   //// Functions
@@ -73,16 +75,16 @@ exports.run = (client, message, args) => {
   function createComboMessage(combos, message, name) {
     const embed = new Discord.RichEmbed()
       .setTitle(`**${name} combo information**`)
-      .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-      .setColor("747474")
+      .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+      .setColor('747474')
       .setFooter(
-        "Please use drugs responsibly",
-        "https://i.imgur.com/7R8WDwE.png"
+        'Please use drugs responsibly',
+        'https://i.imgur.com/7R8WDwE.png'
       )
-      .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+      .setThumbnail('https://i.imgur.com/7R8WDwE.png')
       .setTimestamp()
-      .setURL("http://www.dosebot.org")
-      .addField(`Combos`, combos);
+      .setURL('http://www.dosebot.org')
+      .addField('Combos', combos);
 
     message.channel.send({ embed });
   }
