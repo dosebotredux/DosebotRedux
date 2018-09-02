@@ -136,6 +136,7 @@ exports.run = (client, message, args) => {
   function returnGuildHasDesiredRoleException(guildID, desiredRole) {
     if (roleExceptions[guildID][desiredRole]) {
       console.log('returning from exception list');
+      console.log(`returning ${roleExceptions[guildID][desiredRole]}`);
       return roleExceptions[guildID][desiredRole];
     }
     console.log('returning original desiredRole');
@@ -144,12 +145,14 @@ exports.run = (client, message, args) => {
 
   // Function for checking if guild has the desired role
   function checkIfGuildHasDesiredRole(guildRolesSnowflake, desiredRole) {
+    console.log('Checking if guild has desired role');
     if (
       guildRolesSnowflake.find(role => role.name.toLowerCase() === desiredRole)
     ) {
       console.log('Guild has desired role');
       return true;
     }
+    console.log('Guild does not have desired role');
     return false;
   }
 
