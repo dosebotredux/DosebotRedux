@@ -182,7 +182,7 @@ exports.run = (client, message, args) => {
     permanentArray.forEach(role => {
       if (role === desiredRole) {
         console.log('Role is permanent and found');
-        return true;
+        roleIsPermanent = true;
       }
     });
     console.log(`Desired role: ${desiredRole} - Permanent: ${roleIsPermanent}`);
