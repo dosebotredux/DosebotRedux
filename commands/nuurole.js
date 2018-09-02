@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
   // Set desired role
   let desiredRole = str
     .toLowerCase()
-    .replace('--role ', '', -1)
+    .replace('--nuurole ', '', -1)
     .replace(/-/g, '', -1); // "role"
 
   // Split desiredRole into an array and then capture the first string
