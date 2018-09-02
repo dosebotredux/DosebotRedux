@@ -165,7 +165,7 @@ exports.run = (client, message, args) => {
 
   // Function for checking if role is temporary
   function checkIfRoleIsTemporary(desiredRole, temporaryArray) {
-    let roleIsTemporary;
+    let roleIsTemporary = false;
     temporaryArray.forEach(role => {
       if (role === desiredRole) {
         console.log('Role is temporary and found');
@@ -178,7 +178,8 @@ exports.run = (client, message, args) => {
 
   // Function for checking if a role is permanent
   function checkIfRoleIsPermanent(desiredRole, permanentArray) {
-    let roleIsPermanent = permanentArray.forEach(role => {
+    let roleIsPermanent = false;
+    permanentArray.forEach(role => {
       if (role === desiredRole) {
         console.log('Role is permanent and found');
         return true;
@@ -203,7 +204,7 @@ exports.run = (client, message, args) => {
       // }
 
       // Conditional to determine whether user has role
-      if (checkIfUserHasRole(author, desiredGuildRole)) {
+      if (checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
         // Restores nickname
         // restoreNickname();
@@ -229,7 +230,7 @@ exports.run = (client, message, args) => {
       }
 
       // Conditional to determine whether user has role
-      if (checkIfUserHasRole(author, desiredGuildRole)) {
+      if (checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
         // Restores nickname
         restoreNickname();
