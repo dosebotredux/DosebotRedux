@@ -165,10 +165,11 @@ exports.run = (client, message, args) => {
 
   // Function for checking if role is temporary
   function checkIfRoleIsTemporary(desiredRole, temporaryArray) {
-    let roleIsTemporary = temporaryArray.forEach(role => {
+    let roleIsTemporary;
+    temporaryArray.forEach(role => {
       if (role === desiredRole) {
         console.log('Role is temporary and found');
-        return true;
+        roleIsTemporary = true;
       }
     });
     console.log(`Desired role: ${desiredRole} - Temporary: ${roleIsTemporary}`);
