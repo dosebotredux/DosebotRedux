@@ -16,9 +16,7 @@ The **drug abuse epidemic** that has been sweeping the the United States has cos
 - --effectinfo [effect] => Provides information on a given effect from the Effect Index
 - --effects [substance] => Provides a list of random effects for a given substance
 - --info [substance] => Provides an information sheet on a given substance with various pieces of harm reduction information
-- --library [search string] => Searches The Eye's library of psychedelic literature
 - --psychtolerance [days since last trip] => Provides adjusted dosages accounting for tolerance, also provides a warning
-- --randomeffect => Gets a random effect and posts it to the server
 - --sei => Links the Subjective Effect Index
 - --triptoy => Provides a triptoy
 - --video => Posts a random trippy video
@@ -31,4 +29,4 @@ Currently this project is maintained by Cocoa, voreskin, maethor, and josikinz.
 
 1.  Clone repo
 2.  `npm install` to download dependencies
-3.  `node refactor.js` to start bot
+3.  `node bot.js` to start bot
