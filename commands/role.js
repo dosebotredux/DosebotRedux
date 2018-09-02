@@ -88,7 +88,8 @@ exports.run = (client, message, args) => {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === 'they/them') {
       toggleRole(desiredGuildRole, author, substance, dosage);
-    } else if (desiredGuildRole.name.toLowerCase() === 'any pronouns') { // test this one
+    } else if (desiredGuildRole.name.toLowerCase() === 'any pronouns') {
+      // test this one
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === 've/ver') {
       toggleRole(desiredGuildRole, author, substance, dosage);
@@ -112,7 +113,6 @@ exports.run = (client, message, args) => {
       toggleRole(desiredGuildRole, author, substance, dosage);
     } else if (desiredGuildRole.name.toLowerCase() === 'rib/ribbit') {
       toggleRole(desiredGuildRole, author, substance, dosage);
-    }
     } else {
       // Send message stating role cannot be assigned
       message.channel.send(
