@@ -72,26 +72,12 @@ exports.run = (client, message, args) => {
     // Now that we have the desired guild role snowflake we can check if its temporary or permanent
     if (Roles.checkIfRoleIsTemporary(desiredRole, acceptableTemporaryRoles)) {
       console.log('Role is temporary');
-      toggleRole(
-        false,
-        desiredGuildRole,
-        author,
-        substance,
-        dosage,
-        desiredRole
-      );
+      toggleRole(false, desiredGuildRole, author, substance, dosage);
     } else if (
       Roles.checkIfRoleIsPermanent(desiredRole, acceptablePermanentRoles)
     ) {
       console.log('Role is permanent');
-      toggleRole(
-        true,
-        desiredGuildRole,
-        author,
-        substance,
-        dosage,
-        desiredRole
-      );
+      toggleRole(true, desiredGuildRole, author, substance, dosage);
     }
   } else {
     // Send a message saying role can't be assigned
@@ -102,14 +88,7 @@ exports.run = (client, message, args) => {
   }
 
   // Function for toggling a role
-  function toggleRole(
-    isPermanent,
-    roleToApply,
-    author,
-    substance,
-    dosage,
-    desiredRole
-  ) {
+  function toggleRole(isPermanent, roleToApply, author, substance, dosage) {
     console.log(`In toggleRole Author is: ${author}`);
     if (isPermanent) {
       console.log('toggling permanent role');
@@ -117,16 +96,10 @@ exports.run = (client, message, args) => {
       if (Roles.checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
 
-        Roles.unassignRole(roleToApply, author, message, desiredRole);
+        Roles.unassignRole(roleToApply, author, message);
       } else {
         console.log('Author does not currently have role');
-        Roles.assignRole(
-          roleToApply,
-          author,
-          isPermanent,
-          message,
-          desiredRole
-        );
+        Roles.assignRole(roleToApply, author, isPermanent, message);
       }
     } else if (!isPermanent) {
       console.log('toggling temporary role');
@@ -146,19 +119,13 @@ exports.run = (client, message, args) => {
         // Restores nickname
         Roles.restoreNickname(message);
         // Removes role
-        Roles.unassignRole(roleToApply, author, message, desiredRole);
+        Roles.unassignRole(roleToApply, author, message);
       } else {
         console.log('Author does not currently have role');
         // Sets trip nickname
         Roles.setTripNickName(nickName, nickNameModifier, message);
         // Adds role
-        Roles.assignRole(
-          roleToApply,
-          author,
-          isPermanent,
-          message,
-          desiredRole
-        );
+        Roles.assignRole(roleToApply, author, isPermanent, message);
       }
     }
   }

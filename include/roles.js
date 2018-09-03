@@ -151,7 +151,7 @@ function restoreNickname(message) {
 }
 
 // Function for unassigning role
-function unassignRole(roleToApply, author, message, desiredRole) {
+function unassignRole(roleToApply, author, message) {
   console.log(`Removed **${roleToApply.name}** from ${author.displayName}`);
   author.removeRole(roleToApply.id).catch(console.error);
   message.channel.send(
@@ -186,7 +186,7 @@ function checkIfUserHasRole(author, roleToApply) {
 }
 
 // Function for adding a role
-function assignRole(roleToApply, author, isPermanent, message, desiredRole) {
+function assignRole(roleToApply, author, isPermanent, message) {
   console.log('were in assignRole');
   author.addRole(roleToApply.id).catch(console.error);
   console.log(`Added ${roleToApply.name} to <@${message.author.id}>`);
