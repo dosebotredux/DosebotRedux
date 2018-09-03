@@ -30,6 +30,8 @@ exports.run = (client, message, args) => {
     }
   });
 
+  console.log(temporaryRoles);
+  console.log(permanentRoles);
   console.log(availabeTemporaryRoles);
   console.log(availabePermanentRoles);
 
