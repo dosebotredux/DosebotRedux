@@ -8,12 +8,13 @@ module.exports = function CommandSystem() {
 
   return {
     load: function(ready) {
-      fs.readdir('./commands', function(err, items, path) {
-        console.log(path);
+      fs.readdir('./commands', function(err, items) {
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
-            commandTable[commandName] = require(`./commands/${commandName}.js`);
+            commandTable[commandName] =
+              require(`./commands/${commandName}.js`) ||
+              require(`./commands/memes/${commandName}`);
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
