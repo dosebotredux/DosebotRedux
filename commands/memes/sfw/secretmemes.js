@@ -1,54 +1,23 @@
 const Discord = require('discord.js');
-//displays list of memes. in future should scan commands directory and display info for each programmatically/dynamically
+var fs = require('fs');
+// Displays list of memes
 exports.run = (client, message, args) => {
   console.log(
     `**********Displaying secretmemes on ${message.guild.name}**********`
   );
-  const SFW_MEMES_ARR = [
-    '--alexis',
-    '--apple',
-    '--catfeud',
-    '--catgirl',
-    '--cocoa',
-    '--communism',
-    '--deepgraham',
-    '--etizolab',
-    '--evebnire',
-    '--fourthdimension',
-    '--frogmodai',
-    '--geometry',
-    '--graham',
-    '--greentea',
-    '--harmreduction',
-    '--heart',
-    '--illusion',
-    '--josie',
-    '--justicio',
-    '--kaylee',
-    '--kayleetriggered',
-    '--lordswork',
-    '--luxury',
-    '--mascot',
-    '--rob',
-    '--sadgraham',
-    '--shay',
-    '--uwotm8',
-    '--zen',
-    '--dust',
-    '--obligatory',
-    '--wisewords',
-    '--kat',
-    '--kat2',
-    '--apple',
-    '--ivey',
-    '--doris',
-    '--donot',
-    '--deeplord',
-    '--bootcamp',
-    '--katcase [text]',
-    '--sponge [text]'
-  ];
-  const NSFW_MEMES_ARR = ['--dck', '--dong', '--nsfwmascot'];
+  const SFW_MEMES_ARR = [];
+  const NSFW_MEMES_ARR = [];
+
+  fs.readdir('./commands/memes/sfw', function(items) {
+    for (let i = 0; i < items.length; i++) {
+      SFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
+    }
+  });
+  fs.readdir('./commands/memes/nsfw', function(items) {
+    for (let i = 0; i < items.length; i++) {
+      NSFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
+    }
+  });
 
   const embed = new Discord.RichEmbed()
     .setTitle('DoseBot Memes')
