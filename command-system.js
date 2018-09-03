@@ -8,12 +8,11 @@ module.exports = function CommandSystem() {
 
   return {
     load: function(ready) {
-      fs.readdir('./commands', function(err, items) {
-        console.log(items);
+      fs.readdir('./commands', function(err, items, path) {
+        console.log(path);
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
-
             commandTable[commandName] = require(`./commands/${commandName}.js`);
           } catch (err) {
             console.error(
