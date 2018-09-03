@@ -7,10 +7,12 @@
   "author": "CocoaBunny",
   "license": "Unlicense",
   "dependencies": {
+    "bufferutil": "^4.0.0",
     "discord-anti-spam": "^1.1.1",
     "discord.io": "^2.5.3",
     "discord.js": "^11.4.2",
     "dotenv": "^5.0.1",
+    "erlpack": "github:hammerandchisel/erlpack",
     "forever": "^0.15.3",
     "graphql": "^0.13.2",
     "graphql-request": "^1.5.2",
