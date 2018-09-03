@@ -1,6 +1,6 @@
 // About message
-const Discord = require("discord.js");
-const rp = require("request-promise");
+const Discord = require('discord.js');
+const rp = require('request-promise');
 
 exports.run = (client, message, args) => {
   console.log(
@@ -9,12 +9,12 @@ exports.run = (client, message, args) => {
 
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content; // --betaeffects acuity enhancement
-  var result = str.split(" "); // [--betaeffects, acuity, enhancement]
+  var result = str.split(' '); // [--betaeffects, acuity, enhancement]
   var effect = str
     .toLowerCase()
-    .replace("--effectinfo ", "", -1)
-    .replace(/-/g, "", -1)
-    .replace(/ /g, "-", -1); // acuity enhancement
+    .replace('--effectinfo ', '', -1)
+    .replace(/-/g, '', -1)
+    .replace(/ /g, '-', -1); // acuity enhancement
 
   console.log(`effect: ${effect}`);
 
@@ -27,21 +27,21 @@ exports.run = (client, message, args) => {
       console.log(effectInfo.effect.summary_raw);
 
       const embed = new Discord.RichEmbed()
-        .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-        .setColor("747474")
+        .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+        .setColor('747474')
         .setFooter(
-          "Please use drugs responsibly",
-          "https://i.imgur.com/7R8WDwE.png"
+          'Please use drugs responsibly',
+          'https://i.imgur.com/7R8WDwE.png'
         )
-        .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+        .setThumbnail('https://i.imgur.com/7R8WDwE.png')
         .setTimestamp()
-        .setURL("http://www.dosebot.org")
+        .setURL('http://www.dosebot.org')
         .setImage(createReplicationField(effectInfo))
         .addField(
           `**${createEffectFieldTitle(effectInfo)} summary**`,
           createSummaryField(effectInfo)
         )
-        .addField(`Links`, createLinksField(effect, effectInfo));
+        .addField('Links', createLinksField(effect, effectInfo));
 
       message.channel.send({ embed });
     })
@@ -68,13 +68,14 @@ exports.run = (client, message, args) => {
 
   function createReplicationField(effectJSON) {
     if (effectJSON.effect.replications.length > 1) {
-      const replicationName = effectJSON.effect.replications[0].resource;
+      const replicationName = effectJSON.effect.social_media_image;
+
       const replicationURL = `https://www.effectindex.com/img/gallery/${replicationName}`;
 
       return replicationURL;
     } else {
       // Return a blank image if no replicaiton is for as richembed fields cant be empty
-      return `https://i.imgur.com/3mENLpk.png`;
+      return 'https://i.imgur.com/3mENLpk.png';
     }
   }
 };
