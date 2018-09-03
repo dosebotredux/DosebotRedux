@@ -151,11 +151,11 @@ function restoreNickname(message) {
 }
 
 // Function for unassigning role
-function unassignRole(roleToApply, author, message) {
-  console.log(`Removed **${desiredRole}** from ${author.displayName}`);
+function unassignRole(roleToApply, author, message, desiredRole) {
+  console.log(`Removed **${roleToApply.name}** from ${author.displayName}`);
   author.removeRole(roleToApply.id).catch(console.error);
   message.channel.send(
-    `Removed **${desiredRole}** from <@${message.author.id}>`
+    `Removed **${roleToApply.name}** from <@${message.author.id}>`
   );
 }
 
@@ -186,12 +186,14 @@ function checkIfUserHasRole(author, roleToApply) {
 }
 
 // Function for adding a role
-function assignRole(roleToApply, author, isPermanent, message) {
+function assignRole(roleToApply, author, isPermanent, message, desiredRole) {
   console.log('were in assignRole');
   author.addRole(roleToApply.id).catch(console.error);
-  console.log(`Added ${desiredRole} to <@${message.author.id}>`);
+  console.log(`Added ${roleToApply.name} to <@${message.author.id}>`);
   // Send message to channel
-  message.channel.send(`Added **${desiredRole}** to <@${message.author.id}>`);
+  message.channel.send(
+    `Added **${roleToApply.name}** to <@${message.author.id}>`
+  );
 
   // Check if role is permanent and remove only if it is not
   if (!isPermanent) {
