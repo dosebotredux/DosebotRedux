@@ -2,7 +2,7 @@
 exports.run = (client, message, args) => {
   console.log(`**********Executing Roles on ${message.guild.name}**********`);
   const Discord = require('discord.js');
-  const roles = require('../include/roles.js');
+  const roles = require('../../include/roles.js');
 
   const guildRoles = message.guild.roles;
   const temporaryRoles = roles.getTemporaryRoles();

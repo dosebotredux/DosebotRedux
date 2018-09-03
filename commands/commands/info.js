@@ -1,4 +1,4 @@
-const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
+const sanitizeSubstanceName = require("../../include/sanitize-substance-name.js");
 const Discord = require("discord.js");
 const customsJSON = require("../include/customs.json");
 
@@ -32,7 +32,7 @@ exports.run = (client, message, args) => {
   if (hasCustom == false) {
     console.log(`Requesting info for ${drug} on ${message.guild.name}`);
     // Loads GraphQL query as "query" variable
-    let query = require("../queries/info.js").info(drug);
+    let query = require("../../queries/info.js").info(drug);
     request("https://api.psychonautwiki.org", query)
       .then(data => {
         // Logs API's returned object of requested substance

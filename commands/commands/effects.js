@@ -1,24 +1,24 @@
-const Discord = require("discord.js");
-const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
+const Discord = require('discord.js');
+const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing effects on ${message.guild.name}**********`);
 
-  const { request } = require("graphql-request");
+  const { request } = require('graphql-request');
 
   var str = message.content;
-  var result = str.split(" ");
+  var result = str.split(' ');
   var drug = str
     .toLowerCase()
-    .replace("--effects ", "", -1)
-    .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+    .replace('--effects ', '', -1)
+    .replace(/-/g, '', -1)
+    .replace(/ /g, '', -1); //removes all symbols and puts everything in lower case so bot finds the images easier
   drug = sanitizeSubstanceName(drug);
 
   // loads graphql query from separate file as "query" variable
-  const query = require("../queries/effects.js").effect(drug);
+  const query = require('../../queries/effects.js').effect(drug);
 
-  request("https://api.psychonautwiki.org", query)
+  request('https://api.psychonautwiki.org', query)
     .then(data => {
       console.log(data); // SHOW ME WHAT YOU GOT
 
@@ -43,17 +43,17 @@ exports.run = (client, message, args) => {
 
       const embed = new Discord.RichEmbed()
         .setTitle(`${substance.name} effect information`)
-        .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-        .setColor("747474")
+        .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+        .setColor('747474')
         .setFooter(
-          "Please use drugs responsibly",
-          "https://i.imgur.com/7R8WDwE.png"
+          'Please use drugs responsibly',
+          'https://i.imgur.com/7R8WDwE.png'
         )
-        .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+        .setThumbnail('https://i.imgur.com/7R8WDwE.png')
         .setTimestamp()
-        .setURL("http://www.dosebot.org")
-        .addField(`Effects (randomly selected)`, createEffectsList(substance))
-        .addField(`More information`, createFullEffectListLink(substance));
+        .setURL('http://www.dosebot.org')
+        .addField('Effects (randomly selected)', createEffectsList(substance))
+        .addField('More information', createFullEffectListLink(substance));
 
       message.channel.send({ embed }).catch(console.error);
     })
@@ -72,7 +72,7 @@ function createEffectsList(substance) {
   }
 
   randomNumberArray.forEach(element => {
-    namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, "_"));
+    namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, '_'));
   });
 
   var messages = [];
@@ -85,7 +85,7 @@ function createEffectsList(substance) {
       }](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`
     );
   }
-  return messages.join("\n");
+  return messages.join('\n');
 }
 
 function createFullEffectListLink(substance) {

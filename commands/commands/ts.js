@@ -1,18 +1,18 @@
-const sanitizeSubstanceName = require("../include/sanitize-substance-name.js");
-const Discord = require("discord.js");
-const rp = require("request-promise");
+const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
+const Discord = require('discord.js');
+const rp = require('request-promise');
 
 // Mascot lol
 exports.run = (client, message, args) => {
   console.log(`**********Executing TS on ${message.guild.name}**********`);
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
-  var result = str.split(" ");
+  var result = str.split(' ');
   var drug = str
     .toLowerCase()
-    .replace("--ts ", "", -1)
-    .replace(/-/g, "", -1)
-    .replace(/ /g, "", -1);
+    .replace('--ts ', '', -1)
+    .replace(/-/g, '', -1)
+    .replace(/ /g, '', -1);
 
   // Sanitizes input names to match PsychonautWiki API names
   drug = sanitizeSubstanceName(drug);
@@ -35,26 +35,26 @@ exports.run = (client, message, args) => {
   function createTSChannelMessage(substance, message) {
     const embed = new Discord.RichEmbed()
       .setTitle(`**${substance.pretty_name} drug information**`)
-      .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-      .setColor("747474")
+      .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+      .setColor('747474')
       .setFooter(
-        "Please use drugs responsibly",
-        "https://i.imgur.com/7R8WDwE.png"
+        'Please use drugs responsibly',
+        'https://i.imgur.com/7R8WDwE.png'
       )
-      .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+      .setThumbnail('https://i.imgur.com/7R8WDwE.png')
       .setTimestamp()
-      .setURL("http://www.dosebot.org")
-      .addField(":scales: __Dosages__", `${buildTSDosageField(substance)}\n`)
-      .addField(":clock2: __Duration__", `${buildTSDurationField(substance)}\n`)
+      .setURL('http://www.dosebot.org')
+      .addField(':scales: __Dosages__', `${buildTSDosageField(substance)}\n`)
+      .addField(':clock2: __Duration__', `${buildTSDurationField(substance)}\n`)
       .addField(
-        ":globe_with_meridians: __Links__",
+        ':globe_with_meridians: __Links__',
         buildTSLinksField(substance)
       );
     message.channel.send({ embed }).catch(console.error);
 
     // Capitalization function
     function capitalize(name) {
-      if (name === "lsa") {
+      if (name === 'lsa') {
         return name.toUpperCase();
       } else {
         return name[0].toUpperCase() + name.slice(1);

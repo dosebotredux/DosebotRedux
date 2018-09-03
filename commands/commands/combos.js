@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const sanitizeSubstanceName = require('../include/sanitize-substance-name.js');
+const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
 const rp = require('request-promise');
 
 exports.run = (client, message, args) => {
