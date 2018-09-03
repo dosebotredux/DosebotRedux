@@ -1,12 +1,12 @@
-const sanitizeSubstanceName = require("../../include/sanitize-substance-name.js");
-const Discord = require("discord.js");
-const customsJSON = require("../include/customs.json");
+const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
+const Discord = require('discord.js');
+const customsJSON = require('../../include/customs.json');
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing info on ${message.guild.name}**********`);
 
-  const { request } = require("graphql-request");
-  const rp = require("request-promise");
+  const { request } = require('graphql-request');
+  const rp = require('request-promise');
 
   // For keeping track of whether or not a substance is found in the custom sheets
   var hasCustom;
@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
 
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(drug)) {
-    console.log("Pulling from custom");
+    console.log('Pulling from custom');
     hasCustom = true;
 
     // Find the location of the substance object in the JSON and set substance
@@ -25,15 +25,15 @@ exports.run = (client, message, args) => {
 
     createPWChannelMessage(substance, message);
   } else {
-    console.log("Pulling from PW");
+    console.log('Pulling from PW');
     hasCustom = false;
   }
 
   if (hasCustom == false) {
     console.log(`Requesting info for ${drug} on ${message.guild.name}`);
     // Loads GraphQL query as "query" variable
-    let query = require("../../queries/info.js").info(drug);
-    request("https://api.psychonautwiki.org", query)
+    let query = require('../../queries/info.js').info(drug);
+    request('https://api.psychonautwiki.org', query)
       .then(data => {
         // Logs API's returned object of requested substance
         console.log(data);
@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
         // Send a message to channel if there are zero or more than one substances returned by the API
         // Not sure if the API in its current configuration can return more than one substance
         if (data.substances.length === 0) {
-          console.log(`Pulling from TS`);
+          console.log('Pulling from TS');
           let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
           rp(tripSitURL)
             .then(function(response) {
@@ -77,7 +77,7 @@ exports.run = (client, message, args) => {
         }
       })
       .catch(function(error) {
-        console.log("Promise rejected/errored out");
+        console.log('Promise rejected/errored out');
         console.log(error);
       });
 
@@ -91,49 +91,49 @@ exports.run = (client, message, args) => {
 function createPWChannelMessage(substance, message) {
   const embed = new Discord.RichEmbed()
     .setTitle(`**${capitalize(substance.name)} drug information**`)
-    .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-    .setColor("747474")
-    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+    .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+    .setColor('747474')
+    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
     .setFooter(
-      "Please use drugs responsibly",
-      "https://i.imgur.com/7R8WDwE.png"
+      'Please use drugs responsibly',
+      'https://i.imgur.com/7R8WDwE.png'
     )
     .setTimestamp()
-    .setURL("http://www.dosebot.org")
+    .setURL('http://www.dosebot.org')
     .addField(
-      ":telescope: __Class__",
+      ':telescope: __Class__',
       buildChemicalClassField(substance) +
         buildPsychoactiveClassField(substance)
     )
-    .addField(":scales: __Dosages__", `${buildDosageField(substance)}\n`, true)
+    .addField(':scales: __Dosages__', `${buildDosageField(substance)}\n`, true)
     .addField(
-      ":clock2: __Duration__",
+      ':clock2: __Duration__',
       `${buildDurationField(substance)}\n`,
       true
     )
     .addField(
-      ":warning: __Addiction potential__",
+      ':warning: __Addiction potential__',
       buildAddictionPotentialField(substance),
       true
     )
     .addField(
-      ":chart_with_upwards_trend: __Tolerance__",
+      ':chart_with_upwards_trend: __Tolerance__',
       `${buildToleranceField(substance)}\n`,
       true
     )
-    .addField(":globe_with_meridians: __Links__", buildLinksField(substance));
+    .addField(':globe_with_meridians: __Links__', buildLinksField(substance));
 
   message.channel.send({ embed });
 }
 // Custom sheet functions
 //// Check if the requested substance is in the customs.json file
 function checkIfCustomSheet(drug) {
-  console.log("drug: " + drug);
+  console.log('drug: ' + drug);
   if (
-    drug == "ayahuasca" ||
-    drug == "datura" ||
-    drug == "salvia" ||
-    drug == "lsa"
+    drug == 'ayahuasca' ||
+    drug == 'datura' ||
+    drug == 'salvia' ||
+    drug == 'lsa'
   ) {
     return true;
   } else {
@@ -167,7 +167,7 @@ function locateCustomSheetLocation(drug) {
 
 // Capitalization function
 function capitalize(name) {
-  if (name === "lsa") {
+  if (name === 'lsa') {
     return name.toUpperCase();
   } else {
     return name[0].toUpperCase() + name.slice(1);
@@ -179,30 +179,30 @@ function buildToleranceField(substance) {
   let tolerances = substance.tolerance;
   let toleranceArr = [];
 
-  if (!!tolerances) {
+  if (tolerances) {
     let createToleranceString = function(string, tolerance) {
       return `**${capitalize(string)}**: ${tolerance}`;
     };
 
     let pushToleranceToArray = function(toleranceTier, tolerance) {
-      if (!!tolerance) {
+      if (tolerance) {
         toleranceArr.push(createToleranceString(toleranceTier, tolerance));
       }
     };
 
     // If substance does not have standard tolerances return the custom tolerance
-    if (substance.name == "ayahuasca" || substance.name == "salvia") {
+    if (substance.name == 'ayahuasca' || substance.name == 'salvia') {
       return substance.tolerance.tolerance;
     } else {
       // return standard tolerances
-      pushToleranceToArray(`full`, tolerances.full);
-      pushToleranceToArray(`half`, tolerances.half);
-      pushToleranceToArray(`baseline`, tolerances.zero);
+      pushToleranceToArray('full', tolerances.full);
+      pushToleranceToArray('half', tolerances.half);
+      pushToleranceToArray('baseline', tolerances.zero);
 
-      return toleranceArr.join("\n");
+      return toleranceArr.join('\n');
     }
   } else {
-    return `No information`;
+    return 'No information';
   }
 }
 
@@ -220,8 +220,8 @@ function buildDosageField(substance) {
       let unit = dose.units;
 
       // If there's a dose return dose + unit
-      if (!!dosageTier) {
-        if (typeof dosageTier == "number") {
+      if (dosageTier) {
+        if (typeof dosageTier === 'number') {
           return `${dosageTier}${unit}`;
         }
         // If there's a dose range return dose range + unit
@@ -236,43 +236,43 @@ function buildDosageField(substance) {
 
     // Function to push dosage message to array
     let pushDosageToMessageArray = function(phaseString, phase) {
-      if (!!phase) {
+      if (phase) {
         messages.push(createMessageString(phaseString, phase));
       }
     };
 
-    if (substance.name == "ayahuasca" || substance.name == "datura") {
+    if (substance.name == 'ayahuasca' || substance.name == 'datura') {
       // Ayahuasca hardcoded message (can really be used for any substance without standard dosage information)
       messages.push(`*(${name})*`);
 
       // If nonstandard dose add dosage information to messages array
-      if (!!dose) {
+      if (dose) {
         messages.push(`${dose.dosage}`);
-        messages.push("");
+        messages.push('');
       } else {
         // This should really never happen
-        messages.push("No dosage information.");
+        messages.push('No dosage information.');
       }
     } else {
       messages.push(`*(${name})*`);
 
       // Add all dosage information
       // Uses double conditional to prevent massive no information walls
-      if (!!dose) {
-        pushDosageToMessageArray(`threshold`, dose.threshold);
-        pushDosageToMessageArray(`light`, dose.light);
-        pushDosageToMessageArray(`common`, dose.common);
-        pushDosageToMessageArray(`strong`, dose.strong);
-        pushDosageToMessageArray(`heavy`, dose.heavy);
-        messages.push("");
+      if (dose) {
+        pushDosageToMessageArray('threshold', dose.threshold);
+        pushDosageToMessageArray('light', dose.light);
+        pushDosageToMessageArray('common', dose.common);
+        pushDosageToMessageArray('strong', dose.strong);
+        pushDosageToMessageArray('heavy', dose.heavy);
+        messages.push('');
       } else {
         // Or none if there is none
-        messages.push("No dosage information.");
+        messages.push('No dosage information.');
       }
     }
   }
   // Join the message array into a string
-  return messages.join("\n");
+  return messages.join('\n');
 }
 
 function buildDurationField(substance) {
@@ -285,7 +285,7 @@ function buildDurationField(substance) {
     // Parses duration object and returns string
     let durationObjectToString = function(phaseDuration) {
       // If there's a duration range return it + units
-      if (!!phaseDuration) {
+      if (phaseDuration) {
         return `${phaseDuration.min} - ${phaseDuration.max} ${
           phaseDuration.units
         }`;
@@ -300,32 +300,32 @@ function buildDurationField(substance) {
 
     // Function for pushing dosage message to array
     let pushDurationToMessageArray = function(durationString, phase) {
-      if (!!phase) {
+      if (phase) {
         messages.push(createMessageString(durationString, phase));
       }
     };
 
-    if (!!substance.name) {
+    if (substance.name) {
       // Duration
       messages.push(`*(${name})*`);
 
-      if (!!roa.duration) {
-        pushDurationToMessageArray(`onset`, roa.duration.onset);
-        pushDurationToMessageArray(`comeup`, roa.duration.comeup);
-        pushDurationToMessageArray(`peak`, roa.duration.peak);
-        pushDurationToMessageArray(`offset`, roa.duration.offset);
-        pushDurationToMessageArray(`afterglow`, roa.duration.afterglow);
-        pushDurationToMessageArray(`total`, roa.duration.total);
-        messages.push(" ");
+      if (roa.duration) {
+        pushDurationToMessageArray('onset', roa.duration.onset);
+        pushDurationToMessageArray('comeup', roa.duration.comeup);
+        pushDurationToMessageArray('peak', roa.duration.peak);
+        pushDurationToMessageArray('offset', roa.duration.offset);
+        pushDurationToMessageArray('afterglow', roa.duration.afterglow);
+        pushDurationToMessageArray('total', roa.duration.total);
+        messages.push(' ');
       } else {
-        messages.push("No duration information.");
+        messages.push('No duration information.');
       }
     } else {
-      console.log(`Not sure why this would ever happen`);
-      messages.push(`An unknown error has occurred <@278301453620084736>`);
+      console.log('Not sure why this would ever happen');
+      messages.push('An unknown error has occurred <@278301453620084736>');
     }
   }
-  return messages.join("\n");
+  return messages.join('\n');
 }
 
 // Builds the chemical class field
@@ -335,7 +335,7 @@ function buildChemicalClassField(substance) {
       return `**Chemical**: ${substance.class.chemical[0]}`;
     }
   } else {
-    return "No information";
+    return 'No information';
   }
 }
 
@@ -346,7 +346,7 @@ function buildPsychoactiveClassField(substance) {
       return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
     }
   } else {
-    return "No information";
+    return 'No information';
   }
 }
 
@@ -356,7 +356,7 @@ function buildAddictionPotentialField(substance) {
     console.log(substance);
     return `${capitalize(substance.addictionPotential)}\n`;
   } else {
-    return "No information";
+    return 'No information';
   }
 }
 
@@ -370,33 +370,33 @@ function buildLinksField(substance) {
 function createTSChannelMessage(substance, message) {
   const embed = new Discord.RichEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
-    .setAuthor("DoseBot", "https://i.imgur.com/7R8WDwE.png")
-    .setColor("747474")
-    .setThumbnail("https://i.imgur.com/7R8WDwE.png")
+    .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+    .setColor('747474')
+    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
     .setFooter(
-      "Please use drugs responsibly",
-      "https://i.imgur.com/7R8WDwE.png"
+      'Please use drugs responsibly',
+      'https://i.imgur.com/7R8WDwE.png'
     )
     .setTimestamp()
-    .setURL("http://www.dosebot.org")
+    .setURL('http://www.dosebot.org')
     .addField(
-      ":scales: __Dosages__",
+      ':scales: __Dosages__',
       `${buildTSDosageField(substance)}\n`,
       true
     )
     .addField(
-      ":clock2: __Duration__",
+      ':clock2: __Duration__',
       `${buildTSDurationField(substance)}\n`,
       true
     )
-    .addField(":globe_with_meridians: __Links__", buildTSLinksField(substance));
+    .addField(':globe_with_meridians: __Links__', buildTSLinksField(substance));
 
   message.channel.send({ embed }).catch(console.error);
 }
 
 // Capitalization function
 function capitalize(name) {
-  if (name === "lsa") {
+  if (name === 'lsa') {
     return name.toUpperCase();
   } else {
     return name[0].toUpperCase() + name.slice(1);
@@ -424,9 +424,9 @@ function buildTSLinksField(substance) {
 function parseDrugName(string) {
   let unsanitizedDrugName = string
     .toLowerCase()
-    .replace(`--info `, ``, -1)
-    .replace(/-/g, ``, -1)
-    .replace(/ /g, ``, -1);
+    .replace('--info ', '', -1)
+    .replace(/-/g, '', -1)
+    .replace(/ /g, '', -1);
 
   // Sanitizes input names to match PsychonautWiki API names
   return sanitizeSubstanceName(unsanitizedDrugName);
