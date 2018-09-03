@@ -13,26 +13,33 @@ exports.run = (client, message, args) => {
 
   temporaryRoles.forEach(tempRole => {
     if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
-      console.log('found');
       availabeTemporaryRoles.push(tempRole);
-    } else {
-      console.log('not found');
     }
   });
 
   permanentRoles.forEach(tempRole => {
     if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
-      console.log('found');
       availabePermanentRoles.push(tempRole);
-    } else {
-      console.log('not found');
     }
   });
 
-  console.log(temporaryRoles);
-  console.log(permanentRoles);
-  console.log(availabeTemporaryRoles);
-  console.log(availabePermanentRoles);
+  const embed = new Discord.RichEmbed()
+    .setTitle('DoseBot Help')
+    .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+    .setColor('747474')
+    .setFooter(
+      'Please use drugs responsibly',
+      'https://i.imgur.com/7R8WDwE.png'
+    )
+    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
+    .setTimestamp()
+    .setURL('http://www.dosebot.org')
+    .addField('Temporary roles', generateRoleField(availabeTemporaryRoles))
+    .addField('Permanent roles', generateRoleField(availabePermanentRoles));
 
-  // message.channel.send('https://i.imgur.com/mh3gkaz.png').catch(console.error);
+  message.channel.send({ embed });
+
+  function generateRoleField(array) {
+    return array.join('\n');
+  }
 };
