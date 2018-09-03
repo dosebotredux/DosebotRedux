@@ -19,13 +19,7 @@ exports.run = (client, message, args) => {
   //   }
   // });
 
-  fs.readdir('../', function(items) {
-    console.log(items);
-  });
-  fs.readdir('../../', function(items) {
-    console.log(items);
-  });
-  fs.readdir('../../../', function(items) {
+  fs.readdir('/', function(items) {
     console.log(items);
   });
 
