@@ -14,7 +14,16 @@ exports.run = (client, message, args) => {
   temporaryRoles.forEach(tempRole => {
     if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
       console.log('found');
-      temporaryRoles.push(tempRole);
+      availabeTemporaryRoles.push(tempRole);
+    } else {
+      console.log('not found');
+    }
+  });
+
+  permanentRoles.forEach(tempRole => {
+    if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
+      console.log('found');
+      availabePermanentRoles.push(tempRole);
     } else {
       console.log('not found');
     }
