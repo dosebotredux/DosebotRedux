@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
         guildRole.name.toLowerCase() === role;
       })
     );
-    console.log(findRole.name);
+    // console.log(findRole.name);
     console.log(role);
 
     if (findRole) {
