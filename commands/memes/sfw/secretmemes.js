@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const fs = require('fs');
 // Displays list of memes
 exports.run = (client, message, args) => {
   console.log(
