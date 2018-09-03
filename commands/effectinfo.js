@@ -71,7 +71,7 @@ exports.run = (client, message, args) => {
       console.log('we\'re in the right place');
       const replicationName = effectJSON.effect.social_media_image;
 
-      const replicationURL = `https://www.effectindex.com/img/gallery/${replicationName}`;
+      const replicationURL = `https://www.effectindex.com/${replicationName}`;
 
       return replicationURL;
     } else {
