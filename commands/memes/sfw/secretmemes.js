@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-var fs = require('fs');
 // Displays list of memes
 exports.run = (client, message, args) => {
   console.log(
@@ -8,15 +7,25 @@ exports.run = (client, message, args) => {
   const SFW_MEMES_ARR = [];
   const NSFW_MEMES_ARR = [];
 
-  fs.readdir('/commands/memes/sfw', function(items) {
-    for (let i = 0; i < items.length; i++) {
-      SFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
-    }
+  // fs.readdir('/commands/memes/sfw', function(items) {
+  //   for (let i = 0; i < items.length; i++) {
+  //     SFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
+  //   }
+  // });
+  // fs.readdir('/commands/memes/nsfw', function(items) {
+  //   for (let i = 0; i < items.length; i++) {
+  //     NSFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
+  //   }
+  // });
+
+  fs.readdir('../', function(items) {
+    console.log(items);
   });
-  fs.readdir('/commands/memes/nsfw', function(items) {
-    for (let i = 0; i < items.length; i++) {
-      NSFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
-    }
+  fs.readdir('../../', function(items) {
+    console.log(items);
+  });
+  fs.readdir('../../../', function(items) {
+    console.log(items);
   });
 
   const embed = new Discord.RichEmbed()
