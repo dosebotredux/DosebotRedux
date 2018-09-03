@@ -67,7 +67,7 @@ exports.run = (client, message, args) => {
   }
 
   function createReplicationField(effectJSON) {
-    if (effectJSON.effect.replications.length > 1) {
+    if (effectJSON.effect.social_media_image) {
       const replicationName = effectJSON.effect.social_media_image;
 
       const replicationURL = `https://www.effectindex.com/img/gallery/${replicationName}`;
