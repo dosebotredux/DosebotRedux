@@ -12,9 +12,16 @@ module.exports = function CommandSystem() {
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
-            commandTable[commandName] =
-              require(`./commands/${commandName}.js`) ||
-              require(`./commands/memes/${commandName}`);
+            commandTable[commandName] = require(`./commands/${commandName}.js`);
+            try {
+              commandTable[
+                commandName
+              ] = require(`./commands/${commandName}.js`);
+            } catch (error) {
+              commandTable[
+                commandName
+              ] = require(`./commands/memes/${commandName}.js`);
+            }
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
