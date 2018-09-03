@@ -23,9 +23,9 @@ exports.run = (client, message, args) => {
     // console.log(findRole.name);
     console.log(role);
 
-    if (findRole) {
-      temporaryRoles.push(role);
-    }
+    // if (findRole) {
+    //   temporaryRoles.push(role);
+    // }
   });
 
   console.log(guildRoles);
