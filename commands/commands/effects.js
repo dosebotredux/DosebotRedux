@@ -1,18 +1,19 @@
-const Discord = require('discord.js');
-const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
-
 exports.run = (client, message, args) => {
   console.log(`**********Executing effects on ${message.guild.name}**********`);
+  // Modules
+  const Discord = require('discord.js');
+  const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
+  const Effects = require('../../include/effects.js');
 
   const { request } = require('graphql-request');
 
-  var str = message.content;
-  var result = str.split(' ');
-  var drug = str
+  const str = message.content;
+  // Removes all symbols and puts everything in lower case so bot finds the images easier
+  const drug = str
     .toLowerCase()
     .replace('--effects ', '', -1)
     .replace(/-/g, '', -1)
-    .replace(/ /g, '', -1); //removes all symbols and puts everything in lower case so bot finds the images easier
+    .replace(/ /g, '', -1);
   drug = sanitizeSubstanceName(drug);
 
   // loads graphql query from separate file as "query" variable
@@ -52,44 +53,16 @@ exports.run = (client, message, args) => {
         .setThumbnail('https://i.imgur.com/7R8WDwE.png')
         .setTimestamp()
         .setURL('http://www.dosebot.org')
-        .addField('Effects (randomly selected)', createEffectsList(substance))
-        .addField('More information', createFullEffectListLink(substance));
+        .addField(
+          'Effects (randomly selected)',
+          Effects.createEffectsList(substance)
+        )
+        .addField(
+          'More information',
+          Effects.createFullEffectListLink(substance)
+        );
 
       message.channel.send({ embed }).catch(console.error);
     })
     .catch(console.log);
 };
-
-function createEffectsList(substance) {
-  // const substance = data.substances[0];
-  const effects = substance.effects;
-  const numberOfEffects = effects.length;
-  let randomNumberArray = [];
-  let namesUnderscoresRemovedArray = [];
-
-  while (randomNumberArray.length < 10) {
-    randomNumberArray.push(Math.floor(Math.random() * numberOfEffects));
-  }
-
-  randomNumberArray.forEach(element => {
-    namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, '_'));
-  });
-
-  var messages = [];
-
-  // loops through effects and add their name to the message variable
-  for (let i = 0; i < randomNumberArray.length; i++) {
-    messages.push(
-      `-[${
-        effects[randomNumberArray[i]].name
-      }](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`
-    );
-  }
-  return messages.join('\n');
-}
-
-function createFullEffectListLink(substance) {
-  return `These effects were randomly selected from a larger list - [see all effects](https://psychonautwiki.org/wiki/${
-    substance.name
-  }#Subjective_effects)`;
-}
