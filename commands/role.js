@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
   if (Roles.checkIfGuildHasRoleExceptions(message.guild.id)) {
     console.log('exception detected');
     // Set role to either exception or original request role
-    desiredRole = Role.returnGuildHasDesiredRoleException(
+    desiredRole = Roles.returnGuildHasDesiredRoleException(
       message.guild.id,
       desiredRole
     );
