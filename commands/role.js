@@ -289,8 +289,10 @@ exports.run = (client, message, args) => {
     if (message.guild.id === '335167514961248256') {
       nickName = message.member.displayName;
       if (nick !== undefined && nickNameModifier !== undefined) {
-        console.log(`Nickname: ${nick} ${modifier}`);
-        message.member.setNickname(`${nick} ${modifier}`).catch(console.error);
+        console.log(`Nickname: ${nick} ${nickNameModifier}`);
+        message.member
+          .setNickname(`${nick} ${nickNameModifier}`)
+          .catch(console.error);
       } else {
         console.log('Nickname is undefined, not modifying name');
       }
