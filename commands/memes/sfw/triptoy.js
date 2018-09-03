@@ -1,5 +1,5 @@
 // sends a random triptoy to the server
-const toys = require('../../include/triptoys.json');
+const toys = require('../../../include/triptoys.json');
 
 exports.run = (client, message, args) => {
   console.log(`**********Executing triptoy on ${message.guild.name}**********`);
