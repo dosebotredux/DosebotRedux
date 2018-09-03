@@ -63,18 +63,18 @@ exports.run = (client, message, args) => {
   );
 
   // Checks to see if the desiredRole is equal to any role object's name property
-  if (Role.checkIfGuildHasDesiredRole(guildRoles, desiredRole)) {
+  if (Roles.checkIfGuildHasDesiredRole(guildRoles, desiredRole)) {
     // Capture the desired guild role
-    const desiredGuildRole = Role.returnDesiredGuildRoleSnowflake(
+    const desiredGuildRole = Roles.returnDesiredGuildRoleSnowflake(
       guildRoles,
       desiredRole
     );
     // Now that we have the desired guild role snowflake we can check if its temporary or permanent
-    if (Role.checkIfRoleIsTemporary(desiredRole, acceptableTemporaryRoles)) {
+    if (Roles.checkIfRoleIsTemporary(desiredRole, acceptableTemporaryRoles)) {
       console.log('Role is temporary');
       toggleRole(false, desiredGuildRole, author, substance, dosage);
     } else if (
-      Role.checkIfRoleIsPermanent(desiredRole, acceptablePermanentRoles)
+      Roles.checkIfRoleIsPermanent(desiredRole, acceptablePermanentRoles)
     ) {
       console.log('Role is permanent');
       toggleRole(true, desiredGuildRole, author, substance, dosage);
@@ -93,13 +93,13 @@ exports.run = (client, message, args) => {
     if (isPermanent) {
       console.log('toggling permanent role');
       // Conditional to determine whether user has role
-      if (Role.checkIfUserHasRole(author, roleToApply)) {
+      if (Roles.checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
 
-        Role.unassignRole(roleToApply, author);
+        Roles.unassignRole(roleToApply, author);
       } else {
         console.log('Author does not currently have role');
-        Role.assignRole(roleToApply, author, isPermanent);
+        Roles.assignRole(roleToApply, author, isPermanent);
       }
     } else if (!isPermanent) {
       console.log('toggling temporary role');
@@ -114,18 +114,18 @@ exports.run = (client, message, args) => {
       }
 
       // Conditional to determine whether user has role
-      if (Role.checkIfUserHasRole(author, roleToApply)) {
+      if (Roles.checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
         // Restores nickname
-        Role.restoreNickname();
+        Roles.restoreNickname();
         // Removes role
-        Role.unassignRole(roleToApply, author);
+        Roles.unassignRole(roleToApply, author);
       } else {
         console.log('Author does not currently have role');
         // Sets trip nickname
-        Role.setTripNickName(nickName, nickNameModifier);
+        Roles.setTripNickName(nickName, nickNameModifier);
         // Adds role
-        Role.assignRole(roleToApply, author, isPermanent);
+        Roles.assignRole(roleToApply, author, isPermanent);
       }
     }
   }
