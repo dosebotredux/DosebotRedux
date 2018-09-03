@@ -28,7 +28,7 @@ exports.run = (client, message, args) => {
 
   console.log(
     `Author: ${
-      message.author.displayName
+      message.author.username
     } Guild: ${guildID} Channel: ${channelID} Message: ${msg}`
   );
 
