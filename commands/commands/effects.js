@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
 
   const str = message.content;
   // Removes all symbols and puts everything in lower case so bot finds the images easier
-  const let = str
+  let drug = str
     .toLowerCase()
     .replace('--effects ', '', -1)
     .replace(/-/g, '', -1)
