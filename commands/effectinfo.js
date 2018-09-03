@@ -68,12 +68,14 @@ exports.run = (client, message, args) => {
 
   function createReplicationField(effectJSON) {
     if (effectJSON.effect.social_media_image) {
+      console.log('we\'re in the right place');
       const replicationName = effectJSON.effect.social_media_image;
 
       const replicationURL = `https://www.effectindex.com/img/gallery/${replicationName}`;
 
       return replicationURL;
     } else {
+      console.log('we are in the wrong place');
       // Return a blank image if no replicaiton is for as richembed fields cant be empty
       return 'https://i.imgur.com/3mENLpk.png';
     }
