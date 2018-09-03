@@ -8,12 +8,12 @@ exports.run = (client, message, args) => {
   const SFW_MEMES_ARR = [];
   const NSFW_MEMES_ARR = [];
 
-  fs.readdir('../../../commands/memes/sfw', function(items) {
+  fs.readdir('../../../../commands/memes/sfw', function(items) {
     for (let i = 0; i < items.length; i++) {
       SFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
     }
   });
-  fs.readdir('../../../commands/memes/nsfw', function(items) {
+  fs.readdir('../../../../commands/memes/nsfw', function(items) {
     for (let i = 0; i < items.length; i++) {
       NSFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
     }
