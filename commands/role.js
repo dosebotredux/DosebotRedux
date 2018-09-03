@@ -273,11 +273,10 @@ exports.run = (client, message, args) => {
           const letter = currentNickArr[i];
           nickToRestoreArr.push(letter);
         }
+        let nickToRestore = nickToRestoreArr.join('');
+        console.log(`Restoring original nickname: ${nickToRestore}`);
+        message.member.setNickname(nickToRestore).catch(console.error);
       }
-
-      let nickToRestore = nickToRestoreArr.join('');
-      console.log(`Restoring original nickname: ${nickToRestore}`);
-      message.member.setNickname(nickToRestore).catch(console.error);
     } else {
       console.log('Not restoring nickname, no | detected');
     }
