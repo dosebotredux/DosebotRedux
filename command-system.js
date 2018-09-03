@@ -9,27 +9,12 @@ module.exports = function CommandSystem() {
   return {
     load: function(ready) {
       fs.readdir('./commands', function(err, items) {
+        console.log(items);
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
+
             commandTable[commandName] = require(`./commands/${commandName}.js`);
-          } catch (err) {
-            console.error(
-              `Encountered error trying to require command: ${commandName}.js`
-            );
-            console.error(err);
-          }
-        }
-        ready();
-      });
-      fs.readdir('./commands/memes', function(err, items) {
-        for (let i = 0; i < items.length; i++) {
-          try {
-            var commandName = items[i].replace(/.js$/, '');
-            commandTable[
-              commandName
-            ] = require(`./commands/memes/${commandName}.js`);
-            console.log('we have required test');
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
