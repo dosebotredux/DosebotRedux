@@ -10,23 +10,33 @@ exports.run = (client, message, args) => {
   const availabeTemporaryRoles = [];
   const availabePermanentRoles = [];
 
-  temporaryRoles.forEach(role => {
-    if (
-      guildRoles.find(guildRole => {
-        guildRole.name.toLowerCase() === role;
-      })
-    ) {
-      availabeTemporaryRoles.push(role);
-    }
-  });
+  // temporaryRoles.forEach(role => {
+  //   if (
+  //     guildRoles.find(guildRole => {
+  //       guildRole.name.toLowerCase() === role;
+  //     })
+  //   ) {
+  //     availabeTemporaryRoles.push(role);
+  //   }
+  // });
 
-  permanentRoles.forEach(role => {
-    if (
-      guildRoles.find(guildRole => {
-        guildRole.name.toLowerCase() === role;
-      })
-    ) {
-      availabePermanentRoles.push(role);
+  // permanentRoles.forEach(role => {
+  //   if (
+  //     guildRoles.find(guildRole => {
+  //       guildRole.name.toLowerCase() === role;
+  //     })
+  //   ) {
+  //     availabePermanentRoles.push(role);
+  //   }
+  // });
+
+  temporaryRoles.forEach(role => {
+    const findRole = guildRoles.find(
+      guildRole => guildRole.name.toLowerCase() === role
+    );
+
+    if (findRole) {
+      temporaryRoles.push(role);
     }
   });
 
