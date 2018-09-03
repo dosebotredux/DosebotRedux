@@ -1,27 +1,61 @@
 const Discord = require('discord.js');
-const fs = require('fs');
 // Displays list of memes
 exports.run = (client, message, args) => {
   console.log(
     `**********Displaying secretmemes on ${message.guild.name}**********`
   );
-  const SFW_MEMES_ARR = [];
-  const NSFW_MEMES_ARR = [];
-
-  // fs.readdir('/commands/memes/sfw', function(items) {
-  //   for (let i = 0; i < items.length; i++) {
-  //     SFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
-  //   }
-  // });
-  // fs.readdir('/commands/memes/nsfw', function(items) {
-  //   for (let i = 0; i < items.length; i++) {
-  //     NSFW_MEMES_ARR.push(`--${items[i].replace(/.js$/, '')}`);
-  //   }
-  // });
-
-  fs.readdir('/', function(items) {
-    console.log(items);
-  });
+  const SFW_MEMES_ARR = [
+    '--alexis',
+    '--apple',
+    '--bootcamp',
+    '--catfeud',
+    '--cocoa',
+    '--communism',
+    '--deepgraham',
+    '--deeplord',
+    '--donot',
+    '--doris',
+    '--dust',
+    '--etizolab',
+    '--evebnire',
+    '--fourthdimension',
+    '--frogmodai',
+    '--geometry',
+    '--graham',
+    '--greentea',
+    '--harmreduction',
+    '--heart',
+    '--illusion',
+    '--ivey',
+    '--josie',
+    '--justicio',
+    '--kat',
+    '--kat2',
+    '--katcase',
+    '--kaylee',
+    '--kayleetriggered',
+    '--lordswork',
+    '--luxury',
+    '--mascot',
+    '--rob',
+    '--sadgraham',
+    '--secretmemes',
+    '--shay',
+    '--sponge',
+    '--thelordswork',
+    '--triptoy',
+    '--uwotm8',
+    '--video',
+    '--wisewords',
+    '--zen'
+  ];
+  const NSFW_MEMES_ARR = [
+    '--dck',
+    '--dong',
+    '--josildo',
+    '--math',
+    '--nsfwmascot'
+  ];
 
   const embed = new Discord.RichEmbed()
     .setTitle('DoseBot Memes')
