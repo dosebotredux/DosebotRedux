@@ -40,6 +40,9 @@ exports.run = (client, message, args) => {
   message.channel.send({ embed });
 
   function generateRoleField(array) {
-    return array.join('\n');
+    if (array.length > 0) {
+      return array.join('\n');
+    }
+    return 'No roles';
   }
 };
