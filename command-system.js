@@ -29,7 +29,7 @@ module.exports = function CommandSystem() {
             var commandName = items[i].replace(/.js$/, '');
             commandTable[
               commandName
-            ] = require(`./commands/memes/${commandName}.js`);
+            ] = require(`./commands/memes/sfw/${commandName}.js`);
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
@@ -45,7 +45,7 @@ module.exports = function CommandSystem() {
             var commandName = items[i].replace(/.js$/, '');
             commandTable[
               commandName
-            ] = require(`./commands/memes/${commandName}.js`);
+            ] = require(`./commands/memes/nsfw/${commandName}.js`);
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
