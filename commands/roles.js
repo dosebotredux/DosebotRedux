@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
   temporaryRoles.forEach(role => {
     if (
       guildRoles.find(guildRole => {
-        guildRole === role;
+        guildRole.name.toLowerCase() === role;
       })
     ) {
       availabeTemporaryRoles.push(role);
@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
   permanentRoles.forEach(role => {
     if (
       guildRoles.find(guildRole => {
-        guildRole === role;
+        guildRole.name.toLowerCase() === role;
       })
     ) {
       availabePermanentRoles.push(role);
