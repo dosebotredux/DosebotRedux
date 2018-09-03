@@ -34,6 +34,8 @@ exports.run = (client, message, args) => {
     const findRole = guildRoles.find(
       guildRole => guildRole.name.toLowerCase() === role
     );
+    console.log(findRole.name);
+    console.log(role);
 
     if (findRole) {
       temporaryRoles.push(role);
