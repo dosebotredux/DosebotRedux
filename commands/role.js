@@ -194,28 +194,13 @@ exports.run = (client, message, args) => {
     console.log(`In toggleRole Author is: ${author}`);
     if (isPermanent) {
       console.log('toggling permanent role');
-      // let nickName = author.displayName;
-      // let nickNameModifier;
-
-      // Modify nickname is substance and dosage are provided
-      // if (substance !== ' ') {
-      //   nickNameModifier = ` | ${substance} ${dosage}`;
-      // } else {
-      //   nickNameModifier = ' ';
-      // }
-
       // Conditional to determine whether user has role
       if (checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
-        // Restores nickname
-        // restoreNickname();
-        // Removes role
+
         unassignRole(roleToApply, author);
       } else {
         console.log('Author does not currently have role');
-        // Sets trip nickname
-        // setTripNickName(nickName, nickNameModifier);
-        // Adds role
         assignRole(roleToApply, author, isPermanent);
       }
     } else if (!isPermanent) {
