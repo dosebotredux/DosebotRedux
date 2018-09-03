@@ -30,7 +30,6 @@ const acceptablePermanentRoles = [
   'fel/feline',
   'it/its',
   'per/perself',
-  'meow',
   'rib/ribbit'
 ];
 
