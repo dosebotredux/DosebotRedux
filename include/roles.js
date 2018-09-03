@@ -126,7 +126,7 @@ function returnGuildHasDesiredRoleException(guildID, desiredRole) {
 }
 
 // Function for restoring nickname
-function restoreNickname() {
+function restoreNickname(message) {
   // Only set nickname on Psychedelic Experience
   if (message.guild.id === '335167514961248256') {
     let currentNick = message.member.displayName;
@@ -151,7 +151,7 @@ function restoreNickname() {
 }
 
 // Function for unassigning role
-function unassignRole(roleToApply, author) {
+function unassignRole(roleToApply, author, message) {
   console.log(`Removed **${desiredRole}** from ${author.displayName}`);
   author.removeRole(roleToApply.id).catch(console.error);
   message.channel.send(
@@ -160,7 +160,7 @@ function unassignRole(roleToApply, author) {
 }
 
 // Function for setting a trip nickname
-function setTripNickName(nick, nickNameModifier) {
+function setTripNickName(nick, nickNameModifier, message) {
   // Only set nickname on Psychedelic Experience
   if (message.guild.id === '335167514961248256') {
     nickName = message.member.displayName;
@@ -186,7 +186,7 @@ function checkIfUserHasRole(author, roleToApply) {
 }
 
 // Function for adding a role
-function assignRole(roleToApply, author, isPermanent) {
+function assignRole(roleToApply, author, isPermanent, message) {
   console.log('were in assignRole');
   author.addRole(roleToApply.id).catch(console.error);
   console.log(`Added ${desiredRole} to <@${message.author.id}>`);

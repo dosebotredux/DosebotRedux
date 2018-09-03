@@ -96,10 +96,10 @@ exports.run = (client, message, args) => {
       if (Roles.checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
 
-        Roles.unassignRole(roleToApply, author);
+        Roles.unassignRole(roleToApply, author, message);
       } else {
         console.log('Author does not currently have role');
-        Roles.assignRole(roleToApply, author, isPermanent);
+        Roles.assignRole(roleToApply, author, isPermanent, message);
       }
     } else if (!isPermanent) {
       console.log('toggling temporary role');
@@ -117,15 +117,15 @@ exports.run = (client, message, args) => {
       if (Roles.checkIfUserHasRole(author, roleToApply)) {
         console.log('Author currently has role');
         // Restores nickname
-        Roles.restoreNickname();
+        Roles.restoreNickname(message);
         // Removes role
-        Roles.unassignRole(roleToApply, author);
+        Roles.unassignRole(roleToApply, author, message);
       } else {
         console.log('Author does not currently have role');
         // Sets trip nickname
-        Roles.setTripNickName(nickName, nickNameModifier);
+        Roles.setTripNickName(nickName, nickNameModifier, message);
         // Adds role
-        Roles.assignRole(roleToApply, author, isPermanent);
+        Roles.assignRole(roleToApply, author, isPermanent, message);
       }
     }
   }
