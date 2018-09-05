@@ -1,29 +1,25 @@
 # DoseBot
 
-**DoseBot** is a harm reduction Discord bot that can be used to provide server users with a variety of useful harm reduction information from the [PsychonautWiki](https://www.psychonautwiki.org) to promote safer use of recreational compounds.
+**DoseBot** is a harm reduction Discord bot used by over 72,000 users across 73 Discord servers that is used to provide users with a variety of useful harm reduction information from [PsychonautWiki](https://www.psychonautwiki.org) and effect information from [Effect Index](https://www.effectindex.com).
 
-**Harm reduction** is "the set of practical strategies and ideas at reducing negative consequences associated with drug use. Harm reduction is also a movement for social justice built on a belief in, and respect for, the rights of people who use drugs." [Harm Reduction Coalition](http://harmreduction.org/about-us/principles-of-harm-reduction/).
+**Harm reduction** is the set of practical strategies and ideas at reducing negative consequences associated with substance use. Harm reduction is also a movement for social justice built on a belief in, and respect for, the rights of people who use substances - [Harm Reduction Coalition](http://harmreduction.org/about-us/principles-of-harm-reduction/).
 
-The **drug abuse epidemic** that has been sweeping the the United States has cost 63,600 lives in 2016 alone [CDC](https://www.cdc.gov/nchs/products/databriefs/db294.htm), with a median age of 20. Our hope is that by providing accurate, scientifically backed best practices for substance use that we may reduce this number significantly, but we consider even one life saved a success.
+The **drug abuse epidemic** that has been sweeping the the United States has cost 63,600 lives in 2016 alone [CDC](https://www.cdc.gov/nchs/products/databriefs/db294.htm), with a median age of 20. Every day DoseBot provides scientifically backed best practices to tens of thousands of users that helps save lives.
 
-## Commands
+## Features
 
-- --about => Displays information about DoseBot
-- --badtrip => Provides user with information useful during a bad trip
-- --bobross => Links a random, calming Bob Ross video
-- --combochart => Links a substance combination safety chart
-- --dxmcalc [weight in lbs] => Calculates safe dosages for DXM by weight
-- --effectinfo [effect] => Provides information on a given effect from the Effect Index
-- --effects [substance] => Provides a list of random effects for a given substance
-- --info [substance] => Provides an information sheet on a given substance with various pieces of harm reduction information
-- --psychtolerance [days since last trip] => Provides adjusted dosages accounting for tolerance, also provides a warning
-- --sei => Links the Subjective Effect Index
-- --triptoy => Provides a triptoy
-- --video => Posts a random trippy video
+- Substance harm reduction information
+- Combination safety information
+- Role management system
+- Effect information
+- Tolerance calculators
+- Quote management system
+- HRT information
+- Hilarious memes
 
 ## Contributors
 
-Currently this project is maintained by Cocoa, voreskin, maethor, and josikinz.
+Currently this project is maintained by [Cocoa](https://effectindex.com/profiles/Gabriel) with contributions from [Josikinz](https://effectindex.com/profiles/Josie), and Maethor.
 
 ## Usage
 
