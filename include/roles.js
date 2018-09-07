@@ -11,6 +11,7 @@ const acceptableTemporaryRoles = [
   'hungover',
   'delirious',
   'altered',
+  'baked',
   'baked🔥',
   'tripping💓'
 ];
