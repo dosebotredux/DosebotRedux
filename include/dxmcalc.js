@@ -30,7 +30,7 @@ function generateDosageField(weight) {
   **Second plateau**: ${dosageObject.lightMaxCommonMin}-${
   dosageObject.commonMaxStrongMin
 }mg
-  **Third plateau**: ${dosageObject.commonMaxStrongMin}${
+  **Third plateau**: ${dosageObject.commonMaxStrongMin}-${
   dosageObject.strongMaxHeavy
 }mg
   **Fourth plateau**: ${dosageObject.strongMaxHeavy}+mg`;
