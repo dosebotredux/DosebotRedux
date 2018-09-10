@@ -23,16 +23,16 @@ client.on('guildCreate', guild => {
 client.on('message', message => {
   CommandSystem.execute(client, message);
   // if we've got a message in sed
-  if (message.guild.id === '332288651394547712') {
-    // we need to find the server
-    const server = message.guild;
-    // and find the channel
-    const loggedChannel = server.channels.find(channel => {
-      return channel.id === '488784584138293268';
-    });
+  // if (message.guild.id === '332288651394547712') {
+  //   // we need to find the server
+  //   const server = message.guild;
+  //   // and find the channel
+  //   const loggedChannel = server.channels.find(channel => {
+  //     return channel.id === '488784584138293268';
+  //   });
 
-    loggedChannel.send('Test');
-  }
+  //   loggedChannel.send('Test');
+  // }
 });
 
 //
