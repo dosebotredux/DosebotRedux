@@ -32,10 +32,10 @@ client.on('message', message => {
       return channel.id === '488784584138293268';
     });
 
-    const author = message.author.id;
-    const message = message.content;
-    const loggedMessage = `<@${author}> - ${message}`;
-    console.log(loggedMessage);
+    // const author = message.author.id;
+    // const message = message.content;
+    // const loggedMessage = `<@${author}> - ${message}`;
+    // console.log(loggedMessage);
 
     // loggingChannel.send(
     //   `Author: ${message.author.name} - Message: ${message.content}`
