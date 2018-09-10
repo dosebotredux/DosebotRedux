@@ -34,6 +34,12 @@ client.on('message', message => {
     // });
 
     // loggedChannel.send('Test');
+    const server = message.guild;
+    const loggingChannel = server.channels.find(channel => {
+      channel.id === '488784584138293268';
+    });
+
+    console.log(`logging channel is ${loggingChannel.name}`);
   }
 });
 
