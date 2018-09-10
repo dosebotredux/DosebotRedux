@@ -22,7 +22,7 @@ client.on('guildCreate', guild => {
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
-  Logger.execute(client, message);
+  // Logger.execute(client, message);
   CommandSystem.execute(client, message);
 });
 
