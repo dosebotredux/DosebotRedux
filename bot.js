@@ -36,11 +36,11 @@ client.on('message', message => {
     // loggedChannel.send('Test');
     const server = message.guild;
     const loggingChannel = server.channels.find(channel => {
-      channel.id === '488784584138293268';
+      return channel.id === '488784584138293268';
     });
     console.log(loggingChannel);
     server.channels.forEach(channel => {
-      console.log(channel.name);
+      console.log(channel.name, channel.id);
     });
 
     // console.log(`logging channel is ${loggingChannel}`);
