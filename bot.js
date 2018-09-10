@@ -21,8 +21,6 @@ client.on('guildCreate', guild => {
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
-  CommandSystem.execute(client, message);
-  // if we've got a message in sed
   if (message.guild.id === '332288651394547712') {
     console.log('message on SED');
     console.log(message.content);
@@ -41,6 +39,7 @@ client.on('message', message => {
     //   `Author: ${message.author.name} - Message: ${message.content}`
     // );
   }
+  CommandSystem.execute(client, message);
 });
 
 //
