@@ -39,9 +39,9 @@ client.on('message', message => {
       return channel.id === '488784584138293268';
     });
 
-    loggingChannel.send(
-      `Author: ${message.author.name} - Message: ${message.content}`
-    );
+    // loggingChannel.send(
+    //   `Author: ${message.author.name} - Message: ${message.content}`
+    // );
   }
 });
 
