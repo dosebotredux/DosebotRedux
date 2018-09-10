@@ -35,9 +35,7 @@ client.on('message', message => {
     const loggedMessage = `<@${author}> - ${messageContent}`;
     console.log(loggedMessage);
 
-    loggingChannel.send(
-      `Author: ${message.author.name} - Message: ${message.content}`
-    );
+    loggingChannel.send(loggedMessage);
   }
   CommandSystem.execute(client, message);
 });
