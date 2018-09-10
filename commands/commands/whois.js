@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
         .addField('Name', user.username)
         .addField('Status', user.presence.status)
         .addField('Registered', user.createdAt)
-        .addField('Last message', user.lastMessage)
+        .addField('Last message', user.lastMessage.content)
         .addField('ID', user.id);
 
       message.channel.send({ embed });
