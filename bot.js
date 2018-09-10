@@ -31,8 +31,8 @@ client.on('message', message => {
     });
 
     const author = message.author.id;
-    const message = message.content;
-    const loggedMessage = `<@${author}> - ${message}`;
+    const messageContent = message.content;
+    const loggedMessage = `<@${author}> - ${messageContent}`;
     console.log(loggedMessage);
 
     loggingChannel.send(
