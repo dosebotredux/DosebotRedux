@@ -22,7 +22,7 @@ client.on('guildCreate', guild => {
 // Pass messages to the CommandSystem
 client.on('message', message => {
   if (message.guild.id === '332288651394547712' && !message.author.bot) {
-    const servers = client.servers;
+    const servers = client.guilds;
     const loggingServer = servers.find(server => {
       return server.id === '469206008078663691';
     });
