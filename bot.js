@@ -45,8 +45,8 @@ client.on('message', message => {
       .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
       .setColor('747474')
       .setURL('http://www.dosebot.org')
-      .addField('Author', message.author.username)
-      .addField('Message', message.content);
+      .addField('Author', message.author.username || '')
+      .addField('Message', message.content || '');
 
     loggingChannel.send({ embed });
   }
