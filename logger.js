@@ -13,9 +13,11 @@ module.exports = function Logger() {
         const author = message.author.username;
         const messageContent = message.content;
         const channelName = message.channel.name;
-        const loggedMessage = `Channel: ${channelName}
-        Author: ${author}
-        Message: ${messageContent}`;
+        const loggedMessage = `
+        **Channel: ${channelName}**
+        **Author:** ${author}
+        **Message:** ${messageContent}
+        `;
 
         loggingChannel.send(loggedMessage);
       }
