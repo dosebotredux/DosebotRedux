@@ -38,12 +38,17 @@ client.on('message', message => {
     const loggingChannel = server.channels.find(channel => {
       return channel.id === '488784584138293268';
     });
-    // console.log(loggingChannel);
-    // server.channels.forEach(channel => {
-    //   console.log(channel.name, channel.id);
-    // });
+    // console.log(`logging channel is ${loggingChannel.name}`);
 
-    console.log(`logging channel is ${loggingChannel.name}`);
+    const embed = new Discord.RichEmbed()
+      .setTitle('DoseBot Intelligence Service')
+      .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+      .setColor('747474')
+      .setURL('http://www.dosebot.org')
+      .addField('Author', message.author.username)
+      .addField('Message', message.content);
+
+    loggingChannel.send({ embed });
   }
 });
 
@@ -61,14 +66,6 @@ function updateGameMessage() {
   let servercount = 0;
 
   servers.forEach(guild => {
-    // if (guild.id == "264445053596991498") {
-    //   console.log("Ignoring bot server");
-    // } else if (guild.id == "110373943822540800") {
-    //   console.log("Ignoring bot server");
-    // } else {
-    //   userCount += guild.memberCount;
-    //   servercount++;
-    // }
     userCount += guild.memberCount;
     servercount++;
     console.log(
