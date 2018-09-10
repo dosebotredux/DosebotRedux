@@ -21,22 +21,22 @@ client.on('guildCreate', guild => {
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
-  // if (message.guild.id === '332288651394547712') {
-  //   console.log('message on SED');
-  //   console.log(message.content);
+  if (message.guild.id === '332288651394547712' && !message.author.bot) {
+    console.log('message on SED');
+    console.log(message.content);
 
-  //   const server = message.guild;
-  //   const loggingChannel = server.channels.find(channel => {
-  //     return channel.id === '488784584138293268';
-  //   });
+    const server = message.guild;
+    const loggingChannel = server.channels.find(channel => {
+      return channel.id === '488784584138293268';
+    });
 
-  //   const author = message.author.id;
-  //   const messageContent = message.content;
-  //   const loggedMessage = `<@${author}> - ${messageContent}`;
-  //   console.log(loggedMessage);
+    const author = message.author.id;
+    const messageContent = message.content;
+    const loggedMessage = `<@${author}> - ${messageContent}`;
+    console.log(loggedMessage);
 
-  //   loggingChannel.send(loggedMessage);
-  // }
+    loggingChannel.send(loggedMessage);
+  }
   CommandSystem.execute(client, message);
 });
 
