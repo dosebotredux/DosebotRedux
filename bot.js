@@ -22,18 +22,18 @@ client.on('guildCreate', guild => {
 // Pass messages to the CommandSystem
 client.on('message', message => {
   if (message.guild.id === '332288651394547712' && !message.author.bot) {
-    console.log('message on SED');
-    console.log(message.content);
-
-    const server = message.guild;
-    const loggingChannel = server.channels.find(channel => {
-      return channel.id === '488784584138293268';
+    const servers = client.servers;
+    const loggingServer = servers.find(server => {
+      return server.id === '469206008078663691';
+    });
+    const loggingChannel = loggingServer.channels.find(channel => {
+      return channel.id === '488796522692083713';
     });
 
-    const author = message.author.id;
+    const author = message.author.username;
     const messageContent = message.content;
-    const loggedMessage = `<@${author}> - ${messageContent}`;
-    console.log(loggedMessage);
+    const channelName = message.channel.name;
+    const loggedMessage = `${channelName} - ${author} - ${messageContent}`;
 
     loggingChannel.send(loggedMessage);
   }
