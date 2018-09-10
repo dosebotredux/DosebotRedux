@@ -38,8 +38,12 @@ client.on('message', message => {
     const loggingChannel = server.channels.find(channel => {
       channel.id === '488784584138293268';
     });
+    console.log(loggingChannel);
+    server.channels.forEach(channel => {
+      console.log(channel.name);
+    });
 
-    console.log(`logging channel is ${loggingChannel.name}`);
+    // console.log(`logging channel is ${loggingChannel}`);
   }
 });
 
