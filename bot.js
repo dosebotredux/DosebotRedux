@@ -26,18 +26,16 @@ client.on('message', message => {
   if (message.guild.id === '332288651394547712') {
     console.log('message on SED');
     console.log(message.content);
-    // // we need to find the server
-    // const server = message.guild;
-    // // and find the channel
-    // const loggedChannel = server.channels.find(channel => {
-    //   return channel.id === '488784584138293268';
-    // });
 
-    // loggedChannel.send('Test');
     const server = message.guild;
     const loggingChannel = server.channels.find(channel => {
       return channel.id === '488784584138293268';
     });
+
+    const author = message.author.id;
+    const message = message.content;
+    const loggedMessage = `<@${author}> - ${message}`;
+    console.log(loggedMessage);
 
     // loggingChannel.send(
     //   `Author: ${message.author.name} - Message: ${message.content}`
