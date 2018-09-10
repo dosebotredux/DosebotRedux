@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require('./command-system.js')();
+const Logger = require('./logger')();
 
 // On ready logic
 client.on('ready', () => {
@@ -21,26 +22,10 @@ client.on('guildCreate', guild => {
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
-  if (message.guild.id === '332288651394547712' && !message.author.bot) {
-    const servers = client.guilds;
-    const loggingServer = servers.find(server => {
-      return server.id === '469206008078663691';
-    });
-    const loggingChannel = loggingServer.channels.find(channel => {
-      return channel.id === '488796522692083713';
-    });
-
-    const author = message.author.username;
-    const messageContent = message.content;
-    const channelName = message.channel.name;
-    const loggedMessage = `${channelName} - ${author} - ${messageContent}`;
-
-    loggingChannel.send(loggedMessage);
-  }
+  Logger.execute(client, message);
   CommandSystem.execute(client, message);
 });
 
-//
 CommandSystem.load(function() {
   console.log('Command system loaded.');
 });
