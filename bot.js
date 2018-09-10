@@ -38,17 +38,10 @@ client.on('message', message => {
     const loggingChannel = server.channels.find(channel => {
       return channel.id === '488784584138293268';
     });
-    // console.log(`logging channel is ${loggingChannel.name}`);
 
-    const embed = new Discord.RichEmbed()
-      .setTitle('DoseBot Intelligence Service')
-      .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
-      .setColor('747474')
-      .setURL('http://www.dosebot.org')
-      .addField('Author', message.author.username || '')
-      .addField('Message', message.content || '');
-
-    loggingChannel.send({ embed });
+    loggingChannel.send(
+      `Author: ${message.author.name} - Message: ${message.content}`
+    );
   }
 });
 
