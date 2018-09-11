@@ -18,9 +18,7 @@ exports.run = (client, message, args) => {
 
     const coin = rand > 50 ? 'heads' : 'tails';
 
-    const channelMessage = `**${author}** tossed a coin and got **${
-      coin.toUpperCase
-    }**`;
+    const channelMessage = `**${author}** tossed a coin and got **${coin.toUpperCase()}**`;
 
     return channelMessage;
   }
