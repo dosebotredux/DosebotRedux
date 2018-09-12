@@ -23,6 +23,9 @@ client.on('guildCreate', guild => {
 // Pass messages to the CommandSystem
 client.on('message', message => {
   // Logger.execute(client, message);
+  if (message.author.id === '371151824331210755') {
+    message.channel.send('<@371151824331210755> is a disgusting slut');
+  }
   CommandSystem.execute(client, message);
 });
 
