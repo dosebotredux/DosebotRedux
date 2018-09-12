@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
-// Panic attack command
+// Coin flip
 exports.run = (client, message, args) => {
-  console.log(`**********Executing breathe on ${message.guild.name}**********`);
+  console.log(`**********Executing coin on ${message.guild.name}**********`);
 
   const embed = new Discord.RichEmbed()
     .setTitle('DoseBot Coin Flipping Service')
