@@ -117,9 +117,9 @@ module.exports = function KatSpeaker() {
         'dummy'
       ];
       const adejectives = ['goddamn', 'fucking', 'miserable', 'worthless'];
-      const rand = Math.floor(Math.random() * 20);
+      const rand = Math.floor(Math.random() * 100);
 
-      if (rand > 10) {
+      if (rand > 50) {
         const meanThingsRand = Math.floor(Math.random() * meanThings.length);
         const adjectivesRand = Math.floor(Math.random() * adejectives.length);
 
