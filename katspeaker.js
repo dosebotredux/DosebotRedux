@@ -1,4 +1,4 @@
-module.exports = function Logger() {
+module.exports = function KatSpeaker() {
   return {
     execute: function(client, message) {
       const meanThings = [
