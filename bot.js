@@ -25,7 +25,7 @@ client.on('guildCreate', guild => {
 client.on('message', message => {
   // Logger.execute(client, message);
   if (message.author.id === '371151824331210755') {
-    KatSpeaker(client, message);
+    KatSpeaker.execute(client, message);
   }
   CommandSystem.execute(client, message);
 });
