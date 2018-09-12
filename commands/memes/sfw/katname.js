@@ -14,6 +14,9 @@ exports.run = (client, message, args) => {
 
   kat
     .setNickname(str)
-    .then(message.channel.send(`Updated Kat's nickname to ${str}`))
-    .catch(console.error);
+    .then(message.channel.send(`Updated Kat's nickname to **${str}**`))
+    .catch(err => {
+      console.error(err);
+      message.channel.send('Error: nick: Must be 32 or fewer in length.');
+    });
 };
