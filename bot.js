@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require('./command-system.js')();
 const Logger = require('./logger')();
+const KatSpeaker = require('./katspeaker')();
 
 // On ready logic
 client.on('ready', () => {
@@ -23,9 +24,9 @@ client.on('guildCreate', guild => {
 // Pass messages to the CommandSystem
 client.on('message', message => {
   // Logger.execute(client, message);
-  // if (message.author.id === '371151824331210755') {
-  //   message.channel.send('<@371151824331210755> is a disgusting slut');
-  // }
+  if (message.author.id === '371151824331210755') {
+    KatSpeaker(client, message);
+  }
   CommandSystem.execute(client, message);
 });
 
