@@ -19,9 +19,9 @@ exports.run = (client, message, args) => {
       const db = client.db(dbName);
       const collection = db.collection('quotes');
 
-      const foundQuotes = collection
-        .find({ author: 'Kaylee' })
-        .then(data => console.log(data));
+      const foundQuotes = collection.find({ author: 'Kaylee' });
+
+      foundQuotes.then(data => console.log(data));
       console.log(foundQuotes);
     }
   );
