@@ -3,7 +3,6 @@ const client = new Discord.Client();
 const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require('./command-system.js')();
 const Logger = require('./logger')();
-const KatSpeaker = require('./katspeaker')();
 
 // On ready logic
 client.on('ready', () => {
