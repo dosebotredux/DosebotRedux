@@ -32,6 +32,7 @@ function buildCommandList() {
     '--effectinfo [effect]',
     '--effects [substance]',
     '--info [substance]',
+    '--ketaminecalc [weight in lbs]',
     '--psytolerance [days]',
     '--randomtdc',
     '--role rolename <drug> <dose>',

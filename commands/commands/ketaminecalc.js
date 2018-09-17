@@ -29,10 +29,10 @@ exports.run = (client, message, args) => {
     .setThumbnail('https://i.imgur.com/7R8WDwE.png')
     .setTimestamp()
     .setURL('http://www.dosebot.org')
-    .addField('Insufflated', generateInsufflatedDosages(weight))
-    .addField('Intramuscular', generateIntramuscularDosages(weight))
-    .addField('Oral', generateOralDosage(weight))
-    .addField('Rectal', generateRectalDosage(weight));
+    .addField('Insufflated', generateInsufflatedDosages(weight), true)
+    .addField('Intramuscular', generateIntramuscularDosages(weight), true)
+    .addField('Oral', generateOralDosage(weight), true)
+    .addField('Rectal', generateRectalDosage(weight), true);
 
   message.channel.send({ embed });
 
