@@ -5,8 +5,6 @@ const rp = require('request-promise');
 exports.run = (client, message, args) => {
   console.log(`**********Executing combos on ${message.guild.name}**********`);
 
-  const { request } = require('graphql-request');
-
   var str = message.content;
   var drug = str
     .toLowerCase()

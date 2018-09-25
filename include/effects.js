@@ -5,8 +5,8 @@ function createEffectsList(substance) {
   // const substance = data.substances[0];
   const effects = substance.effects;
   const numberOfEffects = effects.length;
-  let randomNumberArray = [];
-  let namesUnderscoresRemovedArray = [];
+  const randomNumberArray = [];
+  const namesUnderscoresRemovedArray = [];
 
   while (randomNumberArray.length < 10) {
     randomNumberArray.push(Math.floor(Math.random() * numberOfEffects));
