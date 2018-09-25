@@ -2,26 +2,49 @@ const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js'
 const Discord = require('discord.js');
 const customsJSON = require('../../include/customs.json');
 
-exports.run = (client, message, args) => {
-  console.log(`**********Executing info on ${message.guild.name}**********`);
+const infoQuery = require('../../queries/info.js');
 
-  const { request } = require('graphql-request');
-  const rp = require('request-promise');
+const rp = require('request-promise');
+
+const fetchAndParseURL = async url => {
+  try {
+    const responseData = await rp(url);
+
+    return JSON.parse(responseData);
+  } catch (err) {
+    console.error(err);
+  }
+
+  return null;
+}
+
+const fetchPWSubstanceData = async substanceName => {
+  const query = infoQuery.info(substanceName);
+
+  const encodedQuery = encodeURIComponent(query);
+
+  return fetchAndParseURL(
+    `https://api.psychonautwiki.org/?query=${encodedQuery}`
+  );
+}
+
+exports.run = async (client, message, args) => {
+  console.log(`**********Executing info on ${message.guild.name}**********`);
 
   // For keeping track of whether or not a substance is found in the custom sheets
   var hasCustom;
 
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
-  var drug = parseDrugName(str);
+  var substanceName = parseSubstanceName(str);
 
   // Checks to see if drug is on the customs list
-  if (checkIfCustomSheet(drug)) {
+  if (checkIfCustomSheet(substanceName)) {
     console.log('Pulling from custom');
     hasCustom = true;
 
     // Find the location of the substance object in the JSON and set substance
-    let substance = locateCustomSheetLocation(drug);
+    let substance = locateCustomSheetLocation(substanceName);
 
     createPWChannelMessage(substance, message);
   } else {
@@ -30,56 +53,52 @@ exports.run = (client, message, args) => {
   }
 
   if (hasCustom == false) {
-    console.log(`Requesting info for ${drug} on ${message.guild.name}`);
+    console.log(`Requesting info for ${substanceName} on ${message.guild.name}`);
     // Loads GraphQL query as "query" variable
-    let query = require('../../queries/info.js').info(drug);
-    request('https://api.psychonautwiki.org', query)
-      .then(data => {
-        // Logs API's returned object of requested substance
-        console.log(data);
 
-        // Send a message to channel if there are zero or more than one substances returned by the API
-        // Not sure if the API in its current configuration can return more than one substance
-        if (data.substances.length === 0) {
-          console.log('Pulling from TS');
-          let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${drug}`;
-          rp(tripSitURL)
-            .then(function(response) {
-              // console.log(response);
-              let queryResults = JSON.parse(response);
-              if (queryResults.err === true) {
-                message.channel.send(
-                  `Error: No API data available for **${drug}**`
-                );
-              } else {
-                let substance = queryResults.data[0];
+    try {
+      const { data } = await fetchPWSubstanceData(substanceName);
 
-                createTSChannelMessage(substance, message);
-              }
-            })
-            .catch(function(err) {
-              console.log(err);
-            });
+      // Logs API's returned object of requested substance
+      console.log(data);
 
-          return;
-        } else if (data.substances.length > 1) {
-          message.channel
-            .send(
-              `There are multiple substances matching \`${drug}\` on PsychonautWiki.`
-            )
-            .catch(console.error);
+      // Send a message to channel if there are zero or more than one substances returned by the API
+      // Not sure if the API in its current configuration can return more than one substance
+      if (data.substances.length === 0) {
+        console.log('Pulling from TS');
 
-          return;
+        let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
+
+        const responseData = await fetchAndParseURL(tripSitURL);
+
+        if (responseData.err === true) {
+          message.channel.send(
+            `Error: No API data available for **${substanceName}**`
+          );
         } else {
-          // Set substance to the first returned substance from PW API
-          var substance = data.substances[0];
-          createPWChannelMessage(substance, message);
+          let substance = responseData.data[0];
+
+          createTSChannelMessage(substance, message);
         }
-      })
-      .catch(function(error) {
-        console.log('Promise rejected/errored out');
-        console.log(error);
-      });
+
+        return;
+      } else if (data.substances.length > 1) {
+        message.channel
+          .send(
+            `There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`
+          )
+          .catch(console.error);
+
+        return;
+      } else {
+        // Set substance to the first returned substance from PW API
+        var substance = data.substances[0];
+        createPWChannelMessage(substance, message);
+      }
+    } catch (err) {
+      console.log('Promise rejected/errored out');
+      console.log(err);
+    }
 
     // Reset hasCustom
     hasCustom = false;
@@ -421,7 +440,7 @@ function buildTSLinksField(substance) {
 }
 
 // Parses and sanitizes substance name
-function parseDrugName(string) {
+function parseSubstanceName(string) {
   let unsanitizedDrugName = string
     .toLowerCase()
     .replace('--info ', '', -1)
