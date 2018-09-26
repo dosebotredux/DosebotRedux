@@ -38,7 +38,7 @@ function generateDosageField(weight) {
 
 // Function for generating warning field
 function generateWarningField() {
-  return `These recommendations are an approximation, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.`;
+  return `These recommendations are an approximation and are on the lower end for harm reduction purposes, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.`;
 }
 
 // Function for generating links field
