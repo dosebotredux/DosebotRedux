@@ -19,25 +19,25 @@ exports.run = (client, message, args) => {
     rp(tripSitAPIURL)
       .then(function(response) {
         // If we have an error send the error to the channel
-        // if (response.err === true) {
-        //   message.channel.send(
-        //     `Error fetching combos from TripSit: ${response.data.msg}`
-        //   );
-        //   return;
-        // } else {
-        // }
-        // Pluck what we need from the response
-        const { name, combos } = pluckQueryResponse(response);
-        // Generate the string for the message
-        const combosString = generateEmbedComboString(combos);
+        if (response.err === true) {
+          message.channel.send(
+            `Error fetching combos from TripSit: ${response.data.msg}`
+          );
+          return;
+        } else {
+          // Pluck what we need from the response
+          const { name, combos } = pluckQueryResponse(response);
+          // Generate the string for the message
+          const combosString = generateEmbedComboString(combos);
 
-        // Send the message
-        message.channel.send(createComboMessage(combosString, name));
+          // Send the message
+          message.channel.send(createComboMessage(combosString, name));
+        }
       })
       .catch(function(err) {
         console.log(err);
         message.channel.send(
-          `Error fetching combos from TripSit: ${err.data.msg}`
+          `Error getting ${drug[0]} combos from TripSit API`
         );
       });
   }
