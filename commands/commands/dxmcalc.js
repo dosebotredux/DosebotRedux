@@ -10,11 +10,14 @@ exports.run = (client, message, args) => {
   // parse weight from result
   let weight = parseInt(result[result.length - 1]);
   let weightIsKilos = false;
+  console.log(`Weight is kilos: ${weightIsKilos}`);
 
   if (result[0].includes('kg')) {
     weight = Math.floor(weight / 2.2);
     weightIsKilos = true;
+    console.log(`Weight is kilos: ${weightIsKilos}`);
   }
+  console.log(`Weight is kilos: ${weightIsKilos}`);
 
   if (!isNaN(weight)) {
     const embed = new Discord.RichEmbed()

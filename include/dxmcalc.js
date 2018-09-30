@@ -26,6 +26,8 @@ function generateDosageField(weight, isKilos) {
   const dosageObject = calculateDosages(weight);
   const dosageArray = [];
 
+  console.log(`Weight is kilos: ${isKilos}`);
+
   if (isKilos) {
     dosageArray.push(`Dosages for: ${weight}kg`);
   } else {
