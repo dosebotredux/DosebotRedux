@@ -1,5 +1,6 @@
+const Discord = require('discord.js');
+const KetamineCalc = require('../../include/ketaminecalc');
 exports.run = (client, message, args) => {
-  const Discord = require('discord.js');
   console.log(
     `**********Executing ketaminecalc on ${message.guild.name}**********`
   );
@@ -43,82 +44,24 @@ exports.run = (client, message, args) => {
     )
     .addField(
       'Insufflated',
-      generateInsufflatedDosages(weight, weightIsKilos),
+      KetamineCalc.generateInsufflatedDosages(weight, weightIsKilos),
       true
     )
     .addField(
       'Intramuscular',
-      generateIntramuscularDosages(weight, weightIsKilos),
+      KetamineCalc.generateIntramuscularDosages(weight, weightIsKilos),
       true
     )
-    .addField('Oral', generateOralDosage(weight, weightIsKilos), true)
-    .addField('Rectal', generateRectalDosage(weight, weightIsKilos), true);
+    .addField(
+      'Oral',
+      KetamineCalc.generateOralDosage(weight, weightIsKilos),
+      true
+    )
+    .addField(
+      'Rectal',
+      KetamineCalc.generateRectalDosage(weight, weightIsKilos),
+      true
+    );
 
   message.channel.send({ embed });
-
-  function calculateWeight(weight, isKilos) {
-    if (isKilos) {
-      console.log('weight is in kilos');
-      console.log(Math.floor(weight * 2.2));
-      return Math.floor(weight * 2.2);
-    } else {
-      console.log(Math.floor(weight * 2.2));
-      return weight;
-    }
-  }
-
-  function generateInsufflatedDosages(weight, isKilos) {
-    const weightInLbs = calculateWeight(weight, isKilos);
-    const dosageArray = [];
-
-    dosageArray.push(`**Threshold**: ${weightInLbs * 0.1}mg`);
-    dosageArray.push(`**Light**: ${weightInLbs * 0.15}mg`);
-    dosageArray.push(`**Common**: ${weightInLbs * 0.3}mg`);
-    dosageArray.push(
-      `**Strong**: ${weightInLbs * 0.5}-${weightInLbs * 0.75}mg`
-    );
-    dosageArray.push(`**K-hole**: ${weightInLbs}mg`);
-
-    return dosageArray.join('\n');
-  }
-
-  function generateIntramuscularDosages(weight, isKilos) {
-    const weightInLbs = calculateWeight(weight, isKilos);
-    const dosageArray = [];
-
-    dosageArray.push(`**Threshold**: ${weightInLbs * 0.1}mg`);
-    dosageArray.push(`**Light**: ${weightInLbs * 0.15}mg`);
-    dosageArray.push(`**Common**: ${weightInLbs * 0.2}mg`);
-    dosageArray.push(`**Strong**: ${weightInLbs * 0.5}mg`);
-    dosageArray.push(`**K-hole**: ${weightInLbs * 0.75}mg`);
-    dosageArray.push(`**Anesthetic**: ${weightInLbs}mg`);
-
-    return dosageArray.join('\n');
-  }
-
-  function generateOralDosage(weight, isKilos) {
-    const weightInLbs = calculateWeight(weight, isKilos);
-    const dosageArray = [];
-
-    dosageArray.push(`**Threshold**: ${weightInLbs * 0.3}mg`);
-    dosageArray.push(`**Light**: ${weightInLbs * 0.6}mg`);
-    dosageArray.push(`**Common**: ${weightInLbs * 0.75}-${weightInLbs * 2}mg`);
-    dosageArray.push(`**Strong**: ${weightInLbs * 2}-${weightInLbs * 2.5}mg`);
-    dosageArray.push(`**K-hole**: ${weightInLbs * 3}-${weightInLbs * 4}mg`);
-
-    return dosageArray.join('\n');
-  }
-
-  function generateRectalDosage(weight, isKilos) {
-    const weightInLbs = calculateWeight(weight, isKilos);
-    const dosageArray = [];
-
-    dosageArray.push(`**Threshold**: ${weightInLbs * 0.3}mg`);
-    dosageArray.push(`**Light**: ${weightInLbs * 0.6}mg`);
-    dosageArray.push(`**Common**: ${weightInLbs * 0.75}-${weightInLbs * 2}mg`);
-    dosageArray.push(`**Strong**: ${weightInLbs * 2}-${weightInLbs * 2.5}mg`);
-    dosageArray.push(`**K-hole**: ${weightInLbs * 3}-${weightInLbs * 4}mg`);
-
-    return dosageArray.join('\n');
-  }
 };
