@@ -24,6 +24,25 @@ client.on('message', message => {
   CommandSystem.execute(client, message);
 });
 
+// Log new members to DoseBot dev channel
+client.on('guildMemberAdd', member => {
+  if (member.guild.id === '332288651394547712') {
+    const doseBotGuild = client.guilds.find(
+      guild => guild.id === '494574903173971969'
+    );
+
+    const doseBotLoggingChannel = doseBotGuild.channels.find(
+      channel => channel.id === '496077749828714502'
+    );
+
+    const newMember = member.displayName;
+    const newMemberID = member.id;
+    const loggingMessage = `ID: ${newMemberID} | Name: ${newMember} joined SED`;
+
+    doseBotLoggingChannel.send(loggingMessage);
+  }
+});
+
 CommandSystem.load(function() {
   console.log('Command system loaded.');
 });
