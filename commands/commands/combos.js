@@ -1,94 +1,44 @@
-const Discord = require('discord.js');
+const Combos = require('../../include/combos');
 const sanitizeSubstanceName = require('../../include/sanitize-substance-name.js');
 const rp = require('request-promise');
 
 exports.run = (client, message, args) => {
-  console.log(`**********Executing combos on ${message.guild.name}**********`);
-
-  var str = message.content;
-  var drug = str
+  const drug = message.content
     .toLowerCase()
     .replace('--combos ', '', -1)
-    .replace(/-/g, '', -1);
+    .replace(/-/g, '', -1)
+    .split(' ');
 
-  let drugArr = drug.split(' ');
-  console.log(drugArr);
-  let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
-    drugArr[0]
+  drug[0] = sanitizeSubstanceName(drug[0]);
+
+  const tripSitAPIURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${
+    drug[0]
   }`;
 
-  drugArr[0] = sanitizeSubstanceName(drugArr[0]);
-
-  if (drugArr.length === 1) {
-    rp(tripSitURL)
+  if (drug.length === 1) {
+    rp(tripSitAPIURL)
       .then(function(response) {
-        let queryResults = JSON.parse(response);
-        let name = queryResults.data[0].pretty_name;
-        let combos = queryResults.data[0].combos;
-        let comboArr = [];
+        // If we have an error send the error to the channel
+        if (response.err === true) {
+          message.channel.send(
+            `Error fetching combos from TripSit: ${response.data.msg}`
+          );
+          return;
+        } else {
+          // Pluck what we need from the response
+          const { name, combos } = Combos.pluckQueryResponse(response);
+          // Generate the string for the message
+          const combosString = Combos.generateEmbedComboString(combos);
 
-        Object.keys(combos).forEach(key => {
-          comboArr.push(`${capitalize(key)}: ${combos[key].status}`);
-        });
-
-        comboArr.sort();
-
-        let channelMessage = comboArr.join('\n');
-        createComboMessage(channelMessage, message, name);
-      })
-      .catch(function(err) {
-        console.log(err);
-        message.channel.send(`Error getting ${drug} combos from TripSit API`);
-      });
-  } else if (drugArr.length > 1) {
-    rp(tripSitURL)
-      .then(function(response) {
-        let queryResults = JSON.parse(response);
-        let name = queryResults.data[0].pretty_name;
-        let combos = queryResults.data[0].combos;
-        let comboArr = [];
-        let keys = Object.keys(combos);
-
-        for (let i = 0; i < keys.length; i++) {
-          if (keys[i] === drugArr[1]) {
-            comboArr.push(`${capitalize(keys[i])}: ${combos[keys[i]].status}`);
-          }
+          // Send the message
+          message.channel.send(Combos.createComboMessage(combosString, name));
         }
-
-        comboArr.sort();
-
-        let channelMessage = comboArr.join('\n');
-        createComboMessage(channelMessage, message, name);
       })
       .catch(function(err) {
         console.log(err);
-        message.channel.send(`Error getting ${drug} combos from TripSit API`);
+        message.channel.send(
+          `Error getting **${drug[0]}** combos from TripSit API`
+        );
       });
-  } else {
-    message.channel.send('Error: Tell Cocoa to stop writing spaghetti code');
-  }
-
-  //// Functions
-  // Create combo message
-  function createComboMessage(combos, message, name) {
-    const embed = new Discord.RichEmbed()
-      .setTitle(`**${name} combo information**`)
-      .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
-      .setColor('747474')
-      .setFooter(
-        'Please use drugs responsibly',
-        'https://i.imgur.com/7R8WDwE.png'
-      )
-      .setThumbnail('https://i.imgur.com/7R8WDwE.png')
-      .setTimestamp()
-      .setURL('http://www.dosebot.org')
-      .addField('Combos', combos);
-
-    message.channel.send({ embed });
-  }
-
-  // Capitalization function
-  function capitalize(name) {
-    return name.toUpperCase();
   }
 };
