@@ -64,7 +64,7 @@ function pluckQueryResponse(response) {
   console.log(response);
   // Extract data
   const queryResults = JSON.parse(response);
-  const name = queryResults[0].data[0].pretty_name;
+  const name = queryResults.data[0].pretty_name;
   const combos = queryResults.data[0].combos;
 
   // Return object with needed data
