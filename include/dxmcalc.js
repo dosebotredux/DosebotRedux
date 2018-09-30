@@ -22,18 +22,34 @@ function getLog(x, y) {
 }
 
 // Function for generating dosage field
-function generateDosageField(weight) {
+function generateDosageField(weight, isKilos) {
   const dosageObject = calculateDosages(weight);
-  return `**First plateau**: ${dosageObject.lightMin}-${
-    dosageObject.lightMaxCommonMin
-  }mg
-  **Second plateau**: ${dosageObject.lightMaxCommonMin}-${
-  dosageObject.commonMaxStrongMin
-}mg
-  **Third plateau**: ${dosageObject.commonMaxStrongMin}-${
-  dosageObject.strongMaxHeavy
-}mg
-  **Fourth plateau**: ${dosageObject.strongMaxHeavy}+mg`;
+  const dosageArray = [];
+
+  if (isKilos) {
+    dosageArray.push(`Dosages for: ${weight}kg`);
+  } else {
+    dosageArray.push(`Dosages for: ${weight}lbs`);
+  }
+
+  dosageArray.push(
+    `**First plateau**: ${dosageObject.lightMin}-${
+      dosageObject.lightMaxCommonMin
+    }mg`
+  );
+  dosageArray.push(
+    `**Second plateau**: ${dosageObject.lightMaxCommonMin}-${
+      dosageObject.commonMaxStrongMin
+    }mg`
+  );
+  dosageArray.push(
+    `**Third plateau**: ${dosageObject.commonMaxStrongMin}-${
+      dosageObject.strongMaxHeavy
+    }mg`
+  );
+  dosageArray.push(`**Fourth plateau**: ${dosageObject.strongMaxHeavy}+mg`);
+
+  return dosageArray.join('\n');
 }
 
 // Function for generating warning field

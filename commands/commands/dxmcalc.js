@@ -5,33 +5,40 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing dxmcalc on ${message.guild.name}**********`);
 
   // Message variables
-  const str = message.content;
+  const str = message.content.toLowerCase();
   const result = str.split(' ');
   // parse weight from result
-  const weight = parseFloat(result[result.length - 1]);
+  let weight = parseInt(result[result.length - 1]);
+  let weightIsKilos = false;
 
-  // check to see if weight is a number and terminate if false
-  if (isNaN(weight)) {
-    message.channel.send(
-      '**Error:** No weight specified | Usage: --dxmcalc [weight in lbs]'
-    );
-    return;
+  if (result[0].includes('kg')) {
+    weight = Math.floor(weight / 2.2);
+    weightIsKilos = true;
   }
 
-  const embed = new Discord.RichEmbed()
-    .setTitle('DXM Dosage Calculator')
-    .setAuthor('DoseBot', 'http://www.dosebot.org/images/dose.png')
-    .setColor('747474')
-    .setFooter(
-      'Please use drugs responsibly',
-      'http://www.dosebot.org/images/dose.png'
-    )
-    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
-    .setTimestamp()
-    .setURL('http://www.dosebot.org')
-    .addField('[:scales:] Dosages', DXMCalc.generateDosageField(weight))
-    .addField('[:warning:] Warning', DXMCalc.generateWarningField())
-    .addField('[:globe_with_meridians:] Links', DXMCalc.generateLinksField());
+  if (!isNaN(weight)) {
+    const embed = new Discord.RichEmbed()
+      .setTitle('DXM Dosage Calculator')
+      .setAuthor('DoseBot', 'http://www.dosebot.org/images/dose.png')
+      .setColor('747474')
+      .setFooter(
+        'Please use drugs responsibly',
+        'http://www.dosebot.org/images/dose.png'
+      )
+      .setThumbnail('https://i.imgur.com/7R8WDwE.png')
+      .setTimestamp()
+      .setURL('http://www.dosebot.org')
+      .addField(
+        '[:scales:] Dosages',
+        DXMCalc.generateDosageField(weight, weightIsKilos)
+      )
+      .addField('[:warning:] Warning', DXMCalc.generateWarningField())
+      .addField('[:globe_with_meridians:] Links', DXMCalc.generateLinksField());
 
-  message.channel.send({ embed });
+    message.channel.send({ embed });
+  } else {
+    message.channel.send(
+      '**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>'
+    );
+  }
 };
