@@ -19,13 +19,13 @@ exports.run = (client, message, args) => {
     rp(tripSitAPIURL)
       .then(function(response) {
         // If we have an error send the error to the channel
-        if (response.err === true) {
-          message.channel.send(
-            `Error fetching combos from TripSit: ${response.data.msg}`
-          );
-          return;
-        }
-
+        // if (response.err === true) {
+        //   message.channel.send(
+        //     `Error fetching combos from TripSit: ${response.data.msg}`
+        //   );
+        //   return;
+        // } else {
+        // }
         // Pluck what we need from the response
         const { name, combos } = pluckQueryResponse(response);
         // Generate the string for the message
@@ -37,7 +37,7 @@ exports.run = (client, message, args) => {
       .catch(function(err) {
         console.log(err);
         message.channel.send(
-          `Error getting ${drug[0]} combos from TripSit API`
+          `Error fetching combos from TripSit: ${err.data.msg}`
         );
       });
   }
