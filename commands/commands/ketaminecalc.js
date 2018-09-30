@@ -39,7 +39,7 @@ exports.run = (client, message, args) => {
     .setURL('http://www.dosebot.org')
     .addField(
       '[:scales:] Dosages',
-      `Dosages for: ${weight}${weightIsKilos ? 'kg' : 'lbs'}`
+      `Dosages for: **${weight}${weightIsKilos ? 'kg' : 'lbs'}**`
     )
     .addField(
       'Insufflated',
@@ -57,22 +57,19 @@ exports.run = (client, message, args) => {
   message.channel.send({ embed });
 
   function calculateWeight(weight, isKilos) {
-    let weightInLbs;
-
     if (isKilos) {
-      weightInLbs = Math.floor(weight * 2.2);
+      console.log('weight is in kilos');
+      console.log(Math.floor(weight * 2.2));
+      return Math.floor(weight * 2.2);
     } else {
-      weightInLbs = weight;
+      console.log(Math.floor(weight * 2.2));
+      return weight;
     }
-
-    return weightInLbs;
   }
 
   function generateInsufflatedDosages(weight, isKilos) {
     const weightInLbs = calculateWeight(weight, isKilos);
     const dosageArray = [];
-
-    dosageArray.push(`Dosages for: ${weight}${isKilos ? 'kg' : 'lbs'}`);
 
     dosageArray.push(`**Threshold**: ${weightInLbs * 0.1}mg`);
     dosageArray.push(`**Light**: ${weightInLbs * 0.15}mg`);
