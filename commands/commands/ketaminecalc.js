@@ -5,10 +5,18 @@ exports.run = (client, message, args) => {
   );
 
   // Message variables
-  const str = message.content;
-  const result = str.split(' ');
+  const str = message.content
+    .toLowerCase()
+    .replace('--ketaminecalc', '', -1)
+    .replace(/-/g, '', -1);
+
   // parse weight from result
-  const weight = parseFloat(result[result.length - 1]);
+  let weight = parseInt(str);
+  let weightIsKilos = false;
+
+  if (str.includes('kg')) {
+    weightIsKilos = true;
+  }
 
   // check to see if weight is a number and terminate if false
   if (isNaN(weight)) {
@@ -29,6 +37,7 @@ exports.run = (client, message, args) => {
     .setThumbnail('https://i.imgur.com/7R8WDwE.png')
     .setTimestamp()
     .setURL('http://www.dosebot.org')
+    .addField('[:scales:] Dosages')
     .addField('Insufflated', generateInsufflatedDosages(weight), true)
     .addField('Intramuscular', generateIntramuscularDosages(weight), true)
     .addField('Oral', generateOralDosage(weight), true)

@@ -3,9 +3,17 @@ module.exports.generateWarningField = generateWarningField;
 module.exports.generateLinksField = generateLinksField;
 
 // Function for calculating dosages
-function calculateDosages(weight) {
+function calculateDosages(weight, isKilos) {
+  let weightInLbs;
+
+  if (isKilos) {
+    weightInLbs = Math.floor(weight * 2.2);
+  } else {
+    weightInLbs = weight;
+  }
+
   // kaylee's formula for dxm weight calculation
-  const calculatedDoseModifier = 2 * getLog(125, weight) - 1;
+  const calculatedDoseModifier = 2 * getLog(125, weightInLbs) - 1;
 
   // Return a dosage object
   return {
@@ -23,7 +31,7 @@ function getLog(x, y) {
 
 // Function for generating dosage field
 function generateDosageField(weight, isKilos) {
-  const dosageObject = calculateDosages(weight);
+  const dosageObject = calculateDosages(weight, isKilos);
   const dosageArray = [];
 
   if (isKilos) {
