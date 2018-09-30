@@ -37,7 +37,10 @@ exports.run = (client, message, args) => {
     .setThumbnail('https://i.imgur.com/7R8WDwE.png')
     .setTimestamp()
     .setURL('http://www.dosebot.org')
-    .addField('[:scales:] Dosages')
+    .addField(
+      '[:scales:] Dosages',
+      `Dosages for: ${weight}${weightIsKilos ? 'kg' : 'lbs'}`
+    )
     .addField(
       'Insufflated',
       generateInsufflatedDosages(weight, weightIsKilos),
