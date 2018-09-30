@@ -4,3 +4,4 @@ node_modules
 .vscode
 .eslintrc.js
 test-command.js
+.env

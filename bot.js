@@ -1,8 +1,7 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = process.env.DISCORD_API_TOKEN;
 const CommandSystem = require('./command-system.js')();
-const Logger = require('./logger')();
 
 // On ready logic
 client.on('ready', () => {
@@ -29,7 +28,7 @@ CommandSystem.load(function() {
   console.log('Command system loaded.');
 });
 
-client.login(token);
+client.login(process.env.DISCORD_API_TOKEN);
 
 function updateGameMessage() {
   // Logs guilds and member counts
