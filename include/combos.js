@@ -18,7 +18,6 @@ function createComboMessage(combos, name) {
 
 // Function for extracting combo information from query response
 function pluckQueryResponse(response) {
-  console.log(response);
   // Extract data
   const queryResults = JSON.parse(response);
   const name = queryResults.data[0].pretty_name;
