@@ -37,7 +37,7 @@ client.on('guildMemberAdd', member => {
 
     const newMember = member.displayName;
     const newMemberID = member.id;
-    const loggingMessage = `ID: ${newMemberID} | Name: ${newMember} joined SED`;
+    const loggingMessage = `ID: ${newMemberID} | Name: ${newMember} joined SED - <@${newMemberID}>`;
 
     doseBotLoggingChannel.send(loggingMessage);
   }
