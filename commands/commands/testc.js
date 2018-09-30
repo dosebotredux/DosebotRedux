@@ -79,7 +79,7 @@ function generateEmbedComboString(combosObject) {
   for (const combo in combosObject) {
     if (combosObject.hasOwnProperty(combo)) {
       const element = combosObject[combo];
-      const substanceCombo = `${capitalize(key)}: ${element.status}`;
+      const substanceCombo = `${capitalize(combo)}: ${element.status}`;
 
       comboArr.push(substanceCombo);
     }
