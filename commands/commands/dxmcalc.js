@@ -5,15 +5,17 @@ exports.run = (client, message, args) => {
   console.log(`**********Executing dxmcalc on ${message.guild.name}**********`);
 
   // Message variables
-  const str = message.content.toLowerCase();
-  const result = str.split(' ');
+  const str = message.content
+    .toLowerCase()
+    .replace('--dxmcalc', '', -1)
+    .replace(/-/g, '', -1);
+
   // parse weight from result
-  let weight = parseInt(result[result.length - 1]);
+  let weight = parseInt(str);
   let weightIsKilos = false;
   console.log(`1Weight is kilos: ${weightIsKilos}`);
-  console.log(result);
 
-  if (result[0].includes('kg')) {
+  if (str.includes('kg')) {
     weight = Math.floor(weight / 2.2);
     weightIsKilos = true;
     console.log(`2Weight is kilos: ${weightIsKilos}`);
