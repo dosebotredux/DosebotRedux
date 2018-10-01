@@ -1,4 +1,7 @@
 module.exports = function sanitizeSubstanceName(drug) {
+  if (drug === 'ket') {
+    return 'ketamine'
+  }
   if (drug === "dck") {
     return "deschloroketamine";
   }
