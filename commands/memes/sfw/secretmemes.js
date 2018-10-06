@@ -22,6 +22,7 @@ exports.run = (client, message, args) => {
     '--frogmodai',
     '--geometry',
     '--graham',
+    '--sketchy',
     '--greentea',
     '--harmreduction',
     '--heart',
