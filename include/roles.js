@@ -13,7 +13,11 @@ const acceptableTemporaryRoles = [
   'altered',
   'baked',
   'baked🔥',
-  'tripping💓'
+  'tripping💓',
+  '🍄 tripping',
+  '💊 altered',
+  '🌀 microdosing',
+  '🍁 stoned'
 ];
 
 // Have an array of acceptable permanent roles to apply
@@ -43,7 +47,11 @@ const roleExceptions = {
   },
   // Praxis exceptions
   '350132819307003905': {
-    any: 'any pronouns'
+    any: 'any pronouns',
+    tripping: '🍄 tripping',
+    altered: '💊 altered',
+    microdosing: '🌀 microdosing',
+    stoned: '🍁 stoned'
   }
 };
 
