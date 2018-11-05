@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
   console.log(
     `**********Executing bootcamp on ${message.guild.name}**********`
   );
-  var endOfYear = 'January 4 2018 23:59:59 GMT-0800';
+  var endOfYear = 'January 4 2019 23:59:59 GMT-0800';
 
   function getTimeRemaining(endtime) {
     let t = Date.parse(endtime) - Date.parse(new Date());
