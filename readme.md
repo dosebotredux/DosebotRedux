@@ -19,7 +19,7 @@ The **drug abuse epidemic** that has been sweeping the the United States has cos
 
 ## Contributors
 
-Currently this project is maintained by [Cocoa](https://effectindex.com/profiles/Gabriel) with contributions from [Josikinz](https://effectindex.com/profiles/Josie), and Maethor.
+Currently this project is maintained by [Cocoa](https://effectindex.com/profiles/Gabriel) with contributions from [Josikinz](https://effectindex.com/profiles/Josie).
 
 ## Usage
 
