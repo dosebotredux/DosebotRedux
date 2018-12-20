@@ -7,7 +7,6 @@ exports.run = (client, message, args) => {
   const SFW_MEMES_ARR = [
     '--alexis',
     '--apple',
-    '--bootcamp',
     '--catfeud',
     '--cocoa',
     '--communism',
@@ -27,7 +26,6 @@ exports.run = (client, message, args) => {
     '--harmreduction',
     '--heart',
     '--illusion',
-    '--ivey',
     '--josie',
     '--justicio',
     '--kat',
@@ -49,7 +47,8 @@ exports.run = (client, message, args) => {
     '--video',
     '--wisewords',
     '--zen',
-    '--confuse'
+    '--confuse',
+    '--move'
   ];
   const NSFW_MEMES_ARR = [
     '--dck',
