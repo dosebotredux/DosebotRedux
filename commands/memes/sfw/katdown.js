@@ -1,9 +1,7 @@
 // Bootcamp motivation message
 exports.run = (client, message, args) => {
-  console.log(
-    `**********Executing bootcamp on ${message.guild.name}**********`
-  );
-  var endOfYear = 'January 4 2019 23:59:59 GMT-0800';
+  console.log(`**********Executing katdown on ${message.guild.name}**********`);
+  const endOfYear = 'January 8 2019 05:45:00 GMT-0800';
 
   function getTimeRemaining(endtime) {
     let t = Date.parse(endtime) - Date.parse(new Date());
@@ -23,7 +21,9 @@ exports.run = (client, message, args) => {
 
   const channelMessage = `${countdown.days} days, ${countdown.hours} hours, ${
     countdown.minutes
-  } minutes, ${countdown.seconds} seconds until KAT MEETUP!`;
+  } minutes, ${
+    countdown.seconds
+  } seconds until KAT MEETUP! <@371151824331210755>`;
 
   message.channel.send(channelMessage).catch(console.error);
 };
