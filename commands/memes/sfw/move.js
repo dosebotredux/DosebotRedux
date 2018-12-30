@@ -1,7 +1,7 @@
 // Bootcamp motivation message
 exports.run = (client, message, args) => {
   console.log(`**********Executing move on ${message.guild.name}**********`);
-  const timeOfMove = 'June 1 2019 23:59:59 GMT-0800';
+  const timeOfMove = 'April 26 2019 23:59:59 GMT-0800';
 
   function getTimeRemaining(endtime) {
     let t = Date.parse(endtime) - Date.parse(new Date());
