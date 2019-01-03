@@ -15,7 +15,11 @@ exports.run = (client, message, args) => {
   if (str.length < 32) {
     kat
       .setNickname(str)
-      .then(message.channel.send(`Updated Kat's nickname to **${str}**`))
+      .then(
+        message.channel.send(
+          `Updated <@371151824331210755>'s nickname to **${str}**! :D :D :D`
+        )
+      )
       .catch(err => {
         console.error(err);
       });
