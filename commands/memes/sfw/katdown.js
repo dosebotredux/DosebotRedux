@@ -4,11 +4,11 @@ exports.run = (client, message, args) => {
   const endOfYear = 'January 9 2019 05:45:00 GMT-0800';
 
   function getTimeRemaining(endtime) {
-    let t = Date.parse(endtime) - Date.parse(new Date());
-    let seconds = Math.floor((t / 1000) % 60);
-    let minutes = Math.floor((t / 1000 / 60) % 60);
-    let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-    let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    const t = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor((t / 1000) % 60);
+    const minutes = Math.floor((t / 1000 / 60) % 60);
+    const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(t / (1000 * 60 * 60 * 24));
     return {
       total: t,
       days: days,
@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
       seconds: seconds
     };
   }
-  let countdown = getTimeRemaining(endOfYear);
+  const countdown = getTimeRemaining(endOfYear);
 
   const channelMessage = `${countdown.days} days, ${countdown.hours} hours, ${
     countdown.minutes
