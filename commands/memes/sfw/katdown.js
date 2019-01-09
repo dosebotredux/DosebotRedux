@@ -1,7 +1,7 @@
 // Bootcamp motivation message
 exports.run = (client, message, args) => {
   console.log(`**********Executing katdown on ${message.guild.name}**********`);
-  const endOfYear = 'January 9 2019 05:45:00 GMT-0800';
+  const endOfYear = 'January 9 2019 16:02:00 GMT-0500';
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date());
