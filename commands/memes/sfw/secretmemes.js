@@ -5,8 +5,6 @@ exports.run = (client, message, args) => {
     `**********Displaying secretmemes on ${message.guild.name}**********`
   );
   const SFW_MEMES_ARR = [
-    '--alexis',
-    '--apple',
     '--catfeud',
     '--cocoa',
     '--communism',
@@ -17,17 +15,13 @@ exports.run = (client, message, args) => {
     '--dust',
     '--etizolab',
     '--evebnire',
-    '--fourthdimension',
     '--frogmodai',
-    '--geometry',
     '--graham',
     '--sketchy',
     '--greentea',
     '--harmreduction',
     '--heart',
-    '--illusion',
     '--josie',
-    '--justicio',
     '--kat',
     '--kat2',
     '--katcase',
@@ -47,16 +41,9 @@ exports.run = (client, message, args) => {
     '--video',
     '--wisewords',
     '--zen',
-    '--confuse',
-    '--move'
+    '--confuse'
   ];
-  const NSFW_MEMES_ARR = [
-    '--dck',
-    '--dong',
-    '--josildo',
-    '--math',
-    '--nsfwmascot'
-  ];
+  const NSFW_MEMES_ARR = ['--dong', '--josildo', '--math', '--nsfwmascot'];
 
   const embed = new Discord.RichEmbed()
     .setTitle('DoseBot Memes')
