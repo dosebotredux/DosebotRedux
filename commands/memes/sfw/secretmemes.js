@@ -41,7 +41,8 @@ exports.run = (client, message, args) => {
     '--video',
     '--wisewords',
     '--zen',
-    '--confuse'
+    '--confuse',
+    '--slcmove'
   ];
   const NSFW_MEMES_ARR = ['--dong', '--josildo', '--math', '--nsfwmascot'];
 
