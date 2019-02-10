@@ -31,6 +31,7 @@ function buildCommandList() {
     '--effects [substance]',
     "--help (you are here)",
     '--info [substance]',
+    "--invitelink",
     '--ketaminecalc [weight in lbs]',
     '--psychtolerance [days]',
     '--randomtdc',
