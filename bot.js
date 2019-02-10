@@ -43,7 +43,7 @@ function updateGameMessage() {
     );
   });
   console.log(`Currently serving ${userCount} users on ${servercount} servers`);
-  let botGame = `${userCount} users on ${servercount} servers`;
+  let botGame = `my part in reducing harm!`;
   client.user
     .setActivity(botGame)
     .then(presence => console.log(`Game set to ${botGame}`))
