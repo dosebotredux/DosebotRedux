@@ -51,7 +51,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (hasCustom == false) {
-    console.log(`Requesting info for ${substanceName} on ${message.guild.name}`);
+    console.log(`Requesting info for ${substanceName}`);
     // Loads GraphQL query as "query" variable
 
     try {

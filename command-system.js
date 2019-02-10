@@ -47,7 +47,9 @@ module.exports = function CommandSystem() {
       const commandName = args.shift().toLowerCase();
       const commandFunction = commandTable[commandName];
 
-      console.log(`CMD: ${commandName} on server ${message.guild.name}`)
+      console.log(`CMD: ${commandName} on server ${
+        message.guild == null ? "<no guild>" : message.guild.name
+      }`)
       if (commandFunction) {
         try {
           commandFunction.run(client, message, args);

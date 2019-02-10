@@ -19,7 +19,9 @@ client.on('guildCreate', guild => {
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
-  console.log(`[DEBUG] [${message.guild.name} #${message.channel.name}] <${message.author.id} ${message.author.username}#${message.author.discriminator}> -- ${message.content}`)
+  console.log(`[DEBUG] [${
+    message.guild == null ? "no guild" : message.guild.name
+  } #${message.channel.name}] <${message.author.id} ${message.author.username}#${message.author.discriminator}> -- ${message.content}`)
   CommandSystem.execute(client, message);
 });
 
