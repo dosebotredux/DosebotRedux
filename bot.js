@@ -14,13 +14,12 @@ client.on('ready', () => {
 client.on('guildCreate', guild => {
   // Update game message on new server join
   updateGameMessage();
-  console.log(
-    `New server joined - Name: ${guild.name} Members: ${guild.memberCount}`
-  );
+  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
 });
 
 // Pass messages to the CommandSystem
 client.on('message', message => {
+  console.log(`[DEBUG] [${message.guild.name} #${message.channel.name}] <${message.author.id} ${message.author.username}#${message.author.discriminator}> -- ${message.content}`)
   CommandSystem.execute(client, message);
 });
 

@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 function createComboMessage(combos, name) {
   return new Discord.RichEmbed()
     .setTitle(`**${name} combo information**`)
-    .setAuthor('DoseBot', 'https://i.imgur.com/7R8WDwE.png')
+    .setAuthor('DoseBot Redux', 'https://i.imgur.com/7R8WDwE.png')
     .setColor('747474')
     .setFooter(
       'Please use drugs responsibly',

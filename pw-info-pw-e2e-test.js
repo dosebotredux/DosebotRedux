@@ -1,4 +1,4 @@
-const info = require('./commands/commands/info');
+const info = require('./commands/info');
 
 info.run(null, {
     content: '4-aco-dmt',
@@ -10,7 +10,7 @@ info.run(null, {
     }
 })
 
-const effects = require('./commands/commands/effects');
+const effects = require('./commands/effects');
 
 const p1 = function(...args) {
     console.log(...args);

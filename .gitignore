@@ -5,3 +5,4 @@ node_modules
 .eslintrc.js
 test-command.js
 .env
+run.sh

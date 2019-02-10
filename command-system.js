@@ -8,13 +8,13 @@ module.exports = function CommandSystem() {
 
   return {
     load: function(ready) {
-      fs.readdir('./commands/commands', function(err, items) {
+      fs.readdir('./commands', function(err, items) {
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
             commandTable[
               commandName
-            ] = require(`./commands/commands/${commandName}.js`);
+            ] = require(`./commands/${commandName}.js`);
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
@@ -22,38 +22,6 @@ module.exports = function CommandSystem() {
             console.error(err);
           }
         }
-      });
-      fs.readdir('./commands/memes/sfw', function(err, items) {
-        for (let i = 0; i < items.length; i++) {
-          try {
-            var commandName = items[i].replace(/.js$/, '');
-            commandTable[
-              commandName
-            ] = require(`./commands/memes/sfw/${commandName}.js`);
-          } catch (err) {
-            console.error(
-              `Encountered error trying to require command: ${commandName}.js`
-            );
-            console.error(err);
-          }
-        }
-        ready();
-      });
-      fs.readdir('./commands/memes/nsfw', function(err, items) {
-        for (let i = 0; i < items.length; i++) {
-          try {
-            var commandName = items[i].replace(/.js$/, '');
-            commandTable[
-              commandName
-            ] = require(`./commands/memes/nsfw/${commandName}.js`);
-          } catch (err) {
-            console.error(
-              `Encountered error trying to require command: ${commandName}.js`
-            );
-            console.error(err);
-          }
-        }
-        ready();
       });
     },
 
@@ -79,6 +47,7 @@ module.exports = function CommandSystem() {
       const commandName = args.shift().toLowerCase();
       const commandFunction = commandTable[commandName];
 
+      console.log(`CMD: ${commandName} on server ${message.guild.name}`)
       if (commandFunction) {
         try {
           commandFunction.run(client, message, args);
