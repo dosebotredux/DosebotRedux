@@ -6,6 +6,8 @@ const infoQuery = require('../queries/info.js');
 
 const rp = require('request-promise');
 
+const Helpers = require('../helpers.js')
+
 const fetchAndParseURL = async url => {
   try {
     const responseData = await rp(url);
@@ -383,17 +385,8 @@ function buildLinksField(substance) {
 }
 
 function createTSChannelMessage(substance, message) {
-  const embed = new Discord.RichEmbed()
+  const embed = Helpers.TemplatedRichEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
-    .setAuthor('DoseBot Redux', 'https://i.imgur.com/7R8WDwE.png')
-    .setColor('747474')
-    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
-    .setFooter(
-      'Please use drugs responsibly',
-      'https://i.imgur.com/7R8WDwE.png'
-    )
-    .setTimestamp()
-    .setURL('http://www.dosebot.org')
     .addField(
       ':scales: __Dosages__',
       `${buildTSDosageField(substance)}\n`,
