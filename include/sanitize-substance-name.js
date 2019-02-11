@@ -193,5 +193,8 @@ module.exports = function sanitizeSubstanceName(drug) {
   }
   // if (drug === "5meoamt") { return "5-MeO-aMT" } // doesn't exist
 
+  // Benzodiazepines
+  if (drug === "diclaz") return "Diclazepam"
+
   return drug;
 };
