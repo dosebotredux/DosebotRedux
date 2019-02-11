@@ -13,16 +13,13 @@ The **drug abuse epidemic** that has been sweeping the the United States has cos
 - Role management system
 - Effect information
 - Tolerance calculators
-- Quote management system
-- HRT information
-- Hilarious memes
 
 ## Contributors
 
-This project is currently maintained anonymously.
+This project is maintained by members of the [dosebotredux organization](https://github.com/dosebotredux) on Github.
 
 ## Usage
 
 1.  Clone repo
 2.  `npm install` to download dependencies
-3.  `node bot.js` to start bot
+3.  `DISCORD_API_TOKEN=xxx node bot.js` to start bot
