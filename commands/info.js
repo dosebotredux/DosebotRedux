@@ -379,9 +379,7 @@ function buildAddictionPotentialField(substance) {
 
 // Builds the link field
 function buildLinksField(substance) {
-  return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
-    substance.name
-  })\n[Effect Index](https://www.effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
+  return `[PsychonautWiki](https://psychonautwiki.org/wiki/${ substance.name }) - [Effect Index](https://www.effectindex.com) - [Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
 }
 
 function createTSChannelMessage(substance, message) {
@@ -441,7 +439,7 @@ function buildTSLinksField(substance) {
 function parseSubstanceName(string) {
   let unsanitizedDrugName = string
     .toLowerCase()
-    .replace('--info ', '', -1)
+    .replace(/^[^\s]+ /, '', -1) // remove first word
     .replace(/-/g, '', -1)
     .replace(/ /g, '', -1);
 
