@@ -2,7 +2,7 @@ var fs = require('fs');
 
 module.exports = function CommandSystem() {
   // Specify the DoseBot command prefix
-  const commandPrefix = '--';
+  const commandPrefix = null == process.env.TRIGGER ? '--' : process.env.TRIGGER;
   // Initialize an object to hold the list of commands
   var commandTable = {};
 
