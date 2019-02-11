@@ -23,3 +23,8 @@ This project is maintained by members of the [dosebotredux organization](https:/
 1.  Clone repo
 2.  `npm install` to download dependencies
 3.  `DISCORD_API_TOKEN=xxx node bot.js` to start bot
+
+## Invite DoseBot Redux to your server!
+
+Want DoseBot Redux on your server? Just click [this link](https://discordapp.com/oauth2/authorize?&client_id=435987984450453505&scope=bot&permissions=268486656) and it shall appear!
+
