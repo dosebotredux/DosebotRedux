@@ -4,14 +4,9 @@ const rp = require('request-promise');
 
 exports.run = (client, message, args) => {
 
-  // Capture messages posted to a given channel and remove all symbols and put everything into lower case
-  var str = message.content; // --betaeffects acuity enhancement
-  var result = str.split(' '); // [--betaeffects, acuity, enhancement]
-  var effect = str
-    .toLowerCase()
-    .replace('--effectinfo ', '', -1)
-    .replace(/-/g, '', -1)
-    .replace(/ /g, '-', -1); // acuity enhancement
+  var tokens = message.content.split(' ');
+  tokens.shift();
+  const effect = tokens.join("-");
 
   console.log(`effect: ${effect}`);
 
