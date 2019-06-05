@@ -12,10 +12,11 @@ exports.run = (client, message, args) => {
   }
 
   const embed = new Discord.RichEmbed()
-    .setTitle('DoseBot Avatar Service')
-    .setAuthor('DoseBot Redux', 'https://i.imgur.com/7R8WDwE.png')
+    .setTitle('DoseBot Redux Avatar Service')
+    .attachFile("./assets/logo.png")
+    .setAuthor('DoseBot Redux', 'attachment://logo.png')
     .setColor('747474')
-    .setURL('http://www.dosebot.org')
+    .setURL('https://github.com/dosebotredux')
     .setImage(avatar);
 
   message.channel.send({ embed });

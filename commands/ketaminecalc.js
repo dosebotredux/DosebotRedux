@@ -25,15 +25,13 @@ exports.run = (client, message, args) => {
 
   const embed = new Discord.RichEmbed()
     .setTitle('Ketamine Dosage Calculator')
-    .setAuthor('DoseBot', 'http://www.dosebot.org/images/dose.png')
+    .attachFile("./assets/logo.png")
+    .setThumbnail('attachment://logo.png')
+    .setAuthor('DoseBot Redux', 'attachment://logo.png')
     .setColor('747474')
-    .setFooter(
-      'Please use drugs responsibly',
-      'http://www.dosebot.org/images/dose.png'
-    )
-    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
+    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
     .setTimestamp()
-    .setURL('http://www.dosebot.org')
+    .setURL("https://github.com/dosebotredux")
     .addField(
       '[:scales:] Dosages',
       `Dosages for: **${weight}${weightIsKilos ? 'kg' : 'lbs'}**`

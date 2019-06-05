@@ -4,15 +4,13 @@ const Discord = require('discord.js');
 function createComboMessage(combos, name) {
   return new Discord.RichEmbed()
     .setTitle(`**${name} combo information**`)
-    .setAuthor('DoseBot Redux', 'https://i.imgur.com/7R8WDwE.png')
+    .attachFile("./assets/logo.png")
+    .setThumbnail('attachment://logo.png')
+    .setAuthor('DoseBot Redux', 'attachment://logo.png')
     .setColor('747474')
-    .setFooter(
-      'Please use drugs responsibly',
-      'https://i.imgur.com/7R8WDwE.png'
-    )
-    .setThumbnail('https://i.imgur.com/7R8WDwE.png')
+    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
     .setTimestamp()
-    .setURL('http://www.dosebot.org')
+    .setURL("https://github.com/dosebotredux")
     .addField('Combos', combos);
 }
 

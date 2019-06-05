@@ -13,11 +13,12 @@ exports.run = (client, message, args) => {
   if (mentionedUsers.length > 0) {
     mentionedUsers.forEach(user => {
       const embed = new Discord.RichEmbed()
-        .setTitle('DoseBot Intelligence Service')
-        .setAuthor('DoseBot Redux', 'https://i.imgur.com/7R8WDwE.png')
+        .setTitle('DoseBot Redux Intelligence Service')
+        .attachFile("./assets/logo.png")
+        .setAuthor('DoseBot Redux', 'attachment://logo.png')
         .setColor('747474')
         .setThumbnail(user.avatarURL)
-        .setURL('http://www.dosebot.org')
+        .setURL("https://github.com/dosebotredux")
         .addField('Name', user.username)
         .addField('Status', user.presence.status)
         .addField('Registered', user.createdAt)

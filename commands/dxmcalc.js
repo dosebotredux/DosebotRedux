@@ -20,15 +20,13 @@ exports.run = (client, message, args) => {
   if (!isNaN(weight)) {
     const embed = new Discord.RichEmbed()
       .setTitle('DXM Dosage Calculator')
-      .setAuthor('DoseBot Redux', 'http://www.dosebot.org/images/dose.png')
+      .attachFile("./assets/logo.png")
+      .setAuthor('DoseBot Redux', 'attachment://logo.png')
       .setColor('747474')
-      .setFooter(
-        'Please use drugs responsibly',
-        'http://www.dosebot.org/images/dose.png'
-      )
-      .setThumbnail('https://i.imgur.com/7R8WDwE.png')
+      .setFooter('Please use drugs responsibly', 'attachment://logo.png')
+      .setThumbnail('attachment://logo.png')
       .setTimestamp()
-      .setURL('http://www.dosebot.org')
+      .setURL("https://github.com/dosebotredux")
       .addField(
         '[:scales:] Dosages',
         DXMCalc.generateDosageField(weight, weightIsKilos)
