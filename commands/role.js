@@ -81,7 +81,7 @@ exports.run = (client, message, args) => {
     // Send a message saying role can't be assigned
     console.log('cannot apply role');
     message.channel.send(
-      `Error: DoseBot cannot assign role **${desiredRole}**`
+      `Error: DoseBot Redux cannot assign role **${desiredRole}**`
     );
   }
 

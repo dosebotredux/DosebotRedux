@@ -210,7 +210,7 @@ function assignRole(roleToApply, author, isPermanent, message) {
     // Delay for 8 hours then remove role
     const asyncFunc = author => {
       delay(28800000).then(() => {
-        // 28800000ms
+        // 28800000ms, 8 hours
         console.log(
           `Removed **${roleToApply.name}** from ${author.displayName}`
         );

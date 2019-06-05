@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
   });
 
   const embed = new Discord.RichEmbed()
-    .setTitle('DoseBot Help')
+    .setTitle('DoseBot Redux Help')
     .attachFile("./assets/logo.png")
     .setThumbnail('attachment://logo.png')
     .setAuthor('DoseBot Redux', 'attachment://logo.png')
