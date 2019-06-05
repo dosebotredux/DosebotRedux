@@ -24,10 +24,9 @@ exports.run = (client, message, args) => {
   }
 
   // Set desired role
-  let desiredRole = str
-    .toLowerCase()
-    .replace('--role ', '', -1)
-    .replace(/-/g, '', -1); // "role"
+  var tokens = message.content.split(" ");
+  tokens.shift();
+  let desiredRole = tokens.join(" ");
 
   // Split desiredRole into an array and then capture the first string
   const desiredRoleArr = desiredRole.split(' ');
