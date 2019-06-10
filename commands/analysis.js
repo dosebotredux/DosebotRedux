@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
     const spl = effectLine.split('|');
     const effect = spl[0].trim();
     const notes = (spl[1] || '').trim();
-    const link = effect.toLowerCase().replace(' ', '-');
+    const link = effect.toLowerCase().replace(/ /g, '-');
 
     // **Additional notes:**
 
