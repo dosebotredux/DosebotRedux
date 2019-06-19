@@ -60,7 +60,7 @@ exports.run = async (client, message, args) => {
       const { data } = await fetchPWSubstanceData(substanceName);
 
       // Logs API's returned object of requested substance
-      console.log(data);
+      console.log("Substances response: " + JSON.stringify(data));
 
       // Send a message to channel if there are zero or more than one substances returned by the API
       // Not sure if the API in its current configuration can return more than one substance
@@ -370,7 +370,6 @@ function buildPsychoactiveClassField(substance) {
 // Builds the addiction potential field
 function buildAddictionPotentialField(substance) {
   if (substance.addictionPotential !== null) {
-    console.log(substance);
     return `${capitalize(substance.addictionPotential)}\n`;
   } else {
     return 'No addiction potential information.';
