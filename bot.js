@@ -1,53 +1,45 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const DiscordClient = new Discord.Client();
 const CommandSystem = require('./command-system.js')();
 
-// On ready logic
-client.on('ready', () => {
-  // Update game message on launch
-  updateGameMessage();
-  console.log('DoseBot is online - beep boop');
-});
-
-// Log new guild joins
-client.on('guildCreate', guild => {
-  // Update game message on new server join
-  updateGameMessage();
-  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
-});
-
-// Pass messages to the CommandSystem
-client.on('message', message => {
-  console.log(`[DEBUG] [${
-    message.guild == null ? "no guild" : message.guild.name
-  } #${message.channel.name}] <${message.author.id} ${message.author.username}#${message.author.discriminator}> -- ${message.content}`)
-  CommandSystem.execute(client, message);
-});
-
-CommandSystem.load(function() {
+CommandSystem.load(() => {
   console.log('Command system loaded.');
 });
 
-client.login(process.env.DISCORD_API_TOKEN);
+DiscordClient.on('ready', () => {
+  console.log('DoseBot is online - beep boop');
 
-function updateGameMessage() {
-  // Logs guilds and member counts
-  let servers = client.guilds;
-  let userCount = 0;
-  let servercount = 0;
-
-  servers.forEach(guild => {
-    userCount += guild.memberCount;
-    servercount++;
-    console.log(
-      `Name: ${guild.name} ID: ${guild.id} Members: ${guild.memberCount}`
-    );
-  });
-  console.log(`Currently serving ${userCount} users on ${servercount} servers`);
-  let botGame = `my part in reducing harm!`;
-  client.user
-    .setActivity(botGame)
-    .then(presence => console.log(`Game set to ${botGame}`))
+  // Update game message on launch
+  DiscordClient.user
+    .setActivity(`my part in reducing harm!`, { type: 'PLAYING' })
+    .then(presence => console.log(`Activity set: ${JSON.stringify(presence.game)}`))
     .catch(console.error);
-}
+
+  // Print guild list
+  const guildCount = DiscordClient.guilds.array().length;
+  const userCount = DiscordClient.guilds
+    .map(guild => guild.memberCount)
+    .reduce((x, y) => x + y);
+
+  console.log(`Currently serving ${userCount} users on ${guildCount} guilds`);
+  for (let guild of DiscordClient.guilds.array()) {
+    console.log(`- ${guild.id} - ${guild.name} (${guild.memberCount} members)`);
+  }
+});
+
+DiscordClient.on('guildCreate', guild => {
+  console.log(`New server joined - Name: ${guild.name} Members: ${guild.memberCount}`);
+});
+
+DiscordClient.on('message', message => {
+  const guild = (message.guild || {}).name;
+  const channel = message.channel.name;
+  const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
+
+  console.log(`[${guild} #${channel}] <${author}> -- ${message.content}`);
+
+  CommandSystem.execute(DiscordClient, message);
+});
+
+DiscordClient.login(process.env.DISCORD_API_TOKEN);
