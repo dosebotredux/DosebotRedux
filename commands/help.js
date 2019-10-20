@@ -28,6 +28,7 @@ function buildCommandList() {
     '--effectinfo [effect]',
     '--effects [substance]',
     "--help (you are here)",
+    "--hrt",
     '--info [substance]',
     "--invitelink",
     '--ketaminecalc [weight in lbs]',
