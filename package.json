@@ -8,22 +8,16 @@
   "license": "Unlicense",
   "dependencies": {
     "bufferutil": "^4.0.0",
-    "discord-anti-spam": "^1.1.1",
-    "discord.io": "^2.5.3",
-    "discord.js": "^11.4.2",
+    "discord.js": "^11.5.1",
     "dotenv": "^5.0.1",
-    "erlpack": "github:hammerandchisel/erlpack",
-    "forever": "^0.15.3",
-    "js-yaml": "^3.11.0",
-    "moment": "^2.23.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-google": "^0.9.1",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.18.2"
   },
   "scripts": {
     "start": "node bot.js"
