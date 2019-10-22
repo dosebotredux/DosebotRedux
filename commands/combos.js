@@ -5,7 +5,7 @@ const rp = require('request-promise');
 exports.run = (client, message, args) => {
   const drug = message.content
     .toLowerCase()
-    .replace('--combos ', '', -1)
+    .replace(/^[^\s]+ /, '', -1) // remove first word
     .replace(/-/g, '', -1)
     .split(' ');
 

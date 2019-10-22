@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
   // Removes all symbols and puts everything in lower case so bot finds the images easier
   let substanceName = str
     .toLowerCase()
-    .replace('--effects ', '', -1)
+    .replace(/^[^\s]+ /, '', -1) // remove first word
     .replace(/-/g, '', -1)
     .replace(/ /g, '', -1);
 
