@@ -28,3 +28,7 @@ This project is maintained by members of the [dosebotredux organization](https:/
 ## Invite DoseBot Redux to your server!
 
 Want DoseBot Redux on your server? Just click [this link](https://discordapp.com/oauth2/authorize?&client_id=435987984450453505&scope=bot&permissions=268486656) and it shall appear! Just want to give it a try? Join us on [the demo server](https://discord.gg/vXdwjvS) and you can try out DoseBot Redux right away.
+
+### In memoriam
+
+DoseBot Redux is maintained in memory of Cocoa, 1995 - 2019. Cocoa was the creator of the [original DoseBot](https://github.com/GabrielMorris/DoseBot).
