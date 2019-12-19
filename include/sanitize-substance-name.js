@@ -94,5 +94,8 @@ module.exports = function sanitizeSubstanceName(drug) {
   if (drug === "moxy") return "5-MeO-MiPT"
   // if (drug === "5meoamt") { return "5-MeO-aMT" } // doesn't exist
 
+  // Other pharmaceuticals
+  if (drug === "sertraline") return "ssri";
+
   return drug
 }
