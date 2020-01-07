@@ -6,7 +6,6 @@ var fs = require('fs');
 // triggers other than to split on the first space. Commands should be reworked
 // to take a sanitized array of arguments.
 function triggerForGuild(guildId) {
-    console.log(`Determining trigger for ${guildId}`)
     if (null != (process.env.TRIGGER)) {
         return process.env.TRIGGER;
     }
