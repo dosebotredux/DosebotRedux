@@ -1,8 +1,24 @@
 var fs = require('fs');
 
+// Server-specific trigger overrides
+// Limitations:
+// - Triggers cannot contain spaces, because commands don't know how to replace
+// triggers other than to split on the first space. Commands should be reworked
+// to take a sanitized array of arguments.
+function triggerForGuild(guildId) {
+    console.log(`Determining trigger for ${guildId}`)
+    if (null != (process.env.TRIGGER)) {
+        return process.env.TRIGGER;
+    }
+    switch (guildId) {
+      case "253612214148136981": return "."; // Drugs Community
+      default:                   return "--";
+    }
+}
+
 module.exports = function CommandSystem() {
   // Specify the DoseBot command prefix
-  const commandPrefix = null == process.env.TRIGGER ? '--' : process.env.TRIGGER;
+
   // Initialize an object to hold the list of commands
   var commandTable = {};
 
@@ -12,9 +28,7 @@ module.exports = function CommandSystem() {
         for (let i = 0; i < items.length; i++) {
           try {
             var commandName = items[i].replace(/.js$/, '');
-            commandTable[
-              commandName
-            ] = require(`./commands/${commandName}.js`);
+            commandTable[commandName] = require(`./commands/${commandName}.js`);
           } catch (err) {
             console.error(
               `Encountered error trying to require command: ${commandName}.js`
@@ -31,15 +45,17 @@ module.exports = function CommandSystem() {
         return;
       }
 
-      message.content = message.content.replace(/^[—─]/, '--')
+      // undo some autocorrects to fix triggers
+      const content = message.content.replace(/^[—─]/, '--')
 
-      if (!message.content.startsWith(commandPrefix)) {
-        // console.log("Command prefix not matched")
+      const trigger = triggerForGuild(message.guild.id);
+
+      if (!content.startsWith(trigger)) {
         return;
       }
 
-      const args = message.content
-        .slice(commandPrefix.length)
+      const args = content
+        .slice(trigger.length)
         .trim()
         .split(/ +/g);
       const commandName = args.shift().toLowerCase();
