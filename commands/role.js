@@ -1,130 +1,127 @@
-// Role message
-exports.run = (client, message, args) => {
-  const Roles = require('../include/roles.js');
+const acceptableTemporaryRoles = [
+  'tripping',
+  'stimmed',
+  'barred',
+  'nodding',
+  'drunk',
+  'dissod',
+  'rolling',
+  'stoned',
+  'hungover',
+  'delirious',
+  'altered',
+  'baked',
+  'microdosing'
+];
 
-  const author = message.member; // author object
-  const str = message.content; // "--role role lsd"
-  // Create an array so we can access multiple arguments
-  let substance;
-  let dosage;
-  let strArr = str.replace('--role ', '', -1).split(' '); // [lsd, 50ug]
-  // Guild variables
-  const guild = message.guild; // Guild snowflake
-  const guildRoles = guild.roles; // Guild roles snowflake
+const acceptablePermanentRoles = [
+  'he/him',
+  'she/her',
+  'they/them',
+  'any pronouns',
+  'ask my pronouns'
+];
 
-  if (strArr.length === 2) {
-    substance = strArr[1];
-    dosage = '';
-  } else if (strArr.length === 3) {
-    substance = strArr[1];
-    dosage = strArr[2];
-  } else {
-    substance = ' ';
-    dosage = ' ';
+function assignNickname(guild, user, substance, dosage) {
+  if (!guild.me.hasPermission('MANAGE_NICKNAMES')) {
+    console.log("Not setting nickname, don't have permission");
+    return new Promise((resolve) => resolve());
   }
 
-  // Set desired role
+  if (substance !== undefined && dosage !== undefined) {
+    return user.setNickname(`${user.displayName} | ${substance} ${dosage}`);
+  } else if (substance !== undefined) {
+    return user.setNickname(`${user.displayName} | ${substance}`);
+  } else {
+    return new Promise((resolve) => resolve())
+  }
+}
+
+function restoreNickname(guild, user) {
+  if (!guild.me.hasPermission('MANAGE_NICKNAMES')) {
+    console.log("Not setting nickname, don't have permission");
+    return new Promise((resolve) => resolve());
+  }
+
+  if (user.displayName.includes('|')) {
+    let nickTokens = user.displayName.split('|');
+    return message.member.setNickname(nickTokens[0]);
+  } else {
+    return new Promise((resolve) => resolve());
+  }
+}
+
+function assignRole(guild, user, roleToApply, substance, dosage, isPermanent) {
+  return user.addRole(roleToApply.id).then(() => {
+    // Catching this error. There's a bug that causes Missing Permissions API
+    // errors even with the permissions being checked.
+    return assignNickname(guild, user, substance, dosage).catch(console.error);
+  }).then(() => {
+    if (!isPermanent) {
+      new Promise((resolve) => {
+        console.log("Unassigning role in 8 hours.")
+        setTimeout(resolve, 8 * 60 * 60 * 1000);
+      }).then(() => {
+        return unassignRole(user, roleToApply);
+      }).catch(console.error);
+    }
+  })
+}
+
+function unassignRole(guild, user, roleToApply) {
+  return user.removeRole(roleToApply.id).then(() => {
+    // Catching this error. There's a bug that causes Missing Permissions API
+    // errors even with the permissions being checked.
+    return restoreNickname(guild, user).catch(console.error);
+  });
+}
+
+// Function for toggling a role
+function toggleRole(channel, user, roleToSet, substance, dosage, isPermanent) {
+  if (user.roles.find(role => role.name == roleToSet.name)) {
+    // User already has role -- unset
+    return unassignRole(channel.guild, user, roleToSet).then(() => {
+      return channel.send(`Removed **${roleToSet.name}** from <@${user.id}>`);
+    });
+  } else {
+    // User does not have role -- set
+    return assignRole(channel.guild, user, roleToSet, substance, dosage, isPermanent).then(() => {
+      return channel.send(`Added **${roleToSet.name}** to <@${user.id}>`);
+    });
+  }
+}
+
+exports.run = (client, message, args) => {
   var tokens = message.content.split(" ");
   tokens.shift();
-  let desiredRole = tokens.join(" ");
+  let roleName = tokens[0].toLowerCase().replace(/[\W_]+/g,"");
 
-  // Split desiredRole into an array and then capture the first string
-  const desiredRoleArr = desiredRole.split(' ');
-  desiredRole = desiredRoleArr[0];
-
-  // Have an object of servers with role exceptions
-  const roleExceptions = Roles.getRoleExceptions();
-
-  // Have an array of acceptable roles to apply
-  const acceptableTemporaryRoles = Roles.getTemporaryRoles();
-
-  // Have an array of acceptable permanent roles to apply
-  const acceptablePermanentRoles = Roles.getPermanentRoles();
-
-  // Check to see if current guild has exceptions
-  if (Roles.checkIfGuildHasRoleExceptions(message.guild.id)) {
-    console.log('exception detected');
-    // Set role to either exception or original request role
-    desiredRole = Roles.returnGuildHasDesiredRoleException(
-      message.guild.id,
-      desiredRole
-    );
+  if (!(acceptableTemporaryRoles.includes(roleName) || acceptablePermanentRoles.includes(roleName))) {
+    console.log(`Not a valid role: roleName`)
+    return
   }
 
-  console.log(`Desired role: ${desiredRole}`);
-
-  // Log the result of a find operation on the desired role
-  console.log(
-    `Results: ${guildRoles.find(
-      role => role.name.toLowerCase() === desiredRole
-    )}`
-  );
+  let substance;
+  let dosage;
+  if (tokens.length === 2) {
+    substance = tokens[1];
+    dosage = undefined;
+  } else if (tokens.length === 3) {
+    substance = tokens[1];
+    dosage = tokens[2];
+  } else {
+    substance = undefined;
+    dosage = undefined;
+  }
 
   // Checks to see if the desiredRole is equal to any role object's name property
-  if (Roles.checkIfGuildHasDesiredRole(guildRoles, desiredRole)) {
-    // Capture the desired guild role
-    const desiredGuildRole = Roles.returnDesiredGuildRoleSnowflake(
-      guildRoles,
-      desiredRole
-    );
-    // Now that we have the desired guild role snowflake we can check if its temporary or permanent
-    if (Roles.checkIfRoleIsTemporary(desiredRole, acceptableTemporaryRoles)) {
-      console.log('Role is temporary');
-      toggleRole(false, desiredGuildRole, author, substance, dosage);
-    } else if (
-      Roles.checkIfRoleIsPermanent(desiredRole, acceptablePermanentRoles)
-    ) {
-      console.log('Role is permanent');
-      toggleRole(true, desiredGuildRole, author, substance, dosage);
-    }
-  } else {
-    // Send a message saying role can't be assigned
-    console.log('cannot apply role');
-    message.channel.send(
-      `Error: DoseBot Redux cannot assign role **${desiredRole}**`
-    );
+  const roleToSet = message.guild.roles.find(role => role.name.toLowerCase().replace(/[\W_]+/g,"") == roleName)
+  if (!roleToSet) {
+    message.channel.send('Error: That role does not does not exist on this server.').catch(console.error);
+    return;
   }
 
-  // Function for toggling a role
-  function toggleRole(isPermanent, roleToApply, author, substance, dosage) {
-    console.log(`In toggleRole Author is: ${author}`);
-    if (isPermanent) {
-      console.log('toggling permanent role');
-      // Conditional to determine whether user has role
-      if (Roles.checkIfUserHasRole(author, roleToApply)) {
-        console.log('Author currently has role');
-
-        Roles.unassignRole(roleToApply, author, message);
-      } else {
-        console.log('Author does not currently have role');
-        Roles.assignRole(roleToApply, author, isPermanent, message);
-      }
-    } else if (!isPermanent) {
-      console.log('toggling temporary role');
-      let nickName = author.displayName;
-      let nickNameModifier;
-
-      // Modify nickname is substance and dosage are provided
-      if (substance !== ' ') {
-        nickNameModifier = ` | ${substance} ${dosage}`;
-      } else {
-        nickNameModifier = ' ';
-      }
-
-      // Conditional to determine whether user has role
-      if (Roles.checkIfUserHasRole(author, roleToApply)) {
-        console.log('Author currently has role');
-        // Restores nickname
-        Roles.restoreNickname(message);
-        // Removes role
-        Roles.unassignRole(roleToApply, author, message);
-      } else {
-        console.log('Author does not currently have role');
-        // Sets trip nickname
-        Roles.setTripNickName(nickName, nickNameModifier, message);
-        // Adds role
-        Roles.assignRole(roleToApply, author, isPermanent, message);
-      }
-    }
-  }
+  // Now that we have the desired guild role snowflake we can check if its temporary or permanent
+  let isPermanent = acceptablePermanentRoles.includes(roleName)
+  toggleRole(message.channel, message.member, roleToSet, substance, dosage, isPermanent).catch(console.error);
 };
