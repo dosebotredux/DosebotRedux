@@ -20,7 +20,7 @@ DiscordClient.on('ready', () => {
   const guildCount = DiscordClient.guilds.array().length;
   const userCount = DiscordClient.guilds
     .map(guild => guild.memberCount)
-    .reduce((x, y) => x + y);
+    .reduce((x, y) => x + y, 0);
 
   console.log(`Currently serving ${userCount} users on ${guildCount} guilds`);
   for (let guild of DiscordClient.guilds.array()) {
