@@ -4,21 +4,19 @@ exports.run = (client, message, args) => {
   const roles = require('../include/roles.js');
 
   const guildRoles = message.guild.roles;
-  const temporaryRoles = roles.getTemporaryRoles();
-  const permanentRoles = roles.getPermanentRoles();
 
-  const availabeTemporaryRoles = [];
-  const availabePermanentRoles = [];
+  const availableTemporaryRoles = [];
+  const availablePermanentRoles = [];
 
-  temporaryRoles.forEach(tempRole => {
-    if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
-      availabeTemporaryRoles.push(tempRole);
+  roles.temporaryRoles.forEach(roleName => {
+    if (guildRoles.find(role => role.name.toLowerCase() === roleName)) {
+      availableTemporaryRoles.push(roleName);
     }
   });
 
-  permanentRoles.forEach(tempRole => {
-    if (guildRoles.find(role => role.name.toLowerCase() === tempRole)) {
-      availabePermanentRoles.push(tempRole);
+  roles.permanentRoles.forEach(roleName => {
+    if (guildRoles.find(role => role.name.toLowerCase() === roleName)) {
+      availablePermanentRoles.push(roleName);
     }
   });
 
@@ -31,8 +29,8 @@ exports.run = (client, message, args) => {
     .setFooter('Please use drugs responsibly', 'attachment://logo.png')
     .setTimestamp()
     .setURL("https://github.com/dosebotredux")
-    .addField('Temporary roles', generateRoleField(availabeTemporaryRoles))
-    .addField('Permanent roles', generateRoleField(availabePermanentRoles));
+    .addField('Temporary roles', generateRoleField(availableTemporaryRoles))
+    .addField('Permanent roles', generateRoleField(availablePermanentRoles));
 
   message.channel.send({ embed });
 

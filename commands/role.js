@@ -1,26 +1,4 @@
-const acceptableTemporaryRoles = [
-  'tripping',
-  'stimmed',
-  'barred',
-  'nodding',
-  'drunk',
-  'dissod',
-  'rolling',
-  'stoned',
-  'hungover',
-  'delirious',
-  'altered',
-  'baked',
-  'microdosing'
-];
-
-const acceptablePermanentRoles = [
-  'he/him',
-  'she/her',
-  'they/them',
-  'any pronouns',
-  'ask my pronouns'
-];
+const roles = require('../include/roles.js');
 
 function assignNickname(guild, user, substance, dosage) {
   if (!guild.me.hasPermission('MANAGE_NICKNAMES')) {
@@ -96,7 +74,7 @@ exports.run = (client, message, args) => {
   tokens.shift();
   let roleName = tokens[0].toLowerCase().replace(/[\W_]+/g,"");
 
-  if (!(acceptableTemporaryRoles.includes(roleName) || acceptablePermanentRoles.includes(roleName))) {
+  if (!(roles.temporaryRoles.includes(roleName) || roles.permanentRoles.includes(roleName))) {
     console.log(`Not a valid role: roleName`)
     return
   }
@@ -122,6 +100,6 @@ exports.run = (client, message, args) => {
   }
 
   // Now that we have the desired guild role snowflake we can check if its temporary or permanent
-  let isPermanent = acceptablePermanentRoles.includes(roleName)
+  let isPermanent = roles.permanentRoles.includes(roleName)
   toggleRole(message.channel, message.member, roleToSet, substance, dosage, isPermanent).catch(console.error);
 };
