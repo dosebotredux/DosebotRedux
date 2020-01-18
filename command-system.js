@@ -5,12 +5,15 @@ var fs = require('fs');
 // - Triggers cannot contain spaces, because commands don't know how to replace
 // triggers other than to split on the first space. Commands should be reworked
 // to take a sanitized array of arguments.
-function triggerForGuild(guildId) {
+function triggerForGuild(guild) {
     if (null != (process.env.TRIGGER)) {
         return process.env.TRIGGER;
     }
-    switch (guildId) {
-      case "253612214148136981": return "."; // Drugs Community
+    if (null == guild) {
+      return "--";
+    }
+    switch (guild.id) {
+      // case "253612214148136981": return "."; // Drugs Community
       default:                   return "--";
     }
 }
@@ -47,7 +50,7 @@ module.exports = function CommandSystem() {
       // undo some autocorrects to fix triggers
       const content = message.content.replace(/^[—─]/, '--')
 
-      const trigger = triggerForGuild(message.guild.id);
+      const trigger = triggerForGuild(message.guild);
 
       if (!content.startsWith(trigger)) {
         return;
