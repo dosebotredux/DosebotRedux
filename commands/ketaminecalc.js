@@ -2,26 +2,18 @@ const Discord = require('discord.js');
 const KetamineCalc = require('../include/ketaminecalc');
 exports.run = (client, message, args) => {
   // Message variables
-  const str = message.content
-    .toLowerCase()
-    .replace('--ketaminecalc', '', -1)
-    .replace(/-/g, '', -1);
+  var tokens = message.content.toLowerCase().split(" ")
+  tokens.shift() // remove trigger
+  var combined = tokens.join("")
 
-  // parse weight from result
-  let weight = parseInt(str);
-  let weightIsKilos = false;
-
-  if (str.includes('kg')) {
-    weightIsKilos = true;
-  }
-
-  // check to see if weight is a number and terminate if false
-  if (isNaN(weight)) {
-    message.channel.send(
-      '**Error:** No weight specified | Usage: --ketaminecalc [weight]<optional: lbs/kg'
-    );
+  if (tokens.length < 1 || isNaN(parseInt(combined))) {
+    message.channel.send('**Error:** No weight specified | Usage: `--ketaminecalc [weight] [unit]`. Example: `--ketaminecalc 85 kg`.');
     return;
   }
+
+  // parse weight from result
+  let weight = parseInt(combined);
+  let weightIsKilos = (combined.includes('kg') || combined.includes('kilo'));
 
   const embed = new Discord.RichEmbed()
     .setTitle('Ketamine Dosage Calculator')
