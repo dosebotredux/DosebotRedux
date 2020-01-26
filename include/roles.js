@@ -11,7 +11,8 @@ module.exports.temporaryRoles = [
   'delirious',
   'altered',
   'baked',
-  'microdosing'
+  'microdosing',
+  'gabaergic'
 ];
 
 module.exports.permanentRoles = [
