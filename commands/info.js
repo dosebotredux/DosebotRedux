@@ -72,9 +72,7 @@ exports.run = async (client, message, args) => {
         const responseData = await fetchAndParseURL(tripSitURL);
 
         if (responseData.err === true) {
-          message.channel.send(
-            `Error: No API data available for **${substanceName}**`
-          );
+          message.channel.send(`Error: No API data available for **${substanceName}**`);
         } else {
           let substance = responseData.data[0];
 
@@ -84,11 +82,8 @@ exports.run = async (client, message, args) => {
         return;
       } else if (data.substances.length > 1) {
         message.channel
-          .send(
-            `There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`
-          )
+          .send(`There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`)
           .catch(console.error);
-
         return;
       } else {
         // Set substance to the first returned substance from PW API
@@ -120,7 +115,8 @@ function createPWChannelMessage(substance, message) {
     .addField(
       ':telescope: __Class__',
       buildChemicalClassField(substance) +
-        buildPsychoactiveClassField(substance)
+      '\n' +
+      buildPsychoactiveClassField(substance)
     )
     .addField(':scales: __Dosages__', `${buildDosageField(substance)}\n`, true)
     .addField(
@@ -347,10 +343,12 @@ function buildDurationField(substance) {
 
 // Builds the chemical class field
 function buildChemicalClassField(substance) {
-  if (substance.class !== null) {
-    if (substance.class.chemical !== null) {
-      return `**Chemical**: ${substance.class.chemical[0]}`;
-    }
+  if ((typeof substance.class != undefined) &&
+      (substance.class !== null) &&
+      (typeof substance.class.chemical != undefined) &&
+      (substance.class.chemical != null))
+  {
+    return `**Chemical**: ${substance.class.chemical[0]}`;
   } else {
     return 'No chemical class information.';
   }
@@ -358,10 +356,12 @@ function buildChemicalClassField(substance) {
 
 // Builds the psychoactive class field
 function buildPsychoactiveClassField(substance) {
-  if (substance.class !== null) {
-    if (substance.class.psychoactive !== null) {
-      return `\n**Psychoactive**: ${substance.class.psychoactive[0]}`;
-    }
+  if ((typeof substance.class != undefined) &&
+      (substance.class !== null) &&
+      (typeof substance.class.psychoactive != undefined) &&
+      (substance.class.psychoactive != null))
+  {
+    return `**Psychoactive**: ${substance.class.psychoactive[0]}`;
   } else {
     return 'No psychoactive class information.';
   }
@@ -410,6 +410,18 @@ function capitalize(name) {
 
 // Build TS dosage field
 function buildTSDosageField(substance) {
+  console.log(`in buildTSDosageField -- ${JSON.stringify(substance.formatted_dose)}`)
+
+  if ((typeof substance.formatted_dose != undefined) &&
+      (substance.formatted_dose != null))
+  {
+    // try fancy formatting
+    let substanceName = Object.keys(substance.formatted_dose)[0];
+    return Object.entries(substance.formatted_dose[substanceName]).map(([intensity, dosageRange]) => {
+      return `**${capitalize(intensity)}**: ${dosageRange}`;
+    }).join("\n");
+  }
+
   return `${substance.properties.dose}`;
 }
 
