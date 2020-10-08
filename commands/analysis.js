@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
     drug = '[psychedelic effects](https://effectindex.com/summaries/psychedelics/visual)';
   }
 
-  const templateStart = `This is a replication of ${strength} ${drug}. The specific effects which are occurring within this replication seem to include:`;
+  const templateStart = `This is a replication of ${strength} ${drug}. The specific effect/s which are occurring within this replication seem to include:`;
   const templateEnd = 'Please reply to this comment if you disagree with this replication analysis or would like to provide general feedback.';
   let additionalNotes = '';
 
