@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 
-exports.TemplatedRichEmbed = function () {
-  return new Discord.RichEmbed()
+exports.TemplatedMessageEmbed = function () {
+  return new Discord.MessageEmbed()
     .setTimestamp()
-    .attachFile("./assets/logo.png")
+    .attachFiles(["./assets/logo.png"])
     .setAuthor('DoseBot Redux', 'attachment://logo.png')
     .setThumbnail('attachment://logo.png')
     .setColor('747474')

@@ -1,6 +1,7 @@
 // About message
 const Discord = require('discord.js');
 const rp = require('request-promise');
+const Helpers = require('../helpers.js');
 
 exports.run = (client, message, args) => {
 
@@ -18,14 +19,7 @@ exports.run = (client, message, args) => {
       const effectInfo = JSON.parse(body);
       console.log(effectInfo.effect.summary_raw);
 
-      const embed = new Discord.RichEmbed()
-        .attachFile("./assets/logo.png")
-        .setThumbnail('attachment://logo.png')
-        .setAuthor('DoseBot Redux', 'attachment://logo.png')
-        .setColor('747474')
-        .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-        .setTimestamp()
-        .setURL("https://github.com/dosebotredux")
+      const embed = Helpers.TemplatedMessageEmbed()
         .setImage(createReplicationField(effectInfo))
         .addField(
           `**${createEffectFieldTitle(effectInfo)} summary**`,
@@ -66,7 +60,7 @@ exports.run = (client, message, args) => {
       return replicationURL;
     } else {
       console.log('we are in the wrong place');
-      // Return a blank image if no replicaiton is for as richembed fields cant be empty
+      // Return a blank image if no replicaiton is for as MessageEmbed fields cant be empty
       return 'https://i.imgur.com/3mENLpk.png';
     }
   }

@@ -101,17 +101,10 @@ exports.run = async (client, message, args) => {
 };
 
 // Functions
-//// Create a RichEmbed powered message utilizing the various field builder functions
+//// Create a MessageEmbed powered message utilizing the various field builder functions
 function createPWChannelMessage(substance, message) {
-  const embed = new Discord.RichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .setTitle(`**${capitalize(substance.name)} drug information**`)
-    .attachFile("./assets/logo.png")
-    .setThumbnail('attachment://logo.png')
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-    .setTimestamp()
-    .setURL("https://github.com/dosebotredux")
     .addField(
       ':telescope: __Class__',
       buildChemicalClassField(substance) +
@@ -382,7 +375,7 @@ function buildLinksField(substance) {
 }
 
 function createTSChannelMessage(substance, message) {
-  const embed = Helpers.TemplatedRichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
     .addField(
       ':scales: __Dosages__',

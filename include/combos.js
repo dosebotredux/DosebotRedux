@@ -1,16 +1,10 @@
 const Discord = require('discord.js');
+const Helpers = require('../helpers.js');
 
 // Function for creating combo message
 function createComboMessage(combos, name) {
-  return new Discord.RichEmbed()
+  return Helpers.TemplatedMessageEmbed()
     .setTitle(`**${name} combo information**`)
-    .attachFile("./assets/logo.png")
-    .setThumbnail('attachment://logo.png')
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-    .setTimestamp()
-    .setURL("https://github.com/dosebotredux")
     .addField('Combos', combos);
 }
 

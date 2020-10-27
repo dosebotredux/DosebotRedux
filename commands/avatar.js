@@ -1,22 +1,19 @@
 const Discord = require('discord.js');
+const Helpers = require('../helpers.js');
 
 // Avatar message
 exports.run = (client, message, args) => {
-  let avatar = message.author.avatarURL;
+  let avatar = message.author.avatarURL({size: 2048});
   const mentionedUsers = [];
 
   if (message.mentions) {
     message.mentions.users.forEach(function(user) {
-      avatar = user.avatarURL;
+      avatar = user.avatarURL({size: 2048});
     });
   }
 
-  const embed = new Discord.RichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .setTitle('DoseBot Redux Avatar Service')
-    .attachFile("./assets/logo.png")
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setURL('https://github.com/dosebotredux')
     .setImage(avatar);
 
   message.channel.send({ embed });

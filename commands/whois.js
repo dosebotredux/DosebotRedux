@@ -1,6 +1,7 @@
 //displays list of commands. in future should scan commands directory and display info for each programmatically/dynamically
 exports.run = (client, message, args) => {
   const Discord = require('discord.js');
+  const Helpers = require('../helpers.js')
 
   const mentionedUsers = [];
 
@@ -12,13 +13,7 @@ exports.run = (client, message, args) => {
 
   if (mentionedUsers.length > 0) {
     mentionedUsers.forEach(user => {
-      const embed = new Discord.RichEmbed()
-        .setTitle('DoseBot Redux Intelligence Service')
-        .attachFile("./assets/logo.png")
-        .setAuthor('DoseBot Redux', 'attachment://logo.png')
-        .setColor('747474')
-        .setThumbnail(user.avatarURL)
-        .setURL("https://github.com/dosebotredux")
+      const embed = Helpers.TemplatedMessageEmbed()
         .addField('Name', user.username)
         .addField('Status', user.presence.status)
         .addField('Registered', user.createdAt)

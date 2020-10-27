@@ -1,3 +1,5 @@
+const Helpers = require('../helpers.js');
+  
 // Roles message
 exports.run = (client, message, args) => {
   const Discord = require('discord.js');
@@ -20,15 +22,8 @@ exports.run = (client, message, args) => {
     }
   });
 
-  const embed = new Discord.RichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .setTitle('DoseBot Redux Help')
-    .attachFile("./assets/logo.png")
-    .setThumbnail('attachment://logo.png')
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-    .setTimestamp()
-    .setURL("https://github.com/dosebotredux")
     .addField('Temporary roles', generateRoleField(availableTemporaryRoles))
     .addField('Permanent roles', generateRoleField(availablePermanentRoles));
 

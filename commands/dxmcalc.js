@@ -2,31 +2,22 @@
 exports.run = (client, message, args) => {
   const Discord = require('discord.js');
   const DXMCalc = require('../include/dxmcalc.js');
+  const Helpers = require('../helpers.js');
 
   // Message variables
-  const str = message.content
-    .toLowerCase()
-    .replace('--dxmcalc', '', -1)
-    .replace(/-/g, '', -1);
+  const inputs = message.content.split(/ +/g);
 
   // parse weight from result
-  let weight = parseInt(str);
+  let weight = parseInt(inputs[1]);
   let weightIsKilos = false;
 
-  if (str.includes('kg')) {
+  if (inputs[1].includes('kg')) {
     weightIsKilos = true;
   }
 
   if (!isNaN(weight)) {
-    const embed = new Discord.RichEmbed()
+    const embed = Helpers.TemplatedMessageEmbed()
       .setTitle('DXM Dosage Calculator')
-      .attachFile("./assets/logo.png")
-      .setAuthor('DoseBot Redux', 'attachment://logo.png')
-      .setColor('747474')
-      .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-      .setThumbnail('attachment://logo.png')
-      .setTimestamp()
-      .setURL("https://github.com/dosebotredux")
       .addField(
         '[:scales:] Dosages',
         DXMCalc.generateDosageField(weight, weightIsKilos)

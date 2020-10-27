@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const KetamineCalc = require('../include/ketaminecalc');
+const Helpers = require('../helpers.js');
+
 exports.run = (client, message, args) => {
   // Message variables
   var tokens = message.content.toLowerCase().split(" ")
@@ -15,15 +17,8 @@ exports.run = (client, message, args) => {
   let weight = parseInt(combined);
   let weightIsKilos = (combined.includes('kg') || combined.includes('kilo'));
 
-  const embed = new Discord.RichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .setTitle('Ketamine Dosage Calculator')
-    .attachFile("./assets/logo.png")
-    .setThumbnail('attachment://logo.png')
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-    .setTimestamp()
-    .setURL("https://github.com/dosebotredux")
     .addField(
       '[:scales:] Dosages',
       `Dosages for: **${weight}${weightIsKilos ? 'kg' : 'lbs'}**`

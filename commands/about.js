@@ -1,9 +1,9 @@
 // About message
 const Discord = require('discord.js');
-const Helpers = require('../helpers.js')
+const Helpers = require('../helpers.js');
 
 exports.run = (client, message, args) => {
-  const embed = Helpers.TemplatedRichEmbed()
+  const embed = Helpers.TemplatedMessageEmbed()
     .addField(
       'About DoseBot Redux',
       `DoseBot Redux automatically sources dosage, duration, tolerance, and harm reduction information from [PsychonautWiki](http://www.psychonautwiki.org) and [Effect Index](https://effectindex.com).

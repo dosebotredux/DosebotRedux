@@ -2,6 +2,7 @@
 const Discord = require('discord.js');
 const sanitizeSubstanceName = require('../include/sanitize-substance-name.js');
 const Effects = require('../include/effects.js');
+const Helpers = require('../helpers.js');
 
 const rp = require('request-promise');
 
@@ -61,15 +62,8 @@ exports.run = async (client, message, args) => {
 
     const substance = data.substances[0];
 
-    const embed = new Discord.RichEmbed()
+    const embed = Helpers.TemplatedMessageEmbed()
       .setTitle(`${substance.name} effect information`)
-      .attachFile("./assets/logo.png")
-      .setThumbnail('attachment://logo.png')
-      .setAuthor('DoseBot Redux', 'attachment://logo.png')
-      .setColor('747474')
-      .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-      .setTimestamp()
-      .setURL("https://github.com/dosebotredux")
       .addField(
         'Effects (randomly selected)',
         Effects.createEffectsList(substance)

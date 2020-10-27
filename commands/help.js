@@ -1,15 +1,9 @@
 const Discord = require('discord.js');
+const Helpers = require('../helpers.js');
 
 //displays list of commands. in future should scan commands directory and display info for each programmatically/dynamically
 exports.run = (client, message, args) => {
-  const embed = new Discord.RichEmbed()
-    .setTitle('DoseBot Redux Help')
-    .attachFile("./assets/logo.png")
-    .setThumbnail('attachment://logo.png')
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
-    .setColor('747474')
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
-    .setTimestamp()
+  const embed = Helpers.TemplatedMessageEmbed()
     .addField('Available commands', buildCommandList());
 
   message.channel.send({ embed });
