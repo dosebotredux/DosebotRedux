@@ -30,7 +30,7 @@ function restoreNickname(guild, user) {
 }
 
 function assignRole(guild, user, roleToApply, substance, dosage, isPermanent) {
-  return user.addRole(roleToApply.id).then(() => {
+  return user.roles.add(roleToApply).then(() => {
     // Catching this error. There's a bug that causes Missing Permissions API
     // errors even with the permissions being checked.
     return assignNickname(guild, user, substance, dosage).catch(console.error);
@@ -47,7 +47,7 @@ function assignRole(guild, user, roleToApply, substance, dosage, isPermanent) {
 }
 
 function unassignRole(guild, user, roleToApply) {
-  return user.removeRole(roleToApply.id).then(() => {
+  return user.roles.remove(roleToApply).then(() => {
     // Catching this error. There's a bug that causes Missing Permissions API
     // errors even with the permissions being checked.
     return restoreNickname(guild, user).catch(console.error);
@@ -56,7 +56,7 @@ function unassignRole(guild, user, roleToApply) {
 
 // Function for toggling a role
 function toggleRole(channel, user, roleToSet, substance, dosage, isPermanent) {
-  if (user.roles.find(role => role.name == roleToSet.name)) {
+  if (user.roles.cache.find(role => role.name == roleToSet.name)) {
     // User already has role -- unset
     return unassignRole(channel.guild, user, roleToSet).then(() => {
       return channel.send(`Removed **${roleToSet.name}** from <@${user.id}>`);
@@ -93,13 +93,18 @@ exports.run = (client, message, args) => {
   }
 
   // Checks to see if the desiredRole is equal to any role object's name property
-  const roleToSet = message.guild.roles.find(role => role.name.toLowerCase().replace(/[\W_]+/g,"") == roleName)
+  const roleToSet = message.guild.roles.cache.find(role => role.name.toLowerCase().replace(/[\W_]+/g,"") == roleName)
   if (!roleToSet) {
     message.channel.send('Error: That role does not does not exist on this server.').catch(console.error);
     return;
   }
 
+  let member = message.member;
+  if (!member) {
+    message.channel.send("It appears you're not a member of this guild.").catch(console.error);
+  }
+
   // Now that we have the desired guild role snowflake we can check if its temporary or permanent
   let isPermanent = roles.permanentRoles.includes(roleName)
-  toggleRole(message.channel, message.member, roleToSet, substance, dosage, isPermanent).catch(console.error);
+  toggleRole(message.channel, member, roleToSet, substance, dosage, isPermanent).catch(console.error);
 };

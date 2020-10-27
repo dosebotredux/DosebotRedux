@@ -9,7 +9,7 @@
   "dependencies": {
     "bufferutil": "^4.0.0",
     "forever": "^0.15.3",
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.4.1",
     "dotenv": "^5.0.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"

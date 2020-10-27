@@ -17,14 +17,16 @@ DiscordClient.on('ready', () => {
     .catch(console.error);
 
   // Print guild list
-  const guildCount = DiscordClient.guilds.array().length;
-  const userCount = DiscordClient.guilds
+  let guilds = DiscordClient.guilds.cache;
+  const userCount = guilds
     .map(guild => guild.memberCount)
     .reduce((x, y) => x + y, 0);
 
-  console.log(`Currently serving ${userCount} users on ${guildCount} guilds`);
-  for (let guild of DiscordClient.guilds.array()) {
-    console.log(`- ${guild.id} - ${guild.name} (${guild.memberCount} members)`);
+  console.log(`Currently serving ${userCount} users on ${guilds.length} guilds`);
+  for (let guildComponents of guilds) {
+    let guildId = guildComponents[0];
+    let guild = guildComponents[1];
+    console.log(`- ${guildId} - ${guild.name} (${guild.memberCount} members)`);
   }
 });
 
