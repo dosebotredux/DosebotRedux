@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   const Discord = require('discord.js');
   const roles = require('../include/roles.js');
 
-  const guildRoles = message.guild.roles;
+  const guildRoles = message.guild.roles.cache;
 
   const availableTemporaryRoles = [];
   const availablePermanentRoles = [];
