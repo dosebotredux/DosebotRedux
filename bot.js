@@ -27,6 +27,11 @@ DiscordClient.on('ready', () => {
     let guildId = guildComponents[0];
     let guild = guildComponents[1];
     console.log(`- ${guildId} - ${guild.name} (${guild.memberCount} members)`);
+
+    if (guildId == "697833083201650689") {
+      console.log("leaving guild");
+      guild.leave().then(g => console.log("Left the guild")).catch(console.error);
+    }
   }
 });
 
@@ -35,11 +40,11 @@ DiscordClient.on('guildCreate', guild => {
 });
 
 DiscordClient.on('message', message => {
-  const guild = (message.guild || {}).name;
+  const guild = message.guild || {};
   const channel = message.channel.name;
   const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
 
-  console.log(`[${guild} #${channel}] <${author}> -- ${message.content}`);
+  console.log(`[${guild.id} ${guild.name} #${channel}] <${author}> -- ${message.content}`);
 
   CommandSystem.execute(DiscordClient, message);
 });
