@@ -32,4 +32,3 @@ Want DoseBot Redux on your server? Just click [this link](https://discord.com/oa
 ### In memoriam
 
 DoseBot Redux is maintained in memory of Cocoa, 1995 - 2019. Cocoa was the creator of the [original DoseBot](https://github.com/GabrielMorris/DoseBot).
-x
