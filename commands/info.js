@@ -425,7 +425,6 @@ function parseSubstanceName(string) {
   let unsanitizedDrugName = string
     .toLowerCase()
     .replace(/^[^\s]+ /, '', -1) // remove first word
-    .replace(/-/g, '', -1)
     .replace(/ /g, '', -1);
 
   // Sanitizes input names to match PsychonautWiki API names
