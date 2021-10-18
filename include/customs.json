@@ -3,6 +3,18 @@
     "substances": [
       {
         "name": "1,4-Butanediol",
+        "addictionPotential": "moderately physically and psychologically addictive",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within several weeks of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -42,11 +54,25 @@
       },
       {
         "name": "1B-LSD",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 300,
               "common": {
@@ -101,11 +127,25 @@
       },
       {
         "name": "1P-ETH-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 25,
               "heavy": 200,
               "common": {
@@ -152,11 +192,25 @@
       },
       {
         "name": "1P-LSD",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 300,
               "common": {
@@ -211,11 +265,25 @@
       },
       {
         "name": "1V-LSD",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 300,
               "common": {
@@ -270,11 +338,25 @@
       },
       {
         "name": "1cP-AL-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 20,
               "heavy": 350,
               "common": {
@@ -329,11 +411,25 @@
       },
       {
         "name": "1cP-LSD",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 300,
               "common": {
@@ -388,11 +484,25 @@
       },
       {
         "name": "1cP-MiPLA",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": 300,
               "common": {
@@ -443,10 +553,36 @@
       },
       {
         "name": "2,5-DMA",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Amphetamine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "after ingestion over the couse of multiple days",
+          "half": "3-5 days",
+          "zero": "7-10 days"
+        },
         "roas": []
       },
       {
         "name": "2-Aminoindane",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Aminoindane"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -494,6 +630,20 @@
       },
       {
         "name": "2-FA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -549,6 +699,18 @@
       },
       {
         "name": "2-FEA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -608,6 +770,18 @@
       },
       {
         "name": "2-FMA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -721,6 +895,20 @@
       },
       {
         "name": "2-Fluorodeschloroketamine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -818,15 +1006,43 @@
       },
       {
         "name": "25B-NBOH",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": []
       },
       {
         "name": "25B-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 25,
               "heavy": null,
               "common": {
@@ -848,7 +1064,7 @@
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": null,
               "common": {
@@ -903,11 +1119,25 @@
       },
       {
         "name": "25C-NBOH",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 100,
               "heavy": null,
               "common": {
@@ -954,11 +1184,25 @@
       },
       {
         "name": "25C-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": null,
               "common": {
@@ -1009,11 +1253,21 @@
       },
       {
         "name": "25D-NBOMe",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 300,
               "heavy": null,
               "common": {
@@ -1060,15 +1314,43 @@
       },
       {
         "name": "25H-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": []
       },
       {
         "name": "25I-NBOH",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": null,
               "common": {
@@ -1123,11 +1405,25 @@
       },
       {
         "name": "25I-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": null,
               "common": {
@@ -1181,7 +1477,7 @@
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": null,
               "common": {
@@ -1236,11 +1532,25 @@
       },
       {
         "name": "25N-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 100,
               "heavy": null,
               "common": {
@@ -1291,14 +1601,38 @@
       },
       {
         "name": "25x-NBOH",
+        "addictionPotential": "not habit-forming",
+        "class": null,
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": []
       },
       {
         "name": "25x-NBOMe",
+        "addictionPotential": "not habit-forming",
+        "class": null,
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 week",
+          "zero": "2 weeks"
+        },
         "roas": []
       },
       {
         "name": "2C-B",
+        "addictionPotential": "non-addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -1358,6 +1692,18 @@
       },
       {
         "name": "2C-B-FLY",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1417,6 +1763,16 @@
       },
       {
         "name": "2C-C",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -1476,6 +1832,20 @@
       },
       {
         "name": "2C-D",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1535,6 +1905,16 @@
       },
       {
         "name": "2C-E",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -1640,10 +2020,36 @@
       },
       {
         "name": "2C-H",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3-5 days",
+          "zero": "7-10 days"
+        },
         "roas": []
       },
       {
         "name": "2C-I",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3-5 days",
+          "zero": "7-10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1703,6 +2109,20 @@
       },
       {
         "name": "2C-P",
+        "addictionPotential": "low potential for abuse and dependence",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1762,6 +2182,20 @@
       },
       {
         "name": "2C-T",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1817,6 +2251,20 @@
       },
       {
         "name": "2C-T-2",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -1922,6 +2370,20 @@
       },
       {
         "name": "2C-T-21",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -1977,6 +2439,20 @@
       },
       {
         "name": "2C-T-7",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -2090,14 +2566,34 @@
       },
       {
         "name": "2C-T-x",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "2C-x",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "2M2B",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Alcohol"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2145,6 +2641,16 @@
       },
       {
         "name": "3,4-CTMP",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -2189,6 +2695,18 @@
       },
       {
         "name": "3-FA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2248,6 +2766,13 @@
       },
       {
         "name": "3-FEA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "2 - 3 days",
+          "zero": "3-7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -2361,6 +2886,13 @@
       },
       {
         "name": "3-FMA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2420,6 +2952,18 @@
       },
       {
         "name": "3-FPM",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -2501,6 +3045,20 @@
       },
       {
         "name": "3-HO-PCE",
+        "addictionPotential": "moderately addictive with a moderate potential for adverse side effects such as psychosis",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "4 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2540,6 +3098,20 @@
       },
       {
         "name": "3-HO-PCP",
+        "addictionPotential": "moderately addictive with a high potential for adverse side effects such as psychosis",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "4 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2583,6 +3155,18 @@
       },
       {
         "name": "3-MMC",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -2696,10 +3280,38 @@
       },
       {
         "name": "3-Me-PCP",
+        "addictionPotential": "produces dependence with chronic use and has a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": []
       },
       {
         "name": "3-MeO-PCE",
+        "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -2813,6 +3425,20 @@
       },
       {
         "name": "3-MeO-PCMo",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -2868,6 +3494,20 @@
       },
       {
         "name": "3-MeO-PCP",
+        "addictionPotential": "produces dependence with chronic use and has a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -3015,6 +3655,20 @@
       },
       {
         "name": "3C-E",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -3116,6 +3770,20 @@
       },
       {
         "name": "4-AcO-DET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3175,6 +3843,20 @@
       },
       {
         "name": "4-AcO-DMT",
+        "addictionPotential": "non-addictive with low potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": null,
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -3288,6 +3970,20 @@
       },
       {
         "name": "4-AcO-DiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3347,6 +4043,20 @@
       },
       {
         "name": "4-AcO-MET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3406,6 +4116,20 @@
       },
       {
         "name": "4-AcO-MiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3465,6 +4189,18 @@
       },
       {
         "name": "4-FA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3524,6 +4260,18 @@
       },
       {
         "name": "4-FMA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3583,6 +4331,20 @@
       },
       {
         "name": "4-HO-DET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3642,6 +4404,20 @@
       },
       {
         "name": "4-HO-DPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -3747,6 +4523,20 @@
       },
       {
         "name": "4-HO-DiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3802,6 +4592,20 @@
       },
       {
         "name": "4-HO-EPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3835,6 +4639,20 @@
       },
       {
         "name": "4-HO-MET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3932,6 +4750,20 @@
       },
       {
         "name": "4-HO-MPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -3991,6 +4823,20 @@
       },
       {
         "name": "4-HO-MiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4050,6 +4896,20 @@
       },
       {
         "name": "4-MeO-PCP",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -4156,6 +5016,20 @@
       },
       {
         "name": "4F-EPH",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4203,6 +5077,16 @@
       },
       {
         "name": "4F-MPH",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -4308,6 +5192,13 @@
       },
       {
         "name": "5-APB",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4367,6 +5258,14 @@
       },
       {
         "name": "5-Hydroxytryptophan",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -4394,6 +5293,18 @@
       },
       {
         "name": "5-MAPB",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Entactogens"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4453,6 +5364,20 @@
       },
       {
         "name": "5-MeO-DALT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4536,6 +5461,20 @@
       },
       {
         "name": "5-MeO-DMT",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 hour",
+          "zero": "2 hours"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -4645,6 +5584,20 @@
       },
       {
         "name": "5-MeO-DiBF",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_benzofurans"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4688,6 +5641,20 @@
       },
       {
         "name": "5-MeO-DiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4735,6 +5702,18 @@
       },
       {
         "name": "5-MeO-MiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4844,6 +5823,18 @@
       },
       {
         "name": "5F-AKB48",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -4899,6 +5890,20 @@
       },
       {
         "name": "5F-PB-22",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Indolecarboxylate"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -4960,6 +5965,13 @@
       },
       {
         "name": "6-APB",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3-4 weeks",
+          "zero": "6-8 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5019,6 +6031,13 @@
       },
       {
         "name": "6-APDB",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "21-30 days",
+          "zero": "2-3 months"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5074,10 +6093,25 @@
       },
       {
         "name": "8-Chlorotheophylline",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "A-PHP",
+        "addictionPotential": "highly addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -5233,6 +6267,18 @@
       },
       {
         "name": "A-PVP",
+        "addictionPotential": "highly addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -5388,6 +6434,20 @@
       },
       {
         "name": "AB-FUBINACA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Indazolecarboxamide"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -5443,11 +6503,25 @@
       },
       {
         "name": "AL-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 20,
               "heavy": 350,
               "common": {
@@ -5502,11 +6576,25 @@
       },
       {
         "name": "ALD-52",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 30,
               "heavy": 325,
               "common": {
@@ -5561,6 +6649,18 @@
       },
       {
         "name": "APICA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -5616,6 +6716,20 @@
       },
       {
         "name": "Acetylfentanyl",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Anilidopiperidine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -5697,6 +6811,18 @@
       },
       {
         "name": "Adrafinil",
+        "addictionPotential": "not addictive with a low potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5756,6 +6882,20 @@
       },
       {
         "name": "Alcohol",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Alcohol"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5811,6 +6951,16 @@
       },
       {
         "name": "Alimemazine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -5906,6 +7056,20 @@
       },
       {
         "name": "Allylescaline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5949,6 +7113,20 @@
       },
       {
         "name": "Alpha-GPC",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Choline_derivative"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "after prolonged and repeated usage",
+          "half": "7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -5992,6 +7170,20 @@
       },
       {
         "name": "Alprazolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7-14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6047,10 +7239,27 @@
       },
       {
         "name": "Amanita muscaria",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Amphetamine",
+        "addictionPotential": "has a high abuse potential and can cause dependence with chronic use",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -6164,10 +7373,27 @@
       },
       {
         "name": "Anadenanthera peregrina",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Aniracetam",
+        "addictionPotential": "non-addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6211,14 +7437,34 @@
       },
       {
         "name": "Antihistamine",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Antipsychotic",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Armodafinil",
+        "addictionPotential": "mildly addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Benzhydryl"
+          ],
+          "psychoactive": [
+            "Eugeroic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6278,10 +7524,23 @@
       },
       {
         "name": "Arylcyclohexylamines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Atropa belladonna",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_tropanes"
+          ],
+          "psychoactive": [
+            "Deliriant"
+          ]
+        },
+        "tolerance": null,
         "roas": []
       },
       {
@@ -6339,6 +7598,20 @@
       },
       {
         "name": "Baclofen",
+        "addictionPotential": "moderately physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Butyric_acid"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6386,18 +7659,39 @@
       },
       {
         "name": "Banisteriopsis caapi",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Barbiturates",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Benzodiazepines",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": null,
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7-14 days"
+        },
         "roas": []
       },
       {
         "name": "Benzydamine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Indazole"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -6449,6 +7743,14 @@
       },
       {
         "name": "Bromantane",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Adamantanes"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -6499,11 +7801,23 @@
       },
       {
         "name": "Bromo-DragonFLY",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "6 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 75,
               "heavy": 750,
               "common": {
@@ -6558,6 +7872,20 @@
       },
       {
         "name": "Bufotenin",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "1 hour",
+          "zero": "2 hours"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -6613,10 +7941,31 @@
       },
       {
         "name": "Buprenorphine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": []
       },
       {
         "name": "Butylone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6672,10 +8021,27 @@
       },
       {
         "name": "Cabergoline",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Caffeine",
+        "addictionPotential": "produces dependence with chronic use and has a low abuse potential",
+        "class": {
+          "chemical": [
+            "Xanthines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -6789,10 +8155,28 @@
       },
       {
         "name": "Cake",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Cannabidiol",
+        "addictionPotential": "low abuse potential",
+        "class": {
+          "chemical": [
+            "Cannabinoid"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -6840,10 +8224,25 @@
       },
       {
         "name": "Cannabinoid",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Cannabis",
+        "addictionPotential": "moderately habit-forming",
+        "class": {
+          "chemical": [
+            "Cannabinoid"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "1 - 2 weeks",
+          "zero": "2 - 3 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -6949,6 +8348,16 @@
       },
       {
         "name": "Carisoprodol",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Carbamate"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -6996,10 +8405,27 @@
       },
       {
         "name": "Changa",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Choline bitartrate",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Ammonium_salt"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "after prolonged and repeated usage",
+          "half": "7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7059,6 +8485,16 @@
       },
       {
         "name": "Citicoline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Ammonium_salt"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -7118,10 +8554,27 @@
       },
       {
         "name": "Classical psychedelic",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Clonazepam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7169,11 +8622,25 @@
       },
       {
         "name": "Clonazolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": 1,
               "common": {
@@ -7212,11 +8679,21 @@
       },
       {
         "name": "Clonidine",
+        "addictionPotential": "not addictive and has a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Imidazoline"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 25,
               "heavy": 300,
               "common": {
@@ -7263,6 +8740,20 @@
       },
       {
         "name": "Cocaine",
+        "addictionPotential": "highly addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_tropanes"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -7318,6 +8809,20 @@
       },
       {
         "name": "Codeine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7373,6 +8878,20 @@
       },
       {
         "name": "Coluracetam",
+        "addictionPotential": "not addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -7454,6 +8973,16 @@
       },
       {
         "name": "Creatine",
+        "addictionPotential": "not habit-forming with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Nitrogenous_organic_acid"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -7501,6 +9030,18 @@
       },
       {
         "name": "Cyclazodone",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7544,6 +9085,20 @@
       },
       {
         "name": "DET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7591,6 +9146,20 @@
       },
       {
         "name": "DMT",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "does not appear to occur",
+          "half": null,
+          "zero": null
+        },
         "roas": [
           {
             "name": "intravenous",
@@ -7700,6 +9269,20 @@
       },
       {
         "name": "DOB",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "4-7 days",
+          "zero": "7-10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7759,6 +9342,20 @@
       },
       {
         "name": "DOI",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "10-14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7814,6 +9411,20 @@
       },
       {
         "name": "DOM",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -7873,10 +9484,23 @@
       },
       {
         "name": "DOx",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "DPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -8066,19 +9690,35 @@
         ]
       },
       {
-        "name": "Datura (botany)",
-        "roas": []
-      },
-      {
         "name": "Deliriant",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Depressant",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Deschloroetizolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Thienodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8134,6 +9774,20 @@
       },
       {
         "name": "Deschloroketamine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -8281,6 +9935,16 @@
       },
       {
         "name": "Desomorphine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -8320,6 +9984,20 @@
       },
       {
         "name": "Desoxypipradrol",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_piperidines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -8421,10 +10099,27 @@
       },
       {
         "name": "Dexamphetamine",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Dextromethorphan",
+        "addictionPotential": "produces dependence with chronic use and has moderate abuse potential",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8484,6 +10179,20 @@
       },
       {
         "name": "Dextropropoxyphene",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Phenylpropylamine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8531,6 +10240,20 @@
       },
       {
         "name": "DiPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8616,10 +10339,27 @@
       },
       {
         "name": "Diarylethylamines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Dichloropane",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_tropanes"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "2 - 4 days",
+          "zero": "1 - 1.5 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -8725,6 +10465,20 @@
       },
       {
         "name": "Diclazepam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within 3-4 days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8768,6 +10522,20 @@
       },
       {
         "name": "Dihydrocodeine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8807,6 +10575,18 @@
       },
       {
         "name": "Diphenhydramine",
+        "addictionPotential": "produces dependence with chronic use",
+        "class": {
+          "chemical": [
+            "Ethanolamine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "with repeated use",
+          "half": null,
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -8866,6 +10646,20 @@
       },
       {
         "name": "Diphenidine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Diarylethylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9001,10 +10795,27 @@
       },
       {
         "name": "Dissociatives",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "EPT",
+        "addictionPotential": "does not produce dependence and has low abuse potential",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -9052,6 +10863,20 @@
       },
       {
         "name": "ETH-CAT",
+        "addictionPotential": "mildly addictive with a comparatively low potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "2 - 3 days",
+          "zero": "3-5 days"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -9157,11 +10982,25 @@
       },
       {
         "name": "ETH-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 225,
               "common": {
@@ -9216,6 +11055,16 @@
       },
       {
         "name": "Efavirenz",
+        "addictionPotential": "not known to be habit-forming",
+        "class": {
+          "chemical": [
+            "Benzoxazine"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "smoked",
@@ -9257,14 +11106,34 @@
       },
       {
         "name": "Entactogens",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Entheogen",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Ephenidine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Diarylethylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9308,6 +11177,18 @@
       },
       {
         "name": "Ephylone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": null,
+          "zero": null
+        },
         "roas": [
           {
             "name": "oral",
@@ -9355,10 +11236,27 @@
       },
       {
         "name": "Ergotamine",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Escaline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9406,10 +11304,31 @@
       },
       {
         "name": "Etazene",
+        "addictionPotential": "highly addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": []
       },
       {
         "name": "Ethylmorphine",
+        "addictionPotential": "very addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9449,6 +11368,18 @@
       },
       {
         "name": "Ethylone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9504,6 +11435,20 @@
       },
       {
         "name": "Etizolam",
+        "addictionPotential": "highly addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Thienodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9563,6 +11508,20 @@
       },
       {
         "name": "F-Phenibut",
+        "addictionPotential": "moderately physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Gabapentinoids"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9606,11 +11565,23 @@
       },
       {
         "name": "Fentanyl",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 5,
               "heavy": null,
               "common": {
@@ -9648,7 +11619,7 @@
           {
             "name": "sublingual",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 5,
               "heavy": 75,
               "common": {
@@ -9686,7 +11657,7 @@
           {
             "name": "transdermal",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 5,
               "heavy": 100,
               "common": {
@@ -9725,6 +11696,20 @@
       },
       {
         "name": "Flubromazepam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9768,11 +11753,25 @@
       },
       {
         "name": "Flubromazolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 50,
               "heavy": 400,
               "common": {
@@ -9807,6 +11806,20 @@
       },
       {
         "name": "Flunitrazepam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9854,6 +11867,20 @@
       },
       {
         "name": "Flunitrazolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9909,6 +11936,20 @@
       },
       {
         "name": "GBL",
+        "addictionPotential": "highly physically and moderately to highly psychologically addictive",
+        "class": {
+          "chemical": [
+            "Lactone"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within several days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -9968,6 +12009,20 @@
       },
       {
         "name": "GHB",
+        "addictionPotential": "moderately to highly physically and moderately psychologically addictive",
+        "class": {
+          "chemical": [
+            "Butyric_acid"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within several days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -10027,6 +12082,20 @@
       },
       {
         "name": "Gabapentin",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Gabapentinoids"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged continuous usage",
+          "half": null,
+          "zero": "7-14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -10070,10 +12139,21 @@
       },
       {
         "name": "Gabapentinoids",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Galantamine",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Benzazepine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -10124,6 +12204,20 @@
       },
       {
         "name": "HXE",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -10291,10 +12385,21 @@
       },
       {
         "name": "Hallucinogens",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Haloperidol",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Antipsychotic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -10338,10 +12443,27 @@
       },
       {
         "name": "Harmala alkaloid",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Heroin",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -10502,6 +12624,20 @@
       },
       {
         "name": "Hexedrone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -10549,6 +12685,20 @@
       },
       {
         "name": "Hydrocodone",
+        "addictionPotential": "moderately addictive",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -10592,6 +12742,16 @@
       },
       {
         "name": "Hydromorphone",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "intravenous",
@@ -10673,14 +12833,30 @@
       },
       {
         "name": "Hyoscyamus niger (botany)",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Hypnotic",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Ibogaine",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -10722,10 +12898,34 @@
       },
       {
         "name": "Inhalants",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Inorganic_molecule"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Isopropylphenidate",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -10831,6 +13031,20 @@
       },
       {
         "name": "JWH-018",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Naphthoylindole"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -10899,6 +13113,20 @@
       },
       {
         "name": "JWH-073",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Naphthoylindole"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -10954,6 +13182,20 @@
       },
       {
         "name": "Ketamine",
+        "addictionPotential": "moderate to high abuse potential and produces psychological dependence with chronic use",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -11063,6 +13305,18 @@
       },
       {
         "name": "Kratom",
+        "addictionPotential": "produces dependence with chronic use and has a high abuse potential",
+        "class": {
+          "chemical": [
+            "Indole_alkaloids"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11114,6 +13368,16 @@
       },
       {
         "name": "LAE-32",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "sublingual",
@@ -11208,11 +13472,25 @@
       },
       {
         "name": "LSD",
+        "addictionPotential": "non-addictive with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": null,
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "sublingual",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 15,
               "heavy": 300,
               "common": {
@@ -11270,11 +13548,25 @@
       },
       {
         "name": "LSM-775",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 250,
               "heavy": 1500,
               "common": {
@@ -11313,11 +13605,25 @@
       },
       {
         "name": "LSZ",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": 400,
               "common": {
@@ -11372,6 +13678,14 @@
       },
       {
         "name": "Lisdexamfetamine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -11431,6 +13745,20 @@
       },
       {
         "name": "Lorazepam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11470,14 +13798,30 @@
       },
       {
         "name": "Lysergamides",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "MAOI",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "MCPP",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_piperazines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -11529,6 +13873,18 @@
       },
       {
         "name": "MDA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Amphetamine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "repeated and heavy usage",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11588,6 +13944,20 @@
       },
       {
         "name": "MDAI",
+        "addictionPotential": "somewhat habit-forming with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Aminoindane"
+          ],
+          "psychoactive": [
+            "Entactogens"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11647,6 +14017,18 @@
       },
       {
         "name": "MDEA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Entactogens"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "1-1.5 months",
+          "zero": "2-3 months"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11706,6 +14088,13 @@
       },
       {
         "name": "MDMA",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "1 month",
+          "zero": "2.5 months"
+        },
         "roas": [
           {
             "name": "oral",
@@ -11765,6 +14154,9 @@
       },
       {
         "name": "MDPV",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -11824,6 +14216,16 @@
       },
       {
         "name": "MET",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -11987,6 +14389,20 @@
       },
       {
         "name": "MPT",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12005,6 +14421,20 @@
       },
       {
         "name": "MXiPr",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -12098,14 +14528,34 @@
       },
       {
         "name": "Mandragora",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Mandragora officinarum (botany)",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Melatonin",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Oneirogen"
+          ]
+        },
+        "tolerance": {
+          "full": "after prolonged and repeated usage",
+          "half": "7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12156,6 +14606,16 @@
       },
       {
         "name": "Memantine",
+        "addictionPotential": "unknown",
+        "class": {
+          "chemical": [
+            "Adamantanes"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -12215,6 +14675,18 @@
       },
       {
         "name": "Mephedrone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -12328,6 +14800,20 @@
       },
       {
         "name": "Mescaline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12387,6 +14873,20 @@
       },
       {
         "name": "Methadone",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Diphenylpropylamine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12434,6 +14934,20 @@
       },
       {
         "name": "Methallylescaline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12493,6 +15007,20 @@
       },
       {
         "name": "Methaqualone",
+        "addictionPotential": "extremely addictive",
+        "class": {
+          "chemical": [
+            "Quinazolinone"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of repeated administration",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12578,6 +15106,20 @@
       },
       {
         "name": "Methiopropamine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Thiophene"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -12655,6 +15197,20 @@
       },
       {
         "name": "Methoxetamine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -12768,6 +15324,20 @@
       },
       {
         "name": "Methoxphenidine",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Diarylethylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12815,6 +15385,16 @@
       },
       {
         "name": "Methylnaphthidate",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -12920,6 +15500,18 @@
       },
       {
         "name": "Methylone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "1 - 3 weeks",
+          "zero": "3 - 6 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -12979,6 +15571,16 @@
       },
       {
         "name": "Methylphenidate",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_phenidates"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "insufflated",
@@ -13092,6 +15694,20 @@
       },
       {
         "name": "Metizolam",
+        "addictionPotential": "extremely addictive",
+        "class": {
+          "chemical": [
+            "Thienodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of repeated administration",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13139,6 +15755,20 @@
       },
       {
         "name": "Mexedrone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13178,11 +15808,25 @@
       },
       {
         "name": "MiPLA",
+        "addictionPotential": "low potential for abuse and dependence",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": 300,
               "common": {
@@ -13233,10 +15877,32 @@
       },
       {
         "name": "Midazolam",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Mirtazapine",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Piperazinoazepine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13288,6 +15954,20 @@
       },
       {
         "name": "Modafinil",
+        "addictionPotential": "not addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Benzhydryl"
+          ],
+          "psychoactive": [
+            "Eugeroic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13347,10 +16027,23 @@
       },
       {
         "name": "Morning glory",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Morphine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -13406,6 +16099,16 @@
       },
       {
         "name": "Myristicin",
+        "addictionPotential": "is not known to be addictive",
+        "class": {
+          "chemical": [
+            "Phenylpropenes"
+          ],
+          "psychoactive": [
+            "Deliriant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -13465,6 +16168,18 @@
       },
       {
         "name": "N-Acetylcysteine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops quickly with repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13508,6 +16223,20 @@
       },
       {
         "name": "N-Ethylhexedrone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -13613,6 +16342,20 @@
       },
       {
         "name": "N-Methylbisfluoromodafinil",
+        "addictionPotential": "mildly addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Benzhydryl"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13651,11 +16394,21 @@
         ]
       },
       {
-        "name": "NBx",
-        "roas": []
-      },
-      {
         "name": "NEP",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -13763,6 +16516,18 @@
       },
       {
         "name": "NM-2-AI",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13806,6 +16571,16 @@
       },
       {
         "name": "Naloxone",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "intravenous",
@@ -13843,6 +16618,18 @@
       },
       {
         "name": "Nicotine",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "rapidly develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "buccal",
@@ -13956,6 +16743,20 @@
       },
       {
         "name": "Nifoxipam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -13999,6 +16800,18 @@
       },
       {
         "name": "Nitrous",
+        "addictionPotential": "mildly addictive with a moderate potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "inhaled",
@@ -14058,10 +16871,27 @@
       },
       {
         "name": "Nootropic",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "O-Desmethyltramadol",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Phenylpropylamine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -14167,6 +16997,20 @@
       },
       {
         "name": "O-PCE",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -14260,6 +17104,20 @@
       },
       {
         "name": "Omberacetam",
+        "addictionPotential": "non-addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Peptide"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops over several weeks of prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -14345,10 +17203,25 @@
       },
       {
         "name": "Opioids",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Oxiracetam",
+        "addictionPotential": "non-addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -14392,6 +17265,20 @@
       },
       {
         "name": "Oxycodone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -14473,6 +17360,16 @@
       },
       {
         "name": "Oxymorphone",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Substituted_morphinans"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -14516,11 +17413,25 @@
       },
       {
         "name": "PARGY-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 50,
               "heavy": 700,
               "common": {
@@ -14559,6 +17470,20 @@
       },
       {
         "name": "PCE",
+        "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -14726,6 +17651,20 @@
       },
       {
         "name": "PCP",
+        "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
+        "class": {
+          "chemical": [
+            "Arylcyclohexylamines"
+          ],
+          "psychoactive": [
+            "Dissociatives"
+          ]
+        },
+        "tolerance": {
+          "full": "with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -14893,6 +17832,9 @@
       },
       {
         "name": "PMA",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -14917,6 +17859,14 @@
       },
       {
         "name": "PMMA",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Entactogens"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -14938,11 +17888,25 @@
       },
       {
         "name": "PRO-LAD",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Lysergamides"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "5-7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
             "dose": {
-              "units": "Âµg",
+              "units": "µg",
               "threshold": 20,
               "heavy": 350,
               "common": {
@@ -14981,10 +17945,27 @@
       },
       {
         "name": "Peganum harmala",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Pentedrone",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_cathinones"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -15090,6 +18071,16 @@
       },
       {
         "name": "Pentobarbital",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Barbiturates"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15145,6 +18136,20 @@
       },
       {
         "name": "Pethidine",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Substituted_piperidines"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15192,10 +18197,27 @@
       },
       {
         "name": "Phenethylamine (compound)",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Phenibut",
+        "addictionPotential": "moderately physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Gabapentinoids"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15255,6 +18277,16 @@
       },
       {
         "name": "Phenobarbital",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Barbiturates"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15302,6 +18334,18 @@
       },
       {
         "name": "Phenylpiracetam",
+        "addictionPotential": "non-addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15349,10 +18393,27 @@
       },
       {
         "name": "Piper nigrum (botany)",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Piracetam",
+        "addictionPotential": "not addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15396,10 +18457,32 @@
       },
       {
         "name": "Poppers",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Alkyl_nitrites"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Pramiracetam",
+        "addictionPotential": "not addictive with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Racetams"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15443,6 +18526,20 @@
       },
       {
         "name": "Pregabalin",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Gabapentinoids"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within several months of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15498,6 +18595,16 @@
       },
       {
         "name": "Prochlorperazine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Phenothiazine"
+          ],
+          "psychoactive": [
+            "Antipsychotic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15541,10 +18648,21 @@
       },
       {
         "name": "Prodrug",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Prolintane",
+        "addictionPotential": null,
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15604,6 +18722,20 @@
       },
       {
         "name": "Propylhexedrine",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Cycloalkylamines"
+          ],
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "rapidly develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15663,6 +18795,20 @@
       },
       {
         "name": "Proscaline",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_phenethylamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15702,6 +18848,20 @@
       },
       {
         "name": "Psilocin",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15761,10 +18921,27 @@
       },
       {
         "name": "Psilocybe cubensis",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Psilocybin mushrooms",
+        "addictionPotential": "not habit-forming with a low abuse potential",
+        "class": {
+          "chemical": [
+            "Substituted_tryptamines"
+          ],
+          "psychoactive": [
+            "Psychedelics"
+          ]
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15792,10 +18969,31 @@
       },
       {
         "name": "Psychedelics",
+        "addictionPotential": "low abuse potential",
+        "class": null,
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": null,
+          "zero": null
+        },
         "roas": []
       },
       {
         "name": "Pyrazolam",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Benzodiazepines"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": {
+          "full": "within a couple of days of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15839,6 +19037,20 @@
       },
       {
         "name": "Quetiapine",
+        "addictionPotential": "moderately physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Dibenzothiazepine"
+          ],
+          "psychoactive": [
+            "Antipsychotic"
+          ]
+        },
+        "tolerance": {
+          "full": "within a week of continuous use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -15897,14 +19109,30 @@
       },
       {
         "name": "RIMA",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Racetams",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Risperidone",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Benzisoxazole"
+          ],
+          "psychoactive": [
+            "Antipsychotic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15956,6 +19184,16 @@
       },
       {
         "name": "SAM-e",
+        "addictionPotential": "not habit-forming with a low potential for abuse",
+        "class": {
+          "chemical": [
+            "Nitrogenous_organic_acid"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -15995,6 +19233,18 @@
       },
       {
         "name": "STS-135",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -16141,6 +19391,14 @@
       },
       {
         "name": "Salvinorin A",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Hallucinogens"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "smoked",
@@ -16198,10 +19456,30 @@
       },
       {
         "name": "Salvinorin B methoxymethyl ether",
+        "addictionPotential": null,
+        "class": {
+          "chemical": [
+            "Salvinorin"
+          ],
+          "psychoactive": [
+            "Hallucinogens"
+          ]
+        },
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Secobarbital",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Barbiturates"
+          ],
+          "psychoactive": [
+            "Depressant"
+          ]
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -16257,63 +19535,116 @@
       },
       {
         "name": "Sedative",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Selective serotonin reuptake inhibitor",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Serotonergic psychedelic",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Serotonin",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Serotonin-norepinephrine reuptake inhibitor",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Stimulants",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted aminorexes",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted amphetamines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted cathinones",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted morphinans",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted phenethylamines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted phenidates",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Substituted tryptamines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Sufentanil",
+        "addictionPotential": "extremely addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Anilidopiperidine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": null,
+          "zero": null
+        },
         "roas": [
           {
             "name": "intravenous",
             "dose": {
-              "units": "Î¼g",
+              "units": "μg",
               "threshold": 0.1,
               "heavy": 25,
               "common": {
@@ -16352,10 +19683,27 @@
       },
       {
         "name": "Synthetic cannabinoid",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "THJ-018",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Naphthoylindazole"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16424,6 +19772,20 @@
       },
       {
         "name": "THJ-2201",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Naphthoylindazole"
+          ],
+          "psychoactive": [
+            "Cannabinoid"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "smoked",
@@ -16479,6 +19841,18 @@
       },
       {
         "name": "TMA-2",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Substituted_amphetamines"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16538,6 +19912,13 @@
       },
       {
         "name": "TMA-6",
+        "addictionPotential": "not habit-forming",
+        "class": null,
+        "tolerance": {
+          "full": "almost immediately after ingestion",
+          "half": "3 days",
+          "zero": "7 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16597,10 +19978,27 @@
       },
       {
         "name": "Tabernanthe iboga (botany)",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Tapentadol",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Phenylpropylamine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16648,6 +20046,13 @@
       },
       {
         "name": "Theacrine",
+        "addictionPotential": "produces dependence with chronic use and has a low abuse potential",
+        "class": null,
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -16723,6 +20128,20 @@
       },
       {
         "name": "Theanine",
+        "addictionPotential": "not habit-forming",
+        "class": {
+          "chemical": [
+            "Amino_acid_analogue"
+          ],
+          "psychoactive": [
+            "Nootropic"
+          ]
+        },
+        "tolerance": {
+          "full": "after prolonged and repeated usage",
+          "half": "5 days",
+          "zero": "10 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16770,14 +20189,27 @@
       },
       {
         "name": "Thebaine",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Thienodiazepines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Tianeptine",
+        "addictionPotential": "mildly addictive",
+        "class": null,
+        "tolerance": {
+          "full": "with prolonged use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16833,6 +20265,20 @@
       },
       {
         "name": "Tramadol",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Phenylpropylamine"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16891,6 +20337,18 @@
       },
       {
         "name": "Tyrosine",
+        "addictionPotential": "mildly habit forming",
+        "class": {
+          "chemical": null,
+          "psychoactive": [
+            "Stimulants"
+          ]
+        },
+        "tolerance": {
+          "full": "after repeated and frequent usage",
+          "half": "7 days",
+          "zero": "14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -16942,6 +20400,20 @@
       },
       {
         "name": "U-47700",
+        "addictionPotential": "moderately addictive with a high potential for abuse",
+        "class": {
+          "chemical": [
+            "Benzamide"
+          ],
+          "psychoactive": [
+            "Opioids"
+          ]
+        },
+        "tolerance": {
+          "full": "develops with prolonged and repeated use",
+          "half": "3 - 7 days",
+          "zero": "1 - 2 weeks"
+        },
         "roas": [
           {
             "name": "insufflated",
@@ -16997,10 +20469,21 @@
       },
       {
         "name": "Xanthines",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       },
       {
         "name": "Zolpidem",
+        "addictionPotential": "moderately addictive",
+        "class": {
+          "chemical": [
+            "Imidazopyridine"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": null,
         "roas": [
           {
             "name": "oral",
@@ -17056,6 +20539,18 @@
       },
       {
         "name": "Zopiclone",
+        "addictionPotential": "extremely physically and psychologically addictive",
+        "class": {
+          "chemical": [
+            "Cyclopyrrolone"
+          ],
+          "psychoactive": null
+        },
+        "tolerance": {
+          "full": "within a couple of weeks of daily use",
+          "half": null,
+          "zero": "7 - 14 days"
+        },
         "roas": [
           {
             "name": "oral",
@@ -17103,6 +20598,9 @@
       },
       {
         "name": "Beta-Carboline",
+        "addictionPotential": null,
+        "class": null,
+        "tolerance": null,
         "roas": []
       }
     ]
