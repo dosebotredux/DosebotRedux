@@ -35,14 +35,14 @@ exports.run = async (client, message, args) => {
   var str = message.content;
   var substanceName = parseSubstanceName(str);
 
+  // Find the location of the substance object in the JSON and set substance
+  let custom_substance = locateCustomSheetLocation(substanceName);
+
   // Checks to see if drug is on the customs list
-  if (checkIfCustomSheet(substanceName)) {
+  if (custom_substance != undefined) {
     console.log('Pulling from custom');
 
-    // Find the location of the substance object in the JSON and set substance
-    let substance = locateCustomSheetLocation(substanceName);
-
-    createPWChannelMessage(substance, message);
+    createPWChannelMessage(custom_substance, message);
   } else {
     console.log('Pulling from PW');
 
@@ -121,21 +121,6 @@ function createPWChannelMessage(substance, message) {
 
   message.channel.send({ embed });
 }
-// Custom sheet functions
-//// Check if the requested substance is in the customs.json file
-function checkIfCustomSheet(drug) {
-  console.log('drug: ' + drug);
-  if (
-    drug == 'ayahuasca' ||
-    drug == 'datura' ||
-    drug == 'salvia' ||
-    drug == 'lsa'
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 //// Find the location of a given substance in the customs.json file
 function locateCustomSheetLocation(drug) {
@@ -152,7 +137,7 @@ function locateCustomSheetLocation(drug) {
 
   // Loop through the locationsArray to find the location of a given substance
   for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name == drug) {
+    if (locationsArray[i].name.toLowerCase() == drug) {
       loc = i;
     }
   }
