@@ -21,7 +21,7 @@ const message = {
   },
   channel: {
     send: function(x) {
-      console.log(`channel.send: ${x}`);
+      console.log(`channel.send: `, x);
       return catchable;
     }
   }
