@@ -123,7 +123,7 @@ function createPWChannelMessage(substance, message) {
 }
 
 //// Find the location of a given substance in the customs.json file
-function locateCustomSheetLocation(drug) {
+function locateCustomSheetLocation(drug_lowercased) {
   var locationsArray = [];
   var loc;
 
@@ -137,7 +137,7 @@ function locateCustomSheetLocation(drug) {
 
   // Loop through the locationsArray to find the location of a given substance
   for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name.toLowerCase() == drug) {
+    if (locationsArray[i].name.toLowerCase() == drug_lowercased) {
       loc = i;
     }
   }
