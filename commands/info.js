@@ -31,9 +31,6 @@ const fetchPWSubstanceData = async substanceName => {
 }
 
 exports.run = async (client, message, args) => {
-  // For keeping track of whether or not a substance is found in the custom sheets
-  var hasCustom;
-
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var substanceName = parseSubstanceName(str);
@@ -41,7 +38,6 @@ exports.run = async (client, message, args) => {
   // Checks to see if drug is on the customs list
   if (checkIfCustomSheet(substanceName)) {
     console.log('Pulling from custom');
-    hasCustom = true;
 
     // Find the location of the substance object in the JSON and set substance
     let substance = locateCustomSheetLocation(substanceName);
@@ -49,10 +45,7 @@ exports.run = async (client, message, args) => {
     createPWChannelMessage(substance, message);
   } else {
     console.log('Pulling from PW');
-    hasCustom = false;
-  }
 
-  if (hasCustom == false) {
     console.log(`Requesting info for ${substanceName}`);
     // Loads GraphQL query as "query" variable
 
@@ -94,9 +87,6 @@ exports.run = async (client, message, args) => {
       console.log('Promise rejected/errored out');
       console.log(err);
     }
-
-    // Reset hasCustom
-    hasCustom = false;
   }
 };
 
