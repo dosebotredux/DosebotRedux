@@ -38,6 +38,7 @@ module.exports = function CommandSystem() {
             console.error(err);
           }
         }
+        ready();
       });
     },
 

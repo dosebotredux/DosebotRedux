@@ -31,28 +31,21 @@ const fetchPWSubstanceData = async substanceName => {
 }
 
 exports.run = async (client, message, args) => {
-  // For keeping track of whether or not a substance is found in the custom sheets
-  var hasCustom;
-
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var substanceName = parseSubstanceName(str);
 
+  // Find the location of the substance object in the JSON and set substance
+  let custom_substance = locateCustomSheetLocation(substanceName);
+
   // Checks to see if drug is on the customs list
-  if (checkIfCustomSheet(substanceName)) {
+  if (custom_substance != undefined) {
     console.log('Pulling from custom');
-    hasCustom = true;
 
-    // Find the location of the substance object in the JSON and set substance
-    let substance = locateCustomSheetLocation(substanceName);
-
-    createPWChannelMessage(substance, message);
+    createPWChannelMessage(custom_substance, message);
   } else {
     console.log('Pulling from PW');
-    hasCustom = false;
-  }
 
-  if (hasCustom == false) {
     console.log(`Requesting info for ${substanceName}`);
     // Loads GraphQL query as "query" variable
 
@@ -94,9 +87,6 @@ exports.run = async (client, message, args) => {
       console.log('Promise rejected/errored out');
       console.log(err);
     }
-
-    // Reset hasCustom
-    hasCustom = false;
   }
 };
 
@@ -131,24 +121,9 @@ function createPWChannelMessage(substance, message) {
 
   message.channel.send({ embed });
 }
-// Custom sheet functions
-//// Check if the requested substance is in the customs.json file
-function checkIfCustomSheet(drug) {
-  console.log('drug: ' + drug);
-  if (
-    drug == 'ayahuasca' ||
-    drug == 'datura' ||
-    drug == 'salvia' ||
-    drug == 'lsa'
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 //// Find the location of a given substance in the customs.json file
-function locateCustomSheetLocation(drug) {
+function locateCustomSheetLocation(drug_lowercased) {
   var locationsArray = [];
   var loc;
 
@@ -162,7 +137,7 @@ function locateCustomSheetLocation(drug) {
 
   // Loop through the locationsArray to find the location of a given substance
   for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name == drug) {
+    if (locationsArray[i].name.toLowerCase() == drug_lowercased) {
       loc = i;
     }
   }
@@ -435,7 +410,6 @@ function parseSubstanceName(string) {
   let unsanitizedDrugName = string
     .toLowerCase()
     .replace(/^[^\s]+ /, '', -1) // remove first word
-    .replace(/-/g, '', -1)
     .replace(/ /g, '', -1);
 
   // Sanitizes input names to match PsychonautWiki API names
