@@ -1,14 +1,83 @@
-const sanitizeSubstanceName = require('../include/sanitize-substance-name.js');
-const Discord = require('discord.js');
-const customsJSON = require('../include/customs.json');
+import Discord from 'discord.js';
+import rp from 'request-promise';
 
-const infoQuery = require('../queries/info.js');
+import sanitizeSubstanceName from '../include/sanitize-substance-name.js';
+import { customs as customsJSON } from '../include/customs';
+import { infoQuery } from '../queries/info';
+import Helpers from '../helpers.js';
 
-const rp = require('request-promise');
+interface PsychonautWikiSubstance {
+  name: string;
+  tolerance: any;
+  roas: {
+    name: string;
+    dose: {
+      dosage?: string | null;
+      units?: string | null ;
+      threshold?: MinMax<number> | number | null;
+      light?: MinMax<number> | number | null;
+      common?: MinMax<number> | number | null;
+      strong?: MinMax<number> | null;
+      heavy?: number | null;
+    } | null;
+    duration: {
+      onset: MinMaxUnits<number> | null;
+      comeup: MinMaxUnits<number> | null;
+      peak: MinMaxUnits<number> | null;
+      offset: MinMaxUnits<number> | null;
+      afterglow: MinMaxUnits<number> | null;
+      total: MinMaxUnits<number> | null;
+    } | null;
+  }[];
+  class: {
+    chemical: string[] | null;
+    psychoactive: string[] | null;
+  } | null;
+  addictionPotential: string | null;
+};
 
-const Helpers = require('../helpers.js')
+// $ curl "https://tripbot.tripsit.me/api/tripsit/getDrug?name=LSD"
+type TripsafeSubstance = {
+  name: string;
+  properties: {
+    dose: string;
+    duration: string;
+    onset: string;
+    effects: string;
+    avoid: string;
+    aliases: string[];
+    marquis: string;
+    summary: string;
+    categories: string[];
+    "half-life": string;
+    "after-effects": string;
+    ora: string; 
+  };
+  aliases: string[];
+  categories: string[];
+  formatted_dose: {
+    [key: string]: {
+      [intensity: string]: string;
+    }
+  };
+  // formatted_duration: any;
+  // formatted_onset: any;
+  // formatted_aftereffects: any;
+  pretty_name: string;
+  combos: any[];
+  dose_note: string;
+  links: {
+    experiences: string;
+    tihkal: string;
+  };
+  // sources: any;
+  pweffects: {
+    [key: string]: string;
+  }
+};
 
-const fetchAndParseURL = async url => {
+
+const fetchAndParseURL = async (url: string) => {
   try {
     const responseData = await rp(url);
 
@@ -20,8 +89,8 @@ const fetchAndParseURL = async url => {
   return null;
 }
 
-const fetchPWSubstanceData = async substanceName => {
-  const query = infoQuery.info(substanceName);
+const fetchPWSubstanceData = async (substanceName: string) => {
+  const query = infoQuery(substanceName);
 
   const encodedQuery = encodeURIComponent(query);
 
@@ -30,7 +99,7 @@ const fetchPWSubstanceData = async substanceName => {
   );
 }
 
-exports.run = async (client, message, args) => {
+export async function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
   var str = message.content;
   var substanceName = parseSubstanceName(str);
@@ -92,40 +161,23 @@ exports.run = async (client, message, args) => {
 
 // Functions
 //// Create a MessageEmbed powered message utilizing the various field builder functions
-function createPWChannelMessage(substance, message) {
+function createPWChannelMessage(substance: PsychonautWikiSubstance, message: Discord.Message) {
   const embed = Helpers.TemplatedMessageEmbed()
     .setTitle(`**${capitalize(substance.name)} drug information**`)
-    .addField(
-      ':telescope: __Class__',
-      buildChemicalClassField(substance) +
-      '\n' +
-      buildPsychoactiveClassField(substance)
-    )
-    .addField(':scales: __Dosages__', `${buildDosageField(substance)}\n`, true)
-    .addField(
-      ':clock2: __Duration__',
-      `${buildDurationField(substance)}\n`,
-      true
-    )
-    .addField(
-      ':warning: __Addiction potential__',
-      buildAddictionPotentialField(substance),
-      true
-    )
-    .addField(
-      ':chart_with_upwards_trend: __Tolerance__',
-      `${buildToleranceField(substance)}\n`,
-      true
-    )
+    .addField(':telescope: __Class__', buildChemicalClassField(substance) + '\n' + buildPsychoactiveClassField(substance))
+    .addField(':scales: __Dosages__', `${buildPWDosageField(substance)}\n`, true)
+    .addField(':clock2: __Duration__', `${buildPWDurationField(substance)}\n`, true)
+    .addField(':warning: __Addiction potential__', buildAddictionPotentialField(substance), true)
+    .addField(':chart_with_upwards_trend: __Tolerance__', `${buildPWToleranceField(substance)}\n`, true)
     .addField(':globe_with_meridians: __Links__', buildLinksField(substance));
 
   message.channel.send({ embed });
 }
 
 //// Find the location of a given substance in the customs.json file
-function locateCustomSheetLocation(drug_lowercased) {
+function locateCustomSheetLocation(drug_lowercased: string) {
   var locationsArray = [];
-  var loc;
+  var loc: number;
 
   // Loop through the JSON file and add all of the names and locations to locationsArray
   for (let i = 0; i < customsJSON.data.substances.length; i++) {
@@ -138,16 +190,15 @@ function locateCustomSheetLocation(drug_lowercased) {
   // Loop through the locationsArray to find the location of a given substance
   for (let i = 0; i < locationsArray.length; i++) {
     if (locationsArray[i].name.toLowerCase() == drug_lowercased) {
-      loc = i;
+      return customsJSON.data.substances[i];
     }
   }
 
-  // Set substance equal to the correct substance in the JSON file
-  return customsJSON.data.substances[loc];
+  return null;
 }
 
 // Capitalization function
-function capitalize(name) {
+function capitalize(name: string) {
   if (name === 'lsa') {
     return name.toUpperCase();
   } else {
@@ -156,18 +207,18 @@ function capitalize(name) {
 }
 
 // Message builders
-function buildToleranceField(substance) {
+function buildPWToleranceField(substance: PsychonautWikiSubstance) {
   let tolerances = substance.tolerance;
-  let toleranceArr = [];
+  let toleranceArr: string[] = [];
 
   if (tolerances) {
-    let createToleranceString = function(string, tolerance) {
-      return `**${capitalize(string)}**: ${tolerance}`;
+    let createToleranceString = function(label: string, value: string) {
+      return `**${capitalize(label)}**: ${value}`;
     };
 
-    let pushToleranceToArray = function(toleranceTier, tolerance) {
-      if (tolerance) {
-        toleranceArr.push(createToleranceString(toleranceTier, tolerance));
+    let pushToleranceToArray = function(label: string, value: string) {
+      if (value) {
+        toleranceArr.push(createToleranceString(label, value));
       }
     };
 
@@ -187,7 +238,7 @@ function buildToleranceField(substance) {
   }
 }
 
-function buildDosageField(substance) {
+function buildPWDosageField(substance: PsychonautWikiSubstance) {
   var messages = [];
 
   for (let i = 0; i < substance.roas.length; i++) {
@@ -196,9 +247,9 @@ function buildDosageField(substance) {
     let name = capitalize(roa.name);
 
     // Convert dosage object into a string
-    let dosageObjectToString = function(dosageTier) {
+    let dosageObjectToString = function(dosageTier: MinMax<number> | number) {
       // Set substance dose units
-      let unit = dose.units;
+      let unit = dose?.units;
 
       // If there's a dose return dose + unit
       if (dosageTier) {
@@ -211,14 +262,14 @@ function buildDosageField(substance) {
     };
 
     // Function for creating dosage message string
-    let createMessageString = function(string, dosage) {
-      return `**${capitalize(string)}**: ${dosageObjectToString(dosage)}`;
+    let createMessageString = function(label: string, value: MinMax<number> | number) {
+      return `**${capitalize(label)}**: ${dosageObjectToString(value)}`;
     };
 
     // Function to push dosage message to array
-    let pushDosageToMessageArray = function(phaseString, phase) {
-      if (phase) {
-        messages.push(createMessageString(phaseString, phase));
+    let pushDosageToMessageArray = function(label: string, value: MinMax<number> | number | undefined | null) {
+      if (value) {
+        messages.push(createMessageString(label, value));
       }
     };
 
@@ -256,7 +307,18 @@ function buildDosageField(substance) {
   return messages.length > 0 ? messages.join("\n") : "No dosage info."
 }
 
-function buildDurationField(substance) {
+type MinMax<T> = {
+  min: T | null;
+  max: T | null;
+}
+
+type MinMaxUnits<T> = {
+  min: T | null;
+  max: T | null;
+  units: string | null;
+}
+
+function buildPWDurationField(substance: PsychonautWikiSubstance) {
   var messages = [];
 
   for (let i = 0; i < substance.roas.length; i++) {
@@ -264,7 +326,7 @@ function buildDurationField(substance) {
     let name = capitalize(roa.name);
 
     // Parses duration object and returns string
-    let durationObjectToString = function(phaseDuration) {
+    let durationObjectToString = function(phaseDuration: MinMaxUnits<number>) {
       // If there's a duration range return it + units
       if (phaseDuration) {
         return `${phaseDuration.min} - ${phaseDuration.max} ${
@@ -275,14 +337,14 @@ function buildDurationField(substance) {
     };
 
     // Function for creating message string
-    let createMessageString = function(string, phase) {
-      return `**${capitalize(string)}**: ${durationObjectToString(phase)}`;
+    let createMessageString = function(label: string, phase: MinMaxUnits<number>) {
+      return `**${capitalize(label)}**: ${durationObjectToString(phase)}`;
     };
 
     // Function for pushing dosage message to array
-    let pushDurationToMessageArray = function(durationString, phase) {
+    let pushDurationToMessageArray = function(label: string, phase: MinMaxUnits<number> | null) {
       if (phase) {
-        messages.push(createMessageString(durationString, phase));
+        messages.push(createMessageString(label, phase));
       }
     };
 
@@ -310,7 +372,7 @@ function buildDurationField(substance) {
 }
 
 // Builds the chemical class field
-function buildChemicalClassField(substance) {
+function buildChemicalClassField(substance: PsychonautWikiSubstance) {
   if ((typeof substance.class != undefined) &&
       (substance.class !== null) &&
       (typeof substance.class.chemical != undefined) &&
@@ -323,7 +385,7 @@ function buildChemicalClassField(substance) {
 }
 
 // Builds the psychoactive class field
-function buildPsychoactiveClassField(substance) {
+function buildPsychoactiveClassField(substance: PsychonautWikiSubstance) {
   if ((typeof substance.class != undefined) &&
       (substance.class !== null) &&
       (typeof substance.class.psychoactive != undefined) &&
@@ -336,7 +398,7 @@ function buildPsychoactiveClassField(substance) {
 }
 
 // Builds the addiction potential field
-function buildAddictionPotentialField(substance) {
+function buildAddictionPotentialField(substance: PsychonautWikiSubstance) {
   if (substance.addictionPotential !== null) {
     return `${capitalize(substance.addictionPotential)}\n`;
   } else {
@@ -345,11 +407,11 @@ function buildAddictionPotentialField(substance) {
 }
 
 // Builds the link field
-function buildLinksField(substance) {
+function buildLinksField(substance: PsychonautWikiSubstance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${ substance.name.replace(/ /g, '_',) }) - [Effect Index](https://www.effectindex.com) - [Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
 }
 
-function createTSChannelMessage(substance, message) {
+function createTSChannelMessage(substance: TripsafeSubstance, message: Discord.Message) {
   const embed = Helpers.TemplatedMessageEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
     .addField(
@@ -367,17 +429,8 @@ function createTSChannelMessage(substance, message) {
   message.channel.send({ embed }).catch(console.error);
 }
 
-// Capitalization function
-function capitalize(name) {
-  if (name === 'lsa') {
-    return name.toUpperCase();
-  } else {
-    return name[0].toUpperCase() + name.slice(1);
-  }
-}
-
 // Build TS dosage field
-function buildTSDosageField(substance) {
+function buildTSDosageField(substance: TripsafeSubstance) {
   console.log(`in buildTSDosageField -- ${JSON.stringify(substance.formatted_dose)}`)
 
   if ((typeof substance.formatted_dose != undefined) &&
@@ -393,24 +446,26 @@ function buildTSDosageField(substance) {
   return `${substance.properties.dose}`;
 }
 
+
+
 // Build TS duration field
-function buildTSDurationField(substance) {
+function buildTSDurationField(substance: TripsafeSubstance) {
   return `${substance.properties.duration}`;
 }
 
 // Build TS links field
-function buildTSLinksField(substance) {
+function buildTSLinksField(substance: TripsafeSubstance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
     substance.name
   })\n[Effect Index](https://www.effectindex.com)\n[Drug combination chart](http://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](http://www.tripsit.me)\n\nInformation sourced from TripSit`;
 }
 
 // Parses and sanitizes substance name
-function parseSubstanceName(string) {
-  let unsanitizedDrugName = string
+function parseSubstanceName(str: string) {
+  let unsanitizedDrugName = str
     .toLowerCase()
-    .replace(/^[^\s]+ /, '', -1) // remove first word
-    .replace(/ /g, '', -1);
+    .replace(/^[^\s]+ /, '') // remove first word
+    .replace(/ /g, '');
 
   // Sanitizes input names to match PsychonautWiki API names
   return sanitizeSubstanceName(unsanitizedDrugName);
