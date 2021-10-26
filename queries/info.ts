@@ -1,4 +1,4 @@
-exports.info = function(substance) {
+export function infoQuery(substance: string) {
   return `{
 		substances(query: "${substance}") {
 			name

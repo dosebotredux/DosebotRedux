@@ -1,14 +1,13 @@
-// Modules
-const Discord = require('discord.js');
-const sanitizeSubstanceName = require('../include/sanitize-substance-name.js');
-const Effects = require('../include/effects.js');
-const Helpers = require('../helpers.js');
+import Discord from 'discord.js';
+import rp from 'request-promise';
 
-const rp = require('request-promise');
+import sanitizeSubstanceName from '../include/sanitize-substance-name.js';
+import Effects from '../include/effects.js';
+import Helpers from '../helpers.js';
 
-const effectQuery = require('../queries/effects.js');
+import effectQuery from '../queries/effects.js';
 
-const fetchAndParseURL = async url => {
+const fetchAndParseURL = async (url: string) => {
   try {
     const responseData = await rp(url);
 
@@ -20,7 +19,7 @@ const fetchAndParseURL = async url => {
   return null;
 }
 
-const fetchPWSubstanceData = async substanceName => {
+const fetchPWSubstanceData = async (substanceName: string) => {
   const query = effectQuery.effect(substanceName);
 
   const encodedQuery = encodeURIComponent(query);
@@ -30,14 +29,14 @@ const fetchPWSubstanceData = async substanceName => {
   );
 }
 
-exports.run = async (client, message, args) => {
+export async function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const str = message.content;
   // Removes all symbols and puts everything in lower case so bot finds the images easier
   let substanceName = str
     .toLowerCase()
-    .replace(/^[^\s]+ /, '', -1) // remove first word
-    .replace(/-/g, '', -1)
-    .replace(/ /g, '', -1);
+    .replace(/^[^\s]+ /, '') // remove first word
+    .replace(/-/g, '',)
+    .replace(/ /g, '');
 
   substanceName = sanitizeSubstanceName(substanceName);
 

@@ -1,5 +1,7 @@
+import Discord from 'discord.js';
+
 // Usage --tolerance [days since last trip]. calculates tolerance/extra dose needed to achieve normal effects
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   var str = message.content;
   var result = str.split(" ");
   var x = parseFloat(result[result.length - 1]);

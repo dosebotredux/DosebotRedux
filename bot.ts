@@ -38,6 +38,11 @@ DiscordClient.on('guildCreate', guild => {
 });
 
 DiscordClient.on('message', message => {
+  if (!(message.channel instanceof Discord.TextChannel)) {
+    // ignore messages not in TextChannels (either DMChannel or NewsChannel)
+    return;
+  }
+
   const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
   console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.name}] <${author}> -- ${message.content}`);
 

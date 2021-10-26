@@ -1,8 +1,8 @@
-const Discord = require("discord.js");
-const Helpers = require('../helpers.js');
+import Discord from "discord.js";
+import Helpers from '../helpers.js';
 
 //Badtrip command
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const embed = Helpers.TemplatedMessageEmbed()
     .setImage(
       "https://psychonautwiki.org/w/thumb.php,qf=You_do_not_need_to_understand.gif,awidth=419.pagespeed.ce._yCpj9CanE.gif"

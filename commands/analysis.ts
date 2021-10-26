@@ -1,11 +1,12 @@
 // About message
-const Discord = require('discord.js');
-const Helpers = require('../helpers.js')
+import Discord from 'discord.js';
+import Helpers from '../helpers.js';
 
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   var effectLines = message.content.split("\n");
-  const firstLineArguments = effectLines.shift().split(/ +/); // actual command, plus first line arguments
-  firstLineArguments.shift(); // remove trigger
+  if (effectLines.length < 1) { return; }
+  const firstLineArguments = effectLines.shift()!.split(/ +/); // actual command, plus first line arguments
+  firstLineArguments.shift(); // remove trigger and "analysis" command name
 
   let strength = 'moderate';
   let drug = 'psychedelic';

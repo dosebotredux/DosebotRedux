@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+import Discord from 'discord.js';
 
 // If you're reading this comment, you're looking for a bit more information
 // than the command gives. Without going into too much detail, Cocoa and I had
@@ -15,6 +15,6 @@ const Discord = require('discord.js');
 // <3
 // Maethor
 
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   message.channel.send('Godspeed Cocoa. Right hand of the revolution, lightkeeper, botmaster, and defender of the northern realms, 1995 - 2019. :cry:');
 };

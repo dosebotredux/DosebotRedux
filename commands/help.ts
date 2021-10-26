@@ -1,8 +1,8 @@
-const Discord = require('discord.js');
-const Helpers = require('../helpers.js');
+import Discord from 'discord.js';
+import Helpers from '../helpers.js';
 
 //displays list of commands. in future should scan commands directory and display info for each programmatically/dynamically
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const embed = Helpers.TemplatedMessageEmbed()
     .addField('Available commands', buildCommandList());
 

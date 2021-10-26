@@ -1,5 +1,7 @@
+import Discord from 'discord.js';
+
 // Calc dxm plateau dosages. usage --dxmcalc [weight in pounds]
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const Discord = require('discord.js');
   const DXMCalc = require('../include/dxmcalc.js');
   const Helpers = require('../helpers.js');
@@ -18,17 +20,12 @@ exports.run = (client, message, args) => {
   if (!isNaN(weight)) {
     const embed = Helpers.TemplatedMessageEmbed()
       .setTitle('DXM Dosage Calculator')
-      .addField(
-        '[:scales:] Dosages',
-        DXMCalc.generateDosageField(weight, weightIsKilos)
-      )
+      .addField('[:scales:] Dosages', DXMCalc.generateDosageField(weight, weightIsKilos))
       .addField('[:warning:] Warning', DXMCalc.generateWarningField())
       .addField('[:globe_with_meridians:] Links', DXMCalc.generateLinksField());
 
     message.channel.send({ embed });
   } else {
-    message.channel.send(
-      '**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>'
-    );
+    message.channel.send('**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>');
   }
 };

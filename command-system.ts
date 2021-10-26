@@ -18,10 +18,9 @@ function triggerForGuild(guild: Discord.Guild | null | undefined) {
 
 import Discord from "discord.js";
 import * as __commands from "./commands/index";
-let commands = __commands as unknown as {[key: string]: (client: Discord.Client, message: Discord.Message, args: string[]) => any}
+let commands = __commands as {[key: string]: (client: Discord.Client, message: Discord.Message, args: string[]) => any}
 
 export function execute(client: Discord.Client, message: Discord.Message) {
-  console.log(`executing command ${message.content}?`);
   if (message.author.bot) {
     // console.log("Message author is bot")
     return;
@@ -37,21 +36,19 @@ export function execute(client: Discord.Client, message: Discord.Message) {
   }
 
   const args: string[] = content.slice(trigger.length).trim().split(/ +/g);
-  if (args.length < 1) {
-    return;
-  }
+  if (args.length < 1) { return; }
+
   const commandName = args.shift()!.toLowerCase();
   const commandFunction = commands[commandName];
   if (!commandFunction) {
     console.log(`no command named ${commandName} exists, try ${JSON.stringify(Object.keys(commands))}`);
     return;
   }
+
   try {
+    console.log(`executing command ${message.content}`);
     commandFunction(client, message, args);
   } catch (err) {
-    console.error(
-      `Encountered error trying to execute command: ${commandName}`
-    );
-    console.error(err);
+    console.error(`Encountered error trying to execute command: ${commandName}`, err);
   }
 }

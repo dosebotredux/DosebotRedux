@@ -1,4 +1,6 @@
-exports.run = (client, message, args) => {
+import Discord from 'discord.js';
+
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   // If someone mentions a person at the end of the bobross command,
   // make sure those people are mentioned with the response
   const mentions = message.mentions.users.array()
