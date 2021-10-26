@@ -1,10 +1,10 @@
 import Discord from 'discord.js';
 import rp from 'request-promise';
 
-import sanitizeSubstanceName from '../include/sanitize-substance-name.js';
+import { sanitizeSubstanceName } from '../include/sanitize-substance-name.js';
 import { customs as customsJSON } from '../include/customs';
 import { infoQuery } from '../queries/info';
-import Helpers from '../helpers.js';
+import * as Helpers from '../include/helpers.js';
 
 interface PsychonautWikiSubstance {
   name: string;

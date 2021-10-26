@@ -1,5 +1,5 @@
 // Calculate weight in pounds
-function calculateWeight(weight, isKilos) {
+function calculateWeight(weight: number, isKilos: boolean) {
   if (isKilos) {
     return Math.floor(weight * 2.2);
   } else {
@@ -8,7 +8,7 @@ function calculateWeight(weight, isKilos) {
 }
 
 // Calculate insufflated dosages
-function generateInsufflatedDosages(weight, isKilos) {
+export function generateInsufflatedDosages(weight: number, isKilos: boolean) {
   const weightInLbs = calculateWeight(weight, isKilos);
   const dosageArray = [];
 
@@ -22,7 +22,7 @@ function generateInsufflatedDosages(weight, isKilos) {
 }
 
 // Calculate intramuscular dosages
-function generateIntramuscularDosages(weight, isKilos) {
+export function generateIntramuscularDosages(weight: number, isKilos: boolean) {
   const weightInLbs = calculateWeight(weight, isKilos);
   const dosageArray = [];
 
@@ -37,7 +37,7 @@ function generateIntramuscularDosages(weight, isKilos) {
 }
 
 // Calculate oral dosages
-function generateOralDosage(weight, isKilos) {
+export function generateOralDosage(weight: number, isKilos: boolean) {
   const weightInLbs = calculateWeight(weight, isKilos);
   const dosageArray = [];
 
@@ -51,7 +51,7 @@ function generateOralDosage(weight, isKilos) {
 }
 
 // Calculate rectal dosages
-function generateRectalDosage(weight, isKilos) {
+export function generateRectalDosage(weight: number, isKilos: boolean) {
   const weightInLbs = calculateWeight(weight, isKilos);
   const dosageArray = [];
 
@@ -64,9 +64,3 @@ function generateRectalDosage(weight, isKilos) {
   return dosageArray.join('\n');
 }
 
-module.exports = {
-  generateInsufflatedDosages,
-  generateIntramuscularDosages,
-  generateOralDosage,
-  generateRectalDosage
-};

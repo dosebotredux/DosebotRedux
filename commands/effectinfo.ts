@@ -2,7 +2,7 @@
 import Discord from 'discord.js';
 import rp from 'request-promise';
 
-import Helpers from '../helpers.js';
+import * as Helpers from '../include/helpers.js';
 
 type EffectJsonFormat = {
   effect: {

@@ -1,7 +1,7 @@
 import Discord from 'discord.js';
 
-import KetamineCalc from '../include/ketaminecalc';
-import Helpers from '../helpers.js';
+import * as KetamineCalc from '../include/ketaminecalc';
+import * as Helpers from '../include/helpers.js';
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   // Message variables

@@ -1,13 +1,52 @@
 import Discord from 'discord.js';
 import rp from 'request-promise';
 
-import sanitizeSubstanceName from '../include/sanitize-substance-name.js';
-import Effects from '../include/effects.js';
-import Helpers from '../helpers.js';
+import { sanitizeSubstanceName } from '../include/sanitize-substance-name';
+import * as Helpers from '../include/helpers';
+
+type ApiSubstance = {
+  name: string;
+  effects: {
+    name: string
+  }[];
+};
+
+function createEffectsList(substance: ApiSubstance) {
+  // const substance = data.substances[0];
+  const effects = substance.effects;
+  const numberOfEffects = effects.length;
+  const randomNumberArray = [];
+  const namesUnderscoresRemovedArray: string[] = [];
+
+  while (randomNumberArray.length < 10) {
+    randomNumberArray.push(Math.floor(Math.random() * numberOfEffects));
+  }
+
+  randomNumberArray.forEach(element => {
+    namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, '_'));
+  });
+
+  var messages = [];
+
+  // loops through effects and add their name to the message variable
+  for (let i = 0; i < randomNumberArray.length; i++) {
+    messages.push(
+      `-[${
+        effects[randomNumberArray[i]].name
+      }](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`
+    );
+  }
+  return messages.join('\n');
+}
+
+function createFullEffectListLink(substance: ApiSubstance) {
+  return `These effects were randomly selected from a larger list - [see all effects](https://psychonautwiki.org/wiki/${ substance.name }#Subjective_effects)`;
+}
+
 
 import effectQuery from '../queries/effects.js';
 
-const fetchAndParseURL = async (url: string) => {
+async function fetchAndParseURL(url: string): Promise<any> {
   try {
     const responseData = await rp(url);
 
@@ -19,14 +58,12 @@ const fetchAndParseURL = async (url: string) => {
   return null;
 }
 
-const fetchPWSubstanceData = async (substanceName: string) => {
+async function fetchPWSubstanceData(substanceName: string) {
   const query = effectQuery.effect(substanceName);
 
   const encodedQuery = encodeURIComponent(query);
 
-  return fetchAndParseURL(
-    `https://api.psychonautwiki.org/?query=${encodedQuery}`
-  );
+  return fetchAndParseURL(`https://api.psychonautwiki.org/?query=${encodedQuery}`);
 }
 
 export async function run(client: Discord.Client, message: Discord.Message, args: string[]) {
@@ -63,16 +100,13 @@ export async function run(client: Discord.Client, message: Discord.Message, args
 
     const embed = Helpers.TemplatedMessageEmbed()
       .setTitle(`${substance.name} effect information`)
-      .addField(
-        'Effects (randomly selected)',
-        Effects.createEffectsList(substance)
-      )
-      .addField(
-        'More information',
-        Effects.createFullEffectListLink(substance)
-      );
+      .addField('Effects (randomly selected)', createEffectsList(substance))
+      .addField('More information', createFullEffectListLink(substance));
 
-    message.channel.send({ embed }).catch(console.error);
+    message.channel
+      .send({ embed })
+      .catch(console.error);
+
   } catch(err) {
     console.error(err);
   }

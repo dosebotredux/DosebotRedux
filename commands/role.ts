@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 
-import roles from '../include/roles.js';
+import * as roles from '../include/roles';
 
 async function assignNickname(guild: Discord.Guild, user: Discord.GuildMember, substance: string | null, dosage: string | null) {
   if (!guild.me?.hasPermission('MANAGE_NICKNAMES')) {

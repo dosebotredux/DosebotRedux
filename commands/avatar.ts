@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 
-import Helpers from '../helpers.js';
+import * as Helpers from '../include/helpers.js';
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   // if there's a mentioned user grab the first, otherwise command requestor

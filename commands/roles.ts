@@ -1,5 +1,6 @@
 import Discord from 'discord.js';
-import Helpers from '../helpers.js';
+
+import * as Helpers from '../include/helpers.js';
   
 function generateRoleField(array: string[]) {
   if (array.length > 0) {

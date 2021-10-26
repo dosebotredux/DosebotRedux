@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
+import Discord from 'discord.js';
 
-exports.TemplatedMessageEmbed = function () {
+export function TemplatedMessageEmbed() {
   return new Discord.MessageEmbed()
     .setTimestamp()
     .attachFiles(["./assets/logo.png"])

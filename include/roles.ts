@@ -1,4 +1,4 @@
-module.exports.temporaryRoles = [
+export const temporaryRoles = [
   'tripping',
   'stimmed',
   'barred',
@@ -15,7 +15,7 @@ module.exports.temporaryRoles = [
   'gabaergic'
 ];
 
-module.exports.permanentRoles = [
+export const permanentRoles = [
   'he/him',
   'she/her',
   'they/them',

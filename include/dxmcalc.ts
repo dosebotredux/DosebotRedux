@@ -3,7 +3,7 @@ module.exports.generateWarningField = generateWarningField;
 module.exports.generateLinksField = generateLinksField;
 
 // Function for calculating dosages
-function calculateDosages(weight, isKilos) {
+function calculateDosages(weight: number, isKilos: boolean) {
   let weightInLbs;
 
   if (isKilos) {
@@ -25,12 +25,12 @@ function calculateDosages(weight, isKilos) {
 }
 
 // Function for getting log base 125
-function getLog(x, y) {
+function getLog(x: number, y: number) {
   return Math.log(y) / Math.log(x);
 }
 
 // Function for generating dosage field
-function generateDosageField(weight, isKilos) {
+function generateDosageField(weight: number, isKilos: boolean) {
   const dosageObject = calculateDosages(weight, isKilos);
   const dosageArray = [];
 
