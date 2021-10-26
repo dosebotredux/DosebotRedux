@@ -5,4 +5,4 @@ node_modules
 .eslintrc.js
 test-command.js
 .env
-
+dist

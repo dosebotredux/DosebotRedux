@@ -1,8 +1,8 @@
 // About message
-const Discord = require('discord.js');
-const Helpers = require('../helpers.js');
+import Discord from 'discord.js';
+import Helpers from '../helpers.js';
 
-exports.run = (client, message, args) => {
+export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const embed = Helpers.TemplatedMessageEmbed()
     .addField(
       'About DoseBot Redux',

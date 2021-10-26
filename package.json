@@ -21,6 +21,6 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "scripts": {
-    "start": "node bot.js"
+    "start": "node dist/bot.js"
   }
 }
