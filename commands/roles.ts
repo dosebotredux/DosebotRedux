@@ -33,5 +33,5 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
     .addField('Temporary roles', generateRoleField(availableTemporaryRoles))
     .addField('Permanent roles', generateRoleField(availablePermanentRoles));
 
-  message.channel.send({ embed });
+  message.channel.send(embed);
 }

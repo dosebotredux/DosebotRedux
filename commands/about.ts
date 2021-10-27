@@ -12,5 +12,5 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
 
       For more information about DoseBot Redux, see [our page on Effect Index](https://effectindex.com/dosebot).`);
 
-  message.channel.send({ embed });
+  message.channel.send(embed);
 }

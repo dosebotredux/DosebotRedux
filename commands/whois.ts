@@ -21,10 +21,10 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
         .addField('Last seen', user.lastMessage?.createdAt ?? "never")
         .addField('Discord ID', user.id);
 
-      message.channel.send({ embed });
+      message.channel.send(embed);
     });
   } else {
     message.channel.send('Error: No mentioned users detected');
   }
 
-};
+}

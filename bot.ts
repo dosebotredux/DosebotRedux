@@ -6,7 +6,7 @@ import Discord from 'discord.js';
 const DiscordClient = new Discord.Client();
 import * as CommandSystem from "./command-system";
 
-DiscordClient.on('ready', () => {
+DiscordClient.on('ready', async () => {
   console.log('DoseBot is online - beep boop');
 
   if (DiscordClient.user == null) {
@@ -15,10 +15,8 @@ DiscordClient.on('ready', () => {
   }
 
   // Update game message on launch
-  DiscordClient.user
-    .setActivity(`my part in reducing harm!`, { type: 'PLAYING' })
-    .then(presence => console.log(`Activity set: ${JSON.stringify(presence.activities)}`))
-    .catch(console.error);
+  const presence = await DiscordClient.user.setActivity(`my part in reducing harm!`, { type: 'PLAYING' });
+  console.log(`Activity set: ${JSON.stringify(presence.activities)}`);
 
   // Print guild list
   const guilds = DiscordClient.guilds.cache;
