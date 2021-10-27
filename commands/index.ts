@@ -12,6 +12,7 @@ export {run as combos} from "./combos";
 export {run as dxmcalc} from "./dxmcalc";
 export {run as effectinfo} from "./effectinfo";
 export {run as effects} from "./effects";
+export {run as gtoke} from "./gtoke";
 export {run as help} from "./help";
 export {run as hrt} from "./hrt";
 export {run as info} from "./info";
