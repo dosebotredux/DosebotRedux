@@ -9,7 +9,7 @@ import * as CommandSystem from "./command-system";
 DiscordClient.on('ready', async () => {
   console.log('DoseBot is online - beep boop');
 
-  if (DiscordClient.user == null) {
+  if (!DiscordClient.user) {
     console.log("No discord user. What?");
     return;
   }
@@ -28,7 +28,7 @@ DiscordClient.on('ready', async () => {
   for (const guildComponents of guilds) {
     const guildId = guildComponents[0];
     const guild = guildComponents[1];
-    console.log(`- ${guildId} - ${guild.name} (${guild.memberCount} members)`);
+    console.log(`- ${guildId} - ${guild.name} - (${guild.memberCount} members)`);
   }
 });
 
@@ -42,8 +42,8 @@ DiscordClient.on('message', message => {
     return;
   }
 
-  const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
-  console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.name}] <${author}> -- ${message.content}`);
+  //const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
+  //console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.name}] <${author}> -- ${message.content}`);
 
   CommandSystem.execute(DiscordClient, message);
 });
