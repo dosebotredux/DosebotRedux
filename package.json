@@ -1,6 +1,6 @@
 {
   "name": "dosebot-redux",
-  "version": "0.0.1",
+  "version": "3.0.0",
   "description": "Dosage bot",
   "main": "bot.js",
   "repository": "https://github.com/wjlafrance/DosebotRedux.git",
