@@ -1,6 +1,6 @@
 {
-  "name": "DoseBot-Redux",
-  "version": "0.0.1",
+  "name": "dosebot-redux",
+  "version": "3.0.0",
   "description": "Dosage bot",
   "main": "bot.js",
   "repository": "https://github.com/wjlafrance/DosebotRedux.git",
@@ -8,19 +8,19 @@
   "license": "Unlicense",
   "dependencies": {
     "bufferutil": "^4.0.0",
-    "forever": "^0.15.3",
     "discord.js": "^12.4.1",
     "dotenv": "^5.0.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-plugin-import": "^2.18.2"
-  },
   "scripts": {
-    "start": "node bot.js"
+    "start": "node dist/bot.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@types/request-promise": "^4.1.48",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0"
   }
 }

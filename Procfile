@@ -1,1 +1,1 @@
-worker: forever --minUptime 1000 bot.js
+worker: npx tsc && node dist/bot.js

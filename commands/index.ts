@@ -1,0 +1,27 @@
+// $ ls commands | sed s/\.[jt]s$// | awk '{ if ($0 != "index") { print } }' | xargs -I % echo "export {run as %} from \"./%\";"
+export {run as about} from "./about";
+export {run as analysis} from "./analysis";
+export {run as avatar} from "./avatar";
+export {run as badtrip} from "./badtrip";
+export {run as bobross} from "./bobross";
+export {run as breathe2} from "./breathe2";
+export {run as breathe} from "./breathe";
+export {run as cocoa} from "./cocoa";
+export {run as combochart} from "./combochart";
+export {run as combos} from "./combos";
+export {run as dxmcalc} from "./dxmcalc";
+export {run as effectinfo} from "./effectinfo";
+export {run as effects} from "./effects";
+export {run as gtoke} from "./gtoke";
+export {run as help} from "./help";
+export {run as hrt} from "./hrt";
+export {run as info} from "./info";
+export {run as invitelink} from "./invitelink";
+export {run as ketaminecalc} from "./ketaminecalc";
+export {run as mascot} from "./mascot";
+export {run as psychtolerance} from "./psychtolerance";
+export {run as randomtdc} from "./randomtdc";
+export {run as role} from "./role";
+export {run as roles} from "./roles";
+export {run as sei} from "./sei";
+export {run as whois} from "./whois";
