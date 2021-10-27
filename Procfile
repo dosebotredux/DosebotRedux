@@ -1,1 +1,1 @@
-worker: npx tsc && node dist/bot.js
+worker: npm install; npx tsc; node dist/bot.js
