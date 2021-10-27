@@ -1,7 +1,3 @@
-module.exports.generateDosageField = generateDosageField;
-module.exports.generateWarningField = generateWarningField;
-module.exports.generateLinksField = generateLinksField;
-
 // Function for calculating dosages
 function calculateDosages(weight: number, isKilos: boolean) {
   let weightInLbs;
@@ -30,7 +26,7 @@ function getLog(x: number, y: number) {
 }
 
 // Function for generating dosage field
-function generateDosageField(weight: number, isKilos: boolean) {
+export function generateDosageField(weight: number, isKilos: boolean) {
   const dosageObject = calculateDosages(weight, isKilos);
   const dosageArray = [];
 
@@ -40,33 +36,21 @@ function generateDosageField(weight: number, isKilos: boolean) {
     dosageArray.push(`Dosages for: **${weight}lbs**\n`);
   }
 
-  dosageArray.push(
-    `**First plateau**: ${dosageObject.lightMin}-${
-      dosageObject.lightMaxCommonMin
-    }mg`
-  );
-  dosageArray.push(
-    `**Second plateau**: ${dosageObject.lightMaxCommonMin}-${
-      dosageObject.commonMaxStrongMin
-    }mg`
-  );
-  dosageArray.push(
-    `**Third plateau**: ${dosageObject.commonMaxStrongMin}-${
-      dosageObject.strongMaxHeavy
-    }mg`
-  );
+  dosageArray.push(`**First plateau**: ${dosageObject.lightMin}-${dosageObject.lightMaxCommonMin}mg`);
+  dosageArray.push(`**Second plateau**: ${dosageObject.lightMaxCommonMin}-${dosageObject.commonMaxStrongMin}mg`);
+  dosageArray.push(`**Third plateau**: ${dosageObject.commonMaxStrongMin}-${dosageObject.strongMaxHeavy}mg`);
   dosageArray.push(`**Fourth plateau**: ${dosageObject.strongMaxHeavy}+mg`);
 
   return dosageArray.join('\n');
 }
 
 // Function for generating warning field
-function generateWarningField() {
+export function generateWarningField() {
   return `These recommendations are an approximation and are on the lower end for harm reduction purposes, please take into account your own personal tolerance and start with lower dosages. Doses exceeding 1500mg are potentially fatal.`;
 }
 
 // Function for generating links field
-function generateLinksField() {
+export function generateLinksField() {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/DXM)
   [Tripsit](http://drugs.tripsit.me/dxm)
   [Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;

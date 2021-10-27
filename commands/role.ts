@@ -20,7 +20,7 @@ async function restoreNickname(guild: Discord.Guild, user: Discord.GuildMember) 
   }
 
   if (user.displayName.includes('|')) {
-    let nickTokens = user.displayName.split('|');
+    const nickTokens = user.displayName.split('|');
     await user.setNickname(nickTokens[0]);
   }
 }
@@ -66,9 +66,9 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
     return;
   }
 
-  var tokens = message.content.split(" ");
+  const tokens = message.content.split(" ");
   tokens.shift();
-  let roleName = tokens[0].toLowerCase().replace(/[\W_]+/g,"");
+  const roleName = tokens[0].toLowerCase().replace(/[\W_]+/g,"");
 
   if (!(roles.temporaryRoles.includes(roleName) || roles.permanentRoles.includes(roleName))) {
     console.log(`Not a valid role: roleName`)
@@ -85,7 +85,7 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
     return;
   }
 
-  let member = message.member;
+  const member = message.member;
   if (!member) {
     message.channel
       .send("It appears you're not a member of this guild.")
@@ -94,6 +94,6 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
   }
 
   // Now that we have the desired guild role snowflake we can check if its temporary or permanent
-  let isPermanent = roles.permanentRoles.includes(roleName)
+  const isPermanent = roles.permanentRoles.includes(roleName);
   toggleRole(message.channel, member, roleToSet, substance, dosage, isPermanent).catch(console.error);
-};
+}

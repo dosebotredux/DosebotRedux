@@ -1,21 +1,17 @@
 import Discord from 'discord.js';
 
+import * as DXMCalc from '../include/dxmcalc';
+import * as Helpers from '../include/helpers';
+
 // Calc dxm plateau dosages. usage --dxmcalc [weight in pounds]
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
-  const Discord = require('discord.js');
-  const DXMCalc = require('../include/dxmcalc.js');
-  const Helpers = require('../helpers.js');
 
   // Message variables
   const inputs = message.content.split(/ +/g);
 
   // parse weight from result
-  let weight = parseInt(inputs[1]);
-  let weightIsKilos = false;
-
-  if (inputs[1].includes('kg')) {
-    weightIsKilos = true;
-  }
+  const weight = parseInt(inputs[1]);
+  const weightIsKilos = inputs[1].includes('kg');
 
   if (!isNaN(weight)) {
     const embed = Helpers.TemplatedMessageEmbed()
@@ -28,4 +24,4 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
   } else {
     message.channel.send('**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>');
   }
-};
+}

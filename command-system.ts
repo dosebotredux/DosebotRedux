@@ -18,7 +18,7 @@ function triggerForGuild(guild: Discord.Guild | null | undefined) {
 
 import Discord from "discord.js";
 import * as __commands from "./commands/index";
-let commands = __commands as {[key: string]: (client: Discord.Client, message: Discord.Message, args: string[]) => any}
+const commands = __commands as {[key: string]: (client: Discord.Client, message: Discord.Message, args: string[]) => void}
 
 export function execute(client: Discord.Client, message: Discord.Message) {
   if (message.author.bot) {
@@ -36,9 +36,9 @@ export function execute(client: Discord.Client, message: Discord.Message) {
   }
 
   const args: string[] = content.slice(trigger.length).trim().split(/ +/g);
-  if (args.length < 1) { return; }
+  const commandName = args.shift()?.toLowerCase();
+  if (!commandName) { return; }
 
-  const commandName = args.shift()!.toLowerCase();
   const commandFunction = commands[commandName];
   if (!commandFunction) {
     console.log(`no command named ${commandName} exists, try ${JSON.stringify(Object.keys(commands))}`);

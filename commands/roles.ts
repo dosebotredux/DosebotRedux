@@ -1,6 +1,7 @@
 import Discord from 'discord.js';
 
-import * as Helpers from '../include/helpers.js';
+import * as Helpers from '../include/helpers';
+import * as roles from '../include/roles';
   
 function generateRoleField(array: string[]) {
   if (array.length > 0) {
@@ -10,9 +11,6 @@ function generateRoleField(array: string[]) {
 }
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
-  const Discord = require('discord.js');
-  const roles = require('../include/roles.js');
-
   const availableTemporaryRoles: string[] = [];
   const availablePermanentRoles: string[] = [];
 
@@ -36,4 +34,4 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
     .addField('Permanent roles', generateRoleField(availablePermanentRoles));
 
   message.channel.send({ embed });
-};
+}

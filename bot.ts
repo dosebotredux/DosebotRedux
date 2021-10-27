@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 import Discord from 'discord.js';
@@ -20,15 +21,15 @@ DiscordClient.on('ready', () => {
     .catch(console.error);
 
   // Print guild list
-  let guilds = DiscordClient.guilds.cache;
+  const guilds = DiscordClient.guilds.cache;
   const userCount = guilds
     .map((guild: Discord.Guild) => guild.memberCount)
     .reduce((x, y) => x + y, 0);
 
   console.log(`Currently serving ${userCount} users on ${guilds.size} guilds`);
-  for (let guildComponents of guilds) {
-    let guildId = guildComponents[0];
-    let guild = guildComponents[1];
+  for (const guildComponents of guilds) {
+    const guildId = guildComponents[0];
+    const guild = guildComponents[1];
     console.log(`- ${guildId} - ${guild.name} (${guild.memberCount} members)`);
   }
 });

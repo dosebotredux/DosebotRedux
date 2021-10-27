@@ -34,7 +34,7 @@ interface PsychonautWikiSubstance {
     psychoactive: string[] | null;
   } | null;
   addictionPotential: string | null;
-};
+}
 
 // $ curl "https://tripbot.tripsit.me/api/tripsit/getDrug?name=LSD"
 type TripsafeSubstance = {
@@ -101,11 +101,11 @@ const fetchPWSubstanceData = async (substanceName: string) => {
 
 export async function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
-  var str = message.content;
-  var substanceName = parseSubstanceName(str);
+  const str = message.content;
+  const substanceName = parseSubstanceName(str);
 
   // Find the location of the substance object in the JSON and set substance
-  let custom_substance = locateCustomSheetLocation(substanceName);
+  const custom_substance = locateCustomSheetLocation(substanceName);
 
   // Checks to see if drug is on the customs list
   if (custom_substance != undefined) {
@@ -129,14 +129,14 @@ export async function run(client: Discord.Client, message: Discord.Message, args
       if (data.substances.length === 0) {
         console.log('Pulling from TS');
 
-        let tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
+        const tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
 
         const responseData = await fetchAndParseURL(tripSitURL);
 
         if (responseData.err === true) {
           message.channel.send(`Error: No API data available for **${substanceName}**`);
         } else {
-          let substance = responseData.data[0];
+          const substance = responseData.data[0];
 
           createTSChannelMessage(substance, message);
         }
@@ -149,7 +149,7 @@ export async function run(client: Discord.Client, message: Discord.Message, args
         return;
       } else {
         // Set substance to the first returned substance from PW API
-        var substance = data.substances[0];
+        const substance = data.substances[0];
         createPWChannelMessage(substance, message);
       }
     } catch (err) {
@@ -157,7 +157,7 @@ export async function run(client: Discord.Client, message: Discord.Message, args
       console.log(err);
     }
   }
-};
+}
 
 // Functions
 //// Create a MessageEmbed powered message utilizing the various field builder functions
@@ -176,8 +176,7 @@ function createPWChannelMessage(substance: PsychonautWikiSubstance, message: Dis
 
 //// Find the location of a given substance in the customs.json file
 function locateCustomSheetLocation(drug_lowercased: string) {
-  var locationsArray = [];
-  var loc: number;
+  const locationsArray = [];
 
   // Loop through the JSON file and add all of the names and locations to locationsArray
   for (let i = 0; i < customsJSON.data.substances.length; i++) {
@@ -208,15 +207,15 @@ function capitalize(name: string) {
 
 // Message builders
 function buildPWToleranceField(substance: PsychonautWikiSubstance) {
-  let tolerances = substance.tolerance;
-  let toleranceArr: string[] = [];
+  const tolerances = substance.tolerance;
+  const toleranceArr: string[] = [];
 
   if (tolerances) {
-    let createToleranceString = function(label: string, value: string) {
+    const createToleranceString = function(label: string, value: string) {
       return `**${capitalize(label)}**: ${value}`;
     };
 
-    let pushToleranceToArray = function(label: string, value: string) {
+    const pushToleranceToArray = function(label: string, value: string) {
       if (value) {
         toleranceArr.push(createToleranceString(label, value));
       }

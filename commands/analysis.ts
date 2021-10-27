@@ -1,13 +1,12 @@
 // About message
 import Discord from 'discord.js';
 
-import * as Helpers from '../include/helpers.js';
-
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
-  var effectLines = message.content.split("\n");
+  const effectLines = message.content.split("\n");
   if (effectLines.length < 1) { return; }
-  const firstLineArguments = effectLines.shift()!.split(/ +/); // actual command, plus first line arguments
-  firstLineArguments.shift(); // remove trigger and "analysis" command name
+  const firstLineArguments = effectLines.shift()?.split(/ +/); // actual command, plus first line arguments
+  if (!firstLineArguments) { return; }
+  firstLineArguments.shift();
 
   let strength = 'moderate';
   let drug = 'psychedelic';
@@ -70,4 +69,4 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
   }
 
   message.channel.send('```' + templateStart + '\n\n' + templateMiddle + '\n' + templateEnd + '\n' + additionalNotes + '```');
-};
+}
