@@ -30,12 +30,13 @@ async function assignRole(guild: Discord.Guild, user: Discord.GuildMember, roleT
     return assignNickname(guild, user, substance, dosage).catch(console.error);
   }).then(() => {
     if (!isPermanent) {
-      return new Promise((resolve) => {
+      new Promise((resolve) => {
         console.log("Unassigning role in 8 hours.")
         setTimeout(resolve, 8 * 60 * 60 * 1000);
       }).then(() => {
         return unassignRole(guild, user, roleToApply);
       }).catch(console.error);
+      return null;
     }
   });
 }
