@@ -16,5 +16,5 @@ import Discord from 'discord.js';
 // Maethor
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
-  message.channel.send('Godspeed Cocoa. Right hand of the revolution, lightkeeper, botmaster, and defender of the northern realms, 1995 - 2019. :cry:');
-};
+  message.reply({ content: 'Godspeed Cocoa. Right hand of the revolution, lightkeeper, botmaster, and defender of the northern realms, 1995 - 2019. :cry:' });
+}

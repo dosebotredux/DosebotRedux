@@ -15,13 +15,12 @@ export async function run(client: Discord.Client, message: Discord.Message, args
         '<:pepetoke:502604660927102977>', '<:musky:487937634157461505>', '<:joint:585773581980663811>',
         '<:blunt:585774074094026763>', '<:bongface:456821076387823626>', '<a:bong:585769584888512521>',
         '<:smonke:777647646684610620>'
-    ]).map((emojislug) => {
-        return client.emojis.cache.find((candidate) => emojislug == `<:${candidate.name}:${candidate.id}>`) ?? null
-    }).filter(x => {
-        return x instanceof Discord.GuildEmoji;
-    }) as Discord.GuildEmoji[];
+    ]).map((emojislug) =>
+        client.emojis.cache.find((candidate) => emojislug == `<:${candidate.name}:${candidate.id}>`)
+    ).filter(x =>
+        x instanceof Discord.GuildEmoji
+    ) as Discord.GuildEmoji[];
     
-
     if (!emoji) { console.log("could not find emoji!"); return; }
 
     const firstMessage = await message.channel.send(`${message.member?.nickname ?? "Someone"} has started a group toke. Toke up in two minutes! Use the reaction button to join in.`);

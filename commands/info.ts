@@ -134,7 +134,7 @@ export async function run(client: Discord.Client, message: Discord.Message, args
         const responseData = await fetchAndParseURL(tripSitURL);
 
         if (responseData.err === true) {
-          message.channel.send(`Error: No API data available for **${substanceName}**`);
+          message.reply(`Error: No API data available for **${substanceName}**`);
         } else {
           const substance = responseData.data[0];
 
@@ -143,8 +143,7 @@ export async function run(client: Discord.Client, message: Discord.Message, args
 
         return;
       } else if (data.substances.length > 1) {
-        message.channel
-          .send(`There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`)
+        message.reply(`There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`)
           .catch(console.error);
         return;
       } else {
@@ -171,7 +170,7 @@ function createPWChannelMessage(substance: PsychonautWikiSubstance, message: Dis
     .addField(':chart_with_upwards_trend: __Tolerance__', `${buildPWToleranceField(substance)}\n`, true)
     .addField(':globe_with_meridians: __Links__', buildLinksField(substance));
 
-  message.channel.send({ embed });
+  message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
 }
 
 //// Find the location of a given substance in the customs.json file
@@ -238,17 +237,17 @@ function buildPWToleranceField(substance: PsychonautWikiSubstance) {
 }
 
 function buildPWDosageField(substance: PsychonautWikiSubstance) {
-  var messages = [];
+  const messages = [];
 
   for (let i = 0; i < substance.roas.length; i++) {
-    let roa = substance.roas[i];
-    let dose = roa.dose;
-    let name = capitalize(roa.name);
+    const roa = substance.roas[i];
+    const dose = roa.dose;
+    const name = capitalize(roa.name);
 
     // Convert dosage object into a string
-    let dosageObjectToString = function(dosageTier: MinMax<number> | number) {
+    const dosageObjectToString = function(dosageTier: MinMax<number> | number) {
       // Set substance dose units
-      let unit = dose?.units;
+      const unit = dose?.units;
 
       // If there's a dose return dose + unit
       if (dosageTier) {
@@ -261,12 +260,12 @@ function buildPWDosageField(substance: PsychonautWikiSubstance) {
     };
 
     // Function for creating dosage message string
-    let createMessageString = function(label: string, value: MinMax<number> | number) {
+    const createMessageString = function(label: string, value: MinMax<number> | number) {
       return `**${capitalize(label)}**: ${dosageObjectToString(value)}`;
     };
 
     // Function to push dosage message to array
-    let pushDosageToMessageArray = function(label: string, value: MinMax<number> | number | undefined | null) {
+    const pushDosageToMessageArray = function(label: string, value: MinMax<number> | number | undefined | null) {
       if (value) {
         messages.push(createMessageString(label, value));
       }
@@ -318,14 +317,14 @@ type MinMaxUnits<T> = {
 }
 
 function buildPWDurationField(substance: PsychonautWikiSubstance) {
-  var messages = [];
+  const messages = [];
 
   for (let i = 0; i < substance.roas.length; i++) {
-    let roa = substance.roas[i];
-    let name = capitalize(roa.name);
+    const roa = substance.roas[i];
+    const name = capitalize(roa.name);
 
     // Parses duration object and returns string
-    let durationObjectToString = function(phaseDuration: MinMaxUnits<number>) {
+    const durationObjectToString = function(phaseDuration: MinMaxUnits<number>) {
       // If there's a duration range return it + units
       if (phaseDuration) {
         return `${phaseDuration.min} - ${phaseDuration.max} ${
@@ -336,12 +335,12 @@ function buildPWDurationField(substance: PsychonautWikiSubstance) {
     };
 
     // Function for creating message string
-    let createMessageString = function(label: string, phase: MinMaxUnits<number>) {
+    const createMessageString = function(label: string, phase: MinMaxUnits<number>) {
       return `**${capitalize(label)}**: ${durationObjectToString(phase)}`;
     };
 
     // Function for pushing dosage message to array
-    let pushDurationToMessageArray = function(label: string, phase: MinMaxUnits<number> | null) {
+    const pushDurationToMessageArray = function(label: string, phase: MinMaxUnits<number> | null) {
       if (phase) {
         messages.push(createMessageString(label, phase));
       }
@@ -413,19 +412,11 @@ function buildLinksField(substance: PsychonautWikiSubstance) {
 function createTSChannelMessage(substance: TripsafeSubstance, message: Discord.Message) {
   const embed = Helpers.TemplatedMessageEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
-    .addField(
-      ':scales: __Dosages__',
-      `${buildTSDosageField(substance)}\n`,
-      true
-    )
-    .addField(
-      ':clock2: __Duration__',
-      `${buildTSDurationField(substance)}\n`,
-      true
-    )
+    .addField(':scales: __Dosages__', `${buildTSDosageField(substance)}\n`, true)
+    .addField(':clock2: __Duration__', `${buildTSDurationField(substance)}\n`, true)
     .addField(':globe_with_meridians: __Links__', buildTSLinksField(substance));
 
-  message.channel.send({ embed }).catch(console.error);
+  message.reply({ embeds: [embed], files: ["./assets/logo.png"] }).catch(console.error);
 }
 
 // Build TS dosage field
@@ -436,7 +427,7 @@ function buildTSDosageField(substance: TripsafeSubstance) {
       (substance.formatted_dose != null))
   {
     // try fancy formatting
-    let substanceName = Object.keys(substance.formatted_dose)[0];
+    const substanceName = Object.keys(substance.formatted_dose)[0];
     return Object.entries(substance.formatted_dose[substanceName]).map(([intensity, dosageRange]) => {
       return `**${capitalize(intensity)}**: ${dosageRange}`;
     }).join("\n");
@@ -444,8 +435,6 @@ function buildTSDosageField(substance: TripsafeSubstance) {
 
   return `${substance.properties.dose}`;
 }
-
-
 
 // Build TS duration field
 function buildTSDurationField(substance: TripsafeSubstance) {
@@ -461,7 +450,7 @@ function buildTSLinksField(substance: TripsafeSubstance) {
 
 // Parses and sanitizes substance name
 function parseSubstanceName(str: string) {
-  let unsanitizedDrugName = str
+  const unsanitizedDrugName = str
     .toLowerCase()
     .replace(/^[^\s]+ /, '') // remove first word
     .replace(/ /g, '');

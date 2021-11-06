@@ -68,5 +68,5 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
     }
   }
 
-  message.channel.send('```' + templateStart + '\n\n' + templateMiddle + '\n' + templateEnd + '\n' + additionalNotes + '```');
+  message.reply('```' + templateStart + '\n\n' + templateMiddle + '\n' + templateEnd + '\n' + additionalNotes + '```');
 }

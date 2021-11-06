@@ -26,15 +26,11 @@ function createEffectsList(substance: ApiSubstance) {
     namesUnderscoresRemovedArray.push(effects[element].name.replace(/ /g, '_'));
   });
 
-  var messages = [];
+  const messages = [];
 
   // loops through effects and add their name to the message variable
   for (let i = 0; i < randomNumberArray.length; i++) {
-    messages.push(
-      `-[${
-        effects[randomNumberArray[i]].name
-      }](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`
-    );
+    messages.push( `-[${effects[randomNumberArray[i]].name}](https://psychonautwiki.org/wiki/${namesUnderscoresRemovedArray[i]})`);
   }
   return messages.join('\n');
 }
@@ -103,10 +99,7 @@ export async function run(client: Discord.Client, message: Discord.Message, args
       .addField('Effects (randomly selected)', createEffectsList(substance))
       .addField('More information', createFullEffectListLink(substance));
 
-    message.channel
-      .send({ embed })
-      .catch(console.error);
-
+    message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
   } catch(err) {
     console.error(err);
   }

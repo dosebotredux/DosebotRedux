@@ -9,10 +9,17 @@ export function createComboMessage(combos: string, name: string) {
     .addField('Combos', combos);
 }
 
+type CombosObject = {
+  [key: string]: {
+    status: any;
+  }
+};
+
 // Function for extracting combo information from query response
-export function pluckQueryResponse(response: string) {
+export function pluckQueryResponse(response: string): { name: string, combos: CombosObject } {
   // Extract data
   const queryResults = JSON.parse(response);
+  console.log("queryResults", JSON.stringify(queryResults));
   const name = queryResults.data[0].pretty_name;
   const combos = queryResults.data[0].combos;
 
@@ -20,14 +27,9 @@ export function pluckQueryResponse(response: string) {
   return { name, combos };
 }
 
-type CombosObject = {
-  [key: string]: {
-    status: any;
-  }
-};
-
 // Function for creating combo string for embed
 export function generateEmbedComboString(combosObject: CombosObject) {
+  console.log("combosObject", JSON.stringify(combosObject));
   const comboArr = [];
 
   // Loop through the combos object and push the formatted combo to the comboArr

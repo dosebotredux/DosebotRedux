@@ -24,4 +24,3 @@ export {run as randomtdc} from "./randomtdc";
 export {run as role} from "./role";
 export {run as roles} from "./roles";
 export {run as sei} from "./sei";
-export {run as whois} from "./whois";

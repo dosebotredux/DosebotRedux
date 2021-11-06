@@ -20,8 +20,8 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
       .addField('[:warning:] Warning', DXMCalc.generateWarningField())
       .addField('[:globe_with_meridians:] Links', DXMCalc.generateLinksField());
 
-    message.channel.send({ embed });
+    message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
   } else {
-    message.channel.send('**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>');
+    message.reply({ content: '**Error:** No weight specified | Usage: --dxmcalc [weight]<optional: lb/kg>' });
   }
 }

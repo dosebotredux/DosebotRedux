@@ -14,14 +14,14 @@ type EffectJsonFormat = {
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
 
-  var tokens = message.content.split(' ');
+  const tokens = message.content.split(' ');
   tokens.shift();
   const effect = tokens.join("-");
 
   console.log(`effect: ${effect}`);
 
   // Declare the location of the API URL
-  let url = `https://www.effectindex.com/api/effects/${effect}`;
+  const url = `https://www.effectindex.com/api/effects/${effect}`;
 
   rp(`${url}`).then(function(body) {
     const effectInfo = JSON.parse(body) as EffectJsonFormat;
@@ -35,10 +35,10 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
       )
       .addField('Links', createLinksField(effect, effectInfo));
 
-    message.channel.send({ embed });
+    message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
   }).catch(function(err) {
     console.error(err);
-    message.channel.send(`Error: ${effect} is not found on Effect Index`);
+    message.reply({ content: `Error: ${effect} is not found on Effect Index` });
   });
 
   function createSummaryField(effectJSON: EffectJsonFormat) {

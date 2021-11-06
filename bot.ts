@@ -3,7 +3,9 @@ require('dotenv').config();
 
 import Discord from 'discord.js';
 
-const DiscordClient = new Discord.Client();
+const DiscordClient = new Discord.Client({
+  intents: [ 'GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS']
+});
 import * as CommandSystem from "./command-system";
 
 DiscordClient.on('ready', async () => {
@@ -15,7 +17,7 @@ DiscordClient.on('ready', async () => {
   }
 
   // Update game message on launch
-  const presence = await DiscordClient.user.setActivity(`my part in reducing harm!`, { type: 'PLAYING' });
+  const presence = DiscordClient.user.setActivity(`my part in reducing harm!`, { type: 'PLAYING' });
   console.log(`Activity set: ${JSON.stringify(presence.activities)}`);
 
   // Print guild list
@@ -36,16 +38,24 @@ DiscordClient.on('guildCreate', guild => {
   console.log(`New server joined - Name: ${guild.id} ${guild.name} Members: ${guild.memberCount}`);
 });
 
-DiscordClient.on('message', message => {
-  if (!(message.channel instanceof Discord.TextChannel)) {
-    // ignore messages not in TextChannels (either DMChannel or NewsChannel)
-    return;
-  }
+DiscordClient.on('messageCreate', message => {
+  // if (!(message.channel instanceof Discord.TextChannel)) {
+  //   // ignore messages not in TextChannels (either DMChannel or NewsChannel)
+  //   return;
+  // }
 
-  //const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
-  //console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.name}] <${author}> -- ${message.content}`);
+  // const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
+  // console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.toString()}] <${author}> -- ${message.content}`);
 
   CommandSystem.execute(DiscordClient, message);
+});
+
+DiscordClient.on('debug', (message: string) => {
+  console.log("!!! DEBUG !!!", message);
+});
+
+DiscordClient.on('warn', (message: string) => {
+  console.log("!!! WARN !!!", message);
 });
 
 DiscordClient.login(process.env.DISCORD_API_TOKEN);

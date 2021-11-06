@@ -28,11 +28,11 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
         const combosString = Combos.generateEmbedComboString(combos);
 
         // Send the message
-        message.channel.send(Combos.createComboMessage(combosString, name));
+        message.reply({ embeds: [Combos.createComboMessage(combosString, name)], files: ["./assets/logo.png"] });
       }
     }).catch(function(err) {
       console.log(err);
-      message.channel.send(`Error getting **${drug[0]}** combos from TripSit API`);
+      message.reply(`Error getting **${drug[0]}** combos from TripSit API`);
     });
   }
-};
+}
