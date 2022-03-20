@@ -1,5 +1,4 @@
 import Discord from 'discord.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
 
 import {run as analysis} from "./analysis";
 import {run as avatar} from "./avatar";
@@ -52,8 +51,6 @@ export const v1commands: { [name: string]: (client: Discord.Client, message: Dis
     "sei": sei,
     "gtoke": gtoke_legacy
 };
-
-// export {run as gtoke} from "./gtoke";
 
 import { applicationCommandData as about_data, performInteraction as about } from "./about";
 import { applicationCommandData as gtoke_data, performInteraction as gtoke } from './gtoke';
