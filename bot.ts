@@ -16,6 +16,13 @@ DiscordClient.on('ready', async () => {
     return;
   }
 
+  if (!!DiscordClient.application) {
+    console.log("Setting application commands.");
+    DiscordClient.application.commands.set(CommandSystem.applicationCommandData);
+  } else {
+    console.error("No discord client application found. Unable to set commands.");
+  }
+
   // Update game message on launch
   const presence = DiscordClient.user.setActivity(`my part in reducing harm!`, { type: 'PLAYING' });
   console.log(`Activity set: ${JSON.stringify(presence.activities)}`);
@@ -39,19 +46,27 @@ DiscordClient.on('guildCreate', guild => {
 });
 
 DiscordClient.on('messageCreate', message => {
-  // if (!(message.channel instanceof Discord.TextChannel)) {
-  //   // ignore messages not in TextChannels (either DMChannel or NewsChannel)
-  //   return;
-  // }
+  try {
+    CommandSystem.execute(DiscordClient, message);
+  } catch (error) {
+    console.error("caught error executing command", message, error);
+  }
+});
 
-  // const author = `${message.author.id} ${message.author.username}#${message.author.discriminator}`;
-  // console.log(`[${message.guild?.id} || ${message.guild?.name} || #${message.channel.toString()}] <${author}> -- ${message.content}`);
+DiscordClient.on('interactionCreate', async (interaction: Discord.Interaction) => {
+  if (!interaction.isCommand()) {
+    return;
+  }
 
-  CommandSystem.execute(DiscordClient, message);
+  try {
+    CommandSystem.executeCommandInteraction(interaction);
+  } catch (error) {
+    console.error("caught error executing interaction", interaction, error);
+  }
 });
 
 DiscordClient.on('debug', (message: string) => {
-  console.log("!!! DEBUG !!!", message);
+  // console.log("!!! DEBUG !!!", message);
 });
 
 DiscordClient.on('warn', (message: string) => {

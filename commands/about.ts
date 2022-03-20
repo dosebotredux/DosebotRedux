@@ -3,7 +3,12 @@ import Discord from 'discord.js';
 
 import * as Helpers from '../include/helpers.js';
 
-export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
+export const applicationCommandData = {
+  name: "about",
+  description: "Get information about DoseBot"
+} as Discord.ApplicationCommandData;
+
+export function performInteraction(interaction: Discord.CommandInteraction) {
   const embed = Helpers.TemplatedMessageEmbed()
     .addField( 'About DoseBot Redux',
       `DoseBot Redux automatically sources dosage, duration, tolerance, and harm reduction information from [PsychonautWiki](http://www.psychonautwiki.org) and [Effect Index](https://effectindex.com).
@@ -12,5 +17,5 @@ export function run(client: Discord.Client, message: Discord.Message, args: stri
 
       For more information about DoseBot Redux, see [our page on Effect Index](https://effectindex.com/dosebot).`);
 
-  message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
+  interaction.reply({ embeds: [embed], files: ["./assets/logo.png"] });
 }

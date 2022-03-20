@@ -17,8 +17,7 @@ function triggerForGuild(guild: Discord.Guild | null | undefined) {
 }
 
 import Discord from "discord.js";
-import * as __commands from "./commands/index";
-const commands = __commands as {[key: string]: (client: Discord.Client, message: Discord.Message, args: string[]) => void}
+import { v1commands, v2commands, V2Command } from "./commands/index";
 
 export function execute(client: Discord.Client, message: Discord.Message) {
   if (message.author.bot) {
@@ -39,16 +38,23 @@ export function execute(client: Discord.Client, message: Discord.Message) {
   const commandName = args.shift()?.toLowerCase();
   if (!commandName) { return; }
 
-  const commandFunction = commands[commandName];
+  const commandFunction = v1commands[commandName];
   if (!commandFunction) {
-    console.log(`no command named ${commandName} exists, try ${JSON.stringify(Object.keys(commands))}`);
+    console.log(`no command named ${commandName} exists, try ${JSON.stringify(Object.keys(v1commands))}`);
     return;
   }
 
-  try {
-    console.log(`executing command ${message.content}`);
-    commandFunction(client, message, args);
-  } catch (err) {
-    console.error(`Encountered error trying to execute command: ${commandName}`, err);
+  commandFunction(client, message, args);
+}
+
+export const applicationCommandData = Object.values(v2commands).map(x => x.data);
+
+export function executeCommandInteraction(interaction: Discord.CommandInteraction) {
+  const command = v2commands[interaction.commandName];
+  if (!command) {
+    console.log(`no command named ${interaction.commandName} exists, try ${JSON.stringify(Object.keys(v2commands))}`);
+    return;
   }
+
+  command.perform(interaction);
 }
