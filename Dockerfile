@@ -4,8 +4,9 @@ RUN mkdir /dosebot
 WORKDIR /dosebot
 
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install \
+ && npx tsc \
 COPY . .
 
 ENV DISCORD_TOKEN ""
-CMD DISCORD_TOKEN="$DISCORD_TOKEN" node bot.js
+CMD DISCORD_TOKEN="$DISCORD_TOKEN" node ./dist/bot.js
