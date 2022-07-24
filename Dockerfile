@@ -4,8 +4,8 @@ RUN mkdir /dosebot
 WORKDIR /dosebot
 
 COPY package*.json ./
-RUN npm install \
- && npx tsc
+RUN npm install
+RUN npx tsc
 COPY . .
 
 ENV DISCORD_TOKEN ""
