@@ -25,6 +25,15 @@ This project is maintained by members of the [dosebotredux organization](https:/
 2.  `npm install` to download dependencies
 3.  `DISCORD_API_TOKEN=xxx node bot.js` to start bot
 
+## Docker usage
+
+1.  Clone repo
+2.  Create a `.env` file like so:
+```env
+DISCORD_TOKEN="your token goes here"
+```
+3.  `./start.sh` to build the container and start bot
+
 ## Invite DoseBot Redux to your server!
 
 Want DoseBot Redux on your server? Just click [this link](https://discord.com/oauth2/authorize?client_id=799165497710084116&scope=bot&permissions=268815552) and it shall appear!
