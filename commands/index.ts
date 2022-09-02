@@ -14,7 +14,6 @@ import {run as effectinfo} from "./effectinfo";
 import {run as effects} from "./effects";
 import {run as help} from "./help";
 import {run as hrt} from "./hrt";
-import {run as info} from "./info";
 import {run as invitelink} from "./invitelink";
 import {run as ketaminecalc} from "./ketaminecalc";
 import {run as mascot} from "./mascot";
@@ -40,7 +39,6 @@ export const v1commands: { [name: string]: (client: Discord.Client, message: Dis
     "effects": effects,
     "help": help,
     "hrt": hrt,
-    "info": info,
     "invitelink": invitelink,
     "ketaminecalc": ketaminecalc,
     "mascot": mascot,
@@ -54,6 +52,7 @@ export const v1commands: { [name: string]: (client: Discord.Client, message: Dis
 
 import { applicationCommandData as about_data, performInteraction as about } from "./about";
 import { applicationCommandData as gtoke_data, performInteraction as gtoke } from './gtoke';
+import { applicationCommandData as info_data,  performInteraction as info_perform } from './info';
 
 export interface V2Command {
     data: Discord.ApplicationCommandData;
@@ -62,5 +61,6 @@ export interface V2Command {
 
 export const v2commands: { [key: string]: V2Command } = {
     "about": { data: about_data, perform: about },
-    "gtoke": { data: gtoke_data, perform: gtoke }
+    "gtoke": { data: gtoke_data, perform: gtoke },
+    "info":  { data: info_data,  perform: info_perform }
 };

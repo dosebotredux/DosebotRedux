@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+import { SlashCommandBuilder } from "@discordjs/builders";
 import rp from 'request-promise';
 
 import { sanitizeSubstanceName } from '../include/sanitize-substance-name.js';
@@ -76,7 +77,6 @@ type TripsafeSubstance = {
   }
 };
 
-
 const fetchAndParseURL = async (url: string) => {
   try {
     const responseData = await rp(url);
@@ -99,10 +99,19 @@ const fetchPWSubstanceData = async (substanceName: string) => {
   );
 }
 
-export async function run(client: Discord.Client, message: Discord.Message, args: string[]) {
+export const applicationCommandData = new SlashCommandBuilder()
+  .setName("info")
+  .setDescription("Get basic info about a substance")
+  .addStringOption(option => option
+    .setName("substance")
+    .setDescription("The substance you want information about")
+    .setRequired(true))
+  .toJSON() as Discord.ApplicationCommandData;
+
+export async function performInteraction(interaction: Discord.CommandInteraction) {
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
-  const str = message.content;
-  const substanceName = parseSubstanceName(str);
+  
+  const substanceName = parseSubstanceName(interaction.options.getString("substance", true));
 
   // Find the location of the substance object in the JSON and set substance
   const custom_substance = locateCustomSheetLocation(substanceName);
@@ -111,57 +120,51 @@ export async function run(client: Discord.Client, message: Discord.Message, args
   if (custom_substance != undefined) {
     console.log('Pulling from custom');
 
-    createPWChannelMessage(custom_substance, message);
+    interaction.reply({ embeds: [ createPWChannelMessage(custom_substance) ], files: ["./assets/logo.png"] });
   } else {
     console.log('Pulling from PW');
 
     console.log(`Requesting info for ${substanceName}`);
     // Loads GraphQL query as "query" variable
 
-    try {
-      const { data } = await fetchPWSubstanceData(substanceName);
+    const { data } = await fetchPWSubstanceData(substanceName);
 
-      // Logs API's returned object of requested substance
-      console.log("Substances response: " + JSON.stringify(data));
+    // Logs API's returned object of requested substance
+    console.log("Substances response: " + JSON.stringify(data));
 
-      // Send a message to channel if there are zero or more than one substances returned by the API
-      // Not sure if the API in its current configuration can return more than one substance
-      if (data.substances.length === 0) {
-        console.log('Pulling from TS');
+    // Send a message to channel if there are zero or more than one substances returned by the API
+    // Not sure if the API in its current configuration can return more than one substance
+    if (data.substances.length === 0) {
+      console.log('Pulling from TS');
 
-        const tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
+      const tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
 
-        const responseData = await fetchAndParseURL(tripSitURL);
+      const responseData = await fetchAndParseURL(tripSitURL);
 
-        if (responseData.err === true) {
-          message.reply(`Error: No API data available for **${substanceName}**`);
-        } else {
-          const substance = responseData.data[0];
-
-          createTSChannelMessage(substance, message);
-        }
-
-        return;
-      } else if (data.substances.length > 1) {
-        message.reply(`There are multiple substances matching \`${substanceName}\` on PsychonautWiki.`)
-          .catch(console.error);
-        return;
+      if (responseData.err === true) {
+        interaction.reply(`Error: No API data available for **${substanceName}**`);
       } else {
-        // Set substance to the first returned substance from PW API
-        const substance = data.substances[0];
-        createPWChannelMessage(substance, message);
+        const substance = responseData.data[0];
+
+        interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
       }
-    } catch (err) {
-      console.log('Promise rejected/errored out');
-      console.log(err);
+
+      return;
+    } else if (data.substances.length > 1) {
+        interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki.`);
+      return;
+    } else {
+      // Set substance to the first returned substance from PW API
+      const substance = data.substances[0];
+      interaction.reply({ embeds: [ createPWChannelMessage(substance) ], files: ["./assets/logo.png"] });
     }
   }
 }
 
 // Functions
 //// Create a MessageEmbed powered message utilizing the various field builder functions
-function createPWChannelMessage(substance: PsychonautWikiSubstance, message: Discord.Message) {
-  const embed = Helpers.TemplatedMessageEmbed()
+function createPWChannelMessage(substance: PsychonautWikiSubstance): Discord.MessageEmbed {
+  return Helpers.TemplatedMessageEmbed()
     .setTitle(`**${capitalize(substance.name)} drug information**`)
     .addField(':telescope: __Class__', buildChemicalClassField(substance) + '\n' + buildPsychoactiveClassField(substance))
     .addField(':scales: __Dosages__', `${buildPWDosageField(substance)}\n`, true)
@@ -169,8 +172,6 @@ function createPWChannelMessage(substance: PsychonautWikiSubstance, message: Dis
     .addField(':warning: __Addiction potential__', buildAddictionPotentialField(substance), true)
     .addField(':chart_with_upwards_trend: __Tolerance__', `${buildPWToleranceField(substance)}\n`, true)
     .addField(':globe_with_meridians: __Links__', buildLinksField(substance));
-
-  message.reply({ embeds: [embed], files: ["./assets/logo.png"] });
 }
 
 //// Find the location of a given substance in the customs.json file
@@ -409,14 +410,12 @@ function buildLinksField(substance: PsychonautWikiSubstance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${ substance.name.replace(/ /g, '_',) }) - [Effect Index](https://www.effectindex.com) - [Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)`;
 }
 
-function createTSChannelMessage(substance: TripsafeSubstance, message: Discord.Message) {
-  const embed = Helpers.TemplatedMessageEmbed()
+function createTSChannelMessage(substance: TripsafeSubstance): Discord.MessageEmbed {
+  return Helpers.TemplatedMessageEmbed()
     .setTitle(`**${substance.pretty_name} drug information**`)
     .addField(':scales: __Dosages__', `${buildTSDosageField(substance)}\n`, true)
     .addField(':clock2: __Duration__', `${buildTSDurationField(substance)}\n`, true)
     .addField(':globe_with_meridians: __Links__', buildTSLinksField(substance));
-
-  message.reply({ embeds: [embed], files: ["./assets/logo.png"] }).catch(console.error);
 }
 
 // Build TS dosage field

@@ -56,5 +56,10 @@ export function executeCommandInteraction(interaction: Discord.CommandInteractio
     return;
   }
 
-  command.perform(interaction);
+  try {
+    command.perform(interaction);
+  } catch (error) {
+    console.error(`Caught error while performing interaction ${interaction}:\n${error}`);
+  }
+  
 }

@@ -34,10 +34,11 @@ DiscordClient.on('ready', async () => {
     .reduce((x, y) => x + y, 0);
 
   console.log(`Currently serving ${userCount} users on ${guilds.size} guilds`);
-  for (const guildComponents of guilds) {
+  for (const guildComponents of guilds.sort((x, y) => y.memberCount - x.memberCount)) {
     const guildId = guildComponents[0];
     const guild = guildComponents[1];
-    console.log(`- ${guildId} - ${guild.name} - (${guild.memberCount} members)`);
+  
+    console.log(guildId, `since ${guild.joinedAt}`, `${guild.memberCount} members`, guild.name);
   }
 });
 
