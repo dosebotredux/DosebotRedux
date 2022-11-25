@@ -1,9 +1,9 @@
 #!/bin/bash
 
+source .env || exit $?
+
 git pull
 docker build -t dosebot . || exit $?
-
-source .env || exit $?
 
 docker stop dosebot
 docker rm dosebot
