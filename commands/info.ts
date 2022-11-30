@@ -181,14 +181,14 @@ function locateCustomSheetLocation(drug_lowercased: string) {
   // Loop through the JSON file and add all of the names and locations to locationsArray
   for (let i = 0; i < customsJSON.data.substances.length; i++) {
     locationsArray.push({
-      name: customsJSON.data.substances[i].name,
+      name: lowerNoSpaceName(customsJSON.data.substances[i].name),
       location: i
     });
   }
 
   // Loop through the locationsArray to find the location of a given substance
   for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name.toLowerCase() == drug_lowercased) {
+    if (locationsArray[i].name.includes(drug_lowercased)) {
       return customsJSON.data.substances[i];
     }
   }
@@ -449,11 +449,12 @@ function buildTSLinksField(substance: TripsafeSubstance) {
 
 // Parses and sanitizes substance name
 function parseSubstanceName(str: string) {
-  const unsanitizedDrugName = str
-    .toLowerCase()
+  // Sanitizes input names to match PsychonautWiki API names
+  return sanitizeSubstanceName(lowerNoSpaceName(str));
+}
+
+function lowerNoSpaceName(str: string) {
+    return str.toLowerCase()
     .replace(/^[^\s]+ /, '') // remove first word
     .replace(/ /g, '');
-
-  // Sanitizes input names to match PsychonautWiki API names
-  return sanitizeSubstanceName(unsanitizedDrugName);
 }
