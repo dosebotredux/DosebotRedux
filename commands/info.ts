@@ -52,7 +52,7 @@ type TripsafeSubstance = {
     categories: string[];
     "half-life": string;
     "after-effects": string;
-    ora: string; 
+    ora: string;
   };
   aliases: string[];
   categories: string[];
@@ -110,7 +110,7 @@ export const applicationCommandData = new SlashCommandBuilder()
 
 export async function performInteraction(interaction: Discord.CommandInteraction) {
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
-  
+
   const substanceName = parseSubstanceName(interaction.options.getString("substance", true));
 
   // Find the location of the substance object in the JSON and set substance
@@ -187,10 +187,19 @@ function locateCustomSheetLocation(drug_lowercased: string) {
   }
 
   // Loop through the locationsArray to find the location of a given substance
+  let fallback = -1;
   for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name.includes(drug_lowercased)) {
+    if (locationsArray[i].name == drug_lowercased) {
       return customsJSON.data.substances[i];
+    } else if (fallback == -1 && locationsArray[i].name.includes(drug_lowercased)) {
+      fallback = i
     }
+  }
+
+  // If we didn't find an exact match anywhere but found something similar, return this one.
+  // This is helpful for slight typos or partial matches, and still allows people to find DMT when searching "DMT" and not something else.
+  if (fallback != -1) {
+    return customsJSON.data.substances[fallback]
   }
 
   return null;
@@ -443,8 +452,8 @@ function buildTSDurationField(substance: TripsafeSubstance) {
 // Build TS links field
 function buildTSLinksField(substance: TripsafeSubstance) {
   return `[PsychonautWiki](https://psychonautwiki.org/wiki/${
-    substance.name
-  })\n[Effect Index](https://www.effectindex.com)\n[Drug combination chart](http://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](http://www.tripsit.me)\n\nInformation sourced from TripSit`;
+      substance.name
+  })\n[Effect Index](https://effectindex.com)\n[Drug combination chart](https://wiki.tripsit.me/images/3/3a/Combo_2.png)\n[TripSit](https://tripsit.me)\n\nInformation sourced from TripSit`;
 }
 
 // Parses and sanitizes substance name
@@ -455,6 +464,6 @@ function parseSubstanceName(str: string) {
 
 function lowerNoSpaceName(str: string) {
     return str.toLowerCase()
-    .replace(/^[^\s]+ /, '') // remove first word
+    .replace(/^\S+ /, '') // remove first word
     .replace(/ /g, '');
 }
