@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 import Discord from 'discord.js';
+import fs from 'node:fs';
 
 const DiscordClient = new Discord.Client({
   intents: [ 'GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS']
@@ -9,7 +10,7 @@ const DiscordClient = new Discord.Client({
 import * as CommandSystem from "./command-system";
 
 DiscordClient.on('ready', async () => {
-  console.log('DoseBot is online - beep boop');
+  console.log('DoseBot is beginning startup...');
 
   if (!DiscordClient.user) {
     console.log("No discord user. What?");
@@ -29,16 +30,22 @@ DiscordClient.on('ready', async () => {
 
   // Print guild list
   const guilds = DiscordClient.guilds.cache;
-  const userCount = guilds
-    .map((guild: Discord.Guild) => guild.memberCount)
-    .reduce((x, y) => x + y, 0);
+  console.log(`DoseBot is online - beep boop! Serving ${guilds.size} guilds and ${guilds
+      .map((guild: Discord.Guild) => guild.memberCount)
+      .reduce((x, y) => x + y, 0)} users! See guilds.json for the full guild list.`);
 
-  console.log(`Currently serving ${userCount} users on ${guilds.size} guilds`);
-  for (const guildComponents of guilds.sort((x, y) => y.memberCount - x.memberCount)) {
-    const guildId = guildComponents[0];
-    const guild = guildComponents[1];
-  
-    console.log(guildId, `since ${guild.joinedAt}`, `${guild.memberCount} members`, guild.name);
+  try {
+    fs.writeFileSync('guilds.json', JSON.stringify(guilds
+      .sort((x, y) => y.memberCount - x.memberCount)
+      .map((guild) => ({
+        since: guild.joinedAt,
+        pop: guild.memberCount,
+        name: guild.name,
+        id: guild.id
+      }))));
+  } catch (err) {
+    console.log("Could not write guilds.json!");
+    console.error(err);
   }
 });
 

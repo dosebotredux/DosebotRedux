@@ -28,9 +28,8 @@ export async function performInteraction(interaction: Discord.CommandInteraction
 
     const emoji = shuffleArray([
         '<:Weeed:581023462534021120>', '<:weed:255964645561466880>', '<:smoke:478661373417619476>',
-        '<:pepetoke:502604660927102977>', '<:musky:487937634157461505>', '<:joint:585773581980663811>',
-        '<:blunt:585774074094026763>', '<:bongface:456821076387823626>', '<a:bong:585769584888512521>',
-        '<:smonke:777647646684610620>'
+        '<:pepetoke:502604660927102977>', '<:joint:585773581980663811>', '<:blunt:585774074094026763>',
+        '<:bongface:456821076387823626>', '<a:bong:585769584888512521>', '<:smonke:777647646684610620>'
     ]).map((emojislug) =>
         interaction.client.emojis.cache.find((candidate) => emojislug == `<:${candidate.name}:${candidate.id}>`)
     ).filter(x => x instanceof Discord.GuildEmoji) as Discord.GuildEmoji[];

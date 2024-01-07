@@ -6,3 +6,4 @@ node_modules
 test-command.js
 .env
 dist
+guilds.json

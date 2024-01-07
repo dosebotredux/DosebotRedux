@@ -77,6 +77,8 @@ type TripsafeSubstance = {
   }
 };
 
+
+
 const fetchAndParseURL = async (url: string) => {
   try {
     const responseData = await rp(url);
@@ -90,13 +92,16 @@ const fetchAndParseURL = async (url: string) => {
 }
 
 const fetchPWSubstanceData = async (substanceName: string) => {
-  const query = infoQuery(substanceName);
-
-  const encodedQuery = encodeURIComponent(query);
-
-  return fetchAndParseURL(
-    `https://api.psychonautwiki.org/?query=${encodedQuery}`
-  );
+  const result = await rp({
+    method: 'POST',
+    uri: 'https://api.psychonautwiki.org/',
+    body: {
+      query: infoQuery(substanceName),
+    },
+    json: true,
+  });
+  // console.log({ location: "fetchPWSubstanceData", data: result.data });
+  return result?.data?.substances;
 }
 
 export const applicationCommandData = new SlashCommandBuilder()
@@ -112,53 +117,43 @@ export async function performInteraction(interaction: Discord.CommandInteraction
   // Capture messages posted to a given channel and remove all symbols and put everything into lower case
 
   const substanceName = parseSubstanceName(interaction.options.getString("substance", true));
+  console.log({
+    action: "info command",
+    rawName: interaction.options.getString("substance", true),
+    parsedName: substanceName
+  });
 
   // Find the location of the substance object in the JSON and set substance
-  const custom_substance = locateCustomSheetLocation(substanceName);
-
+  const customSubstance = locateCustomSheetLocation(substanceName);
   // Checks to see if drug is on the customs list
-  if (custom_substance != undefined) {
-    console.log('Pulling from custom');
-
-    interaction.reply({ embeds: [ createPWChannelMessage(custom_substance) ], files: ["./assets/logo.png"] });
-  } else {
-    console.log('Pulling from PW');
-
-    console.log(`Requesting info for ${substanceName}`);
-    // Loads GraphQL query as "query" variable
-
-    const { data } = await fetchPWSubstanceData(substanceName);
-
-    // Logs API's returned object of requested substance
-    console.log("Substances response: " + JSON.stringify(data));
-
-    // Send a message to channel if there are zero or more than one substances returned by the API
-    // Not sure if the API in its current configuration can return more than one substance
-    if (data.substances.length === 0) {
-      console.log('Pulling from TS');
-
-      const tripSitURL = `http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`;
-
-      const responseData = await fetchAndParseURL(tripSitURL);
-
-      if (responseData.err === true) {
-        interaction.reply(`Error: No API data available for **${substanceName}**`);
-      } else {
-        const substance = responseData.data[0];
-
-        interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
-      }
-
-      return;
-    } else if (data.substances.length > 1) {
-        interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki.`);
-      return;
-    } else {
-      // Set substance to the first returned substance from PW API
-      const substance = data.substances[0];
-      interaction.reply({ embeds: [ createPWChannelMessage(substance) ], files: ["./assets/logo.png"] });
-    }
+  if (!!customSubstance) {
+    console.log({ action: "using custom substance override", customSubstance });
+    interaction.reply({ embeds: [ createPWChannelMessage(customSubstance) ], files: ["./assets/logo.png"] });
+    return;
   }
+  
+  console.log({ action: "psychonautwiki api request", substanceName });
+  const pwSubstances = await fetchPWSubstanceData(substanceName);
+  console.log({ action: "psychonautwiki api response", pwSubstances });
+  if (pwSubstances?.length > 1) {
+    interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki.`);
+    return;
+  } else if (pwSubstances?.length) {
+    // single substance -- send it
+    interaction.reply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
+    return;
+  }
+
+  console.log({ action: "tripsit api request", substanceName });
+  const tsResponse = await fetchAndParseURL(`http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`);
+  console.log({ action: "tripsit api response", tsResponse });
+  if (tsResponse.data?.length) {
+    const substance = tsResponse.data[0];
+    interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
+    return;
+  }
+
+  interaction.reply(`Error: No API data available for **${substanceName}**`);
 }
 
 // Functions
