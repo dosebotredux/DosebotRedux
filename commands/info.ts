@@ -135,12 +135,19 @@ export async function performInteraction(interaction: Discord.CommandInteraction
   interaction.deferReply();
   
   console.log({ action: "psychonautwiki api request", substanceName });
-  const pwSubstances = await fetchPWSubstanceData(substanceName);
-  console.log({ action: "psychonautwiki api response", pwSubstances });
+  const pwSubstances = await fetchPWSubstanceData(substanceName)
+    .then((value) => {
+      console.log({ action: "psychonautwiki api response", value });
+      return value;
+    })
+    .catch(reason => {
+      console.log({ action: "psychonautwiki api error", reason});
+      return [] as PsychonautWikiSubstance[];
+    });
   if (pwSubstances?.length > 1) {
     await interaction.editReply(`There are multiple substances matching '${substanceName}' on PsychonautWiki: ${pwSubstances.map(s => s.name).join(", ")}.`);
     return;
-  } else if (pwSubstances?.length) {
+  } else if (pwSubstances?.length == 1) {
     // single substance -- send it
     await interaction.editReply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
     return;

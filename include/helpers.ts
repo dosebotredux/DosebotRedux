@@ -11,9 +11,13 @@ export function TemplatedMessageEmbed(): Discord.MessageEmbed {
     .setTimestamp()
     
     // .attachFiles(["./assets/logo.png"])
-    .setAuthor('DoseBot Redux', 'attachment://logo.png')
+    .setAuthor({
+      name: 'DoseBot Redux',
+      url: "https://github.com/dosebotredux",
+      iconURL: 'attachment://logo.png'
+    })
     .setThumbnail('attachment://logo.png')
     .setColor('#747474')
     .setURL("https://github.com/dosebotredux")
-    .setFooter('Please use drugs responsibly', 'attachment://logo.png')
+    .setFooter({text: 'Please use drugs responsibly', iconURL: 'attachment://logo.png'})
 }

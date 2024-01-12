@@ -43,17 +43,31 @@ const commandInteraction = {
     options: {
         getString: (key: string) => {
             switch (key) {
-                case "substance": return "weed";
+                case "substance": return "asdkksds";
                 default: throw new Error();
             }
         }
     },
+    deferReply: async () => {
+        console.log({
+            invoke: "interaction.deferReply",
+        });
+    },
+    editReply: async (arg: any) => {
+        console.log({
+            invoke: "interaction.editReply",
+            arg,
+            embeds: arg.embeds?.map((embed: typeof simulatedEmbed) => JSON.stringify({
+                config: embed.config,
+                fields: embed.fields
+            }))
+        });
+    },
     reply: async (arg: any) => {
-        throw new Error();
         console.log({
             invoke: "interaction.reply",
             arg,
-            embeds: arg.embeds.map((embed: typeof simulatedEmbed) => JSON.stringify({
+            embeds: arg.embeds?.map((embed: typeof simulatedEmbed) => JSON.stringify({
                 config: embed.config,
                 fields: embed.fields
             }))
