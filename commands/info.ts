@@ -131,16 +131,18 @@ export async function performInteraction(interaction: Discord.CommandInteraction
     await interaction.reply({ embeds: [ createPWChannelMessage(customSubstance) ], files: ["./assets/logo.png"] });
     return;
   }
+
+  interaction.deferReply();
   
   console.log({ action: "psychonautwiki api request", substanceName });
   const pwSubstances = await fetchPWSubstanceData(substanceName);
   console.log({ action: "psychonautwiki api response", pwSubstances });
   if (pwSubstances?.length > 1) {
-    await interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki: ${pwSubstances.map(s => s.name).join(", ")}.`);
+    await interaction.editReply(`There are multiple substances matching '${substanceName}' on PsychonautWiki: ${pwSubstances.map(s => s.name).join(", ")}.`);
     return;
   } else if (pwSubstances?.length) {
     // single substance -- send it
-    await interaction.reply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
+    await interaction.editReply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
     return;
   }
 
@@ -149,11 +151,11 @@ export async function performInteraction(interaction: Discord.CommandInteraction
   console.log({ action: "tripsit api response", tsResponse });
   if (tsResponse?.data?.length) {
     const substance = tsResponse.data[0];
-    await interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
+    await interaction.editReply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
     return;
   }
 
-  await interaction.reply(`Error: No API data available for **${substanceName}**`);
+  await interaction.editReply(`Error: No API data available for **${substanceName}**`);
 }
 
 // Functions
