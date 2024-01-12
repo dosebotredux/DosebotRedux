@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 
-import * as Helpers from './helpers.js';
+import * as Helpers from './helpers';
 
 // Function for creating combo message
 export function createComboMessage(combos: string, name: string) {

@@ -56,10 +56,15 @@ export function executeCommandInteraction(interaction: Discord.CommandInteractio
     return;
   }
 
-  try {
-    command.perform(interaction);
-  } catch (error) {
-    console.error(`Caught error while performing interaction ${interaction}:\n${error}`);
-  }
-  
+  console.log({
+    action: "executing command",
+    name: interaction.commandName,
+    guild: { name: interaction.guild?.name, id: interaction.guildId },
+    user: { name: interaction.user?.username, id: interaction.user?.id },
+  });
+
+  command.perform(interaction).catch(reason => {
+    console.log({event: "discord error caught", reason});
+    console.trace();
+  });
 }

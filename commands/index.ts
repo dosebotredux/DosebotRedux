@@ -56,7 +56,7 @@ import { applicationCommandData as info_data,  performInteraction as info_perfor
 
 export interface V2Command {
     data: Discord.ApplicationCommandData;
-    perform: (interaction: Discord.CommandInteraction) => void;
+    perform: (interaction: Discord.CommandInteraction) => Promise<void>;
 };
 
 export const v2commands: { [key: string]: V2Command } = {

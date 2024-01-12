@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 
-import * as Helpers from '../include/helpers.js';
+import * as Helpers from '../include/helpers';
 
 //displays list of commands. in future should scan commands directory and display info for each programmatically/dynamically
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {

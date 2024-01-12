@@ -1,7 +1,13 @@
 import Discord from 'discord.js';
 
-export function TemplatedMessageEmbed() {
-  return new Discord.MessageEmbed()
+// mock for simulate
+var _simulatedEmbed: Discord.MessageEmbed | null = null;
+export function simulateEmbed(simulatedEmbed: Discord.MessageEmbed) {
+  _simulatedEmbed = simulatedEmbed;
+}
+
+export function TemplatedMessageEmbed(): Discord.MessageEmbed {
+  return (_simulatedEmbed ?? new Discord.MessageEmbed())
     .setTimestamp()
     
     // .attachFiles(["./assets/logo.png"])

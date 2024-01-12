@@ -2,10 +2,10 @@ import Discord from 'discord.js';
 import { SlashCommandBuilder } from "@discordjs/builders";
 import rp from 'request-promise';
 
-import { sanitizeSubstanceName } from '../include/sanitize-substance-name.js';
+import { sanitizeSubstanceName } from '../include/sanitize-substance-name';
 import { customs as customsJSON } from '../include/customs';
 import { infoQuery } from '../queries/info';
-import * as Helpers from '../include/helpers.js';
+import * as Helpers from '../include/helpers';
 
 interface PsychonautWikiSubstance {
   name: string;
@@ -101,7 +101,7 @@ const fetchPWSubstanceData = async (substanceName: string) => {
     json: true,
   });
   // console.log({ location: "fetchPWSubstanceData", data: result.data });
-  return result?.data?.substances;
+  return result?.data?.substances as PsychonautWikiSubstance[];
 }
 
 export const applicationCommandData = new SlashCommandBuilder()
@@ -124,11 +124,11 @@ export async function performInteraction(interaction: Discord.CommandInteraction
   });
 
   // Find the location of the substance object in the JSON and set substance
-  const customSubstance = locateCustomSheetLocation(substanceName);
+  const customSubstance = fetchCustomSubstanceData(substanceName);
   // Checks to see if drug is on the customs list
   if (!!customSubstance) {
     console.log({ action: "using custom substance override", customSubstance });
-    interaction.reply({ embeds: [ createPWChannelMessage(customSubstance) ], files: ["./assets/logo.png"] });
+    await interaction.reply({ embeds: [ createPWChannelMessage(customSubstance) ], files: ["./assets/logo.png"] });
     return;
   }
   
@@ -136,24 +136,24 @@ export async function performInteraction(interaction: Discord.CommandInteraction
   const pwSubstances = await fetchPWSubstanceData(substanceName);
   console.log({ action: "psychonautwiki api response", pwSubstances });
   if (pwSubstances?.length > 1) {
-    interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki.`);
+    await interaction.reply(`There are multiple substances matching '${substanceName}' on PsychonautWiki: ${pwSubstances.map(s => s.name).join(", ")}.`);
     return;
   } else if (pwSubstances?.length) {
     // single substance -- send it
-    interaction.reply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
+    await interaction.reply({ embeds: [ createPWChannelMessage(pwSubstances[0]) ], files: ["./assets/logo.png"] });
     return;
   }
 
   console.log({ action: "tripsit api request", substanceName });
   const tsResponse = await fetchAndParseURL(`http://tripbot.tripsit.me/api/tripsit/getDrug?name=${substanceName}`);
   console.log({ action: "tripsit api response", tsResponse });
-  if (tsResponse.data?.length) {
+  if (tsResponse?.data?.length) {
     const substance = tsResponse.data[0];
-    interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
+    await interaction.reply({ embeds: [ createTSChannelMessage(substance) ], files: ["./assets/logo.png"] });
     return;
   }
 
-  interaction.reply(`Error: No API data available for **${substanceName}**`);
+  await interaction.reply(`Error: No API data available for **${substanceName}**`);
 }
 
 // Functions
@@ -169,35 +169,14 @@ function createPWChannelMessage(substance: PsychonautWikiSubstance): Discord.Mes
     .addField(':globe_with_meridians: __Links__', buildLinksField(substance));
 }
 
-//// Find the location of a given substance in the customs.json file
-function locateCustomSheetLocation(drug_lowercased: string) {
-  const locationsArray = [];
-
-  // Loop through the JSON file and add all of the names and locations to locationsArray
-  for (let i = 0; i < customsJSON.data.substances.length; i++) {
-    locationsArray.push({
-      name: lowerNoSpaceName(customsJSON.data.substances[i].name),
-      location: i
-    });
+function fetchCustomSubstanceData(substanceName: string) {
+  const matchingSubstances = customsJSON.data.substances.filter(s => s.name.toLowerCase() == substanceName);
+  console.log({ debug: "finding matching custom substances", substanceName, matchingSubstances });
+  if (matchingSubstances.length) {
+    return matchingSubstances[0];
+  } else {
+    return null;
   }
-
-  // Loop through the locationsArray to find the location of a given substance
-  let fallback = -1;
-  for (let i = 0; i < locationsArray.length; i++) {
-    if (locationsArray[i].name == drug_lowercased) {
-      return customsJSON.data.substances[i];
-    } else if (fallback == -1 && locationsArray[i].name.includes(drug_lowercased)) {
-      fallback = i
-    }
-  }
-
-  // If we didn't find an exact match anywhere but found something similar, return this one.
-  // This is helpful for slight typos or partial matches, and still allows people to find DMT when searching "DMT" and not something else.
-  if (fallback != -1) {
-    return customsJSON.data.substances[fallback]
-  }
-
-  return null;
 }
 
 // Capitalization function
@@ -454,11 +433,5 @@ function buildTSLinksField(substance: TripsafeSubstance) {
 // Parses and sanitizes substance name
 function parseSubstanceName(str: string) {
   // Sanitizes input names to match PsychonautWiki API names
-  return sanitizeSubstanceName(lowerNoSpaceName(str));
-}
-
-function lowerNoSpaceName(str: string) {
-    return str.toLowerCase()
-    .replace(/^\S+ /, '') // remove first word
-    .replace(/ /g, '');
+  return sanitizeSubstanceName(str.toLowerCase().replace(/\s/g, ''));
 }

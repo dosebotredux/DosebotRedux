@@ -2,7 +2,7 @@ import Discord from 'discord.js';
 import rp from 'request-promise';
 
 import * as Combos from '../include/combos';
-import { sanitizeSubstanceName } from '../include/sanitize-substance-name.js';
+import { sanitizeSubstanceName } from '../include/sanitize-substance-name';
 
 export function run(client: Discord.Client, message: Discord.Message, args: string[]) {
   const drug = message.content
