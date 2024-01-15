@@ -132,7 +132,7 @@ export async function performInteraction(interaction: Discord.CommandInteraction
     return;
   }
 
-  interaction.deferReply();
+  await interaction.deferReply();
   
   console.log({ action: "psychonautwiki api request", substanceName });
   const pwSubstances = await fetchPWSubstanceData(substanceName)
